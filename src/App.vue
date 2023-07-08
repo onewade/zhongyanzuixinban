@@ -21,4 +21,6 @@ const addcount =()=>{
 <template>
   <div>八嘎{{ count }}</div>
   <button @click="setCount">{{ state.count }}</button>
+  <el-button type="primary">Primary</el-button>
+  <el-button type="success">Success</el-button>
 </template>
