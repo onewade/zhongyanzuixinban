@@ -3,13 +3,23 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@vueuse/core": "^10.2.1",
+    "animate.css": "^4.1.1",
+    "axios": "^1.4.0",
+    "element": "^0.1.4",
     "element-plus": "^2.3.7",
+    "font-awesome": "^4.7.0",
+    "pinia": "^2.1.4",
     "vue": "^3.3.4",
+    "vue-fontawesome": "^0.0.2",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {

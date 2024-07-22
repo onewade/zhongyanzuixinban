@@ -1,22 +1,27 @@
+// createRouter:创建router实例对象
+// createWebHistory：创建history模式的路由
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import IndexView from '@/views/IndexView.vue'
+import AboutView from '@/views/Aboutview.vue'
+import ProductView from '@/views/ProductView.vue'
+import ProductDetailsView from '@/views/ProductDetailsView.vue'
+import ExampleView from '@/views/ExampleView.vue'
+import NewsView from '@/views/NewView.vue'
+import NewsDetailsView from '@/views/NewsDetailsView.vue'
+import Solution from '@/views/Solution.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
+    { path:'/',redirect:'/index'},
+    { path:'/index',component:IndexView },
+    { path:'/product',component:ProductView },
+    { path: '/product/productId',component: ProductDetailsView },
+    { path: '/example',component: ExampleView },
+  { path: '/news', component: NewsView },
+  { path: '/news/newsId', component: NewsDetailsView },
+  { path: '/about', component: AboutView },
+  { path: '/solution', component: Solution }
   ]
 })
 

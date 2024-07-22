@@ -1,0 +1,37 @@
+{
+  "id": "4229154",
+  "name": "企业门户网站",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1377",
+      "name": "提升",
+      "font_class": "tisheng",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "648801",
+      "name": "沙漏",
+      "font_class": "shalou",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "12387129",
+      "name": "灯泡",
+      "font_class": "dengpao",
+      "unicode": "e90a",
+      "unicode_decimal": 59658
+    },
+    {
+      "icon_id": "35473897",
+      "name": "设置-设置-填充",
+      "font_class": "shezhi-shezhi-tianchong",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
