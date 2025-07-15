@@ -10,7 +10,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 const Timestamp = new Date().getTime();
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base:'./',
+  base: './', // 使用相对路径，适用于大多数部署场景
   plugins: [
     vue(),
     // ...
@@ -31,26 +31,16 @@ export default defineConfig({
   server:{
     host:'localhost',
   },
-  // build: {
-  //   sourcemap: false, // 输出.map文件,默认是false
-  //   rollupOptions: {
-  //     output: {
-  //       chunkFileNames: `static/js/[name].[hash]${Timestamp}.js`,
-  //       entryFileNames: `static/js/[name].[hash]${Timestamp}.js`,
-  //       assetFileNames: `static/[ext]/[name].[hash]${Timestamp}.[ext]`,
-  //     },
-  //   }
-  // },
-
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       // 自动导入定制化样式文件进行样式覆盖
-  //       additionalData: `
-  //         @use "@/styles/element/index.scss" as *;
-  //         @use "@/styles/var.scss" as *;
-  //       `,
-  //     }
-  //   }
-  // }
+  build: {
+    sourcemap: false, // 生产环境不输出sourcemap
+    outDir: 'tobacco', // 输出目录
+    assetsDir: 'assets', // 静态资源目录
+    rollupOptions: {
+      output: {
+        chunkFileNames: `assets/js/[name].[hash].js`,
+        entryFileNames: `assets/js/[name].[hash].js`,
+        assetFileNames: `assets/[ext]/[name].[hash].[ext]`,
+      },
+    }
+  },
 })

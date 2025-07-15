@@ -1,6 +1,6 @@
 
 <script setup>
-import {reactive} from 'vue'
+import {reactive, onMounted} from 'vue'
 import {ref} from'vue'
 // 接受 对象类型 数据的参数传入并返回一个响应式的对象
 const state = reactive({

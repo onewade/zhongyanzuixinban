@@ -1,0 +1,109 @@
+// 响应式断点配置
+// 移动端优先设计
+
+// 移动端 (Mobile)
+$mobile-min: 320px;
+$mobile-max: 767px;
+
+// 平板 (Tablet)
+$tablet-min: 768px;
+$tablet-max: 1023px;
+
+// 桌面端 (Desktop)
+$desktop-min: 1024px;
+$desktop-max: 1440px;
+
+// 大屏桌面端 (Large Desktop)
+$large-desktop-min: 1441px;
+
+// 媒体查询混入
+@mixin mobile {
+  @media screen and (min-width: #{$mobile-min}) and (max-width: #{$mobile-max}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$desktop-min}) and (max-width: #{$desktop-max}) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media screen and (min-width: #{$large-desktop-min}) {
+    @content;
+  }
+}
+
+// 向下兼容的媒体查询
+@mixin mobile-down {
+  @media screen and (max-width: #{$mobile-max}) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @media screen and (max-width: #{$tablet-max}) {
+    @content;
+  }
+}
+
+@mixin desktop-down {
+  @media screen and (max-width: #{$desktop-max}) {
+    @content;
+  }
+}
+
+// 向上兼容的媒体查询
+@mixin mobile-up {
+  @media screen and (min-width: #{$mobile-min}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media screen and (min-width: #{$tablet-min}) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media screen and (min-width: #{$desktop-min}) {
+    @content;
+  }
+}
+
+// 容器最大宽度
+$container-max-widths: (
+  mobile: 100%,
+  tablet: 720px,
+  desktop: 960px,
+  large-desktop: 1200px
+);
+
+// 间距系统
+$spacing: (
+  xs: 0.25rem,    // 4px
+  sm: 0.5rem,     // 8px
+  md: 1rem,       // 16px
+  lg: 1.5rem,     // 24px
+  xl: 2rem,       // 32px
+  xxl: 3rem       // 48px
+);
+
+// 字体大小系统
+$font-sizes: (
+  xs: 0.75rem,    // 12px
+  sm: 0.875rem,   // 14px
+  base: 1rem,     // 16px
+  lg: 1.125rem,   // 18px
+  xl: 1.25rem,    // 20px
+  xxl: 1.5rem,    // 24px
+  xxxl: 2rem      // 32px
+); 

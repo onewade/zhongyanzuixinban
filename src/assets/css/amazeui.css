@@ -10945,6 +10945,9 @@ tbody.am-collapse.am-in {
   z-index: 1120;
 }
 @media only screen and (max-width: 640px) {
+  .am-tabs-bd{
+    height: 250px;
+  }
   .am-datepicker {
     width: 100%;
   }

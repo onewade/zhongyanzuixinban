@@ -1,0 +1,345 @@
+/* 响应式工具类 */
+
+/* 容器类 */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 2rem;
+  }
+}
+
+/* 响应式网格 */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
+}
+
+.col {
+  flex: 1;
+  padding: 0 0.5rem;
+}
+
+/* 响应式列 */
+.col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+.col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+.col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+.col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+.col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* 移动端优先 - 所有列在移动端都是100%宽度 */
+@media screen and (max-width: 767px) {
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* 平板端列 */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .col-tablet-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+  .col-tablet-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+  .col-tablet-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-tablet-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .col-tablet-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+  .col-tablet-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-tablet-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+  .col-tablet-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .col-tablet-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-tablet-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+  .col-tablet-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+  .col-tablet-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* 桌面端列 */
+@media screen and (min-width: 1024px) {
+  .col-desktop-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+  .col-desktop-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+  .col-desktop-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-desktop-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .col-desktop-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+  .col-desktop-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-desktop-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+  .col-desktop-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .col-desktop-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-desktop-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+  .col-desktop-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+  .col-desktop-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* 响应式显示/隐藏 */
+.hidden-mobile {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .hidden-mobile {
+    display: block;
+  }
+  
+  .visible-mobile {
+    display: none;
+  }
+}
+
+.hidden-tablet {
+  display: block;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .hidden-tablet {
+    display: none;
+  }
+  
+  .visible-tablet {
+    display: block;
+  }
+}
+
+.hidden-desktop {
+  display: block;
+}
+
+@media screen and (min-width: 1024px) {
+  .hidden-desktop {
+    display: none;
+  }
+  
+  .visible-desktop {
+    display: block;
+  }
+}
+
+/* 响应式文本对齐 */
+.text-center-mobile {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .text-left-tablet {
+    text-align: left;
+  }
+  
+  .text-center-tablet {
+    text-align: center;
+  }
+  
+  .text-right-tablet {
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .text-left-desktop {
+    text-align: left;
+  }
+  
+  .text-center-desktop {
+    text-align: center;
+  }
+  
+  .text-right-desktop {
+    text-align: right;
+  }
+}
+
+/* 响应式间距 */
+.p-xs { padding: 0.25rem; }
+.p-sm { padding: 0.5rem; }
+.p-md { padding: 1rem; }
+.p-lg { padding: 1.5rem; }
+.p-xl { padding: 2rem; }
+
+.pt-xs { padding-top: 0.25rem; }
+.pt-sm { padding-top: 0.5rem; }
+.pt-md { padding-top: 1rem; }
+.pt-lg { padding-top: 1.5rem; }
+.pt-xl { padding-top: 2rem; }
+
+.pb-xs { padding-bottom: 0.25rem; }
+.pb-sm { padding-bottom: 0.5rem; }
+.pb-md { padding-bottom: 1rem; }
+.pb-lg { padding-bottom: 1.5rem; }
+.pb-xl { padding-bottom: 2rem; }
+
+.pl-xs { padding-left: 0.25rem; }
+.pl-sm { padding-left: 0.5rem; }
+.pl-md { padding-left: 1rem; }
+.pl-lg { padding-left: 1.5rem; }
+.pl-xl { padding-left: 2rem; }
+
+.pr-xs { padding-right: 0.25rem; }
+.pr-sm { padding-right: 0.5rem; }
+.pr-md { padding-right: 1rem; }
+.pr-lg { padding-right: 1.5rem; }
+.pr-xl { padding-right: 2rem; }
+
+.m-xs { margin: 0.25rem; }
+.m-sm { margin: 0.5rem; }
+.m-md { margin: 1rem; }
+.m-lg { margin: 1.5rem; }
+.m-xl { margin: 2rem; }
+
+.mt-xs { margin-top: 0.25rem; }
+.mt-sm { margin-top: 0.5rem; }
+.mt-md { margin-top: 1rem; }
+.mt-lg { margin-top: 1.5rem; }
+.mt-xl { margin-top: 2rem; }
+
+.mb-xs { margin-bottom: 0.25rem; }
+.mb-sm { margin-bottom: 0.5rem; }
+.mb-md { margin-bottom: 1rem; }
+.mb-lg { margin-bottom: 1.5rem; }
+.mb-xl { margin-bottom: 2rem; }
+
+.ml-xs { margin-left: 0.25rem; }
+.ml-sm { margin-left: 0.5rem; }
+.ml-md { margin-left: 1rem; }
+.ml-lg { margin-left: 1.5rem; }
+.ml-xl { margin-left: 2rem; }
+
+.mr-xs { margin-right: 0.25rem; }
+.mr-sm { margin-right: 0.5rem; }
+.mr-md { margin-right: 1rem; }
+.mr-lg { margin-right: 1.5rem; }
+.mr-xl { margin-right: 2rem; }
+
+/* 响应式字体大小 */
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 2rem; }
+
+/* 响应式图片 */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 响应式视频 */
+.responsive-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 比例 */
+}
+
+.responsive-video iframe,
+.responsive-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 响应式表格 */
+.responsive-table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+  .responsive-table {
+    display: table;
+    overflow-x: visible;
+    white-space: normal;
+  }
+}
+
+/* 响应式导航 */
+.responsive-nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100vh;
+  background: white;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.responsive-nav.active {
+  left: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .responsive-nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    transition: none;
+  }
+}
+
+/* 汉堡菜单按钮 */
+.hamburger-menu {
+  display: block;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-menu .hamburger-line {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+@media screen and (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
+  }
+} 

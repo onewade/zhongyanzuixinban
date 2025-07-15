@@ -93,8 +93,11 @@
 }
 
 @media screen and (max-width: 640px) {
+    .index-page{
+        height: 250px;
+    }
     .index-page .index-banner {
-        height: auto
+        height: 250px;
     }
 
     .index-page .index-banner .slide_simple--buttons {
@@ -116,6 +119,12 @@
 
 .index-container {
     margin-top: 50px
+}
+.index-container .features_item {
+    width: 100%;
+    font-size: 16px;
+    color: #262626;
+    margin: 20px 0 -10px
 }
 
 .index-container .features_item--title {
@@ -264,11 +273,11 @@
     }
 
     .index-page .index-banner .index-mask {
-        padding: 70px 0 0
+        padding: 60px 0 0
     }
 
     .index-page .index-banner .slide_simple--title {
-        font-size: 40px
+        font-size: 18px
     }
 
     .promo_detailed-img {

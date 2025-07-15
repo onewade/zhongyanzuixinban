@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/noto-sans-sc": "^5.2.6",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
@@ -18,8 +19,10 @@
     "element-plus": "^2.3.7",
     "font-awesome": "^4.7.0",
     "pinia": "^2.1.4",
+    "swiper": "^11.1.14",
     "vue": "^3.3.4",
     "vue-fontawesome": "^0.0.2",
+    "vue-i18n": "^10.0.0",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
