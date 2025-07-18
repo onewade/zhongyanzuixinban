@@ -98,8 +98,8 @@ onMounted(() => {
                         <div class="contentItem">
                             <div class="title">{{ object.title }}</div>
                             <div class="content">{{ object.content }}</div>
-                            <div class="phone">电话: {{ object.phone }}</div>
-                            <div class="website" v-if="companyId == 1">网站: {{ object.website }}</div>
+                            <div class="phone">联系方式：{{ object.phone }}</div>
+                            <div class="website" v-if="companyId == 1">企业网站：{{ object.website }}</div>
                         </div>
                     </div>
                 </div>
@@ -124,6 +124,7 @@ onMounted(() => {
 .groupContent {
     position: relative;
     display: flex;
+    justify-content: space-between;
     width: 65%;
     margin: 4rem auto 2rem;
 }
@@ -156,13 +157,13 @@ onMounted(() => {
 }
 
 .side {
-    width: 17%;
-    height: 22rem;
-    font-size: 2.4rem;
+    min-width: 14%;
+    height: 19rem;
+    font-size: 2rem;
     font-weight: 550;
-    padding-left: 1.3rem;
+    padding: 1.3rem;
     background: url('../assets/images/ppic.png') no-repeat center;
-    margin-right: 5rem;
+    margin-right: 3rem;
 
     >div:nth-child(1) {
         margin-top: 4rem;

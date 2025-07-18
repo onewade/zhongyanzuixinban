@@ -193,26 +193,26 @@ const newsList = ref([
 	{   id:1,
 		title: '国际集团组织员工参观沙头角禁区及香港回归纪念塔活动',
 		content: '2025年6月27日，为庆祝香港回归祖国暨香港特别行政区成立二十八周年，国际集团组织全体员工赴新界沙头角禁区开展专题参观学习。队伍依次参观“沙头角之角”石碑，远眺中英街界碑及“一街两制”警戒线，随后考察沙头角口岸旅检大楼旧址，系统了解边境管理沿革与深港合作历程；',
-		date: '2025-07-02 16:56:00'
+		date: '2025-06-27'
 	},
 	{
 		id:2,
 		title: '国际集团召开2025年一季度经济运行分析会',
 		content: '4月15日，中烟国际集团有限公司召开一季度经济运行分析会，传达国家局、总公司经济运行分析会精神，分析研究国际集团一季度经济运行情况，安排部署下一步重点工作。国际集团党组书记、总经理邵岩同志指出，一季度国际',
-		date: '2025-04-17 11:51:00'
+		date: '2025-04-15'
 	},
-	{
-		id:3,
-		title: '国际集团参加香港中企协保龄球邀请赛',
-		content: '为进一步加强与驻港中资企业交流，丰富员工文体生活，国际集团积极响应香港中企协的号召，组队参与3月29日在香港启德体育园举办的“‘龄’动精彩，球艺飞扬”中企保龄球邀请赛。国际集团代表队队员们全程投入，奋力拼搏',
-		date: '2025-04-01 10:30:00'
-	},
-	{
-		id:4,
-		title: '国际集团举办《哪吒2》主题观影活动',
-		content: '2025年2月26日，国际集团组织员工及家属集体观看国产动画《哪吒2》。影片以传统神话为根基，通过前沿数字技术与东方美学叙事的深度融合，以哪吒“逆天改命”的成长史诗，生动诠释了中华文明“自强不息”的精神内核。多名员工表示，这场视听盛宴不仅让传统文化“活起来”，更让文化自信“强起来”——既为中华文明“守正创新”的基因所震撼，也为身为文化传承者深感自豪。',
-		date: '2015-03-05 14:29:00'
-	}
+	// {
+	// 	id:3,
+	// 	title: '国际集团参加香港中企协保龄球邀请赛',
+	// 	content: '为进一步加强与驻港中资企业交流，丰富员工文体生活，国际集团积极响应香港中企协的号召，组队参与3月29日在香港启德体育园举办的“‘龄’动精彩，球艺飞扬”中企保龄球邀请赛。国际集团代表队队员们全程投入，奋力拼搏',
+	// 	date: '2025-04-01 10:30:00'
+	// },
+	// {
+	// 	id:4,
+	// 	title: '国际集团举办《哪吒2》主题观影活动',
+	// 	content: '2025年2月26日，国际集团组织员工及家属集体观看国产动画《哪吒2》。影片以传统神话为根基，通过前沿数字技术与东方美学叙事的深度融合，以哪吒“逆天改命”的成长史诗，生动诠释了中华文明“自强不息”的精神内核。多名员工表示，这场视听盛宴不仅让传统文化“活起来”，更让文化自信“强起来”——既为中华文明“守正创新”的基因所震撼，也为身为文化传承者深感自豪。',
+	// 	date: '2015-03-05 14:29:00'
+	// }
 ])
 const groupList = ref([
 	{
@@ -340,7 +340,7 @@ onBeforeUnmount(() => {
 		</div>
 		<div class="news-section">
 			<div>
-				<img src="../assets/images/newIndex/news.jpg" alt="" style="width: 100%; height: 100%;">
+				<img src="../assets/images/newIndex/news.jpg" alt="" style="width: 100%; height: 100%;" @click="goDetail(4)">
 			</div>
 			<div class="news-content">
 				<div class="newsTitle">{{ $t('message.t3') }}</div>
@@ -720,7 +720,7 @@ onBeforeUnmount(() => {
 	padding-top: 0;
 
 	@media screen and (min-width: 1024px) {
-		width: 100%;
+		width: 70%;
 		display: flex;
 		flex: 1;
 		margin-top: 90px;
@@ -746,11 +746,11 @@ onBeforeUnmount(() => {
 	}
 
 	>div:nth-child(1) {
-		width: 41%;
+		width: 60%;
 	}
 
 	>div:nth-child(2) {
-		width: 55%;
+		width: 40%;
 	}
 
 	.news-content {
@@ -760,22 +760,22 @@ onBeforeUnmount(() => {
 		justify-content: space-between;
 
 		@media screen and (min-width: 1024px) {
-			margin-left: 70px;
+			margin-left: 3rem;
 			margin-top: -50px;
 		}
 	}
 
 	.news-boxes {
 		@media screen and (min-width: 1024px) {
-			display: flex;
-			flex-wrap: wrap;
+			// display: flex;
+			// flex-wrap: wrap;
 		}
 
-		>div:nth-child(even) {
-			@media screen and (min-width: 1024px) {
-				margin-left: 5%;
-			}
-		}
+		// >div:nth-child(even) {
+		// 	@media screen and (min-width: 1024px) {
+		// 		margin-left: 5%;
+		// 	}
+		// }
 		// >div:nth-child(1),>div:nth-child(2) {
 		// 	@media screen and (min-width: 1024px) {
 		// 		margin-top: 0;
@@ -789,24 +789,24 @@ onBeforeUnmount(() => {
 
 		@media screen and (min-width: 1024px) {
 			position: relative;
-			width: 46%;
+			width: 100%;
 			padding-bottom: 0.9rem;
 			border-bottom: 1px solid #e9e9e9;
-			margin-top: 2.5rem;
+			margin-top: 2rem;
 			font-size: 1.6rem;
 		}
 	}
 
 	.news-item-title {
 		color: #555;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		line-height: 1.6;
 		height: 3.8rem;
 	}
 
 	.news-item-content {
-		font-size: 1rem;
-		margin: 10px 0px 5px 0px;
+		font-size: 0.9rem;
+		// margin: 10px 0px 5px 0px;
 		// 只显示3行剩下用...代替
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
@@ -830,17 +830,20 @@ onBeforeUnmount(() => {
 			padding: 0.6rem 0rem;
 			background-color: #F7B334;
 			color: white;
-			font-size: 1.4rem;
+			font-size: 1.1rem;
 			text-align: center;
-			width: 13rem;
+			width: 10rem;
 			margin-top:1rem;
 		}
 	}
 }
+.group-section{
+	width: 70%;
+}
 
 .group-title {
 	@media screen and (min-width: 1024px) {
-		font-size: 2.2rem;
+		font-size: 2rem;
 		font-weight: bold;
 		text-align: center;
 		margin-top: 4rem;
@@ -859,28 +862,27 @@ onBeforeUnmount(() => {
 		margin-top: 0.8rem;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: space-between;
 		text-align: center;
 	}
 }
 
 .group-item {
 	@media screen and (min-width: 1024px) {
-		width: 16%;
-		margin: 1rem;
-		padding: 0.65rem;
+		width: 17.5%;
+		margin: 1rem 0rem;
+		padding: 0.65rem 0.4rem;
 		border: 1px solid #e9e9e9;
 		border-radius: 8px;
 		background-color: white;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		color: #F7B334;
-		height: 9.5rem;
 		font-size: 1.1rem;
 
 		>div:nth-child(1) {
 			@media screen and (min-width: 1024px) {
-				margin-top: 20px;
-				font-size: 1.6rem;
+				margin-top: 1.3rem;
+				font-size: 1.2rem;
 				// font-weight: 550;
 				border-bottom: 3px;
 			}
@@ -889,13 +891,13 @@ onBeforeUnmount(() => {
 		>div:nth-child(2) {
 			border: 1px solid #F7B334;
 			width: 80%;
-			margin: 1rem auto;
+			margin: 0.5rem auto;
 		}
 
 		>img {
-			width: 25px;
-			height: 25px;
-			margin-top: 5px;
+			width: 1.5rem;
+			height: 1.5rem;
+			margin-top: 0.3rem;
 		}
 	}
 }

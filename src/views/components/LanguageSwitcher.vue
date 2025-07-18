@@ -46,6 +46,15 @@ const changeLanguage = (lang) => {
   window.dispatchEvent(new CustomEvent('languageChanged', { detail: lang }));
   
   console.log(`语言已切换为: ${lang}`);
+  // 如果当前的语言是英语，把.nav字体改成Helvetica, Arial, sans-serif
+  const navElement = document.querySelector('.nav');
+  if (navElement) {
+    if (lang === 'en') {
+      navElement.style.fontFamily = 'Helvetica, Arial, sans-serif';
+    } else {
+      navElement.style.fontFamily = "'Source Han Sans CN', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', 'Heiti SC', 'PingFang SC', 'WenQuanYi Micro Hei', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+    }
+  }
 };
 const changeL = ref(null);
 // 监听页面宽度
@@ -70,7 +79,6 @@ window.onresize = () => {
   }
 };
 const handleCommand = (command) => {
-  console.log('command', command);
   changeLanguage(command);
 }
 onMounted(() => {
@@ -78,7 +86,15 @@ onMounted(() => {
   const savedLanguage = localStorage.getItem('language') || 'zhCN';
   currentLang.value = savedLanguage;
   locale.value = savedLanguage;
-  
+  // 如果当前的语言是英语，把.nav字体改成Helvetica, Arial, sans-serif
+  const navElement = document.querySelector('.nav');
+  if (navElement) {
+    if (savedLanguage === 'en') {   
+      navElement.style.fontFamily = 'Helvetica, Arial, sans-serif';
+    } else {
+      navElement.style.fontFamily = "'Source Han Sans CN', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', 'Heiti SC', 'PingFang SC', 'WenQuanYi Micro Hei', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+    }
+  }
   console.log(`初始化语言: ${savedLanguage}`);
 
   // 响应式处理

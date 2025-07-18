@@ -7,7 +7,7 @@ import Layout from '../components/common/Layout.vue';
         <Layout>
             <div class="contact">
                 <div class="index-page" style="width: 100%">
-                    <div class="bgImg">
+                    <div class="page-header-sub">
                         <img src="../assets/images/business.png" alt="">
                     </div>
                 </div>

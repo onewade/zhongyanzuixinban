@@ -92,8 +92,8 @@ const goBack = () => {
 .joinContent{
     width: 65%;
     margin: 0 auto;
-    font-size:1rem;
-    line-height: 1.5rem;
+    font-size:1.2rem;
+    line-height: 2rem;
 }
 
 .joinTitle {

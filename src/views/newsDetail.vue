@@ -31,13 +31,13 @@ onMounted(() => {
                     <div v-if="id == 1">
                         <div class="detailTitle">
                             <div>
-                                国际集团组织员工参观沙头角禁区及香港回归纪念塔活动
+                                国际集团组织员工参观沙头角禁区及香港回归
                             </div>
                             <div>
                                 纪念塔活动
                             </div>
                         </div>
-                        <div class="detailDate">2025-07-02 16:56:00</div>
+                        <div class="detailDate">2025-06-27</div>
                         <div class="newspic">
                             <img src="../assets/images/newsPic/jnt.png" alt="">
                         </div>
@@ -49,7 +49,7 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 2">
                         <div class="detailTitle">国际集团召开2025年一季度经济运行分析会</div>
-                        <div class="detailDate">2025-04-17 11:51:00</div>
+                        <div class="detailDate">2025-04-15</div>
                         <div class="detailContent">
                             <div>
                                 4月15日，中烟国际集团有限公司召开一季度经济运行分析会，传达国家局、总公司经济运行分析会精神，分析研究国际集团一季度经济运行情况，安排部署下一步重点工作。
@@ -64,7 +64,7 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 3">
                         <div class="detailTitle">国际集团参加香港中企协保龄球邀请赛</div>
-                        <div class="detailDate">2025-04-01 10:30:00</div>
+                        <div class="detailDate">2025-03-29</div>
                         <div class="newspic">
                             <img src="../assets/images/newsPic/ball1.png" alt="">
                             <img src="../assets/images/newsPic/ball2.png" alt="">
@@ -77,7 +77,7 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 4">
                         <div class="detailTitle">国际集团举办《哪吒2》主题观影活动</div>
-                        <div class="detailDate">2025-03-05 14:29:00</div>
+                        <div class="detailDate">2025-02-16</div>
                         <div class="detailImg">
                             <img src="../assets/images/newsPic/ez.png" alt="">
                             <img src="../assets/images/newsPic/ez1.png" alt="">
@@ -101,7 +101,7 @@ onMounted(() => {
                             </div>
                             <div>——国际集团举行2025年春茗暨开工仪式</div>
                         </div>
-                        <div class="detailDate">2025-02-14 15:13:00</div>
+                        <div class="detailDate">2025-02-13</div>
                         <div class="newspic">
                             <img src="../assets/images/newsPic/kaigong.png" alt="">
                         </div>
@@ -117,7 +117,7 @@ onMounted(() => {
                             </div>
                         </div>
                     </div>
-                    <div v-if="id == 6">
+                    <div v-if="id == 7">
                         <div class="detailTitle">
                             <div>
                                 中烟国际集团有限公司召开
@@ -129,7 +129,7 @@ onMounted(() => {
                                 传达学习2025年全国烟草工作会议精神
                             </div>
                         </div>
-                        <div class="detailDate">2025-01-23 15:40:00</div>
+                        <div class="detailDate">2025-01-20</div>
                         <div class="newspic">
                             <img src="../assets/images/newsPic/jingshen.png" alt="">
                         </div>
@@ -157,9 +157,9 @@ onMounted(() => {
                             </div>
                         </div>
                     </div>
-                    <div v-if="id == 7">
+                    <div v-if="id == 6">
                         <div class="detailTitle">国际集团开展“春节送温暖”义工活动</div>
-                        <div class="detailDate">2025-01-22 13:59:00</div>
+                        <div class="detailDate">2025-01-21</div>
                         <div class="newspic">
                             <img src="../assets/images/newsPic/yigong.png" alt="">
                         </div>

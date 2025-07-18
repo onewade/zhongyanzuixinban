@@ -23,7 +23,7 @@ onMounted(() => {
         <Layout>
             <div>
               <div class="index-page">
-                  <div class="contactBox">
+                  <div class="page-header-sub">
                     <img src="../assets/images/contact.png" alt="">
                 </div>
               </div>

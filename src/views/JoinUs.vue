@@ -3,7 +3,7 @@ import Layout from '@/components/common/Layout.vue';
 import JoinDetail from './JoinDetail.vue';
 import { onMounted, ref } from 'vue';
 const list = ref([
-    { number:  1, title: '【社会招聘】中烟国际集团有限公司集团总部内部招聘：岗位信息技术管理岗' ,date:'2025-06-07'},
+    { number:  1, title: '【社会招聘】中烟国际集团有限公司集团信息技术管理岗招聘' ,date:'2025-06-07'},
     { number:  2 },
     { number:  3 },
     { number:  4},
@@ -30,7 +30,7 @@ const handleGoBack = (val) => {
      <Layout>
         <div class="joinContainer">
             <div class="index-page">
-                <div class="joinBox">
+                <div class="page-header-sub">
                 <img src="../assets/images/zp.png" alt="">
             </div>
             </div>

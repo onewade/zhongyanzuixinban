@@ -8,6 +8,8 @@
             <div class="footerContainer">
                 <div>{{ $t('message.mianze') }}</div>
                 <div>|</div>
+                 <div>{{ $t('message.wzasm') }}</div>
+                <div>|</div>
                 <div>{{ $t('message.siyin') }}</div>
                 <div>|</div>
                 <div>{{ $t('message.banquansuoyou') }}</div>
@@ -44,6 +46,9 @@
         }
 
         >div:nth-child(4) {
+            margin: 0px 1rem;
+        }
+         >div:nth-child(6) {
             margin: 0px 1rem;
         }
     }

@@ -79,12 +79,12 @@
 
 /*================================ Nav ================================*/
 .nav-wrapper{
-     width: 64.8%;
+     width: 70.8%;
     /* margin-top:8px; */
     /* box-shadow: 0 1px 3px #e9e9e9; */
 }
 .nav{
-    width: 64%;
+    width: 70%;
     margin-top:0.5rem;
     /* max-width: 1240px; */
     /* margin: 0 auto; */
@@ -137,7 +137,14 @@
 
 
 .page-header {
-    height: 680px;
+    height: 45.3rem;
+    >img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.page-header-sub {
+    height: 31.7rem!important;
     >img{
         width: 100%;
         height: 100%;

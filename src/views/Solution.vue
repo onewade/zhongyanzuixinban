@@ -17,7 +17,7 @@ onUpdated(() => {
 <template>
   <Layout>
     <div class="index-page" style="width: 100%">
-      <div class="page-header">
+      <div class="page-header-sub">
         <img src="../assets/images/gaikuang.png" alt="">
       </div>
     </div>
@@ -33,7 +33,7 @@ onUpdated(() => {
         </div>
         <div class="content2">
           <div class="title">{{ $t('message.zygjjt') }}</div>
-          <div>{{ $t('message.zygjjtContent') }}</div>
+          <div>{{ $t('message.zygjjtContent2') }}</div>
         </div>
       </div>
 
