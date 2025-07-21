@@ -190,13 +190,14 @@ const outputValue3 = useTransition(source3, {
 source3.value = 0.97;
 // const videoPlayer = ref(null);
 const newsList = ref([
-	{   id:1,
+	{
+		id: 1,
 		title: '国际集团组织员工参观沙头角禁区及香港回归纪念塔活动',
 		content: '2025年6月27日，为庆祝香港回归祖国暨香港特别行政区成立二十八周年，国际集团组织全体员工赴新界沙头角禁区开展专题参观学习。队伍依次参观“沙头角之角”石碑，远眺中英街界碑及“一街两制”警戒线，随后考察沙头角口岸旅检大楼旧址，系统了解边境管理沿革与深港合作历程；',
 		date: '2025-06-27'
 	},
 	{
-		id:2,
+		id: 2,
 		title: '国际集团召开2025年一季度经济运行分析会',
 		content: '4月15日，中烟国际集团有限公司召开一季度经济运行分析会，传达国家局、总公司经济运行分析会精神，分析研究国际集团一季度经济运行情况，安排部署下一步重点工作。国际集团党组书记、总经理邵岩同志指出，一季度国际',
 		date: '2025-04-15'
@@ -303,7 +304,7 @@ const handleGoNew = () => {
 	// 跳转到新闻页面
 	route.push('/news');
 }
-const goDetail = (id)=>{
+const goDetail = (id) => {
 	route.push(`/newsDetail/${id}`);
 }
 onMounted(() => {
@@ -340,7 +341,8 @@ onBeforeUnmount(() => {
 		</div>
 		<div class="news-section">
 			<div>
-				<img src="../assets/images/newIndex/news.jpg" alt="" style="width: 100%; height: 100%;" @click="goDetail(4)">
+				<img src="../assets/images/newIndex/news.jpg" alt="" style="width: 100%; height: 100%;"
+					@click="goDetail(4)">
 			</div>
 			<div class="news-content">
 				<div class="newsTitle">{{ $t('message.t3') }}</div>
@@ -398,6 +400,7 @@ onBeforeUnmount(() => {
 	// 分页器样式
 	:deep(.swiper-pagination) {
 		bottom: 20px !important;
+
 		.swiper-pagination-bullet {
 			background: rgba(255, 255, 255, 0.9);
 			opacity: 1;
@@ -408,7 +411,8 @@ onBeforeUnmount(() => {
 
 			&.swiper-pagination-bullet-active {
 				background: #F7B334;
-				width: 3rem; /* 激活状态下的横线更长 */
+				width: 3rem;
+				/* 激活状态下的横线更长 */
 				height: 0.6rem;
 				transform: scale(1.1);
 				border-radius: 3px;
@@ -718,12 +722,16 @@ onBeforeUnmount(() => {
 // 新闻部分响应式
 .news-section {
 	padding-top: 0;
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1.8rem;
 
 	@media screen and (min-width: 1024px) {
 		width: 70%;
 		display: flex;
 		flex: 1;
-		margin-top: 90px;
+		margin-top: 18rem;
 		height: 46.6rem;
 
 	}
@@ -746,11 +754,11 @@ onBeforeUnmount(() => {
 	}
 
 	>div:nth-child(1) {
-		width: 60%;
+		width: 57%;
 	}
 
 	>div:nth-child(2) {
-		width: 40%;
+		width: 38%;
 	}
 
 	.news-content {
@@ -815,7 +823,8 @@ onBeforeUnmount(() => {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		line-height: 1.4;
-		max-height: 4.2em; /* 3行 × 1.4行高 = 4.2em */
+		max-height: 4.2em;
+		/* 3行 × 1.4行高 = 4.2em */
 	}
 
 	.news-item-date {
@@ -833,15 +842,20 @@ onBeforeUnmount(() => {
 			font-size: 1.1rem;
 			text-align: center;
 			width: 10rem;
-			margin-top:1rem;
+			margin-top: 1rem;
 		}
 	}
 }
-.group-section{
+
+.group-section {
 	width: 70%;
 }
 
 .group-title {
+	font-size: 2rem;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 4rem;
 	@media screen and (min-width: 1024px) {
 		font-size: 2rem;
 		font-weight: bold;
@@ -858,6 +872,12 @@ onBeforeUnmount(() => {
 }
 
 .group-list {
+	margin-top: 0.8rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	text-align: center;
+
 	@media screen and (min-width: 1024px) {
 		margin-top: 0.8rem;
 		display: flex;
@@ -868,7 +888,7 @@ onBeforeUnmount(() => {
 }
 
 .group-item {
-	@media screen and (min-width: 1024px) {
+	// @media screen and (min-width: 1024px) {
 		width: 17.5%;
 		margin: 1rem 0rem;
 		padding: 0.65rem 0.4rem;
@@ -899,7 +919,7 @@ onBeforeUnmount(() => {
 			height: 1.5rem;
 			margin-top: 0.3rem;
 		}
-	}
+	// }
 }
 
 // 响应式图片

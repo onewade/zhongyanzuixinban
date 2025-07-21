@@ -241,7 +241,7 @@ onBeforeUnmount(() => {
 	height: 4.5rem;
 	display: flex;
 	justify-content: start;
-	padding: 10px 0;
+	padding: 0.66rem 0;
 	>img{
 		width: 4.5rem;
 		height: 4.5rem;
