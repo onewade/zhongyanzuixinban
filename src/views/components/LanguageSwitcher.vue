@@ -124,13 +124,13 @@ onMounted(() => {
   console.log(`初始化语言: ${savedLanguage}`);
 
   // 延迟执行响应式处理，避免与dropdown初始化冲突
-  setTimeout(() => {
+  // setTimeout(() => {
     // 添加resize监听器
     window.addEventListener('resize', resizeListener);
     
     // 初始化响应式处理
     handleResize();
-  }, 100);
+  // }, 100);
 });
 
 // 组件卸载时清理事件监听器
