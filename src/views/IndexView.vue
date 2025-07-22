@@ -738,7 +738,9 @@ onBeforeUnmount(() => {
 	width: 70%;
 	display: flex;
 	justify-content: space-between;
-	margin-top: 1.8rem;
+	height: 46.6rem;
+	margin-top: 6rem;
+	flex: 1;
 
 	@media screen and (min-width: 1024px) {
 		width: 70%;
@@ -761,6 +763,12 @@ onBeforeUnmount(() => {
 		}
 
 		.newsTitle {
+			font-size: 1.6rem;
+			font-weight: 700;
+			border-bottom: 0.2rem solid #F7B334;
+			padding-bottom: 0.9rem;
+			width: 46%;
+
 			@media screen and (min-width: 1024px) {
 				font-size: 1.6rem;
 				font-weight: 700;
@@ -773,6 +781,7 @@ onBeforeUnmount(() => {
 	}
 
 	>div:nth-child(1) {
+		width: 57%;
 		@media screen and (min-width: 1024px) {
 			width: 57%;
 		}
@@ -780,7 +789,7 @@ onBeforeUnmount(() => {
 		@media screen and (max-width: 767px) {
 			width: 80%;
 			padding: 1.5rem 1rem;
-			margin:0rem auto 2rem;
+			margin: 0rem auto 2rem;
 			font-size: 2.2rem;
 			border-bottom: 0.3rem solid #F7B334;
 			font-weight: 700;
@@ -788,6 +797,7 @@ onBeforeUnmount(() => {
 	}
 
 	>div:nth-child(2) {
+		width: 38%;
 		@media screen and (min-width: 1024px) {
 			width: 38%;
 		}
@@ -797,6 +807,7 @@ onBeforeUnmount(() => {
 			margin: 0rem auto;
 		}
 	}
+
 	>div:nth-child(3) {
 
 		@media screen and (max-width: 767px) {
@@ -810,10 +821,12 @@ onBeforeUnmount(() => {
 		flex-direction: column;
 		// 上下两端对齐
 		justify-content: space-between;
+		margin-left: 3rem;
+		margin-top: -3.4rem;
 
 		@media screen and (min-width: 1024px) {
 			margin-left: 3rem;
-			margin-top: -50px;
+			margin-top: -3.4rem;
 		}
 	}
 
@@ -822,9 +835,11 @@ onBeforeUnmount(() => {
 			// display: flex;
 			// flex-wrap: wrap;
 		}
+
 		@media screen and (max-width: 767px) {
 			width: 90%;
 			margin: 1rem auto;
+
 			>div:nth-child(1) {
 				margin-top: 0;
 			}
@@ -845,6 +860,12 @@ onBeforeUnmount(() => {
 	.news-item {
 		color: #666666;
 		cursor: pointer;
+		position: relative;
+		width: 100%;
+		padding-bottom: 0.9rem;
+		border-bottom: 1px solid #e9e9e9;
+		margin-top: 2rem;
+		font-size: 1.6rem;
 
 		@media screen and (min-width: 1024px) {
 			position: relative;
@@ -854,13 +875,14 @@ onBeforeUnmount(() => {
 			margin-top: 2rem;
 			font-size: 1.6rem;
 		}
+
 		@media screen and (max-width: 767px) {
 			width: 100%;
 			border-bottom: 1px solid #e9e9e9;
 			margin-top: 1.5rem;
 			font-size: 1.4rem;
-			padding:0rem 0rem 1rem;
-			
+			padding: 0rem 0rem 1rem;
+
 		}
 	}
 
@@ -869,10 +891,11 @@ onBeforeUnmount(() => {
 		font-size: 1.1rem;
 		line-height: 1.6;
 		height: 3.8rem;
+
 		@media screen and (max-width: 767px) {
 			font-size: 1.6rem;
 			height: 5.8rem;
-			
+
 		}
 	}
 
@@ -888,18 +911,22 @@ onBeforeUnmount(() => {
 		text-overflow: ellipsis;
 		line-height: 1.4;
 		max-height: 4.2em;
+
 		/* 3行 × 1.4行高 = 4.2em */
 		@media screen and (max-width: 767px) {
 			font-size: 1.3rem;
-			
+
 		}
 	}
 
 	.news-item-date {
+		font-size: 1rem;
+			color: #999;
 		@media screen and (min-width: 1024px) {
 			font-size: 1rem;
 			color: #999;
 		}
+
 		@media screen and (max-width: 767px) {
 			font-size: 1.2rem;
 			color: #999;
@@ -908,6 +935,14 @@ onBeforeUnmount(() => {
 	}
 
 	.newsBtn {
+		padding: 0.6rem 0rem;
+		background-color: #F7B334;
+		color: white;
+		font-size: 1.1rem;
+		text-align: center;
+		width: 10rem;
+		margin-top: 1rem;
+
 		@media screen and (min-width: 1024px) {
 			padding: 0.6rem 0rem;
 			background-color: #F7B334;
@@ -917,6 +952,7 @@ onBeforeUnmount(() => {
 			width: 10rem;
 			margin-top: 1rem;
 		}
+
 		@media screen and (max-width: 767px) {
 			padding: 0.6rem 0rem;
 			background-color: #F7B334;
@@ -925,13 +961,14 @@ onBeforeUnmount(() => {
 			text-align: center;
 			width: 10rem;
 			margin: 1rem auto;
-			
+
 		}
 	}
 }
 
 .group-section {
 	width: 70%;
+
 	@media screen and (max-width: 767px) {
 		width: 90%;
 		display: flex;
@@ -952,11 +989,12 @@ onBeforeUnmount(() => {
 		text-align: center;
 		margin-top: 4rem;
 	}
+
 	@media screen and (max-width: 767px) {
 		font-size: 1.8rem;
 		font-weight: bold;
 		text-align: center;
-		margin-top: 1rem;		
+		margin-top: 1rem;
 	}
 }
 
@@ -994,6 +1032,7 @@ onBeforeUnmount(() => {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	color: #F7B334;
 	font-size: 1.1rem;
+
 	@media screen and (max-width: 767px) {
 		width: 30%;
 		margin: 0.5rem auto;
@@ -1004,10 +1043,14 @@ onBeforeUnmount(() => {
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		color: #F7B334;
 		font-size: 1.2rem;
-		
+
 	}
 
 	>div:nth-child(1) {
+		margin-top: 1.3rem;
+			font-size: 1.2rem;
+			// font-weight: 550;
+			border-bottom: 3px;
 		@media screen and (min-width: 1024px) {
 			margin-top: 1.3rem;
 			font-size: 1.2rem;

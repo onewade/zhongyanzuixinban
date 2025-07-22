@@ -176,7 +176,7 @@ onBeforeUnmount(() => {
 /* 橘色三角形样式 */
 .triangle {
   color: #F7B334;
-  font-size: 12px;
+  font-size: 0.9rem;
   display: inline-block;
   /* animation: slideIn 0.3s ease-in-out; */
   margin-right:5px

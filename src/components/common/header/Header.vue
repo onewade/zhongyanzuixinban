@@ -75,11 +75,13 @@ const handleClose = (done) => {
 	done();
 }
 
+
 onMounted(() => {
 	// 初始化检查移动端
 	checkMobile()
 	// 监听窗口大小变化
 	window.addEventListener('resize', checkMobile)
+	
 })
 
 onBeforeUnmount(() => {
