@@ -102,9 +102,9 @@ import Layout from '../components/common/Layout.vue';
 
     >div {
         width: 45%;
-        height: 15rem;
+        // height: 15rem;
         background: #fff;
-        padding: 20px;
+        padding: 1.3rem;
         text-align: center;
         font-size: 1.6rem;
         font-weight: 550;
@@ -128,6 +128,18 @@ import Layout from '../components/common/Layout.vue';
 
     >div:nth-child(1) {
         margin-right: 5rem;
+    }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        display: block;
+        >div {
+            padding:0rem;
+            width: 100%;
+            margin-bottom: 2rem;
+            padding-bottom:2rem;
+            padding-top:1rem;
+        }
+        
     }
 }
 </style>

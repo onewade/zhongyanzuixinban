@@ -222,7 +222,11 @@ onMounted(() => {
     >img {
         height: 100%;
         width: 65%;
-        height: 100%;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 80%;
+        height: 12rem;
     }
 
     >img:nth-child(1) {
@@ -275,6 +279,12 @@ onMounted(() => {
     >img {
         width: 100%;
         height: 100%;
+    }
+
+    @media screen and (max-width: 767px) {
+        left: 14%;
+        top: 12.5rem;
+
     }
 }
 </style>

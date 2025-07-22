@@ -32,11 +32,24 @@
         margin-right: 5.3rem;
         margin-top: 2px;
     }
+
+    @media screen and (max-width: 767px) {
+        >div:nth-child(1) {
+            display: none;
+            height: 2rem;
+            border-left: 0.4rem solid #F7B334;
+            margin-right: 1.3rem;
+            margin-top: 2px;
+        }
+
+        >div:nth-child(2) {
+            width: 90%;
+        }
+    }
 }
 
 .footerContainer {
     width: 100%;
-    height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,10 +80,50 @@
             margin: 0px 1rem;
         }
     }
+
+    @media screen and (max-width: 767px) {
+        display: block;
+        align-items: left;
+        justify-content: left;
+
+        >div:nth-child(even) {
+            display: none;
+        }
+
+        /* 每行前面都加一个小竖线 */
+        >div:nth-child(odd)::before {
+            content: '';
+            display: inline-block;
+            width: 0.2rem;
+            height: 1.2rem;
+            background-color: #F7B334;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+
+        >div {
+            margin-top: 1rem;
+        }
+
+    }
 }
 
 .footerFooter {
-    text-align: center;
+    width: 90%;
     font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.footerFooter::before {
+    @media screen and (max-width: 767px) {
+        content: '';
+        display: inline-block;
+        width: 0.2rem;
+        height: 1.2rem;
+        background-color: #F7B334;
+        margin-right: 1rem;
+        vertical-align: middle;
+
+    }
 }
 </style>

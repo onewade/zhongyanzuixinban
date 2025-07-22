@@ -9,7 +9,7 @@
 @import './responsive.css'; 
 html { font-size: 10px; }                  /* fallback */
 html { 
-    font-size: clamp(5px, 0.9vw, 15px);
+    font-size: clamp(8px, 0.9vw, 15px);
     width: 100vw;
     height: 100vh;
  }  /* modern */
@@ -53,4 +53,7 @@ html {
     >div{
         height: 44.7rem;
     }
+    @media screen and (max-width: 767px) {
+		margin-top: 10rem;
+	}
 }

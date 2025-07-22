@@ -307,14 +307,26 @@ const handleGoNew = () => {
 const goDetail = (id) => {
 	route.push(`/newsDetail/${id}`);
 }
+// 移动端判断
+const isMobile = ref(false)
+
+// 检查是否为移动端
+const checkMobile = () => {
+	isMobile.value = window.innerWidth <= 768
+}
 onMounted(() => {
 	// videoPlayer.value.play();
 	// getSlideshow();
 	// getAdvantage();
 	// getService();
+	// 初始化检查移动端
+	checkMobile()
+	// 监听窗口大小变化
+	window.addEventListener('resize', checkMobile)
 	swiper();
 })
 onBeforeUnmount(() => {
+	window.removeEventListener('resize', checkMobile)
 	clearData();
 })
 </script>
@@ -324,7 +336,7 @@ onBeforeUnmount(() => {
 			<div class="index-page">
 				<!-- 使用Swiper替换原有的轮播 -->
 				<Swiper :modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
-					:mousewheel="false" :allowTouchMove="false" :autoplay="{ delay: 3000, disableOnInteraction: false }"
+					:mousewheel="false" :allowTouchMove="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
 					:loop="true" @swiper="onSwiper" @slideChange="onSlideChange" class="home-swiper">
 					<SwiperSlide v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :style="{
 						backgroundImage: `url(${slide.ImageUrl})`,
@@ -340,12 +352,13 @@ onBeforeUnmount(() => {
 			</div>
 		</div>
 		<div class="news-section">
+			<div class="newsTitle" v-if="isMobile">{{ $t('message.t3') }}</div>
 			<div>
 				<img src="../assets/images/newIndex/news.jpg" alt="" style="width: 100%; height: 100%;"
 					@click="goDetail(4)">
 			</div>
 			<div class="news-content">
-				<div class="newsTitle">{{ $t('message.t3') }}</div>
+				<div class="newsTitle" v-if="!isMobile">{{ $t('message.t3') }}</div>
 				<div class="news-boxes">
 					<div v-for="item in newsList" :key="item.title" class="news-item" @click="goDetail(item.id)">
 						<div class="news-item-title">{{ item.title }}</div>
@@ -731,9 +744,15 @@ onBeforeUnmount(() => {
 		width: 70%;
 		display: flex;
 		flex: 1;
-		margin-top: 18rem;
+		margin-top: 6rem;
 		height: 46.6rem;
 
+	}
+
+	@media screen and (max-width: 767px) {
+		width: 100%;
+		flex-direction: column;
+		margin-top: 0;
 	}
 
 	>div {
@@ -754,11 +773,36 @@ onBeforeUnmount(() => {
 	}
 
 	>div:nth-child(1) {
-		width: 57%;
+		@media screen and (min-width: 1024px) {
+			width: 57%;
+		}
+
+		@media screen and (max-width: 767px) {
+			width: 80%;
+			padding: 1.5rem 1rem;
+			margin:0rem auto 2rem;
+			font-size: 2.2rem;
+			border-bottom: 0.3rem solid #F7B334;
+			font-weight: 700;
+		}
 	}
 
 	>div:nth-child(2) {
-		width: 38%;
+		@media screen and (min-width: 1024px) {
+			width: 38%;
+		}
+
+		@media screen and (max-width: 767px) {
+			width: 80%;
+			margin: 0rem auto;
+		}
+	}
+	>div:nth-child(3) {
+
+		@media screen and (max-width: 767px) {
+			width: 100%;
+			margin: 1rem auto;
+		}
 	}
 
 	.news-content {
@@ -777,6 +821,13 @@ onBeforeUnmount(() => {
 		@media screen and (min-width: 1024px) {
 			// display: flex;
 			// flex-wrap: wrap;
+		}
+		@media screen and (max-width: 767px) {
+			width: 90%;
+			margin: 1rem auto;
+			>div:nth-child(1) {
+				margin-top: 0;
+			}
 		}
 
 		// >div:nth-child(even) {
@@ -803,6 +854,14 @@ onBeforeUnmount(() => {
 			margin-top: 2rem;
 			font-size: 1.6rem;
 		}
+		@media screen and (max-width: 767px) {
+			width: 100%;
+			border-bottom: 1px solid #e9e9e9;
+			margin-top: 1.5rem;
+			font-size: 1.4rem;
+			padding:0rem 0rem 1rem;
+			
+		}
 	}
 
 	.news-item-title {
@@ -810,6 +869,11 @@ onBeforeUnmount(() => {
 		font-size: 1.1rem;
 		line-height: 1.6;
 		height: 3.8rem;
+		@media screen and (max-width: 767px) {
+			font-size: 1.6rem;
+			height: 5.8rem;
+			
+		}
 	}
 
 	.news-item-content {
@@ -825,12 +889,21 @@ onBeforeUnmount(() => {
 		line-height: 1.4;
 		max-height: 4.2em;
 		/* 3行 × 1.4行高 = 4.2em */
+		@media screen and (max-width: 767px) {
+			font-size: 1.3rem;
+			
+		}
 	}
 
 	.news-item-date {
 		@media screen and (min-width: 1024px) {
 			font-size: 1rem;
 			color: #999;
+		}
+		@media screen and (max-width: 767px) {
+			font-size: 1.2rem;
+			color: #999;
+			margin-top: 0.5rem;
 		}
 	}
 
@@ -844,23 +917,46 @@ onBeforeUnmount(() => {
 			width: 10rem;
 			margin-top: 1rem;
 		}
+		@media screen and (max-width: 767px) {
+			padding: 0.6rem 0rem;
+			background-color: #F7B334;
+			color: white;
+			font-size: 1.2rem;
+			text-align: center;
+			width: 10rem;
+			margin: 1rem auto;
+			
+		}
 	}
 }
 
 .group-section {
 	width: 70%;
+	@media screen and (max-width: 767px) {
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		// margin:0 auto;
+	}
 }
 
 .group-title {
 	font-size: 2rem;
-		font-weight: bold;
-		text-align: center;
-		margin-top: 4rem;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 4rem;
+
 	@media screen and (min-width: 1024px) {
 		font-size: 2rem;
 		font-weight: bold;
 		text-align: center;
 		margin-top: 4rem;
+	}
+	@media screen and (max-width: 767px) {
+		font-size: 1.8rem;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 1rem;		
 	}
 }
 
@@ -889,36 +985,49 @@ onBeforeUnmount(() => {
 
 .group-item {
 	// @media screen and (min-width: 1024px) {
-		width: 17.5%;
-		margin: 1rem 0rem;
+	width: 17.5%;
+	margin: 1rem 0rem;
+	padding: 0.65rem 0.4rem;
+	border: 1px solid #e9e9e9;
+	border-radius: 8px;
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	color: #F7B334;
+	font-size: 1.1rem;
+	@media screen and (max-width: 767px) {
+		width: 30%;
+		margin: 0.5rem auto;
 		padding: 0.65rem 0.4rem;
 		border: 1px solid #e9e9e9;
 		border-radius: 8px;
 		background-color: white;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		color: #F7B334;
-		font-size: 1.1rem;
+		font-size: 1.2rem;
+		
+	}
 
-		>div:nth-child(1) {
-			@media screen and (min-width: 1024px) {
-				margin-top: 1.3rem;
-				font-size: 1.2rem;
-				// font-weight: 550;
-				border-bottom: 3px;
-			}
+	>div:nth-child(1) {
+		@media screen and (min-width: 1024px) {
+			margin-top: 1.3rem;
+			font-size: 1.2rem;
+			// font-weight: 550;
+			border-bottom: 3px;
 		}
+	}
 
-		>div:nth-child(2) {
-			border: 1px solid #F7B334;
-			width: 80%;
-			margin: 0.5rem auto;
-		}
+	>div:nth-child(2) {
+		border: 1px solid #F7B334;
+		width: 80%;
+		margin: 0.5rem auto;
+	}
 
-		>img {
-			width: 1.5rem;
-			height: 1.5rem;
-			margin-top: 0.3rem;
-		}
+	>img {
+		width: 1.5rem;
+		height: 1.5rem;
+		margin-top: 0.3rem;
+	}
+
 	// }
 }
 
@@ -942,6 +1051,10 @@ onBeforeUnmount(() => {
 .swiper {
 	width: 100%;
 	height: 44.7rem;
+
+	@media screen and (max-width: 767px) {
+		height: 34rem;
+	}
 }
 
 .swiper-slide {

@@ -38,7 +38,7 @@ const goBack = () => {
         <div class="back" @click="goBack"> 
            <img src="../assets/images/back.png" alt="">
         </div>
-        <div class="joinDetailTitle">中烟国际集团有限公司集团总部内部招聘：岗位信息技术管理岗</div>
+        <div class="joinDetailTitle">中烟国际集团有限公司集团信息技术管理岗招聘</div>
         <div class="date">
             <div>社会招聘</div>
             <div>2025-06-07 08:30:00</div>
@@ -71,6 +71,9 @@ const goBack = () => {
     font-weight: 550;
     margin: 3rem 0px 0.7rem;
     text-align: center;
+    @media screen and (max-width: 767px) {
+        margin: 4rem 0px 0.7rem;
+    }
 
 }
 
@@ -94,6 +97,9 @@ const goBack = () => {
     margin: 0 auto;
     font-size:1.2rem;
     line-height: 2rem;
+     @media screen and (max-width: 767px) {
+        width: 80%;
+    }
 }
 
 .joinTitle {
@@ -121,6 +127,10 @@ const goBack = () => {
     >img{
         width: 100%;
         height: 100%;
+    }
+    @media screen and (max-width: 767px) {
+        left: 8%;
+        top: -3rem;
     }
 }
 </style>

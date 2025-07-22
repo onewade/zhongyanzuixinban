@@ -47,8 +47,8 @@ const list = ref([
         title: '中烟国际集团有限公司召开2025年度工作会议传达学习2025年全国烟草工作会议精神',
         desc: '1月20日，中烟国际集团有限公司在香港召开2025年度工作会议，认真学习贯彻2025年全国烟草工作会议精神，总结2024年工作，分析当前国际形势和内部调整，部署2025年工作任务。中烟国际集团有限公司党组书记、董事长、总经理邵岩作工作报告',
     },
-    
-    
+
+
 ])
 const router = useRouter()
 
@@ -146,6 +146,10 @@ onMounted(() => {
     padding: 4rem 0;
     width: 65%;
 
+    @media screen and (max-width: 767px) {
+        width: 80%;
+    }
+
 }
 
 /* 侧边栏 */
@@ -171,6 +175,10 @@ onMounted(() => {
             font-weight: bold;
         }
     }
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 /* 新闻列表 */
@@ -184,6 +192,10 @@ onMounted(() => {
         padding-top: 0;
     }
 
+    @media screen and (max-width: 767px) {
+        margin-left: 0;
+    }
+
     .news-item {
         display: flex;
         gap: 1.5rem;
@@ -191,7 +203,6 @@ onMounted(() => {
         padding: 1rem 0rem;
 
         @media screen and (max-width: 767px) {
-            flex-direction: column;
             padding-bottom: 1.5rem;
         }
 

@@ -14,6 +14,14 @@ const CompanyInfo1 = ref(JSON.parse(window.sessionStorage.getItem('companyinfo')
 // 移动端菜单状态
 const isMobileMenuOpen = ref(false)
 
+// 移动端判断
+const isMobile = ref(false)
+
+// 检查是否为移动端
+const checkMobile = () => {
+	isMobile.value = window.innerWidth <= 768
+}
+
 const getCompanyInfo = async () => {
 	const { data: res } = await getCompanyInfoAPI()
 	CompanyInfo.value = res.Data
@@ -21,6 +29,9 @@ const getCompanyInfo = async () => {
 	console.log('获取成功');
 
 }
+
+
+
 const toggleStickyHeader = () => {
 	const scrolled = document.documentElement.scrollTop;
 	if (scrolled > 100) {
@@ -42,23 +53,57 @@ const callPhone = () => {
 
 // 切换移动端菜单
 const toggleMobileMenu = () => {
-	isMobileMenuOpen.value = !isMobileMenuOpen.value
+	if (isMobile.value) {
+		isMobileMenuOpen.value = !isMobileMenuOpen.value
+	}
 }
 
 // 关闭移动端菜单
 const closeMobileMenu = () => {
 	isMobileMenuOpen.value = false
 }
+// 移动端菜单方向
+const direction = ref('ttb');
+const drawer = ref(false);
+const showMenu = () => {
+	drawer.value = true;
+}
 
+// 处理drawer关闭
+const handleClose = (done) => {
+	drawer.value = false;
+	done();
+}
+
+onMounted(() => {
+	// 初始化检查移动端
+	checkMobile()
+	// 监听窗口大小变化
+	window.addEventListener('resize', checkMobile)
+})
 
 onBeforeUnmount(() => {
 	// window.removeEventdivstener('scroll', toggleStickyHeader);
+	// 移除监听器
+	window.removeEventListener('resize', checkMobile)
 })
 </script>
 <template>
 	<div class="header-wrapper">
+		<div v-if="isMobile" class="header-mobile">
+			<img src="../../../assets/images/menu.png" alt="" srcset="" @click="showMenu">
+			<div class="header-mobile-title">
+				<img src="../../../assets/images/inlogo.png" alt="">
+				<div>
+					<div class="mainTitle">中烟国际集团有限公司</div>
+					<div class="assistantTitle"> China Tobacco International Group Limited</div>
+				</div>
 
-		<div class="nav-wrapper header-default headerNew ">
+			</div>
+			<LanguageSwitcher class="lang-switcher" />
+		</div>
+
+		<div v-else class="nav-wrapper header-default headerNew ">
 			<div class="zgyc">
 				<!-- <img src="../../../assets/images/newIndex/titleNew.png" alt="" srcset=""> -->
 				<!-- #0F409E -->
@@ -70,17 +115,10 @@ onBeforeUnmount(() => {
 			</div>
 
 			<LanguageSwitcher class="lang-switcher" />
-
-			<!-- 移动端汉堡菜单按钮 -->
-			<!-- <button class="hamburger-menu" :class="{ active: isMobileMenuOpen }" @cdivck="toggleMobileMenu">
-				<div class="hamburger-divne"></div>
-				<div class="hamburger-divne"></div>
-				<div class="hamburger-divne"></div>
-			</button> -->
 		</div>
 
 		<!-- 桌面端导航 -->
-		<div class="nav desktop-nav">
+		<div class="nav desktop-nav" v-if="!isMobile">
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
 						}}</router-link></div>
@@ -113,12 +151,95 @@ onBeforeUnmount(() => {
 
 		<!-- 移动端遮罩层 -->
 		<!-- <div v-if="isMobileMenuOpen" class="mobile-overlay" @cdivck="closeMobileMenu"></div> -->
+		<el-drawer v-model="drawer" :direction="direction" :before-close="handleClose">
+			<div class="am-navss am-navss-pills">
+				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
+						}}</router-link></div>
+				<div><router-link class="router" to="/solution" @click="closeMobileMenu">{{ $t('message.t2')
+						}}</router-link></div>
+				<div><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
+						}}</router-link></div>
+				<!-- <div><router-link class="router" to="/example">客户案例</router-link></div> -->
+				<div><router-link class="router" to="/MainBusiness" @click="closeMobileMenu">{{ $t('message.t4')
+				}}</router-link>
+				</div>
+				<div><router-link class="router" to="/JoinUs" @click="closeMobileMenu">{{ $t('message.t5')
+						}}</router-link></div>
+				<div><router-link class="router" to="/ContactInformation" @click="closeMobileMenu">{{ $t('message.t6')
+						}}</router-link></div>
+			</div>
+		</el-drawer>
 	</div>
 </template>
 
 
 
 <style lang="scss" scoped>
+// .el-drawer .el-drawer__body .am-navss div .router
+// Vue 3 深度渗透选择器示例
+:deep(.el-drawer) {
+	// height: 36% !important;
+	// 高度自适应怎么写
+	height: auto!important;
+	
+
+	.el-drawer__header {
+		padding: 1rem;
+		border-bottom: 1px solid #eee;
+		margin-bottom: 0rem !important;
+	}
+
+	.el-drawer__body {
+		padding: 0rem 2rem;
+
+		.am-navss {
+			flex-direction: column;
+
+			div {
+				width: 100%;
+				text-align: left;
+
+				.router {
+					padding: 1rem 0;
+					border-bottom: 1px solid #f0f0f0;
+					font-size: 1.2rem;
+
+					&:hover {
+						color: #F7B334;
+					}
+				}
+			}
+		}
+	}
+}
+
+.header-mobile {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem 5rem;
+	background-color: #fff;
+	position: relative;
+	z-index: 1000;
+
+	img {
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.header-mobile-title {
+		display: flex;
+		align-items: center;
+		
+	}
+	>div:nth-child(3){
+			width: 4rem;
+			height: 4rem;
+		}
+
+
+}
+
 // 当前路由高亮样式
 .router.router-link-active {
 	cursor: default;
@@ -169,7 +290,8 @@ onBeforeUnmount(() => {
 }
 
 .nav {
-	margin:0rem auto;
+	margin: 0rem auto;
+
 	@media screen and (min-width: 1024px) {
 		padding-left: 1rem;
 		padding-bottom: 0.8rem;
@@ -221,7 +343,7 @@ onBeforeUnmount(() => {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin:0 auto;
+	margin: 0 auto;
 
 	// @media screen and (min-width: 768px) {
 	// 	padding-left: 100px;
@@ -242,10 +364,11 @@ onBeforeUnmount(() => {
 	display: flex;
 	justify-content: start;
 	padding: 0.66rem 0;
-	>img{
+
+	>img {
 		width: 4.5rem;
 		height: 4.5rem;
-		margin:0rem 1rem 0rem 0rem;
+		margin: 0rem 1rem 0rem 0rem;
 	}
 
 	// @media screen and (min-width: 768px) {
@@ -257,15 +380,17 @@ onBeforeUnmount(() => {
 	// 	// width: 40rem;
 	// }
 }
-.mainTitle{
+
+.mainTitle {
 	font-size: 2rem;
 	font-weight: bold;
 	color: #0F409E;
 }
-.assistantTitle{
+
+.assistantTitle {
 	font-size: 1rem;
 	line-height: 1rem;
-	color:#999999;
+	color: #999999;
 }
 
 // 移动端导航样式
@@ -323,10 +448,10 @@ onBeforeUnmount(() => {
 // 语言切换器响应式
 .lang-switcher {
 	@media screen and (max-width: 767px) {
-		position: fixed;
-		top: 20px;
-		right: 80px;
-		z-index: 1002;
+		// position: fixed;
+		// top: 20px;
+		// right: 80px;
+		// z-index: 1002;
 	}
 
 	@media screen and (min-width: 1024px) {

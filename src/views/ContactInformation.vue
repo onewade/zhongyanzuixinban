@@ -111,5 +111,14 @@ onMounted(() => {
             margin-top:0.5rem;
         }
     }
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        align-items: center;
+        >div {
+            width: 80%;
+            margin-bottom: 2rem;
+            padding:2rem 2rem;
+        }
+    }
 }
 </style>

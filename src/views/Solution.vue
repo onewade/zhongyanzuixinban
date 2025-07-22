@@ -32,7 +32,7 @@ onUpdated(() => {
           <div>{{ $t('message.zygjjtContent1') }}</div>
         </div>
         <div class="content2">
-          <div class="title">{{ $t('message.zygjjt') }}</div>
+          <div class="title">{{ $t('message.zygjjt1') }}</div>
           <div>{{ $t('message.zygjjtContent2') }}</div>
         </div>
       </div>
@@ -54,6 +54,10 @@ onUpdated(() => {
   margin: 0 auto ;
   padding:4rem 17% 3.5rem;
   border-bottom: 1px solid #eee;
+   @media screen and (max-width: 767px) {
+        width: 80%;
+        padding:1rem;
+    }
 }
 
 .groupTitle {
@@ -66,6 +70,9 @@ onUpdated(() => {
   justify-content: center;
   background: url('../assets/images/ppic.png') no-repeat center;
   padding: 0rem 1.5rem;
+  @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 .title {
@@ -91,6 +98,11 @@ onUpdated(() => {
   >div {
     text-indent: 2em;
   }
+  @media screen and (max-width: 767px) {
+        width: 100%;
+        margin-top:2rem;
+        margin-left: 0;
+    }
 }
 
 

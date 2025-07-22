@@ -82,9 +82,8 @@ onMounted(() => {
     <div>
         <Layout>
             <div class="subGroupBox">
-
                 <div class="subGroupContainer">
-                    <div class="subGroupContent">
+                    <div class="page-header-sub">
                         <img src="../assets/images/group.png" alt="">
                     </div>
                     <div class="back" @click="goBack">
@@ -137,6 +136,10 @@ onMounted(() => {
     /* 阴影右侧设置 */
     border-radius: 5px;
     border-right: 3px solid #F7B334;
+      @media screen and (max-width: 767px) {
+        width: 100%;
+        
+    }
 
     >div:nth-child(1) {
         font-size: 1.6rem;
@@ -154,6 +157,7 @@ onMounted(() => {
         padding-top: 2rem;
         border-top: 1px solid #F7B334;
     }
+
 }
 
 .side {
@@ -167,6 +171,10 @@ onMounted(() => {
 
     >div:nth-child(1) {
         margin-top: 4rem;
+    }
+    @media screen and (max-width: 767px) {
+        display: none;
+        
     }
 }
 
@@ -184,6 +192,10 @@ onMounted(() => {
     >img {
         width: 100%;
         height: 100%;
+    }
+    @media screen and (max-width: 767px) {
+      margin:2rem 2rem 2rem 8rem;
+        
     }
 }
 </style>

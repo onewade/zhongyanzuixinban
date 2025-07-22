@@ -15,13 +15,19 @@
       </div>
     </div>
     <div class="changeL" ref="changeL">
-      <el-dropdown @command="handleCommand">
-        <img src="../../assets/images/newIndex/changeL.png" alt="" style="width: 100%;height: 100%;">
+      <el-dropdown 
+        @command="handleCommand"
+        trigger="click"
+        placement="bottom-end"
+        :hide-on-click="true"
+        :max-height="200"
+      >
+        <img src="../../assets/images/net.png" alt="" style="width: 100%;height: 100%; cursor: pointer;">
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item command="en">EN</el-dropdown-item>
-            <el-dropdown-item command="zhCN">简体中文</el-dropdown-item>
-            <el-dropdown-item command="zhTW">繁体中文</el-dropdown-item>
+            <el-dropdown-item command="en" :class="{ active: currentLang === 'en' }">EN</el-dropdown-item>
+            <el-dropdown-item command="zhCN" :class="{ active: currentLang === 'zhCN' }">简体中文</el-dropdown-item>
+            <el-dropdown-item command="zhTW" :class="{ active: currentLang === 'zhTW' }">繁体中文</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -31,7 +37,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 const { locale } = useI18n();
 
 // 当前选中的语言
@@ -57,11 +63,15 @@ const changeLanguage = (lang) => {
   }
 };
 const changeL = ref(null);
+
 // 监听页面宽度
 const screenWidth = ref(window.innerWidth);  // 初始化屏幕宽度
-window.onresize = () => {
+
+// 响应式处理函数
+const handleResize = () => {
   screenWidth.value = window.innerWidth;
-  console.log(screenWidth.value);
+  console.log('当前屏幕宽度:', screenWidth.value);
+  console.log('changeL元素:', changeL.value);
 
   // 当页面宽度小于768时，隐藏类名是changeItem的div
   if (screenWidth.value < 768) {
@@ -69,16 +79,32 @@ window.onresize = () => {
     document.querySelectorAll('.changeItem').forEach(item => {
       item.style.display = 'none'
     });
-    changeL.value.style.display = 'block'
+    document.querySelector('.changeLL').style.display = 'none';
+    
+    // 安全检查changeL.value是否存在
+    if (changeL.value) {
+      changeL.value.style.display = 'block'
+    } else {
+      console.warn('changeL元素未找到');
+    }
   } else {
-    changeL.value.style.display = 'none';
+    // 安全检查changeL.value是否存在
+    if (changeL.value) {
+      changeL.value.style.display = 'none';
+    }
     document.querySelectorAll('.changeItem').forEach(item => {
       item.style.display = 'block'
     });
-    // document.querySelector('.el-button').style.display = 'block';
   }
 };
+
+// 使用addEventListener而不是直接赋值
+const resizeListener = () => {
+  handleResize();
+};
+
 const handleCommand = (command) => {
+  console.log('下拉菜单选择:', command);
   changeLanguage(command);
 }
 onMounted(() => {
@@ -97,28 +123,44 @@ onMounted(() => {
   }
   console.log(`初始化语言: ${savedLanguage}`);
 
-  // 响应式处理
-  if (screenWidth.value < 768) {
-    document.querySelectorAll('.changeItem').forEach(item => {
-      item.style.display = 'none';
-    });
-    changeL.value.style.display = 'block';
-  } else {
-    changeL.value.style.display = 'none';
-    document.querySelectorAll('.changeItem').forEach(item => {
-      item.style.display = 'block';
-    });
-  }
+  // 延迟执行响应式处理，避免与dropdown初始化冲突
+  setTimeout(() => {
+    // 添加resize监听器
+    window.addEventListener('resize', resizeListener);
+    
+    // 初始化响应式处理
+    handleResize();
+  }, 100);
+});
+
+// 组件卸载时清理事件监听器
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', resizeListener);
 });
 
 </script>
 <style scoped>
 .changeL {
-  width: 30px;
-  height: 30px;
-  position: fixed;
-  right: 2px;
-  top: 50%;
+  width: 4rem;
+  height: 4rem;
+}
+
+/* dropdown菜单样式 */
+:deep(.el-dropdown-menu) {
+  min-width: 120px !important;
+  
+  .el-dropdown-menu__item {
+    padding: 8px 16px;
+    
+    &.active {
+      color: #F7B334;
+      background-color: #fff7e6;
+    }
+    
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
 }
 
 .changeItem {
