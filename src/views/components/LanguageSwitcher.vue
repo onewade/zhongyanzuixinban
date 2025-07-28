@@ -13,6 +13,7 @@
         <span class="triangle" v-if="currentLang === 'en'">▶</span>
         <span class="text">English</span>
       </div>
+      <myNavigation></myNavigation>
     </div>
     <div class="changeL" ref="changeL">
       <el-dropdown 
@@ -38,6 +39,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import myNavigation from "./myNavigation.vue";
 const { locale } = useI18n();
 
 // 当前选中的语言
@@ -70,8 +72,6 @@ const screenWidth = ref(window.innerWidth);  // 初始化屏幕宽度
 // 响应式处理函数
 const handleResize = () => {
   screenWidth.value = window.innerWidth;
-  console.log('当前屏幕宽度:', screenWidth.value);
-  console.log('changeL元素:', changeL.value);
 
   // 当页面宽度小于768时，隐藏类名是changeItem的div
   if (screenWidth.value < 768) {
@@ -167,6 +167,7 @@ onBeforeUnmount(() => {
   cursor: pointer;
   color:#999;
   font-size:1.2rem;
+  line-height: 2.8rem;
 }
 
 .changeItem.active {

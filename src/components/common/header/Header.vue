@@ -6,7 +6,8 @@ import { h } from 'vue';
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router';
 import LanguageSwitcher from '../../../views/components/LanguageSwitcher.vue';
-// import LanguageSwitcher from '../../../views/components/LanguageSwitcher.vue';
+// import myNavigation from "../../../views/components/myNavigation.vue";
+
 const router = useRouter()
 const CompanyInfo = ref({})//后台数据获取
 const CompanyInfo1 = ref(JSON.parse(window.sessionStorage.getItem('companyinfo')) ? JSON.parse(window.sessionStorage.getItem('companyinfo')) : '0')//从会话储存获取
@@ -117,6 +118,7 @@ onBeforeUnmount(() => {
 			</div>
 
 			<LanguageSwitcher class="lang-switcher" />
+			<!-- <myNavigation></myNavigation> -->
 		</div>
 
 		<!-- 桌面端导航 -->
