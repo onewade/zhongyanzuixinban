@@ -8,7 +8,8 @@ import Layout from '../components/common/Layout.vue';
             <div class="contact">
                 <div class="index-page" style="width: 100%">
                     <div class="page-header-sub">
-                        <img src="../assets/images/business.png" alt="">
+                        <!-- <img src="../assets/images/business.png" alt=""> -->
+                         <img src="../assets/images/zyyw.png" alt="">
                     </div>
                 </div>
                 <div class="contactContainer1">

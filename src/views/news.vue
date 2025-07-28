@@ -78,7 +78,8 @@ onMounted(() => {
             <!-- 顶部横幅图 -->
             <div class="index-page">
                 <div class="page-header-sub">
-                    <img src="../assets/images/news.png" alt="news banner" class="responsive-img" />
+                    <!-- <img src="../assets/images/news.png" alt="news banner" class="responsive-img" /> -->
+                     <img src="../assets/images/xwdt.png" alt="" srcset="">
                 </div>
             </div>
 

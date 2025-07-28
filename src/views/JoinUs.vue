@@ -31,7 +31,8 @@ const handleGoBack = (val) => {
             <div class="joinContainer">
                 <div class="index-page">
                     <div class="page-header-sub">
-                        <img src="../assets/images/zp.png" alt="">
+                        <!-- <img src="../assets/images/zp.png" alt=""> -->
+                         <img src="../assets/images/rczp.png" alt="" srcset="">
                     </div>
                 </div>
                 <div class="join-content" v-if="!isShowDetail">
@@ -49,6 +50,10 @@ const handleGoBack = (val) => {
 
 </template>
 <style scoped>
+.joinContainer{
+    width: 100%;
+    height: 100%;
+}
 .join-content {
     width: 66%;
     padding: 0 17% 2rem;

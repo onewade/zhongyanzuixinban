@@ -18,7 +18,8 @@ onUpdated(() => {
   <Layout>
     <div class="index-page" style="width: 100%">
       <div class="page-header-sub">
-        <img src="../assets/images/gaikuang.png" alt="">
+        <!-- <img src="../assets/images/gaikuang.png" alt=""> -->
+         <img src="../assets/images/jtgk.jpg" alt="" srcset="">
       </div>
     </div>
 

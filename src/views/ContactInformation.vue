@@ -21,10 +21,11 @@ onMounted(() => {
 <template>
     <div>
         <Layout>
-            <div>
+            <div style="width: 100%;">
               <div class="index-page">
                   <div class="page-header-sub">
-                    <img src="../assets/images/contact.png" alt="">
+                    <!-- <img src="../assets/images/contact.png" alt=""> -->
+                     <img src="../assets/images/lxfs.png" alt="" srcset="">
                 </div>
               </div>
                 <div class="contact-content">
