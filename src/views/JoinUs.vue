@@ -32,7 +32,7 @@ const handleGoBack = (val) => {
                 <div class="index-page">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/zp.png" alt=""> -->
-                         <img src="../assets/images/rczp.png" alt="" srcset="">
+                         <img src="../assets/images/jtgk.jpg" alt="" srcset="">
                     </div>
                 </div>
                 <div class="join-content" v-if="!isShowDetail">

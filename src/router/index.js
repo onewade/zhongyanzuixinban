@@ -27,7 +27,7 @@ const router = createRouter({
     { path: '/news', component: News },
     { path: '/news/newsId', component: NewsDetailsView },
     { path: '/about', component: AboutView },
-    { path: '/solution', component: Solution },
+    { path: '/overview', component: Solution },
     { path: '/MainBusiness', component: MainBusiness },
     { path: '/ContactInformation', component: ContactInformation },
     {path:'/JoinUs', component: JoinUs},

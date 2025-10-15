@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
 						}}</router-link></div>
-				<div><router-link class="router" to="/solution" @click="closeMobileMenu">{{ $t('message.t2')
+				<div><router-link class="router" to="/overview" @click="closeMobileMenu">{{ $t('message.t2')
 						}}</router-link></div>
 				<div><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
 						}}</router-link></div>
@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
 						}}</router-link></div>
-				<div><router-link class="router" to="/solution" @click="closeMobileMenu">{{ $t('message.t2')
+				<div><router-link class="router" to="/overview" @click="closeMobileMenu">{{ $t('message.t2')
 						}}</router-link></div>
 				<div><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
 						}}</router-link></div>

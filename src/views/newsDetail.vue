@@ -55,7 +55,7 @@ onMounted(() => {
                                     <br />纪念塔活动
                                 </template>
                                 <template v-else-if="id == 2">
-                                    国际集团召开2025年一季度经济运行分析会
+                                    国际集团组织参观纪念抗战胜利80周年展览
                                 </template>
                                 <template v-else-if="id == 3">
                                     国际集团参加香港中企协保龄球邀请赛
@@ -63,8 +63,11 @@ onMounted(() => {
                                 <template v-else-if="id == 4">
                                     国际集团举办《哪吒2》主题观影活动
                                 </template>
-                                <template v-else-if="id == 5">
-                                    凝心聚力迎新春 砥砺奋进启新程<br />——国际集团举行2025年春茗暨开工仪式
+                                <template v-else-if="id == 9">
+                                    国际集团开展“中企关爱进社区”义工活动
+                                </template>
+                                 <template v-else-if="id == 10">
+                                    国际集团组织员工参观香港立法会活动
                                 </template>
                                 <template v-else-if="id == 6">
                                     国际集团开展"春节送温暖"义工活动
@@ -72,17 +75,32 @@ onMounted(() => {
                                 <template v-else-if="id == 7">
                                     中烟国际集团有限公司召开<br />2025年度工作会议<br />传达学习2025年全国烟草工作会议精神
                                 </template>
+                                <template v-else-if="id == 11">
+                                    国际集团获得香港个人资料私隐专员公署颁发的2025私隐之友嘉许金奖
+                                </template>
+                                <template v-else-if="id == 12">
+                                    国际集团组织开展《民法典》不动产专题法律培训
+                                </template>
+                                <template v-else-if="id == 13">
+                                    国际集团参加香港中企协第九届运动会勇夺佳绩
+                                </template>
+                                
                             </span>
                         </slot>
                     </div>
                     <div class="detailDate">
                         <template v-if="id == 1">2025-06-27</template>
-                        <template v-else-if="id == 2">2025-04-15</template>
-                        <template v-else-if="id == 3">2025-03-29</template>
-                        <template v-else-if="id == 4">2025-02-16</template>
+                        <template v-else-if="id == 2">2025-08-27</template>
+                        <template v-else-if="id == 3">2025-04-01</template>
+                        <template v-else-if="id == 4">2025-03-10</template>
                         <template v-else-if="id == 5">2025-02-13</template>
-                        <template v-else-if="id == 6">2025-01-21</template>
+                        <template v-else-if="id == 6">2025-01-23</template>
                         <template v-else-if="id == 7">2025-01-20</template>
+                        <template v-else-if="id == 9">2025-08-18</template>
+                        <template v-else-if="id == 10">2025-07-18</template>
+                        <template v-else-if="id == 11">2025-07-10</template>
+                        <template v-else-if="id == 12">2025-06-05</template>
+                         <template v-else-if="id == 13">2025-01-07</template>
                     </div>
                     <div v-if="id == 1">
                         <div class="newspic">
@@ -96,16 +114,22 @@ onMounted(() => {
                         </div>
                     </div>
                     <div v-if="id == 2">
+                         <div class="newspic">
+                            <img src="../assets/images/newIndex/80zhounian.jpg" alt="">
+                        </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
-                                4月15日，中烟国际集团有限公司召开一季度经济运行分析会，传达国家局、总公司经济运行分析会精神，分析研究国际集团一季度经济运行情况，安排部署下一步重点工作。
+                                2025年8月26日下午，中烟国际集团有限公司组织全体员工前往香港会展中心，参观由香港大公文汇传媒集团主办的“为了中华民族伟大复兴——纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大型巡回展览”。
                             </div>
                             <div>
-                                国际集团党组书记、总经理邵岩同志指出，一季度国际集团经济运行总体平稳，但也要清醒认识当前存在的问题和面临的严峻形势，各单位要全力以赴抓好二季度以及2025年的各项工作，"提档位、出真招、见实效"，聚焦关键目标，狠抓重点任务，确保圆满完成全年主要经济目标和重点工作任务。
+                                展览以丰富的图片、文字、影像及展品为载体，生动呈现中国人民艰苦卓绝的抗战历程，旨在引导香港市民铭记历史、缅怀先烈、珍爱和平。通过历史资料与实物的展示，观众能够深刻感受到中华民族在民族危亡时刻不屈不挠的精神力量。
                             </div>
                             <div>
-                                国际集团内设机构各部室、各所属企业主要负责人，中国烟草国际有限公司有关部室负责人参加会议。
+                                在参观过程中，我司员工认真聆听讲解、驻足观看展板与影像，深受教育与启发。大家一致表示，此次参观不仅加深了对抗战历史的认识，也进一步激发了爱国情怀与使命担当。
+                            </div>
+                            <div>
+                                我司将以此次活动为契机，弘扬伟大抗战精神，激励全体员工在本职岗位上砥砺奋进，为推动公司高质量发展与中华民族伟大复兴贡献力量。
                             </div>
                         </div>
                     </div>
@@ -203,6 +227,98 @@ onMounted(() => {
                             <div>
                                 国际集团领导班子成员、境外所属企业主要责任人、财务负责人、驻港全体外派人员参加会议。
                             </div>
+                        </div>
+                    </div>
+                     <div v-if="id == 9">
+                         <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                               近日，国际集团与香港荃湾各界协会联合开展“中企关爱进社区”义工活动，向荃湾地区困难基层家庭进行探访慰问并送上冷暖风扇和空气净化一体机。 
+                            </div>
+                        </div>
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/guanaishequ.png" alt="">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                在荃湾各界协会工作人员的配合下，国际集团义工成员完成物资搬运及送递上门服务，并与基层社区居民亲切交流，了解生活困难和实际需求。荃湾各界协会负责人对国际集团长期以来对基层社区的关心支持表示衷心感谢，希望未来能与国际集团保持紧密合作，共同为香港基层居民办实事、解难题。
+                            </div>
+                        </div>
+                        <div class="newspic1">
+                            <img src="../assets/images/newsPic/guanaishequ1.png" alt="">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                               近年来，国际集团积极履行驻港中资企业社会责任，始终坚持深耕香港、建设香港、服务香港。下一步，将继续深化与荃湾各界协会的交流合作，以社区关爱活动为纽带，凝聚各方力量，深入社区一线，聚焦基层需求，传递中企温度，为香港基层居民办实事、做好事，以实际行动助力香港经济发展、民生改善。
+                            </div>
+                        </div>
+                    </div>
+                     <div v-if="id == 10">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/lifa.png" alt="">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                               2025年7月15日，国际集团组织员工赴香港立法会综合大楼参观，开展“爱国爱港主题教育”活动。本次活动得到了全国人大代表、香港立法会议员陈勇先生及工作人员的大力支持。
+                            </div>
+                            <div>
+                                通过专业人员讲解，大家系统了解立法会的宪制职责、议事程序及“一国两制”框架下维护国家主权、服务香港民生的运作机制，加深了对香港法治建设与民主进程的认识，进一步增强了爱国爱港情怀。大家一致表示，将以此次学习为契机，把奉献精神和工匠精神融入日常工作，积极投身社会服务，为香港的繁荣稳定贡献力量。 
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 11">
+                        <div class="newspic" style="margin-bottom: 0.5rem;">
+                            <img src="../assets/images/newsPic/jiang.png" alt="">
+                        </div>
+                        <div style="font-size: 0.9rem; text-align: center; ">
+                            香港个人资料私隐专员公署专员钟丽玲（左一）、香港物业管理业监管局主席黄江天（右一）为中烟国际集团有限公司颁奖
+                        </div>
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/jiang1.png" alt="">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                               2025年7月10日，在香港个人资料私隐专员公署举办的“2025私隐之友嘉许奖”颁奖典礼上，国际集团获得“2025私隐之友嘉许金奖”。
+                            </div>
+                            <div>
+                                香港个人资料私隐专员公署是由香港政制及内地事务局下辖的独立法定机构，负责监管香港地区网络数据安全和个人信息保护相关法律执行。其每两年举办一次“私隐之友嘉许奖”评选活动，旨在表彰在网络数据安全和个人信息保护方面工作成绩突出的在港机构。 
+                            </div>
+                        </div>
+                    </div>
+                     <div v-if="id == 12">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/fadian.png" alt="">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                               为深入贯彻落实中央“八五”普法规划要求，扎实推进《民法典》学习宣传工作，国际集团于2025年6月5日下午组织开展了《民法典》不动产法律法规专题培训。本次培训采用线上线下相结合的方式，系统讲解民法典中与不动产相关的核心法律规定。 
+                            </div>
+                            <div>
+                                本次培训立足法治烟草建设要求，以提升员工法治素养为核心目标，围绕2025年民法典宣传月“美好生活·民法典相伴”的主题，将民法典物权编、合同编、婚姻家庭编等核心内容与不动产交易实践深度融合。通过“以案释法”的普法方式，系统阐释不动产物权登记、居住权等法律制度，重点解析交易结构设计、违约救济等实务难点，使参训人员既掌握法律条文要义，又提升实务操作能力。 
+                            </div>
+                            <div>
+                                参训员工表示通过此次培训，既加深了对《民法典》相关规定的理解，又提升了运用法律知识防范风险的实际能力，将以此次培训为契机，持续深化对《民法典》的理解运用，将法治思维贯穿业务操作全过程，为企业法治建设贡献力量。
+                            </div>
+                        </div>
+                    </div>
+                     <div v-if="id == 13">
+                        
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                               近日，国际集团参加了由香港中国企业协会举办的第九届运动会，勇夺男子高管组400米季军、十人十一足项目季军和拔河项目的第五名，在60支参赛队伍中名列前茅，创历史最佳成绩。
+                            </div>
+                            <div>
+                                在两天的激烈比拼中，国际集团运动员们勇于拼搏、奋力争先，在竞技和趣味项目均展现更快、更高、更强、更团结的体育精神；场下啦啦队员们挥舞着彩旗和加油棒，全情投入为运动健儿加油鼓劲，呐喊助威声此起彼落，不绝于耳，充分展现国际集团员工良好的精神面貌，增加了员工之间的凝聚力和向心力。
+                            </div>
+                        </div>
+                         <div class="newspic">
+                            <img src="../assets/images/newsPic/yundonghui.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -304,6 +420,7 @@ onMounted(() => {
     margin: 2rem auto;
     display: flex;
     justify-content: center;
+    
 
     >img {
         height: 100%;
@@ -356,7 +473,7 @@ onMounted(() => {
 .back {
     position: fixed;
     left: 16.5%;
-    top: 9.9rem;
+    top: 9.1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -375,5 +492,11 @@ onMounted(() => {
         height: 2rem;
         cursor: pointer;
     }
+    @media screen and (min-width: 768px) and (max-width: 1024px){
+		 top: 8.3rem;
+	}
+    @media screen and (max-width: 767px) {
+		top: 8rem;
+	}
 }
 </style>

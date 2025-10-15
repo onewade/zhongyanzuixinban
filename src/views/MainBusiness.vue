@@ -9,7 +9,7 @@ import Layout from '../components/common/Layout.vue';
                 <div class="index-page" style="width: 100%">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/business.png" alt=""> -->
-                         <img src="../assets/images/zyyw.png" alt="">
+                         <img src="../assets/images/jtgk.jpg" alt="">
                     </div>
                 </div>
                 <div class="contactContainer1">
@@ -24,7 +24,7 @@ import Layout from '../components/common/Layout.vue';
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +86 10 8888 7777
+                                    +852 XXXX XXXX
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx2') }}</div>
@@ -33,7 +33,7 @@ import Layout from '../components/common/Layout.vue';
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +86 10 8888 7777
+                                    +852 XXXX XXXX
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx1') }}</div>

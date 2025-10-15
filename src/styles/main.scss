@@ -38,9 +38,8 @@ html {
     padding: 0;
  }
  .index-page {
-	@media screen and (min-width: 1024px) {
-		margin-top: 10rem;
-	}
+    margin-top: 10rem;
+
 	.index-banner {
 		@media screen and (min-width: 768px) {
 			min-height: 300px;
@@ -53,7 +52,5 @@ html {
     >div{
         height: 44.7rem;
     }
-    @media screen and (max-width: 767px) {
-		margin-top: 10rem;
-	}
+    
 }

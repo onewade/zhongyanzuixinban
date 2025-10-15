@@ -84,7 +84,7 @@ onMounted(() => {
             <div class="subGroupBox">
                 <div class="subGroupContainer">
                     <div class="page-header-sub">
-                        <img src="../assets/images/group.png" alt="">
+                        <img src="../assets/images/jtgk.jpg" alt="">
                     </div>
                     <div class="back" @click="goBack">
                         <img src="../assets/images/back.png" alt="">
@@ -111,11 +111,13 @@ onMounted(() => {
     width: 100%;
 
 }
-
+.subGroupContainer{
+    margin-top:10rem;
+}
 .subGroupContent {
     width: 100%;
     height: 44.7rem;
-    display: flex;
+    /* display: flex;  */
     margin-top: 10rem;
 
 }

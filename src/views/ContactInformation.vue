@@ -12,9 +12,9 @@ const contactAddress = ref([
 onMounted(() => {
     // 在组件挂载后设置国际化文本
     contactAddress.value = [
-        { number: '+86 10 8888 7777', address: t('message.ywzx2') },
-        { number: '+86 10 8888 7777', address: t('message.ywzx1') },
-        { number: '+86 10 8888 7777', address: t('message.tousu') }
+        { number: '+852 XXXX XXXX', address: t('message.ywzx2'), email: 'xxxxx@xxxx.com' },
+        { number: '+852 XXXX XXXX', address: t('message.ywzx1'), email: 'xxxxx@xxxx.com' },
+        { number: '+852 XXXX XXXX', address: t('message.tousu'), email: 'xxxxx@xxxx.com' }
     ];
 });
 </script>
@@ -22,12 +22,12 @@ onMounted(() => {
     <div>
         <Layout>
             <div style="width: 100%;">
-              <div class="index-page">
-                  <div class="page-header-sub">
-                    <!-- <img src="../assets/images/contact.png" alt=""> -->
-                     <img src="../assets/images/lxfs.png" alt="" srcset="">
+                <div class="index-page">
+                    <div class="page-header-sub">
+                        <!-- <img src="../assets/images/contact.png" alt=""> -->
+                        <img src="../assets/images/jtgk.jpg" alt="" srcset="">
+                    </div>
                 </div>
-              </div>
                 <div class="contact-content">
                     <div>{{ $t('message.lianxi') }}</div>
                     <div>
@@ -39,7 +39,9 @@ onMounted(() => {
                         <div v-for="(item, key) in contactAddress" :key="key">
                             <img src="../assets/images/call.png" alt="" srcset="">
                             <div>{{ item.number }}</div>
+                            <div>{{ item.email }}</div>
                             <div>{{ item.address }}</div>
+
                         </div>
                     </div>
                 </div>
@@ -62,10 +64,11 @@ onMounted(() => {
         width: 60%;
         margin: 0 auto;
         text-align: center;
-        >img{
+
+        >img {
             width: 4rem;
             height: 4rem;
-            margin-top:5rem
+            margin-top: 5rem
         }
     }
 
@@ -76,6 +79,7 @@ onMounted(() => {
         font-weight: bold;
         border-bottom: 1px solid #F7B334;
     }
+
     >div:nth-child(3) {
         font-size: 1.4rem;
         color: #333;
@@ -90,35 +94,47 @@ onMounted(() => {
     justify-content: space-between;
     font-size: 1.6rem;
     color: #333;
-    margin-top:4rem!important;
+    margin-top: 4rem !important;
+
     >div {
         width: 27%;
         background-color: #eeeeee;
-        padding:3rem 1.6rem;
+        padding: 3rem 1.6rem;
+
         >img {
             width: 2.5rem;
             height: 2.5rem;
             margin-bottom: 0.5rem;
         }
+
         >div:nth-child(2) {
             font-weight: bold;
             color: #F7B334;
             font-size: 1.9rem;
-            margin-left:1%;
+            margin-left: 1%;
         }
-        >div:nth-child(3) {
+         >div:nth-child(3) {
+            font-weight: bold;
+            color: #F7B334;
+            font-size: 1.3rem;
+            margin-left: 1%;
+        }
+
+        >div:nth-child(4) {
             font-size: 1rem;
             color: #333;
-            margin-top:0.5rem;
+            margin-top: 0.5rem;
         }
     }
+
     @media screen and (max-width: 767px) {
         flex-direction: column;
         align-items: center;
+
         >div {
             width: 80%;
             margin-bottom: 2rem;
-            padding:2rem 2rem;
+            padding: 2rem 2rem;
         }
     }
 }

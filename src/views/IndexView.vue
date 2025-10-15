@@ -191,23 +191,23 @@ source3.value = 0.97;
 // const videoPlayer = ref(null);
 const newsList = ref([
 	{
-		id: 1,
-		title: '国际集团组织员工参观沙头角禁区及香港回归纪念塔活动',
-		content: '2025年6月27日，为庆祝香港回归祖国暨香港特别行政区成立二十八周年，国际集团组织全体员工赴新界沙头角禁区开展专题参观学习。队伍依次参观“沙头角之角”石碑，远眺中英街界碑及“一街两制”警戒线，随后考察沙头角口岸旅检大楼旧址，系统了解边境管理沿革与深港合作历程；',
-		date: '2025-06-27'
+		id: 2,
+		title: '国际集团组织参观纪念抗战胜利80周年展览',
+		content: '2025年8月26日下午，中烟国际集团有限公司组织全体员工前往香港会展中心，参观由香港大公文汇传媒集团主办的“为了中华民族伟大复兴——纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大型巡回展览”',
+		date: '2025-08-27'
 	},
 	{
-		id: 2,
-		title: '国际集团召开2025年一季度经济运行分析会',
-		content: '4月15日，中烟国际集团有限公司召开一季度经济运行分析会，传达国家局、总公司经济运行分析会精神，分析研究国际集团一季度经济运行情况，安排部署下一步重点工作。国际集团党组书记、总经理邵岩同志指出，一季度国际',
-		date: '2025-04-15'
+		id: 9,
+		title: '国际集团开展“中企关爱进社区”义工活动',
+		content: '近日，国际集团与香港荃湾各界协会联合开展“中企关爱进社区”义工活动，向荃湾地区困难基层家庭进行探访慰问并送上冷暖风扇和空气净化一体机。 ',
+		date: '2025-08-18'
 	},
-	// {
-	// 	id:3,
-	// 	title: '国际集团参加香港中企协保龄球邀请赛',
-	// 	content: '为进一步加强与驻港中资企业交流，丰富员工文体生活，国际集团积极响应香港中企协的号召，组队参与3月29日在香港启德体育园举办的“‘龄’动精彩，球艺飞扬”中企保龄球邀请赛。国际集团代表队队员们全程投入，奋力拼搏',
-	// 	date: '2025-04-01 10:30:00'
-	// },
+	{
+		id: 10,
+		title: '国际集团组织员工参观香港立法会活动',
+		content: '2025年7月15日，国际集团组织员工赴香港立法会综合大楼参观，开展“爱国爱港主题教育”活动。本次活动得到了全国人大代表、香港立法会议员陈勇先生及工作人员的大力支持。',
+		date: '2025-07-18'
+	},
 	// {
 	// 	id:4,
 	// 	title: '国际集团举办《哪吒2》主题观影活动',
@@ -218,78 +218,78 @@ const newsList = ref([
 const groupList = ref([
 	{
 		id: 1,
-		name: '中烟国际(香港)',
+		name: '中烟香港',
 		nameEnglish: 'China Tobacco International (Hong Kong)',
 	},
 	{
 		id: 2,
-		name: '天泽烟草',
-		nameEnglish: 'Tianze Tobacco',
+		name: '天泽公司',
+		nameEnglish: 'Tianze Company',
 	},
 	{
 		id: 3,
-		name: '中烟国际巴西',
+		name: '中烟巴西',
 		nameEnglish: 'China Tobacco International Brazil',
 	},
 	{
 		id: 4,
-		name: '中烟国际(北美)',
+		name: '中烟北美',
 		nameEnglish: 'China Tobacco International (North America)',
 	},
 	{
 		id: 5,
-		name: '中烟国际阿根廷',
+		name: '中烟阿根廷',
 		nameEnglish: 'China Tobacco International Argentina',
 	},
 	{
 		id: 6,
-		name: '中烟国际(中东)',
+		name: '中烟中东',
 		nameEnglish: 'China Tobacco International (Middle East)',
 	},
 	{
 		id: 7,
-		name: '中烟英美国际',
+		name: '中烟英美',
 		nameEnglish: 'China Tobacco British American International',
 	},
 	{
 		id: 8,
-		name: '中烟菲莫国际',
+		name: '中烟菲莫',
 		nameEnglish: 'China Tobacco Philip Morris International',
 	},
-	{
-		id: 9,
-		name: '中烟国际(香港)制造',
-		nameEnglish: 'China Tobacco International (Hong Kong) Manufacturing',
-	},
+	// {
+	// 	id: 9,
+	// 	name: '中烟香港制造',
+	// 	nameEnglish: 'China Tobacco International (Hong Kong) Manufacturing',
+	// },
 	{
 		id: 10,
-		name: '中烟国际(澳门)制造',
-		nameEnglish: 'China Tobacco International (Macau) Manufacturing',
+		name: '澳门金叶',
+		nameEnglish: 'Macao Jinye',
 	},
 	{
 		id: 11,
-		name: '中烟国际(老挝)制造',
-		nameEnglish: 'China Tobacco International (Laos) Manufacturing',
+		name: '老挝红塔',
+		nameEnglish: 'Laos Hongta',
 	},
 	{
 		id: 12,
-		name: '中烟国际(柬埔寨)制造',
-		nameEnglish: 'China Tobacco International (Cambodia) Manufacturing',
+		name: '柬埔寨威尼顿',
+		nameEnglish: 'Cambodia Wellington',
 	},
-	{
-		id: 13,
-		name: '中烟国际(罗马尼亚)制造',
-		nameEnglish: 'China Tobacco International (Romania) Manufacturing',
-	},
+	// {
+	// 	id: 13,
+	// 	name: '中烟罗马尼亚制造',
+	// 	nameEnglish: 'China Tobacco International (Romania) Manufacturing',
+	// },
 	{
 		id: 14,
-		name: '中烟国际(瑞士)',
-		nameEnglish: 'China Tobacco International (Switzerland)',
+		name: '红塔瑞士',
+		nameEnglish: 'Hongta Switzerland',
 	},
 	{
 		id: 15,
-		name: '中烟国际(欧洲)',
-		nameEnglish: 'China Tobacco International (Europe)',
+		name: '红塔瑞士罗马尼亚',
+		nameEnglish: 'Hongta Switzerland Romania',
 	},
 ])
 const route = useRouter();
@@ -354,8 +354,8 @@ onBeforeUnmount(() => {
 		<div class="news-section">
 			<div class="newsTitle" v-if="isMobile">{{ $t('message.t3') }}</div>
 			<div>
-				<img src="../assets/images/newIndex/news.jpg" alt="" style="width: 100%; height: 100%;"
-					@click="goDetail(4)">
+				<img src="../assets/images/newIndex/80zhounian.jpg" alt="" style="width: 100%; height: 100%;"
+					@click="goDetail(2)">
 			</div>
 			<div class="news-content">
 				<div class="newsTitle" v-if="!isMobile">{{ $t('message.t3') }}</div>
@@ -738,7 +738,7 @@ onBeforeUnmount(() => {
 	width: 70%;
 	display: flex;
 	justify-content: space-between;
-	height: 46.6rem;
+	height: 37rem;
 	margin-top: 6rem;
 	flex: 1;
 
@@ -747,7 +747,10 @@ onBeforeUnmount(() => {
 		display: flex;
 		flex: 1;
 		margin-top: 6rem;
-		height: 46.6rem;
+		height: 37rem !important;
+		/* 增加 !important 确保优先级 */
+		max-height: 37rem;
+		/* 限制最大高度 */
 
 	}
 
@@ -782,6 +785,7 @@ onBeforeUnmount(() => {
 
 	>div:nth-child(1) {
 		width: 57%;
+
 		@media screen and (min-width: 1024px) {
 			width: 57%;
 		}
@@ -798,6 +802,7 @@ onBeforeUnmount(() => {
 
 	>div:nth-child(2) {
 		width: 38%;
+
 		@media screen and (min-width: 1024px) {
 			width: 38%;
 		}
@@ -862,17 +867,17 @@ onBeforeUnmount(() => {
 		cursor: pointer;
 		position: relative;
 		width: 100%;
-		padding-bottom: 0.9rem;
+		// padding-bottom: 0.9rem;
 		border-bottom: 1px solid #e9e9e9;
-		margin-top: 2rem;
+		margin-top: 1rem;
 		font-size: 1.6rem;
 
 		@media screen and (min-width: 1024px) {
 			position: relative;
 			width: 100%;
-			padding-bottom: 0.9rem;
+			// padding-bottom: 0.9rem;
 			border-bottom: 1px solid #e9e9e9;
-			margin-top: 2rem;
+			margin-top: 1rem;
 			font-size: 1.6rem;
 		}
 
@@ -889,12 +894,12 @@ onBeforeUnmount(() => {
 	.news-item-title {
 		color: #555;
 		font-size: 1.1rem;
-		line-height: 1.6;
-		height: 3.8rem;
+		line-height: 1.3;
+		height: 3.3rem;
 
 		@media screen and (max-width: 767px) {
 			font-size: 1.6rem;
-			height: 5.8rem;
+			height: 4.8rem;
 
 		}
 	}
@@ -904,8 +909,8 @@ onBeforeUnmount(() => {
 		// margin: 10px 0px 5px 0px;
 		// 只显示3行剩下用...代替
 		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		line-clamp: 3;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -921,7 +926,8 @@ onBeforeUnmount(() => {
 
 	.news-item-date {
 		font-size: 1rem;
-			color: #999;
+		color: #999;
+
 		@media screen and (min-width: 1024px) {
 			font-size: 1rem;
 			color: #999;
@@ -1009,33 +1015,57 @@ onBeforeUnmount(() => {
 	margin-top: 0.8rem;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start; /* 改为从左开始排列 */
 	text-align: center;
+	gap: 1.5rem; /* 减小间距以适应更多元素 */
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 768px) and (max-width: 1024px){
 		margin-top: 0.8rem;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: flex-start; /* 桌面端也从左开始排列 */
 		text-align: center;
+		gap: 2.2rem; /* 桌面端减小间距 */
 	}
+	@media screen and (min-width: 1024px){
+		margin-top: 0.8rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start; /* 桌面端也从左开始排列 */
+		text-align: center;
+		gap: 1.4rem; /* 桌面端减小间距 */
+	}
+	@media screen and (max-width: 768px) {
+		margin-top: 0.8rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start; /* 桌面端也从左开始排列 */
+		text-align: center;
+		gap: 0rem; /* 桌面端减小间距 */
+	}
+	
+	
 }
 
 .group-item {
-	// @media screen and (min-width: 1024px) {
-	width: 17.5%;
-	margin: 1rem 0rem;
-	padding: 0.65rem 0.4rem;
+	width: calc(18% - 0.4rem); /* 桌面端每行5个，更精确的计算 */
+	padding: 0.5rem 0.3rem; /* 减小内边距以适应更多元素 */
 	border: 1px solid #e9e9e9;
 	border-radius: 8px;
 	background-color: white;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	color: #F7B334;
 	font-size: 1.1rem;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+	}
 
 	@media screen and (max-width: 767px) {
-		width: 30%;
-		margin: 0.5rem auto;
+		// width: calc(30% - 0.5rem); /* 移动端每行3个 */
 		padding: 0.65rem 0.4rem;
 		border: 1px solid #e9e9e9;
 		border-radius: 8px;
@@ -1043,14 +1073,23 @@ onBeforeUnmount(() => {
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		color: #F7B334;
 		font-size: 1.2rem;
+		margin: 0.5rem;
+		width: 45%;
+	}
 
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
+		width: calc(28% - 0.6rem); 
+		padding: 0.6rem 0.35rem;
+		font-size: 1.0rem;
+		margin:1rem;
 	}
 
 	>div:nth-child(1) {
 		margin-top: 1.3rem;
-			font-size: 1.2rem;
-			// font-weight: 550;
-			border-bottom: 3px;
+		font-size: 1.2rem;
+		// font-weight: 550;
+		border-bottom: 3px;
+
 		@media screen and (min-width: 1024px) {
 			margin-top: 1.3rem;
 			font-size: 1.2rem;

@@ -61,17 +61,21 @@ const handleClickOutside = (e) => {
       <div v-if="showNav" class="quick-nav-popup" ref="navPopupRef">
          <div class="guide-body">
             <div class="guide-section">
-              <h4>消费者</h4>
+              <!-- <h4>消费者</h4> -->
               <div class="guide-links">
-                <div class="guide-link" @click="navigateTo('/solution')">集团概况</div>
-                <div class="guide-link" @click="navigateTo('/ContactInformation')">联系方式</div>
+                <div class="guide-link" @click="navigateTo('/overview')">集团概况</div>
+                <!-- <div class="guide-link" @click="navigateTo('/ContactInformation')">联系方式</div> -->
+                 <div class="guide-link" @click="navigateTo('/news')">新闻动态</div>
+                <div class="guide-link" @click="navigateTo('/MainBusiness')">主营业务</div>
               </div>
             </div>
             <div class="guide-section">
-              <h4>合作者</h4>
+              <!-- <h4>合作者</h4> -->
               <div class="guide-links">
-                <div class="guide-link" @click="navigateTo('/MainBusiness')">主营业务</div>
-                <div class="guide-link" @click="navigateTo('/JoinUs')">人才招聘</div>
+                <!-- <div class="guide-link" @click="navigateTo('/MainBusiness')">主营业务</div> -->
+                  <div class="guide-link" @click="navigateTo('/JoinUs')">人才招聘</div>
+                 <div class="guide-link" @click="navigateTo('/ContactInformation')">联系方式</div> 
+               
               </div>
             </div>
           </div>
@@ -93,11 +97,11 @@ const handleClickOutside = (e) => {
   left: 50%;
   top: 100%;
   transform: translateX(-50%);
-  min-width: 22rem;
+  min-width: 25rem;
   background: #fff;
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.12);
   border-radius: 0.6rem;
-  padding: 1.5rem 0 1rem 0;
+  /* padding: 1.5rem 0 1rem 0; */
   display: flex;
   flex-direction: column;
   /* animation: popupIn 0.18s; */
@@ -216,6 +220,10 @@ const handleClickOutside = (e) => {
 .guide-body {
   padding: 1.5rem;
   background: linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%);
+  >div:nth-child(2) {
+    border-top:0.1rem solid #F7B334;
+    padding-top:1rem;
+  }
 }
 
 .guide-section {
