@@ -1,23 +1,21 @@
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, onMounted, onBeforeUnmount,computed} from 'vue';
 import { useRouter } from 'vue-router';
+import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
 
 const showNav = ref(false);
 const router = useRouter();
 const navBtnRef = ref(null);
 const navPopupRef = ref(null);
 
-// 分组导航项
-const consumerNav = [
-  { label: '集团概况', path: '/solution' },
-  { label: '联系方式', path: '/ContactInformation' },
-];
-const partnerNav = [
-  { label: '主营业务', path: '/MainBusiness' },
-  { label: '人才招聘', path: '/JoinUs' },
-];
-
+// 当前语言
+const currentLanguage = ref(getCurrentLanguage());
+const offLangListener = ref(null);
+const isNews = computed(() => {
+  return currentLanguage.value !== 'en';
+})  
 const toggleNav = () => {
+  console.log('toggleNav11111');
   showNav.value = !showNav.value;
   if (showNav.value) {
     nextTick(() => {
@@ -48,6 +46,20 @@ const handleClickOutside = (e) => {
   showNav.value = false;
   document.removeEventListener('click', handleClickOutside);
 };
+
+onMounted(() => {
+  offLangListener.value = onLanguageChange((lang) => {
+    currentLanguage.value = lang;
+    console.log('myNavigation detected language change:', lang);
+  });
+});
+
+onBeforeUnmount(() => {
+  if (offLangListener.value) {
+    offLangListener.value();
+    offLangListener.value = null;
+  }
+});
 </script>
 
 <template>
@@ -58,28 +70,25 @@ const handleClickOutside = (e) => {
         </div>
     </div>
     <transition name="fade">
-      <div v-if="showNav" class="quick-nav-popup" ref="navPopupRef">
-         <div class="guide-body">
-            <div class="guide-section">
-              <!-- <h4>消费者</h4> -->
-              <div class="guide-links">
-                <div class="guide-link" @click="navigateTo('/overview')">集团概况</div>
-                <!-- <div class="guide-link" @click="navigateTo('/ContactInformation')">联系方式</div> -->
-                 <div class="guide-link" @click="navigateTo('/news')">新闻动态</div>
-                <div class="guide-link" @click="navigateTo('/MainBusiness')">主营业务</div>
+        <teleport to="body">
+          <div v-if="showNav" class="quick-nav-popup" ref="navPopupRef" style="position:fixed;left:80vw;top:6rem;transform:translateX(-50%);z-index:20000;min-width:25rem;background:#fff;box-shadow:0 0.3rem 1rem rgba(0,0,0,0.12);border-radius:0.6rem;display:flex;flex-direction:column;">
+            <div class="guide-body">
+              <div class="guide-section">
+                <div class="guide-links">
+                  <div class="guide-link" @click="navigateTo('/overview')">{{ $t("message.t2") }}</div>
+                  <div v-if="isNews" class="guide-link" @click="navigateTo('/news')">{{ $t("message.t3") }}</div>
+                  <div class="guide-link" @click="navigateTo('/MainBusiness')">{{ $t("message.t4")}}</div>
+                </div>
               </div>
-            </div>
-            <div class="guide-section">
-              <!-- <h4>合作者</h4> -->
-              <div class="guide-links">
-                <!-- <div class="guide-link" @click="navigateTo('/MainBusiness')">主营业务</div> -->
-                  <div class="guide-link" @click="navigateTo('/JoinUs')">人才招聘</div>
-                 <div class="guide-link" @click="navigateTo('/ContactInformation')">联系方式</div> 
-               
+              <div class="guide-section">
+                <div class="guide-links">
+                  <div class="guide-link" @click="navigateTo('/JoinUs')">{{ $t("message.t5")}}</div>
+                  <div class="guide-link" @click="navigateTo('/ContactInformation')">{{ $t("message.t6")}}</div> 
+                </div>
               </div>
             </div>
           </div>
-      </div>
+        </teleport>
     </transition>
   </div>
 </template>
@@ -92,7 +101,7 @@ const handleClickOutside = (e) => {
   cursor: pointer;
 }
 
-.quick-nav-popup {
+/* .quick-nav-popup {
   position: absolute;
   left: 50%;
   top: 100%;
@@ -100,12 +109,24 @@ const handleClickOutside = (e) => {
   min-width: 25rem;
   background: #fff;
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.12);
-  border-radius: 0.6rem;
+  border-radius: 0.6rem; */
   /* padding: 1.5rem 0 1rem 0; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* animation: popupIn 0.18s; */
+  /* margin-top: 0.7rem; */
+/* } */
+.quick-nav-popup {
+  position: fixed; /* fixed 更可靠，已挂到 body */
+  /* left/top 由行内样式计算注入 */
+  min-width: 25rem;
+  background: #fff;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.12);
+  border-radius: 0.6rem;
   display: flex;
   flex-direction: column;
-  /* animation: popupIn 0.18s; */
-  margin-top: 0.7rem;
+  margin-top: 0; /* 位置由 top 控制 */
+  z-index: 20000; /* 提高到比页面 fixed 元素更高 */
 }
 
 @keyframes popupIn {
@@ -218,7 +239,7 @@ const handleClickOutside = (e) => {
   box-shadow: 0 0.15rem 0.5rem rgba(247, 179, 52, 0.3);
 }
 .guide-body {
-  padding: 1.5rem;
+  padding: 1.2rem;
   background: linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%);
   >div:nth-child(2) {
     border-top:0.1rem solid #F7B334;
@@ -265,11 +286,11 @@ const handleClickOutside = (e) => {
 .guide-link {
   cursor: pointer;
   color: #495057;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  padding: 0.8rem 1.1rem;
+  padding: 0.6rem 0.9rem;
   border: 2px solid #e9ecef;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background: white;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;

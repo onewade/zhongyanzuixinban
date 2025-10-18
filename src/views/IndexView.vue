@@ -1,6 +1,7 @@
 <script setup>
 import Layout from '../components/common/Layout.vue';
-import { onBeforeUnmount, onMounted, ref } from "vue";
+import { onBeforeUnmount, onMounted, ref ,computed} from "vue";
+import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
 import { getstudentAPI } from '@/apis/studentlistAPI.js';
 import { getSlidephotoAPI, getAdvantageAPI, getServiceAPI } from '@/apis/indexAPI.js';
 import index1 from '../assets/images/newindex/lunbo1.png';
@@ -12,7 +13,18 @@ import c3 from '../assets/images/newindex/c3.png';
 import news from '../assets/images/newindex/news.png';
 import news1 from '../assets/images/newindex/news1.png';
 import news2 from '../assets/images/newindex/news2.png';
+import bannner from '../assets/images/banner.png';
 import { useRouter } from 'vue-router';
+import zhounian from '../assets/images/newIndex/80zhounian.jpg';
+import guanaishequ from '../assets/images/newsPic/guanaishequ.png';
+import lifa from '../assets/images/newsPic/lifa.png';
+import { useI18n } from 'vue-i18n'
+const { t, locale, messages } = useI18n()
+
+// 当前语言（可在模板或逻辑中使用）
+const currentLanguage = ref(getCurrentLanguage());
+// 存储取消订阅函数
+const offLanguageListener = ref(null);
 // 导入swiper组件
 import { Swiper, SwiperSlide } from "swiper/vue";
 // 引入swiper样式（按需导入）
@@ -34,40 +46,23 @@ const onSlideChange = (swiper) => {
 
 };
 
-const tabList = ref([
-	{ name: '家用电梯', desc: '一句话概括特点', icon: 'fa fa-arrows-h' },
-	{ name: '家用电梯', desc: '一句话概括特点', icon: 'am-icon-cog' },
-	{ name: '别墅电梯', desc: '一句话概括特点', icon: 'am-icon-lightbulb-o' },
-	{ name: '观光电梯', desc: '一句话概括特点', icon: 'am-icon-line-chart' },
-	{ name: '关于我们', desc: '一句话概括特点', icon: 'am-icon-hourglass-end' },
-])
 const tabIndex = ref(0)
 const slideshow = ref([
 	{
-		ImageUrl: index3,
-		// Name: 'eee',
-		// Desc: '聚焦市场拓展',
-		// Desc1: '聚力公司治理',
-		// Desc2: '聚心社会价值',
-		// Desc3: 'FOCUS ON MARKET EXPANSION',
-		// Desc4: 'FOCUS ON CORPORATE GOVERNANCE',
-		// Desc5: 'FOCUS ON SOCIAL VALUE',
-	},
-	{
-		ImageUrl: index2,
-		Name: 'aaa',
-		Desc: '',
-		Desc1: '',
-		Desc2: ' ',
-		Desc3: ' ',
-	},
-	{
-		ImageUrl: index1,
-		Name: '',
-		// Desc: '更加绿色更可持续',
-		// Desc1: 'More Green More Sustainable',
+		ImageUrl: bannner,
 	}
 
+])
+const newImg = ref([
+	{
+		ImageUrl: zhounian,
+	},
+	{
+		ImageUrl: guanaishequ,
+	},
+	{
+		ImageUrl: lifa,
+	}
 ])
 const advantageList = ref([
 	{ id: 1, Cover: c3, title: '烟叶业务', desc: '我们的烟叶业务是从全球主要烟叶产区采购各类型烟叶类产品，并销售至全球市场。。' },
@@ -79,52 +74,11 @@ const serviceList = ref([
 	{ id: 2, icon: 'am-icon-user', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
 	{ id: 3, icon: 'am-icon-umbrella', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
 	{ id: 4, icon: 'am-icon-briefcase', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
-]);
-const swiperList = ref([
-	// {
-	// 	title: '中烟香港亮相多特蒙德',
-	// 	title1: 'InterTabac 2024国际烟草展会',
-	// 	// img:,
-	// 	content: '中烟香港统一组织66人的策展团队，代表中国烟草13家工业企业，携25个品牌、超100个品规的加热烟及30款雪茄产品参展，规模为历次之最。',
-	// 	date: '2024.10.14'
-	// },
-	// {
-	// 	title: '中烟香港亮相多特蒙德InterTabac 2024国际烟草展会 深化全球烟草市场布局',
-	// 	title1: 'InterTabac 2024国际烟草展会',
-	// 	content: '北京时间2024年9月19日，德国多特蒙德InterTabac 2024国际烟草展会开幕。',
-	// 	date: '2024.09.16'
-	// }
-	{
-		img: news,
-	},
-	{
-		img: news1,
-	},
-	{
-		img: news2,
-	}
-])
-const indexPhoto = ref()
-const changeTab = (ind) => {
+]);const changeTab = (ind) => {
 	tabIndex.value = ind
 	// indexPhoto.value.style.opcity = '1'
 }
 
-const getSlideshow = async () => {
-	const { data: res } = await getSlidephotoAPI();
-	console.log(res.Data);
-	slideshow.value = res.Data
-}
-const getAdvantage = async () => {
-	const { data: res } = await getAdvantageAPI();
-	console.log(res);
-	advantageList.value = res.Data
-}
-const getService = async () => {
-	const { data: res } = await getServiceAPI();
-	console.log(res);
-	serviceList.value = res.Data
-}
 const timer = ref(null)
 const swiper = () => {
 	if (timer.value) {
@@ -143,17 +97,6 @@ const clearData = () => {
 		clearInterval(timer.value);
 		timer.value = null
 	}
-}
-const closeit = () => {
-	clearData();
-}
-const openit = () => {
-	swiper();
-}
-const goTo = (item) => {
-	// 跳到别的网站怎么写
-	window.open('https://www.dotdotnews.com/s/202409/14/AP66e52bdce4b0d645a76ba050.html')
-
 }
 const card = ref('');
 // 当屏幕小于640px时，设置为vertical
@@ -208,90 +151,9 @@ const newsList = ref([
 		content: '2025年7月15日，国际集团组织员工赴香港立法会综合大楼参观，开展“爱国爱港主题教育”活动。本次活动得到了全国人大代表、香港立法会议员陈勇先生及工作人员的大力支持。',
 		date: '2025-07-18'
 	},
-	// {
-	// 	id:4,
-	// 	title: '国际集团举办《哪吒2》主题观影活动',
-	// 	content: '2025年2月26日，国际集团组织员工及家属集体观看国产动画《哪吒2》。影片以传统神话为根基，通过前沿数字技术与东方美学叙事的深度融合，以哪吒“逆天改命”的成长史诗，生动诠释了中华文明“自强不息”的精神内核。多名员工表示，这场视听盛宴不仅让传统文化“活起来”，更让文化自信“强起来”——既为中华文明“守正创新”的基因所震撼，也为身为文化传承者深感自豪。',
-	// 	date: '2015-03-05 14:29:00'
-	// }
 ])
-const groupList = ref([
-	{
-		id: 1,
-		name: '中烟香港',
-		nameEnglish: 'China Tobacco International (Hong Kong)',
-	},
-	{
-		id: 2,
-		name: '天泽公司',
-		nameEnglish: 'Tianze Company',
-	},
-	{
-		id: 3,
-		name: '中烟巴西',
-		nameEnglish: 'China Tobacco International Brazil',
-	},
-	{
-		id: 4,
-		name: '中烟北美',
-		nameEnglish: 'China Tobacco International (North America)',
-	},
-	{
-		id: 5,
-		name: '中烟阿根廷',
-		nameEnglish: 'China Tobacco International Argentina',
-	},
-	{
-		id: 6,
-		name: '中烟中东',
-		nameEnglish: 'China Tobacco International (Middle East)',
-	},
-	{
-		id: 7,
-		name: '中烟英美',
-		nameEnglish: 'China Tobacco British American International',
-	},
-	{
-		id: 8,
-		name: '中烟菲莫',
-		nameEnglish: 'China Tobacco Philip Morris International',
-	},
-	// {
-	// 	id: 9,
-	// 	name: '中烟香港制造',
-	// 	nameEnglish: 'China Tobacco International (Hong Kong) Manufacturing',
-	// },
-	{
-		id: 10,
-		name: '澳门金叶',
-		nameEnglish: 'Macao Jinye',
-	},
-	{
-		id: 11,
-		name: '老挝红塔',
-		nameEnglish: 'Laos Hongta',
-	},
-	{
-		id: 12,
-		name: '柬埔寨威尼顿',
-		nameEnglish: 'Cambodia Wellington',
-	},
-	// {
-	// 	id: 13,
-	// 	name: '中烟罗马尼亚制造',
-	// 	nameEnglish: 'China Tobacco International (Romania) Manufacturing',
-	// },
-	{
-		id: 14,
-		name: '红塔瑞士',
-		nameEnglish: 'Hongta Switzerland',
-	},
-	{
-		id: 15,
-		name: '红塔瑞士罗马尼亚',
-		nameEnglish: 'Hongta Switzerland Romania',
-	},
-])
+// 引用zh-CN里面的companyList数组
+const companyList = computed(() => messages.value[locale.value].message.companyList)
 const route = useRouter();
 const handleClick = (item) => {
 	console.log('item', item);
@@ -314,6 +176,10 @@ const isMobile = ref(false)
 const checkMobile = () => {
 	isMobile.value = window.innerWidth <= 768
 }
+// 当语言是英文的时候，首页和路由都不要新闻列表了
+const showNews = computed(() => {
+	return locale.value !== 'en'
+})
 onMounted(() => {
 	// videoPlayer.value.play();
 	// getSlideshow();
@@ -321,6 +187,16 @@ onMounted(() => {
 	// getService();
 	// 初始化检查移动端
 	checkMobile()
+
+	// 初始化当前语言为 i18n 中的 locale（优先）
+	currentLanguage.value = locale.value || getCurrentLanguage();
+
+	// 订阅全局语言变更事件（使用 utils 封装）
+	offLanguageListener.value = onLanguageChange((lang) => {
+		currentLanguage.value = lang;
+		console.log('IndexView detected language change:', lang);
+		// 在这里可以执行语言切换后需要的额外逻辑（比如重新请求某些接口）
+	});
 	// 监听窗口大小变化
 	window.addEventListener('resize', checkMobile)
 	swiper();
@@ -328,6 +204,11 @@ onMounted(() => {
 onBeforeUnmount(() => {
 	window.removeEventListener('resize', checkMobile)
 	clearData();
+	// 取消语言变更监听
+	if (offLanguageListener.value) {
+		offLanguageListener.value();
+		offLanguageListener.value = null;
+	}
 })
 </script>
 <template>
@@ -351,11 +232,23 @@ onBeforeUnmount(() => {
 				</Swiper>
 			</div>
 		</div>
-		<div class="news-section">
+		<div class="news-section" v-if="showNews">
 			<div class="newsTitle" v-if="isMobile">{{ $t('message.t3') }}</div>
 			<div>
-				<img src="../assets/images/newIndex/80zhounian.jpg" alt="" style="width: 100%; height: 100%;"
-					@click="goDetail(2)">
+				<Swiper :modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
+					:mousewheel="false" :allowTouchMove="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
+					:loop="true" @swiper="onSwiper" @slideChange="onSlideChange" class="home-swiper">
+					<SwiperSlide v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="{
+						backgroundImage: `url(${slide.ImageUrl})`,
+						backgroundRepeat: 'no-repeat',
+						backgroundSize: '100% auto',
+						backgroundPosition: 'center'
+					}">
+						<div class="index-banner">
+							<!-- 可以在这里添加轮播图上的内容 -->
+						</div>
+					</SwiperSlide>
+				</Swiper>
 			</div>
 			<div class="news-content">
 				<div class="newsTitle" v-if="!isMobile">{{ $t('message.t3') }}</div>
@@ -369,11 +262,61 @@ onBeforeUnmount(() => {
 				<div class="newsBtn" @click="handleGoNew">{{ $t('message.gengduoxinwen') }}</div>
 			</div>
 		</div>
+		<div v-else>
+			<div class="contactContainer1">
+                    <div class="contactContent">
+                        <div>{{ $t("message.ywjs") }}</div>
+                        <div class="fw">{{ $t('message.ywjs1') }}</div>
+                    </div>
+                    <div class="contactContent">
+                        <div>{{ $t('message.ywzx') }}</div>
+
+                        <div class="cardContent">
+                            <div>
+                                <img src="../assets/images/call.png" alt="">
+                                <div>
+                                    +852XXXXXXXX
+                                </div>
+                                <div>
+                                    xxxx@xxx.com
+                                </div>
+                                <div>
+                                    <div>{{ $t('message.ywzx2') }}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../assets/images/call.png" alt="">
+                                <div>
+                                    +852XXXXXXXX
+                                </div>
+                                <div>
+                                    xxxx@xxx.com
+                                </div>
+                                <div>
+                                    <div>{{ $t('message.ywzx1') }}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../assets/images/call.png" alt="">
+                                <div>
+                                    +852-26206055
+                                </div>
+                                <div>
+                                    yangy@cti-group.com.hk
+                                </div>
+                                <div>
+                                    <div>{{ $t('message.ywzx3') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		</div>
 		<div class="group-section">
 			<div class="group-title">{{ $t('message.suoshuqiye') }}</div>
 			<div class="group-line"></div>
 			<div class="group-list">
-				<div v-for="(item, index) in groupList" class="group-item" :key="index" @click="handleClick(item)">
+				<div v-for="(item, index) in companyList" class="group-item" :key="index" @click="handleClick(item)">
 					<div>{{ item.name }}</div>
 					<div></div>
 					<!-- <div>{{ item.nameEnglish }}</div> -->
@@ -417,14 +360,14 @@ onBeforeUnmount(() => {
 		.swiper-pagination-bullet {
 			background: rgba(255, 255, 255, 0.9);
 			opacity: 1;
-			width: 0.8rem;
-			height: 0.8rem;
+			width: 0.6rem;
+			height: 0.6rem;
 			margin: 0 0.4rem;
 			transition: all 0.3s ease;
 
 			&.swiper-pagination-bullet-active {
 				background: #F7B334;
-				width: 3rem;
+				width: 1.5rem;
 				/* 激活状态下的横线更长 */
 				height: 0.6rem;
 				transform: scale(1.1);
@@ -1015,41 +958,53 @@ onBeforeUnmount(() => {
 	margin-top: 0.8rem;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start; /* 改为从左开始排列 */
+	justify-content: flex-start;
+	/* 改为从左开始排列 */
 	text-align: center;
-	gap: 1.5rem; /* 减小间距以适应更多元素 */
+	gap: 1.5rem;
+	/* 减小间距以适应更多元素 */
 
-	@media screen and (min-width: 768px) and (max-width: 1024px){
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
 		margin-top: 0.8rem;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: flex-start; /* 桌面端也从左开始排列 */
+		justify-content: flex-start;
+		/* 桌面端也从左开始排列 */
 		text-align: center;
-		gap: 2.2rem; /* 桌面端减小间距 */
+		gap: 2.2rem;
+		/* 桌面端减小间距 */
 	}
-	@media screen and (min-width: 1024px){
+
+	@media screen and (min-width: 1024px) {
 		margin-top: 0.8rem;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: flex-start; /* 桌面端也从左开始排列 */
+		justify-content: flex-start;
+		/* 桌面端也从左开始排列 */
 		text-align: center;
-		gap: 1.4rem; /* 桌面端减小间距 */
+		gap: 1.4rem;
+		/* 桌面端减小间距 */
 	}
+
 	@media screen and (max-width: 768px) {
 		margin-top: 0.8rem;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: flex-start; /* 桌面端也从左开始排列 */
+		justify-content: flex-start;
+		/* 桌面端也从左开始排列 */
 		text-align: center;
-		gap: 0rem; /* 桌面端减小间距 */
+		gap: 0rem;
+		/* 桌面端减小间距 */
 	}
-	
-	
+
+
 }
 
 .group-item {
-	width: calc(18% - 0.4rem); /* 桌面端每行5个，更精确的计算 */
-	padding: 0.5rem 0.3rem; /* 减小内边距以适应更多元素 */
+	width: calc(18% - 0.4rem);
+	/* 桌面端每行5个，更精确的计算 */
+	padding: 0.5rem 0.3rem;
+	/* 减小内边距以适应更多元素 */
 	border: 1px solid #e9e9e9;
 	border-radius: 8px;
 	background-color: white;
@@ -1078,10 +1033,10 @@ onBeforeUnmount(() => {
 	}
 
 	@media screen and (min-width: 768px) and (max-width: 1024px) {
-		width: calc(28% - 0.6rem); 
+		width: calc(28% - 0.6rem);
 		padding: 0.6rem 0.35rem;
 		font-size: 1.0rem;
-		margin:1rem;
+		margin: 1rem;
 	}
 
 	>div:nth-child(1) {
@@ -1139,9 +1094,163 @@ onBeforeUnmount(() => {
 	}
 }
 
+.news-section {
+	.swiper {
+		width: 100%;
+		height: 30rem;
+
+		@media screen and (max-width: 767px) {
+			height: 25rem;
+		}
+	}
+}
+
 .swiper-slide {
 	position: relative;
 	background-color: #fafafa;
 	width: 100%;
+}
+.age-modal {
+  position: fixed;
+  z-index: 99999;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.age-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  padding: 2.5rem 2rem 2rem;
+  max-width: 350px;
+  width: 90%;
+  text-align: center;
+}
+.age-modal-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  color: #c9082c;
+}
+.age-modal-desc {
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+.age-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+.age-btn {
+  flex: 1;
+  padding: 0.7rem 0.2rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.age-btn.deny {
+  background: #eee;
+  color: #c9082c;
+}
+.age-btn.confirm {
+  background: #F7B334;
+  color: #fff;
+}
+.age-btn:hover {
+  opacity: 0.85;
+}
+.contactContainer1 {
+    width: 100%;
+    height: 100%;
+    background-color: #f7f7f7;
+    padding-bottom: 5rem;
+}
+
+.contact {
+    width: 100%;
+
+}
+
+.fw {
+    // font-weight: 550;
+    color: #444;
+}
+
+.bgImg {
+    width: 100%;
+
+    >img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.contactContent {
+    width: 65%;
+    margin: 0px auto 20px;
+    font-size: 1.3rem;
+    padding-top: 3rem;
+
+    >div:nth-child(1) {
+        font-size: 1.5rem;
+        color: #F7B334;
+        font-weight: bold;
+        margin-bottom: 1.7rem;
+    }
+
+}
+
+.cardContent {
+    display: flex;
+    justify-content: space-between;
+
+    >div {
+        width: 30%;
+        // height: 15rem;
+        background: #fff;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 550;
+        color: #444;
+
+        >img {
+            width: 3rem;
+            height: 3rem;
+            margin: 2rem 0rem 0rem 0rem
+        }
+
+        >div:nth-child(2) {
+            font-size: 2.2rem;
+            color: #F7B334;
+        }
+
+        >div:nth-child(3),
+        >div:nth-child(4) {
+            font-size: 0.9rem;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        display: block;
+
+        >div {
+            padding: 0rem;
+            width: 100%;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            padding-top: 1rem;
+        }
+
+    }
 }
 </style>

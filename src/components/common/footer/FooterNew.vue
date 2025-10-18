@@ -1,20 +1,60 @@
 <script setup>
-
+import { ref } from 'vue';
+const dialogVisible = ref(false);
+const dialogType = ref(1);
+const openDialog = (type) => {
+    dialogType.value = type;
+    dialogVisible.value = true;
+};
+const closeDialog = () => {
+    dialogVisible.value = false;
+};
 </script>
 <template>
     <div class="footerBox">
         <div></div>
         <div>
             <div class="footerContainer">
-                <div>{{ $t('message.mianze') }}</div>
+                <div @click="openDialog(1)">{{ $t('message.mianze') }}</div>
                 <div>|</div>
-                <div>{{ $t('message.wzasm') }}</div>
+                <div @click="openDialog(3)">{{ $t('message.wzasm') }}</div>
                 <div>|</div>
-                <div>{{ $t('message.siyin') }}</div>
+                <div @click="openDialog(5)">{{ $t('message.siyin') }}</div>
                 <div>|</div>
                 <div>{{ $t('message.banquansuoyou') }}</div>
             </div>
             <div class="footerFooter">{{ $t('message.tishi') }}</div>
+        </div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div v-if="dialogVisible" class="footer-dialog-mask">
+        <div class="footer-dialog">
+            <span class="footer-dialog-close" @click="closeDialog">×</span>
+            <div class="footer-dialog-content">
+                <template v-if="dialogType === 1">
+                    <!-- 这里填写第1个弹窗内容 -->
+                    <div>
+                        <div>{{ $t("message.mianzeshengming") }}</div>
+                        <div>{{ $t("message.mianzeshengmingE") }}</div>
+                        <p>{{ $t("message.mianzeContent1") }}</p>
+                        <p>{{ $t("message.mianzeContent2") }}</p>
+                        <p>{{ $t("message.mianzeContent3") }}</p>
+                        <p>{{ $t("message.mianzeContent4") }}</p>
+                    </div>
+                </template>
+                <template v-else-if="dialogType === 3">
+                    <!-- 这里填写第3个弹窗内容 -->
+                    <div>{{ $t("message.wzasm") }}</div>
+                    <p>{{ $t("message.wzasmContent1") }}</p>
+                </template>
+                <template v-else-if="dialogType === 5">
+                    <!-- 这里填写第5个弹窗内容 -->
+                    <div>{{ $t("message.yinsizhengce") }}</div>
+                    <p>{{ $t("message.yinsizhengceE") }}</p>
+                    <p v-for="i in 34" :key="i">{{ $t(`message.yinsizhengceContent${i}`) }}</p>
+                </template>
+            </div>
         </div>
     </div>
 </template>
@@ -54,6 +94,13 @@
     justify-content: center;
     align-items: center;
     font-size: 0.8rem;
+
+    >div:nth-child(1),
+    >div:nth-child(5),
+    >div:nth-child(3) {
+        cursor: pointer;
+
+    }
 
     >div:nth-child(2) {
         margin: 0px 1rem;
@@ -109,7 +156,7 @@
 }
 
 .footerFooter {
-    width: 90%;
+    width: 95%;
     font-size: 0.9rem;
     margin-top: 1rem;
 }
@@ -125,5 +172,65 @@
         vertical-align: middle;
 
     }
+}
+
+/* 弹窗样式 */
+.footer-dialog-mask {
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-dialog {
+    background: #fff;
+    border-radius: 12px;
+    width: 50vw;
+    max-width: 900px;
+    max-height: 90vh;
+    position: relative;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+    padding: 3rem 4rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-dialog-close {
+    position: absolute;
+    right: 1.2rem;
+    top: 1.2rem;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    z-index: 2;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.footer-dialog-close:hover {
+    color: #c9082c;
+}
+
+.footer-dialog-content {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+
+    >div {
+        font-size: 1.3rem;
+
+        >p {
+            font-size: 1rem;
+        }
+    }
+
 }
 </style>

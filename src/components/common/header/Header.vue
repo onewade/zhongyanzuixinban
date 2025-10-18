@@ -1,6 +1,7 @@
 <script setup>
 import AppFunctions from "@/utils/AppFunctions";
-import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
 import { getCompanyInfoAPI } from '@/apis/aboutourAPi.js';
 import { h } from 'vue';
 import { ElMessage } from 'element-plus'
@@ -70,25 +71,44 @@ const showMenu = () => {
 	drawer.value = true;
 }
 
+// 当前语言
+const currentLanguage = ref(getCurrentLanguage());
+const offLangListener = ref(null);
+
 // 处理drawer关闭
 const handleClose = (done) => {
 	drawer.value = false;
 	done();
 }
-
+// 如果当前语言是英语的话 就不显示新闻资讯
+const isNews = computed(() => {
+	return currentLanguage.value !== 'en'
+})
 
 onMounted(() => {
 	// 初始化检查移动端
 	checkMobile()
 	// 监听窗口大小变化
 	window.addEventListener('resize', checkMobile)
-	
+
+	// 订阅语言变更
+	offLangListener.value = onLanguageChange((lang) => {
+		currentLanguage.value = lang;
+		console.log('Header detected language change:', lang);
+	});
+
 })
 
 onBeforeUnmount(() => {
 	// window.removeEventdivstener('scroll', toggleStickyHeader);
 	// 移除监听器
 	window.removeEventListener('resize', checkMobile)
+
+	// 取消语言监听
+	if (offLangListener.value) {
+		offLangListener.value();
+		offLangListener.value = null;
+	}
 })
 </script>
 <template>
@@ -96,11 +116,9 @@ onBeforeUnmount(() => {
 		<div v-if="isMobile" class="header-mobile">
 			<img src="../../../assets/images/menu.png" alt="" srcset="" @click="showMenu">
 			<div class="header-mobile-title">
-				<img src="../../../assets/images/inlogo.png" alt="">
-				<div>
-					<div class="mainTitle">中烟国际集团有限公司</div>
-					<div class="assistantTitle"> China Tobacco International Group Limited</div>
-				</div>
+				<!-- <div> -->
+					<img src="../../../assets/images/logo.png" alt="">
+				<!-- </div> -->
 
 			</div>
 			<LanguageSwitcher class="lang-switcher" />
@@ -110,10 +128,10 @@ onBeforeUnmount(() => {
 			<div class="zgyc">
 				<!-- <img src="../../../assets/images/newIndex/titleNew.png" alt="" srcset=""> -->
 				<!-- #0F409E -->
-				<img src="../../../assets/images/inlogo.png" alt="">
+				<!-- <img src="../../../assets/images/inlogo.png" alt=""> -->
 				<div>
-					<div class="mainTitle">中烟国际集团有限公司</div>
-					<div class="assistantTitle"> China Tobacco International Group Limited</div>
+					<!-- <div class="mainTitle">中烟国际集团有限公司</div> -->
+					<img src="../../../assets/images/logo.png" alt="" class="logoImg">
 				</div>
 			</div>
 
@@ -125,19 +143,19 @@ onBeforeUnmount(() => {
 		<div class="nav desktop-nav" v-if="!isMobile">
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
-						}}</router-link></div>
+				}}</router-link></div>
 				<div><router-link class="router" to="/overview" @click="closeMobileMenu">{{ $t('message.t2')
-						}}</router-link></div>
-				<div><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
-						}}</router-link></div>
+				}}</router-link></div>
+				<div v-if="isNews"><router-link class="router" to="/news"  @click="closeMobileMenu">{{ $t('message.t3')
+				}}</router-link></div>
 				<!-- <div><router-link class="router" to="/example">客户案例</router-link></div> -->
 				<div><router-link class="router" to="/MainBusiness" @click="closeMobileMenu">{{ $t('message.t4')
-				}}</router-link>
+						}}</router-link>
 				</div>
 				<div><router-link class="router" to="/JoinUs" @click="closeMobileMenu">{{ $t('message.t5')
-						}}</router-link></div>
+				}}</router-link></div>
 				<div><router-link class="router" to="/ContactInformation" @click="closeMobileMenu">{{ $t('message.t6')
-						}}</router-link></div>
+				}}</router-link></div>
 			</div>
 		</div>
 
@@ -158,19 +176,19 @@ onBeforeUnmount(() => {
 		<el-drawer v-model="drawer" :direction="direction" :before-close="handleClose">
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
-						}}</router-link></div>
+				}}</router-link></div>
 				<div><router-link class="router" to="/overview" @click="closeMobileMenu">{{ $t('message.t2')
-						}}</router-link></div>
-				<div><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
-						}}</router-link></div>
+				}}</router-link></div>
+				<div v-if="isNews"><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
+				}}</router-link></div>
 				<!-- <div><router-link class="router" to="/example">客户案例</router-link></div> -->
 				<div><router-link class="router" to="/MainBusiness" @click="closeMobileMenu">{{ $t('message.t4')
-				}}</router-link>
+						}}</router-link>
 				</div>
 				<div><router-link class="router" to="/JoinUs" @click="closeMobileMenu">{{ $t('message.t5')
-						}}</router-link></div>
+				}}</router-link></div>
 				<div><router-link class="router" to="/ContactInformation" @click="closeMobileMenu">{{ $t('message.t6')
-						}}</router-link></div>
+				}}</router-link></div>
 			</div>
 		</el-drawer>
 	</div>
@@ -179,13 +197,19 @@ onBeforeUnmount(() => {
 
 
 <style lang="scss" scoped>
+.logoImg {
+	width: 25rem;
+	height: auto;
+	// margin-left:-1rem;
+}
+
 // .el-drawer .el-drawer__body .am-navss div .router
 // Vue 3 深度渗透选择器示例
 :deep(.el-drawer) {
 	// height: 36% !important;
 	// 高度自适应怎么写
-	height: auto!important;
-	
+	height: auto !important;
+
 
 	.el-drawer__header {
 		padding: 1rem;
@@ -215,6 +239,7 @@ onBeforeUnmount(() => {
 			}
 		}
 	}
+
 }
 
 .header-mobile {
@@ -232,14 +257,19 @@ onBeforeUnmount(() => {
 	}
 
 	.header-mobile-title {
-		display: flex;
-		align-items: center;
-		
-	}
-	>div:nth-child(3){
-			width: 4rem;
-			height: 4rem;
+		width: 20rem;
+		img{
+			width: 100%;
+			height: auto;
+			margin-top:1rem;
 		}
+
+	}
+
+	>div:nth-child(3) {
+		width: 4rem;
+		height: 4rem;
+	}
 
 
 }
@@ -304,7 +334,7 @@ onBeforeUnmount(() => {
 }
 
 .am-navss {
-	width: 100%;
+	width: 99%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -319,7 +349,7 @@ onBeforeUnmount(() => {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 100%;
+	// width: 100%;
 }
 
 .am-navss>div {

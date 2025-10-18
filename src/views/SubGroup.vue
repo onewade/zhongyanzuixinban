@@ -1,12 +1,14 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Layout from '../components/common/Layout.vue';
 
 const { t } = useI18n();
+// 获取当前语言并订阅变化（使页面可随语言切换实时响应）
+import { getCurrentLanguage, onLanguageChange } from '@/utils/language.js';
 const route = useRoute();
-const object = ref({});
+// 使用 computed 动态获取基于当前语言的字段，避免语言切换后不更新的问题
 const router = useRouter();
 const goBack = () => {
     router.push({ path: '/index' });
@@ -60,22 +62,39 @@ const companyData = {
         key: 'zyou'
     }
 };
-const companyId = ref(''); // 默认公司ID为1
+const companyId = ref(''); // 默认公司ID为空，mounted 时填充
+
+// 当前语言（可在模板中直接使用）
+const currentLanguage = ref(getCurrentLanguage());
+let offLanguage = null;
+
+// dataKey 动态计算，基于 companyId
+const dataKey = computed(() => {
+    const company = companyData[companyId.value];
+    return company ? company.key : 'zyxg';
+});
+
+// 使用 computed 让 t(...) 在语言切换时重新计算，实时更新
+const title = computed(() => t(`message.${dataKey.value}.title`));
+const content = computed(() => t(`message.${dataKey.value}.content`));
+const phone = computed(() => t(`message.${dataKey.value}.phone`));
+const website = computed(() => t(`message.${dataKey.value}.website`));
+const isEnglish = computed(() => currentLanguage.value === 'en');
+console.log('isEnglish:', isEnglish.value);
+
 onMounted(() => {
     // 从路由参数获取公司ID
     console.log('当前路由参数:', route.params);
     companyId.value = route.params.id || route.query.id;
     console.log('接收到的路由参数 ID:', companyId.value);
+    // 订阅语言变化以便 currentLanguage 实时更新
+    offLanguage = onLanguageChange((lang) => {
+        currentLanguage.value = lang;
+    });
+});
 
-    // 根据ID获取对应的公司信息
-    const company = companyData[companyId.value];
-    const dataKey = company ? company.key : 'zyxg'; // 默认使用中烟国际(香港)
-    object.value = {
-        title: t(`message.${dataKey}.title`),
-        content: t(`message.${dataKey}.content`),
-        phone: t(`message.${dataKey}.phone`),
-        website: t(`message.${dataKey}.website`)
-    };
+onBeforeUnmount(() => {
+    if (offLanguage) offLanguage();
 });
 </script>
 <template>
@@ -84,21 +103,22 @@ onMounted(() => {
             <div class="subGroupBox">
                 <div class="subGroupContainer">
                     <div class="page-header-sub">
-                        <img src="../assets/images/jtgk.jpg" alt="">
+                        <img src="../assets/images/banner.png" alt="">
                     </div>
                     <div class="back" @click="goBack">
                         <img src="../assets/images/back.png" alt="">
                     </div>
                     <div class="groupContent">
-                        <div class="side">
+                        <!-- 根据语言切换字体大小；注意这里要设置 fontSize，而不是把 fontSize 字符串赋给 display -->
+                        <div class="side" :style="{ fontSize: isEnglish ? '1.3rem' : '2rem' }">
                             <div>{{ $t('message.jt') }}</div>
                             <div>{{ $t('message.ssqy') }}</div>
                         </div>
                         <div class="contentItem">
-                            <div class="title">{{ object.title }}</div>
-                            <div class="content">{{ object.content }}</div>
-                            <div class="phone">联系方式：{{ object.phone }}</div>
-                            <div class="website" v-if="companyId == 1">企业网站：{{ object.website }}</div>
+                            <div class="title">{{ title }}</div>
+                            <div class="content">{{ content }}</div>
+                            <div class="phone">{{$t('message.t6') }} : {{ phone }}</div>
+                            <div class="website" v-if="companyId == 1">{{$t("message.t8")}}：{{ website }}</div>
                         </div>
                     </div>
                 </div>
@@ -163,7 +183,7 @@ onMounted(() => {
 }
 
 .side {
-    min-width: 14%;
+    width: 16%;
     height: 19rem;
     font-size: 2rem;
     font-weight: 550;

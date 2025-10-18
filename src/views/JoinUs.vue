@@ -32,11 +32,11 @@ const handleGoBack = (val) => {
                 <div class="index-page">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/zp.png" alt=""> -->
-                         <img src="../assets/images/jtgk.jpg" alt="" srcset="">
+                         <img src="../assets/images/banner.png" alt="" srcset="">
                     </div>
                 </div>
                 <div class="join-content" v-if="!isShowDetail">
-                    <div class="joinTitle">招聘信息</div>
+                    <div class="joinTitle">{{ $t("message.t7") }}</div>
                     <div v-for="(item, index) in list" :key="item.number" class="joinContentItem" @click="handleClick">
                         <div>{{ item.title }}</div>
                         <div>{{ item.date }}</div>

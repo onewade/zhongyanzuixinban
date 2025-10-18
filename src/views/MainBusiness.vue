@@ -9,7 +9,7 @@ import Layout from '../components/common/Layout.vue';
                 <div class="index-page" style="width: 100%">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/business.png" alt=""> -->
-                         <img src="../assets/images/jtgk.jpg" alt="">
+                        <img src="../assets/images/banner.png" alt="">
                     </div>
                 </div>
                 <div class="contactContainer1">
@@ -24,7 +24,10 @@ import Layout from '../components/common/Layout.vue';
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +852 XXXX XXXX
+                                    +852XXXXXXXX
+                                </div>
+                                <div>
+                                    xxxx@xxx.com
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx2') }}</div>
@@ -33,10 +36,25 @@ import Layout from '../components/common/Layout.vue';
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +852 XXXX XXXX
+                                    +852XXXXXXXX
+                                </div>
+                                <div>
+                                    xxxx@xxx.com
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx1') }}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../assets/images/call.png" alt="">
+                                <div>
+                                    +852-26206055
+                                </div>
+                                <div>
+                                    yangy@cti-group.com.hk
+                                </div>
+                                <div>
+                                    <div>{{ $t('message.ywzx3') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +105,7 @@ import Layout from '../components/common/Layout.vue';
     width: 65%;
     margin: 0px auto 20px;
     font-size: 1.3rem;
-    padding-top:3rem;
+    padding-top: 3rem;
 
     >div:nth-child(1) {
         font-size: 1.5rem;
@@ -100,12 +118,13 @@ import Layout from '../components/common/Layout.vue';
 
 .cardContent {
     display: flex;
+    justify-content: space-between;
 
     >div {
-        width: 45%;
+        width: 30%;
         // height: 15rem;
         background: #fff;
-        padding: 1.3rem;
+        padding: 1rem;
         text-align: center;
         font-size: 1.6rem;
         font-weight: 550;
@@ -121,26 +140,27 @@ import Layout from '../components/common/Layout.vue';
             font-size: 2.2rem;
             color: #F7B334;
         }
-        >div:nth-child(3) {
-            font-size: 1rem;
+
+        >div:nth-child(3),
+        >div:nth-child(4) {
+            font-size: 0.9rem;
             color: #333;
+            margin-top: 0.5rem;
         }
     }
 
-    >div:nth-child(1) {
-        margin-right: 5rem;
-    }
     @media screen and (max-width: 767px) {
         width: 100%;
         display: block;
+
         >div {
-            padding:0rem;
+            padding: 0rem;
             width: 100%;
             margin-bottom: 2rem;
-            padding-bottom:2rem;
-            padding-top:1rem;
+            padding-bottom: 2rem;
+            padding-top: 1rem;
         }
-        
+
     }
 }
 </style>

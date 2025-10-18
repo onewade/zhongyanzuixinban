@@ -27,6 +27,34 @@ onMounted(() => {
     id.value = route.params.id || route.query.id;
     console.log('接收到的路由参数 ID:', id.value);
 })
+function openLowRes(src, maxWidth = 1200) {
+    if (!src) return;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+        const ratio = Math.min(1, maxWidth / img.width);
+        const w = Math.max(1, Math.round(img.width * ratio));
+        const h = Math.max(1, Math.round(img.height * ratio));
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        // 输出为 jpeg，质量 0.85，可根据需要调低以进一步减小文件大小
+        canvas.toBlob((blob) => {
+            if (!blob) return;
+            const url = URL.createObjectURL(blob);
+            window.open(url, '_blank');
+            // 延迟 revoke，确保新窗口加载完成
+            setTimeout(() => URL.revokeObjectURL(url), 10000);
+        }, 'image/jpeg', 0.85);
+    };
+    img.onerror = () => {
+        // 失败时直接打开原图（备用）
+        window.open(src, '_blank');
+    };
+    img.src = src;
+}
 </script>
 <template>
     <div>
@@ -104,7 +132,7 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 1">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/jnt.png" alt="">
+                            <img src="../assets/images/newsPic/jnt.png" alt="" @dblclick="openLowRes($event.target.src, 900)" oncontextmenu="return false" >
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -115,7 +143,8 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 2">
                          <div class="newspic">
-                            <img src="../assets/images/newIndex/80zhounian.jpg" alt="">
+                             <img src="../assets/images/newIndex/80zhounian.jpg" oncontextmenu="return false"   alt="" style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -135,8 +164,10 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 3">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/ball1.png" alt="">
-                            <img src="../assets/images/newsPic/ball2.png" alt="">
+                            <img src="../assets/images/newsPic/ball1.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
+                            <img src="../assets/images/newsPic/ball2.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -147,8 +178,10 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 4">
                         <div class="detailImg">
-                            <img src="../assets/images/newsPic/ez.png" alt="">
-                            <img src="../assets/images/newsPic/ez1.png" alt="">
+                            <img src="../assets/images/newsPic/ez.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
+                            <img src="../assets/images/newsPic/ez1.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -165,7 +198,8 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 5">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/kaigong.png" alt="">
+                            <img src="../assets/images/newsPic/kaigong.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -182,7 +216,8 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 6">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/yigong.png" alt="">
+                            <img src="../assets/images/newsPic/yigong.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -191,7 +226,8 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="newspic1">
-                            <img src="../assets/images/newsPic/yigong1.png" alt="">
+                            <img src="../assets/images/newsPic/yigong1.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -202,7 +238,8 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 7">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/jingshen.png" alt="">
+                            <img src="../assets/images/newsPic/jingshen.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -237,7 +274,8 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/guanaishequ.png" alt="">
+                            <img src="../assets/images/newsPic/guanaishequ.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -246,7 +284,8 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="newspic1">
-                            <img src="../assets/images/newsPic/guanaishequ1.png" alt="">
+                            <img src="../assets/images/newsPic/guanaishequ1.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -257,7 +296,8 @@ onMounted(() => {
                     </div>
                      <div v-if="id == 10">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/lifa.png" alt="">
+                            <img src="../assets/images/newsPic/lifa.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -271,13 +311,15 @@ onMounted(() => {
                     </div>
                     <div v-if="id == 11">
                         <div class="newspic" style="margin-bottom: 0.5rem;">
-                            <img src="../assets/images/newsPic/jiang.png" alt="">
+                            <img src="../assets/images/newsPic/jiang.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div style="font-size: 0.9rem; text-align: center; ">
                             香港个人资料私隐专员公署专员钟丽玲（左一）、香港物业管理业监管局主席黄江天（右一）为中烟国际集团有限公司颁奖
                         </div>
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/jiang1.png" alt="">
+                            <img src="../assets/images/newsPic/jiang1.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -291,7 +333,8 @@ onMounted(() => {
                     </div>
                      <div v-if="id == 12">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/fadian.png" alt="">
+                            <img src="../assets/images/newsPic/fadian.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -318,7 +361,8 @@ onMounted(() => {
                             </div>
                         </div>
                          <div class="newspic">
-                            <img src="../assets/images/newsPic/yundonghui.png" alt="">
+                            <img src="../assets/images/newsPic/yundonghui.png" alt="" oncontextmenu="return false"  style="cursor:pointer;"
+                              @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                     </div>
                 </div>

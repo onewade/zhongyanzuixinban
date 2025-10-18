@@ -1,66 +1,262 @@
-{
-  "message": {
-    "hello": "Hello World",
-    "companyName": "China Tobacco International (Hong Kong) Company Limited",
-    "description": "China Tobacco International (Hong Kong) Company Limited (referred to as \"China Tobacco Hong Kong\", stock code: 6055.HK) was registered in Hong Kong in February 2004 and listed on the Hong Kong Stock Exchange in June 2019. It is currently the only listed tobacco business company within the China Tobacco system and has become a constituent stock of the Hang Seng Composite Index, Hang Seng Consumer Goods Manufacturing and Services Index, and MSCI China All Shares Index.",
-    "title": "Tobacco Leaf Business",
-    "title1": "Cigarette Business",
-    "title2": "New Tobacco Products Business",
-    "t1": "Home",
-    "t2": "About the Group",
-    "t3": "News & Updates",
-    "t4": "Our Business",
-    "t5": "Careers",
-    "t6": "Contact Us",
-    "more": "More",
-    "newTitle": "News and Consultation",
-    "mianze": "Disclaimer",
-    "siyin": "Privacy Policy",
-    "lianxi": "Contact Us",
-    "mianze": "Disclaimer",
-    "siyin": "Privacy Policy",
-    "lianxi": "Contact Us",
-    "xiyan": "Smoking is harmful to health. This website contains tobacco-related content and is not intended for minors!",
-    "number": "23.250",
-    "zuixin": "Latest Stock Price",
-    "gupiao": "Stock Code",
-    "daimanumber": "6055.HK",
-    "jiezhi": "As of",
-    "date": "2024/10/21 13:52:12",
-    "xianggangshijian": "Hong Kong Time",
-    "yanchi": "Quote delayed by fifteen minutes or more",
-    "banquan": "All Rights Reserved",
-    "banquan1": "© China Tobacco International (Hong Kong) Company Limited June 2024",
-    "description": "China Tobacco International (Hong Kong) Company Limited (referred to as \"China Tobacco Hong Kong\", stock code: 6055.HK) was registered in Hong Kong in February 2004 and listed on the Hong Kong Stock Exchange in June 2019. It is currently the only listed tobacco business company within the China Tobacco system and has become a constituent stock of the Hang Seng Composite Index, Hang Seng Consumer Goods Manufacturing and Services Index, and MSCI China All Shares Index.",
-    "description1": "Our tobacco leaf business involves purchasing various types of tobacco leaf products from major tobacco leaf producing regions worldwide and selling them to global markets.",
-    "description2": "Our cigarette business involves purchasing cigarette products from cigarette manufacturing enterprises under China Tobacco and selling them to global markets (excluding mainland China) and duty-free shops within mainland China.",
-    "description3": "Our new tobacco products business involves purchasing new tobacco products from cigarette manufacturing enterprises under China Tobacco and exclusively selling them to global markets (excluding mainland China).",
-    "swiperList": [
-      {
-        "title": "China Tobacco Hong Kong Shines at Dortmund",
-        "title1": "InterTabac 2024 International Tobacco Exhibition",
-        "content": "China Tobacco Hong Kong organized a 66-person exhibition team, representing 13 Chinese tobacco industrial enterprises, showcasing 25 brands, over 100 heated tobacco products, and 30 cigar products, the largest scale ever.",
-        "date": "2024.10.14"
+  {
+    "message": {
+      "hello": "Hello, World",
+      "companyName": "China Tobacco International (Hong Kong) Company Limited",
+      "title": "Leaf Tobacco Business",
+      "title1": "Cigarette Business",
+      "title2": "New Tobacco Business",
+      "t1": "Home",
+      "t2": "Group Overview",
+      "t3": "News",
+      "t4": "Main Business",
+      "t5": "Talent Recruitment",
+      "t6": "Contact Information",
+      "t7": "Recruitment Information",
+      "t8": "Corporate Website",
+      "newTitle": "News & Information",
+      "more": "More",
+      "mianze": "Disclaimer",
+      "siyin": "Privacy Policy",
+      "lianxi": "Contact Us",
+      "xiyan": "Smoking is harmful to health. This website contains tobacco-related content and is not intended for minors!",
+      "number": "23.250",
+      "zuixin": "Latest Stock Price",
+      "gupiao": "Stock Code",
+      "daimanumber": "6055.HK",
+      "jiezhi": "As of",
+      "date": "2024/10/21 13:52:12",
+      "xianggangshijian": "Hong Kong Time",
+      "yanchi": "Quotes are delayed by 15 minutes or more",
+      "banquan": "All Rights Reserved",
+      "banquan1": "© China Tobacco International (Hong Kong) Company Limited June 2024",
+      "description": "China Tobacco International (Hong Kong) Company Limited (abbreviated as 'China Tobacco Hong Kong', stock code: 6055.HK) was incorporated in Hong Kong in February 2004 and listed on the Hong Kong Stock Exchange in June 2019. It is currently the only listed tobacco business company within the China Tobacco system and is a constituent stock of the Hang Seng Composite Index, Hang Seng Consumer Goods Manufacturing & Services Index, and MSCI China A Inclusion Index.",
+      "description1": "Our leaf tobacco business involves sourcing various types of leaf tobacco products from major global tobacco-growing regions and selling them to the global market.",
+      "description2": "Our cigarette business involves sourcing cigarette products from cigarette manufacturers under China Tobacco and selling them to the global market (excluding Mainland China) and duty-free shops within Mainland China.",
+      "description3": "Our new tobacco business involves sourcing new tobacco products from cigarette manufacturers under China Tobacco and exclusively selling them to the global market (excluding Mainland China).",
+      "company": "Company Overview",
+      "companyContent": "China Tobacco International (Hong Kong) Company Limited (abbreviated as 'China Tobacco Hong Kong', stock code: 6055.HK) was incorporated in Hong Kong in February 2004 and listed on the Hong Kong Stock Exchange in June 2019. It is currently the only listed tobacco business company within the China Tobacco system and is a constituent stock of the Hang Seng Composite Index, Hang Seng Consumer Goods Manufacturing & Services Index, and MSCI China A Inclusion Index.",
+      "companyContent1": "Since its listing, China Tobacco Hong Kong has focused on international market expansion, continuously exploring market potential, and striving to enhance the scale and quality of business development. The company is committed to corporate governance, promoting board diversity, and continuously improving corporate management and risk control systems. It is also dedicated to social value realization, continuously enhancing shareholder returns, and systematically aligning with international standards to build an ESG system. Currently, China Tobacco Hong Kong's business covers new tobacco, cigarettes, leaf tobacco, cigars, and other categories, with market regions spanning more than 50 countries and regions in East Asia, Southeast Asia, North and South America, Central and Eastern Europe, etc. The company operates more than 20 new tobacco brands, over 35 cigarette brands, and more than 35 cigar specifications.",
+      "companyContent2": "In the future, China Tobacco Hong Kong will continue to uphold the development philosophy of 'respecting the market, respecting rules, and respecting investors', continuously cultivate core businesses, actively pursue cross-border mergers and acquisitions, and continuously enhance market value, striving to build a world-class tobacco enterprise with international competitiveness!",
+      "p1": "Mr. Shao Yan",
+      "p11": "Chairman, Non-executive Director",
+      "p111": "Serving as Chairman of the Board and Non-executive Director since June 2018",
+      "p1111": "Joined the company in August 2016",
+      "unit": "Billion HKD",
+      "unit1": "HKD",
+      "yingyeshouru": "Operating Revenue",
+      "zichanjingzhi": "Net Asset Value",
+      "meiguyingli": "Earnings Per Share",
+      "mianzeshengming": "Disclaimer",
+      "mianzeshengmingE": "Disclaimer",
+      "mianzeContent1": "This website is intended to provide basic information about China Tobacco International Group Co., Ltd. ('the Company') and its subsidiaries for reference only and should not be regarded as investment or other professional advice.",
+      "mianzeContent2": "The Company does not guarantee that the information contained on this website is comprehensive, accurate, or up-to-date. The Company is not responsible for any loss arising from the use of the information contained on this website (including any third-party websites accessed via hyperlinks from this website).",
+      "mianzeContent3": "This website is not for advertising or marketing purposes and is for reference only. The information contained on this website does not and should not be regarded as an inducement, suggestion, solicitation to purchase or use, advocacy, or encouragement to use any smoking products, or an offer or invitation to purchase smoking products. Such products are only sold in jurisdictions where their sale is permitted by law.",
+      "mianzeContent4": "This website provides three language versions: Simplified Chinese, Traditional Chinese, and English. In case of any discrepancy, the Simplified Chinese version shall prevail.",
+      "yinsizhengce": "Privacy Policy",
+      "yinsizhengceE": "Privacy Policy",
+      "yinsizhengceContent1": "China Tobacco International Group Co., Ltd. ('the Company') is committed to complying with the Personal Data (Privacy) Ordinance (Cap. 486 of the Laws of Hong Kong) ('Hong Kong Privacy Ordinance'). The Company will ensure that its employees implement relevant policies and strictly keep your personal data confidential.",
+      "yinsizhengceContent2": "This privacy policy and personal data collection statement ('this Statement') are intended to explain how the Company collects and uses personal data.",
+      "yinsizhengceContent3": "Generally, except for data collected by Cookies, this website does not collect your personal data. If necessary, your personal data will be collected through the contact methods designated by the Company on a voluntary basis.",
+      "yinsizhengceContent4": "However, when you access any third-party website via hyperlinks from this website, such third-party websites may collect your personal data as a result of your use of their services. If such behavior occurs, please be sure to carefully read and understand the privacy policy statement and/or personal data collection statement formulated by the relevant third-party website. The Company is not responsible for protecting your privacy and personal data security and will not be responsible for any of its content.",
+      "yinsizhengceContent5": "The Company will update this Statement as necessary. Please read the latest revised Statement from time to time.",
+      "yinsizhengceContent6": "Collection and Use of Personal Data",
+      "yinsizhengceContent7": "Personal Data Collected",
+      "yinsizhengceContent8": "The personal data collected and used by the Company will depend on the purpose of collection and use. Such personal data may include relevant information such as name, contact details, and other information ('Personal Data').",
+      "yinsizhengceContent9": "Purpose of Collecting Personal Data",
+      "yinsizhengceContent10": "The purposes for which the Company collects and uses your personal data include but are not limited to the following:",
+      "yinsizhengceContent11": "- For recruitment and other human resources management purposes;",
+      "yinsizhengceContent12": "- Performance and execution of contracts",
+      "yinsizhengceContent13": "- Responding to comments, inquiries, and complaints;",
+      "yinsizhengceContent14": "- Preventing fraud or other illegal activities;",
+      "yinsizhengceContent15": "Disclosure as required by relevant laws or regulations",
+      "yinsizhengceContent16": "- Collecting and organizing visitor data for website usage analysis;",
+      "yinsizhengceContent17": "- Monitoring the operation of this website to assist its future development and improvement;",
+      "yinsizhengceContent18": "- Other purposes related to the above.",
+      "yinsizhengceContent19": "Disclosure and Transfer of Personal Data",
+      "yinsizhengceContent20": "To fulfill the purposes described in this Statement, the Company may, where reasonable and necessary, transfer your personal data to the Company's employees, subsidiary employees, affiliated companies, third-party business partners, and service providers.",
+      "yinsizhengceContent21": "Without your prior consent, the Company will not intentionally or deliberately use, disclose, transfer, or provide access to your personal data for any purpose unrelated to the above. Except as stated above, the Company will not provide, disclose, transfer, or provide access to your personal data to any other third party.",
+      "yinsizhengceContent22": "Retention of Personal Data",
+      "yinsizhengceContent23": "In compliance with legal, accounting, or relevant compliance requirements, the Company will retain your personal data in an appropriate manner for no longer than is necessary to fulfill the purposes described in this Statement. The relevant data will be destroyed or deleted after the relevant purposes are completed without further notice.",
+      "yinsizhengceContent24": "Protection of Personal Data Security",
+      "yinsizhengceContent25": "The Company is committed to taking all reasonably practicable measures to protect your personal data, including adopting industry-standard security measures, ensuring that only authorized personnel can access it, and regularly providing security and confidentiality training to the Company's employees.",
+      "yinsizhengceContent26": "Use of Cookies",
+      "yinsizhengceContent27": "Cookies are a commonly used technology on the Internet. When you browse the website, a small file is created by the web server and stored by the web browser on your computer or other device. The Company uses Cookies on the website to enhance your browsing experience.",
+      "yinsizhengceContent28": "The Company will only collect such data on a voluntary basis. You have the right to choose whether to accept Cookies. If you wish to accept Cookies, please click the pop-up banner at the bottom of the webpage when you first visit this website or set it through your browser. If you do not accept Cookies, you may not be able to experience the corresponding functions of this website that rely on Cookies.",
+      "yinsizhengceContent29": "The Company will not use Cookies for any purpose other than those described in this Statement.",
+      "yinsizhengceContent30": "Access and Correction of Personal Data",
+      "yinsizhengceContent31": "You have the right to request access to or correction of your personal data in accordance with the Hong Kong Privacy Ordinance. If you have any requests for access or correction of data, you may submit them in writing to the Company's Confidentiality Officer, marked 'Confidential Data' on the envelope, and mail it to the following address:",
+      "yinsizhengceContent32": "China Tobacco International Group Co., Ltd.",
+      "yinsizhengceContent33": "19th Floor, South Tower, Concordia Plaza, No. 1 Science Museum Road, Tsim Sha Tsui East, Kowloon, Hong Kong",
+      "yinsizhengceContent34": "For Confidentiality Officer",
+      "wzasm": "Accessibility Statement",
+      "wzasmContent1": "We are committed to ensuring that this website complies with the Web Content Accessibility Guidelines (WCAG) 2.1 AA level standards of the World Wide Web Consortium (W3C). However, this website contains a large amount of multimedia content, and it is not possible to ensure that all such content fully complies with all AA level standards. Nevertheless, such multimedia content is placed in specific locations to ensure that it does not hinder users from accessing important content on this website. If you have any inquiries, please email wongly@cti-group.com.hk, and we will do our best to provide you with the information you need in the required format.",
+      "banquansuoyou": "All Rights Reserved © China Tobacco International Group Co., Ltd.",
+      "tishi": "Smoking is harmful to health. This website contains tobacco-related content and is not intended for minors!",
+      "gengduoxinwen": "More News",
+      "zygjjt": "China Tobacco International Group Co., Ltd.",
+      "zygjjt1": "China Tobacco International Co., Ltd.",
+      "zygjjtContent": "China Tobacco International Group Co., Ltd. is located in Hong Kong, China, and is the overseas entity of China National Tobacco Corporation. Its main internal departments include Public Affairs Department, Strategic Development Department, Marketing Department, Supply Chain Department, Production and Operation Department, Finance Department, Human Resources Department, Information and Digitalization Department, Compliance and Risk Control Department, and Supervision Department, totaling 10 departments.",
+      "zygjjtContent1": "The group's major participating and holding enterprises include China Tobacco Hong Kong, Tianze Company, China Tobacco Brazil, China Tobacco North America, China Tobacco Argentina, China Tobacco Middle East, China Tobacco British American, China Tobacco Philip Morris, Macao Jinye, Laos Hongta, Cambodia Wellington, Hongta Switzerland, and Hongta Switzerland Romania.",
+      "zygjjtContent2": "China Tobacco International Co., Ltd. is located in Beijing, China, and serves as the Beijing branch of China Tobacco International Group Co., Ltd. Its internal departments include the General Affairs Department, State Trade Department, and Financial Management Department, totaling 3 departments.",
+      "ywjs": "Business Introduction",
+      "ywjs1": "China Tobacco International Group Co., Ltd. mainly engages in the international business of cigarettes and new tobacco products, leaf tobacco, tobacco machinery, acetate tow, cigarette paper, and other raw and auxiliary products, as well as cigarette production and processing.",
+      "ywzx": "Business Consultation",
+      "ywzx1": "Consultation on leaf tobacco, tobacco machinery, acetate tow, cigarette paper, etc.",
+      "ywzx2": "Consultation on cigarettes, new tobacco products, etc.",
+      "ywzx3": "Consultation on cigarette production and processing, etc.",
+      "contactAddress": "China Tobacco International Group Co., Ltd.",
+      "contactAddress1": "Room 1901, 19th Floor, South Tower, Concordia Plaza, No. 1 Science Museum Road, Kowloon, Hong Kong, China",
+      "tousu": "Complaint Channels",
+      "suoshuqiye": "Group Participating and Holding Enterprises",
+      "jt": "Group",
+      "ssqy": "Participating and Holding Enterprises",
+      "zyxg": {
+        "title": "China Tobacco International (Hong Kong) Company Limited",
+        "content": "China Tobacco International (Hong Kong) Company Limited is located in Hong Kong, China. It was listed on the Hong Kong Stock Exchange in June 2019 (China Tobacco Hong Kong, 6055.HK) and is the only listed tobacco business company within the China Tobacco system. It mainly engages in the international business of cigarettes, leaf tobacco, new tobacco products, and other tobacco products.",
+        "phone": "+852 26209500",
+        "website": "www.ctihk.com.hk"
       },
-      {
-        "title": "China Tobacco Hong Kong Shines at Dortmund InterTabac 2024 International Tobacco Exhibition, Deepening Global Tobacco Market Layout",
-        "title1": "InterTabac 2024 International Tobacco Exhibition",
-        "content": "On September 19, 2024, Beijing time, the InterTabac 2024 International Tobacco Exhibition opened in Dortmund, Germany.",
-        "date": "2024.09.16"
-      }
-    ],
-    "unit": "Billion HKD",
-    "yingyeshouru":"Revenue",
-    "unit1": "HKD",
-    "zichanjingzhi": "Net Asset Value",
-    "meiguyingli": "Earnings Per Share",
-    "gengduoxinwen": "More News",
-    "banquansuoyou":"Copyright © China Tobacco International Group Co., Ltd.",
-    "tishi": "Smoking is harmful to health. This website contains tobacco-related content. Minors are not allowed to visit!",
-    "suoshuqiye": "Group affiliated enterprises",
-    "jt": "Group",
-    "ssqy": "Subsidiaries",
-    "wzasm": "Accessibility Statement"
-
+      "tzyc": {
+        "title": "Tianze Company",
+        "content": "Tianze Company is located in Harare, Zimbabwe, mainly engaged in the procurement and export of leaf tobacco.",
+        "phone": "+263 719754365/7"
+      },
+      "zybx": {
+        "title": "China Tobacco International Brazil Co., Ltd.",
+        "content": "China Tobacco International Brazil Co., Ltd. is located in Santa Cruz do Sul, Rio Grande do Sul, Brazil. It jointly invested with United International Brazil to establish China-Brazil Tobacco Export Co., Ltd., mainly engaged in the procurement and export of leaf tobacco.",
+        "phone": "+55 51981867090"
+      },
+      "zybn": {
+        "title": "China Tobacco International (North America) Co., Ltd.",
+        "content": "China Tobacco International (North America) Co., Ltd. is located in Raleigh, North Carolina, USA, mainly engaged in the procurement and export of leaf tobacco.",
+        "phone": "+1 (919)307-8449"
+      },
+      "zyag": {
+        "title": "China Tobacco International Argentina Co., Ltd.",
+        "content": "China Tobacco International Argentina Co., Ltd. is located in Salta, Argentina, mainly engaged in the procurement and export of leaf tobacco.",
+        "phone": "+54 93875139158"
+      },
+      "zyzd": {
+        "title": "China Tobacco International (Middle East) Co., Ltd.",
+        "content": "China Tobacco International (Middle East) Co., Ltd. is located in Dubai, UAE, mainly engaged in the marketing of cigarettes and other tobacco products.",
+        "phone": "+971 43991810"
+      },
+      "zyyb": {
+        "title": "China Tobacco British American International Co., Ltd.",
+        "content": "China Tobacco British American International Co., Ltd. is located in Hong Kong, China. It is a joint venture between China National Tobacco and British American Tobacco, mainly engaged in the marketing of cigarettes and other tobacco products.",
+        "phone": "+852 31295331"
+      },
+      "zyfm": {
+        "title": "China Tobacco Philip Morris International Co., Ltd.",
+        "content": "China Tobacco Philip Morris International Co., Ltd. is located in Lausanne, Switzerland. It is a joint venture between China National Tobacco and Philip Morris International, mainly engaged in the marketing of cigarettes and other tobacco products.",
+        "phone": "+41 215254620"
+      },
+      "zyhk": {
+        "title": "China Tobacco International (Hong Kong) Manufacturing Co., Ltd.",
+        "content": "China Tobacco International (Hong Kong) Manufacturing Co., Ltd. is located in Hong Kong, China, mainly engaged in cigarette manufacturing.",
+        "phone": ""
+      },
+      "zymo": {
+        "title": "Macao Jinye",
+        "content": "Macao Jinye is located in Macao, China, mainly engaged in cigarette manufacturing.",
+        "phone": ""
+      },
+      "zyls": {
+        "title": "Laos Hongta",
+        "content": "Laos Hongta is located in Savannakhet, Laos, mainly engaged in cigarette manufacturing.",
+        "phone": ""
+      },
+      "zyjm": {
+        "title": "Cambodia Wellington",
+        "content": "Cambodia Wellington is located in Phnom Penh, Cambodia, mainly engaged in cigarette manufacturing.",
+        "phone": ""
+      },
+      "zylm": {
+        "title": "China Tobacco International (Romania) Manufacturing Co., Ltd.",
+        "content": "China Tobacco International (Romania) Manufacturing Co., Ltd. is located in Bucharest, Romania, mainly engaged in cigarette manufacturing.",
+        "phone": ""
+      },
+      "zysw": {
+        "title": "Hongta Switzerland",
+        "content": "Hongta Switzerland is located in Baar, Switzerland, mainly engaged in the marketing of cigarettes and other tobacco products.",
+        "phone": ""
+      },
+      "companyList": [
+        {
+          "id": 1,
+          "name": "China Tobacco Hong Kong",
+          "nameEnglish": "China Tobacco International (Hong Kong)"
+        },
+        {
+          "id": 2,
+          "name": "Tianze Company",
+          "nameEnglish": "Tianze Company"
+        },
+        {
+          "id": 3,
+          "name": "China Tobacco Brazil",
+          "nameEnglish": "China Tobacco International Brazil"
+        },
+        {
+          "id": 4,
+          "name": "China Tobacco North America",
+          "nameEnglish": "China Tobacco International (North America)"
+        },
+        {
+          "id": 5,
+          "name": "China Tobacco Argentina",
+          "nameEnglish": "China Tobacco International Argentina"
+        },
+        {
+          "id": 6,
+          "name": "China Tobacco Middle East",
+          "nameEnglish": "China Tobacco International (Middle East)"
+        },
+        {
+          "id": 7,
+          "name": "China Tobacco British American",
+          "nameEnglish": "China Tobacco British American International"
+        },
+        {
+          "id": 8,
+          "name": "China Tobacco Philip Morris",
+          "nameEnglish": "China Tobacco Philip Morris International"
+        },
+        {
+          "id": 10,
+          "name": "Macao Jinye",
+          "nameEnglish": "Macao Jinye"
+        },
+        {
+          "id": 11,
+          "name": "Laos Hongta",
+          "nameEnglish": "Laos Hongta"
+        },
+        {
+          "id": 12,
+          "name": "Cambodia Wellington",
+          "nameEnglish": "Cambodia Wellington"
+        },
+        {
+          "id": 14,
+          "name": "Hongta Switzerland",
+          "nameEnglish": "Hongta Switzerland"
+        },
+        {
+          "id": 15,
+          "name": "Hongta Switzerland Romania",
+          "nameEnglish": "Hongta Switzerland Romania"
+        }
+      ],
+      "contactAddress2": "Room 1908, 19th Floor, South Tower, Concordia Plaza, No. 1 Science Museum Road, Tsim Sha Tsui East, Kowloon, Hong Kong, Supervision Department",
+      "contactPhone": "852-26207376",
+      "complaintsPhone": "852-26207376",
+      "complaintsEmail": "whistleb@cti-group.com.hk",
+      "complaintsTime": "Working days 9:00—18:00 (Beijing Time)",
+      "laixinlaifangdizhi": "Mailing and Visiting Address",
+      "lianxidianhua": "Contact Phone",
+      "tousudianhua": "Complaint Phone",
+      "tousuyouxiang": "Complaint Email",
+      "laifangjitousudianhuashoulishijian": "Reception Time for Visits and Complaint Calls"
+    }
   }
-}
