@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, onBeforeUnmount } from 'vue';
+import { complaintsEmail, accessibilityEmail } from '@/config/contact.js';
 const dialogVisible = ref(false);
 const dialogType = ref(1);
 const openDialog = (type) => {
@@ -9,6 +10,26 @@ const openDialog = (type) => {
 const closeDialog = () => {
     dialogVisible.value = false;
 };
+
+// 防止弹窗打开时背景页面滚动：通过给 body 添加/移除类来控制 overflow
+const toggleBodyNoScroll = (enable) => {
+    try {
+        if (enable) document.body.classList.add('no-scroll');
+        else document.body.classList.remove('no-scroll');
+    } catch (e) {
+        // 在某些 SSR 环境或测试环境中 document 可能未定义，忽略错误
+        // console.warn('toggleBodyNoScroll error', e);
+    }
+};
+
+watch(dialogVisible, (val) => {
+    toggleBodyNoScroll(val);
+});
+
+onBeforeUnmount(() => {
+    // 确保组件卸载时移除类
+    toggleBodyNoScroll(false);
+});
 </script>
 <template>
     <div class="footerBox">
@@ -46,7 +67,7 @@ const closeDialog = () => {
                 <template v-else-if="dialogType === 3">
                     <!-- 这里填写第3个弹窗内容 -->
                     <div>{{ $t("message.wzasm") }}</div>
-                    <p>{{ $t("message.wzasmContent1") }}</p>
+                    <p>{{ $t('message.wzasmContent1', { email: accessibilityEmail }) }}</p>
                 </template>
                 <template v-else-if="dialogType === 5">
                     <!-- 这里填写第5个弹窗内容 -->
@@ -59,6 +80,12 @@ const closeDialog = () => {
     </div>
 </template>
 <style>
+/* 当弹窗打开时禁止背景滚动 */
+body.no-scroll {
+    overflow: hidden !important;
+    touch-action: none;
+}
+
 .footerBox {
     display: flex;
     justify-content: center;
@@ -193,12 +220,16 @@ const closeDialog = () => {
     border-radius: 12px;
     width: 50vw;
     max-width: 900px;
-    max-height: 90vh;
+    max-height: 60vh;
     position: relative;
     box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
-    padding: 3rem 4rem 2.5rem;
+    padding: 3rem 1.5rem 2.5rem;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 767px) {
+       width: 80vw;
+    }
+
 }
 
 .footer-dialog-close {

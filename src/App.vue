@@ -6,7 +6,8 @@ const confirmEnter = () => {
   ageModalVisible.value = false;
 };
 const denyEnter = () => {
-  window.location.href = 'https://www.gov.hk/tc/theme/psi/';
+  // window.location.href = 'https://www.gov.hk/tc/theme/psi/';
+  alert('您未满18岁，无法进入本网站');
 };
 // 接受 对象类型 数据的参数传入并返回一个响应式的对象
 const state = reactive({

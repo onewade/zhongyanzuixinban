@@ -66,7 +66,7 @@ onBeforeUnmount(() => {
   <div class="quick-nav-btn" ref="navBtnRef">
     <div class="quickBtn" size="" @click="toggleNav">
       <div class="guide-btn" @click="showGuide">
-          使用指南
+          {{ $t("message.shiyongzhinan") }}
         </div>
     </div>
     <transition name="fade">

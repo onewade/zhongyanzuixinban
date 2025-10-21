@@ -1,23 +1,20 @@
 <script setup>
 import Layout from '../components/common/Layout.vue';
-import { onMounted, ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { complaintsEmail, accessibilityEmail } from '@/config/contact.js';
 
 const { t } = useI18n();
 
-const contactAddress = ref([
-    { number: 1, address: '' }
+// 使用 computed 包裹 t() 调用，确保当语言（locale）变化时文本会自动更新
+const contactAddress = computed(() => [
+    { number: '+852-26206011', address: t('message.ywzx2'), email: 'marketing@cti-group.com.hk' },
+    { number: '+852-26206308', address: t('message.ywzx1'), email: 'supplychain@cti-group.com.hk' },
+    { number: '+852-26206055', address: t('message.ywzx3'), email: 'production@cti-group.com.hk' },
+    { number: '+852-26207376', address: t('message.tousu'), email: complaintsEmail }
 ]);
+
 const moreVisible = ref(false);
-onMounted(() => {
-    // 在组件挂载后设置国际化文本
-    contactAddress.value = [
-        { number: '+852-XXXXXXXX', address: t('message.ywzx2'), email: 'xxxxx@xxxx.com' },
-        { number: '+852-XXXXXXXX', address: t('message.ywzx1'), email: 'xxxxx@xxxx.com' },
-        { number: '+852-26206055', address: t('message.ywzx3'), email: 'yangy@cti-group.com.hk' },
-        { number: '+852-26207376', address: t('message.tousu'), email: 'whistleb@cti-group.com.hk' }
-    ];
-});
 </script>
 <template>
     <div>
@@ -43,7 +40,7 @@ onMounted(() => {
                                 <div>{{ item.number }}</div>
                                 <div>{{ item.email }}</div>
                                 <div>{{ item.address }}</div>
-                                <div v-if="key === 3" class="more" @click="moreVisible = !moreVisible">查看更多>></div>
+                                <div v-if="key === 3" class="more" @click="moreVisible = !moreVisible">{{ $t("message.chakan") }}>></div>
                                 <!-- 只在第四个盒子上方覆盖显示更多内容 -->
                                 <div v-if="key === 3 && moreVisible" class="more-box">
                                     <span class="close-btn" @click="moreVisible = false">×</span>
@@ -53,7 +50,7 @@ onMounted(() => {
                                             $t("message.lianxidianhua") }}：{{
                                                 $t("message.complaintsPhone") }}</div>
                                         <div>{{ $t("message.tousudianhua") }}：852-26207376</div>
-                                        <div>{{ $t("message.tousuyouxiang") }}：whistleb@cti-group.com.hk</div>
+                                        <div>{{ $t("message.tousuyouxiang") }}：{{ complaintsEmail }}</div>
                                         <div>{{ $t("message.laifangjitousudianhuashoulishijian") }}{{
                                             $t("message.complaintsTime") }}</div>
                                     </div>

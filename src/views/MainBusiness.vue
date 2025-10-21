@@ -1,6 +1,7 @@
 <script setup>
 import { nextTick, onMounted, ref } from 'vue';
 import Layout from '../components/common/Layout.vue';
+import { yangyEmail } from '@/config/contact.js';
 </script>
 <template>
     <div>
@@ -24,10 +25,10 @@ import Layout from '../components/common/Layout.vue';
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +852XXXXXXXX
+                                    +852-26206011
                                 </div>
                                 <div>
-                                    xxxx@xxx.com
+                                    marketing@cti-group.com.hk
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx2') }}</div>
@@ -36,10 +37,10 @@ import Layout from '../components/common/Layout.vue';
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +852XXXXXXXX
+                                    +852-26206308
                                 </div>
                                 <div>
-                                    xxxx@xxx.com
+                                    supplychain@cti-group.com.hk
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx1') }}</div>
@@ -51,7 +52,8 @@ import Layout from '../components/common/Layout.vue';
                                     +852-26206055
                                 </div>
                                 <div>
-                                    yangy@cti-group.com.hk
+                                    <!-- {{ yangyEmail }} -->
+                                      production@cti-group.com.hk
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx3') }}</div>

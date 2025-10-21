@@ -20,6 +20,7 @@ import guanaishequ from '../assets/images/newsPic/guanaishequ.png';
 import lifa from '../assets/images/newsPic/lifa.png';
 import { useI18n } from 'vue-i18n'
 const { t, locale, messages } = useI18n()
+import { yangyEmail } from '@/config/contact.js';
 
 // 当前语言（可在模板或逻辑中使用）
 const currentLanguage = ref(getCurrentLanguage());
@@ -152,6 +153,8 @@ const newsList = ref([
 		date: '2025-07-18'
 	},
 ])
+// 获取新闻列表
+const newsListIndex = computed(()=>messages.value[locale.value].message.newsListIndex)
 // 引用zh-CN里面的companyList数组
 const companyList = computed(() => messages.value[locale.value].message.companyList)
 const route = useRouter();
@@ -253,7 +256,7 @@ onBeforeUnmount(() => {
 			<div class="news-content">
 				<div class="newsTitle" v-if="!isMobile">{{ $t('message.t3') }}</div>
 				<div class="news-boxes">
-					<div v-for="item in newsList" :key="item.title" class="news-item" @click="goDetail(item.id)">
+					<div v-for="item in newsListIndex" :key="item.title" class="news-item" @click="goDetail(item.id)">
 						<div class="news-item-title">{{ item.title }}</div>
 						<div class="news-item-content">{{ item.content }}</div>
 						<span class="news-item-date">{{ item.date }}</span>
@@ -301,9 +304,9 @@ onBeforeUnmount(() => {
                                 <div>
                                     +852-26206055
                                 </div>
-                                <div>
-                                    yangy@cti-group.com.hk
-                                </div>
+								<div>
+									{{ yangyEmail }}
+								</div>
                                 <div>
                                     <div>{{ $t('message.ywzx3') }}</div>
                                 </div>

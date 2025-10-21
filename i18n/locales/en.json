@@ -15,6 +15,7 @@
       "t8": "Corporate Website",
       "newTitle": "News & Information",
       "more": "More",
+      "chakan": "See more",
       "mianze": "Disclaimer",
       "siyin": "Privacy Policy",
       "lianxi": "Contact Us",
@@ -89,7 +90,7 @@
       "yinsizhengceContent33": "19th Floor, South Tower, Concordia Plaza, No. 1 Science Museum Road, Tsim Sha Tsui East, Kowloon, Hong Kong",
       "yinsizhengceContent34": "For Confidentiality Officer",
       "wzasm": "Accessibility Statement",
-      "wzasmContent1": "We are committed to ensuring that this website complies with the Web Content Accessibility Guidelines (WCAG) 2.1 AA level standards of the World Wide Web Consortium (W3C). However, this website contains a large amount of multimedia content, and it is not possible to ensure that all such content fully complies with all AA level standards. Nevertheless, such multimedia content is placed in specific locations to ensure that it does not hinder users from accessing important content on this website. If you have any inquiries, please email wongly@cti-group.com.hk, and we will do our best to provide you with the information you need in the required format.",
+      "wzasmContent1": "We are committed to ensuring that this website complies with the Web Content Accessibility Guidelines (WCAG) 2.1 AA level standards of the World Wide Web Consortium (W3C). However, this website contains a large amount of multimedia content, and it is not possible to ensure that all such content fully complies with all AA level standards. Nevertheless, such multimedia content is placed in specific locations to ensure that it does not hinder users from accessing important content on this website. If you have any inquiries, please email {email}, and we will do our best to provide you with the information you need in the required format.",
       "banquansuoyou": "All Rights Reserved © China Tobacco International Group Co., Ltd.",
       "tishi": "Smoking is harmful to health. This website contains tobacco-related content and is not intended for minors!",
       "gengduoxinwen": "More News",
@@ -251,12 +252,73 @@
       "contactAddress2": "Room 1908, 19th Floor, South Tower, Concordia Plaza, No. 1 Science Museum Road, Tsim Sha Tsui East, Kowloon, Hong Kong, Supervision Department",
       "contactPhone": "852-26207376",
       "complaintsPhone": "852-26207376",
-      "complaintsEmail": "whistleb@cti-group.com.hk",
+      "complaintsEmail": "",
       "complaintsTime": "Working days 9:00—18:00 (Beijing Time)",
       "laixinlaifangdizhi": "Mailing and Visiting Address",
       "lianxidianhua": "Contact Phone",
       "tousudianhua": "Complaint Phone",
       "tousuyouxiang": "Complaint Email",
-      "laifangjitousudianhuashoulishijian": "Reception Time for Visits and Complaint Calls"
+      "laifangjitousudianhuashoulishijian": "Reception Time for Visits and Complaint Calls",
+      "shiyongzhinan": "User Guide",
+      "list": [
+        {
+          "number": 1,
+          "title": "[Social Recruitment] Recruitment for Group Employee Relations Position at China Tobacco International Group Co., Ltd.",
+          "date": "2025-06-07"
+        },
+        {
+          "number": 2
+        },
+        {
+          "number": 3
+        },
+        {
+          "number": 4
+        },
+        {
+          "number": 5
+        },
+        {
+          "number": 6
+        },
+        {
+          "number": 7
+        },
+        {
+          "number": 8
+        },
+        {
+          "number": 9
+        }
+      ]
+    ,
+    "joinTitle": "[Social Recruitment] Recruitment for Group Employee Relations Position at China Tobacco International Group Co., Ltd.",
+    "joinType": "Social Recruitment",
+    "joinPost": "Employee Relations Position – Specialist and above",
+    "joinContentlist": [
+      {
+        "title": "Job Responsibilities:",
+        "content": [
+          "1. Assist in establishing, operating, maintaining, and improving the HR sub-management system of the International Group;",
+          "2. Participate in the formulation of the job grade system;",
+          "3. Assist in recruitment activities and handle procedures such as probation, onboarding, regularization, transfers, and resignations;",
+          "4. Assist in establishing and maintaining personnel information archives and manage employment contracts;",
+          "5. Receive and handle labor disputes and employee complaints, assisting in the resolution of labor-related conflicts;",
+          "6. Analyze and study labor compliance of subsidiary companies and propose risk prevention measures;",
+          "7. Establish and maintain an international business knowledge base and an internal trainer pool;",
+          "8. Responsible for organizing and implementing trainings and daily administration."
+        ]
+      },
+      {
+        "title": "Job Requirements:",
+        "content": [
+          "1. Bachelor’s degree or above; major in Human Resources Management, Administrative Management, or related management disciplines;",
+          "2. At least 3 years of HR-related work experience in Hong Kong companies;",
+          "3. Familiar with Hong Kong Employment Ordinance and relevant labor policies;",
+          "4. Strong communication and analytical skills, with good English listening, speaking, reading and writing ability;",
+          "5. Proficient in Office software; experience in preparing management system documentation is preferred."
+        ]
+      }
+    ]
     }
   }

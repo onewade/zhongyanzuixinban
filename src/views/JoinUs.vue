@@ -1,23 +1,20 @@
 <script setup>
 import Layout from '@/components/common/Layout.vue';
 import JoinDetail from './JoinDetail.vue';
-import { onMounted, ref } from 'vue';
-const list = ref([
-    { number: 1, title: '【社会招聘】中烟国际集团有限公司集团员工关系岗招聘', date: '2025-06-07' },
-    { number: 2 },
-    { number: 3 },
-    { number: 4 },
-    { number: 5 },
-    { number: 6 },
-    { number: 7 },
-    { number: 8 },
-    { number: 9 }
-]);
+import { onMounted, ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n'
+const { t, locale, messages } = useI18n();
+const list = computed(() => messages.value[locale.value].message.list)
 const isShowDetail = ref(false); // 控制招聘详情的显示
-const handleClick = () => {
+const handleClick = (n) => {
     // 处理点击事件，显示招聘详情
     console.log('招聘信息被点击');
-    isShowDetail.value = true;
+    if (n == 1) {
+        isShowDetail.value = true;
+    } else {
+        return
+    }
+
 };
 const handleGoBack = (val) => {
     console.log('返回招聘列表');
@@ -32,12 +29,13 @@ const handleGoBack = (val) => {
                 <div class="index-page">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/zp.png" alt=""> -->
-                         <img src="../assets/images/banner.png" alt="" srcset="">
+                        <img src="../assets/images/banner.png" alt="" srcset="">
                     </div>
                 </div>
                 <div class="join-content" v-if="!isShowDetail">
                     <div class="joinTitle">{{ $t("message.t7") }}</div>
-                    <div v-for="(item, index) in list" :key="item.number" class="joinContentItem" @click="handleClick">
+                    <div v-for="(item, index) in list" :key="item.number" class="joinContentItem" :style="{ cursor: item.number == 1 ? 'pointer' : 'default' }"
+                        @click="handleClick(item.number)">
                         <div>{{ item.title }}</div>
                         <div>{{ item.date }}</div>
                     </div>
@@ -50,10 +48,11 @@ const handleGoBack = (val) => {
 
 </template>
 <style scoped>
-.joinContainer{
+.joinContainer {
     width: 100%;
     height: 100%;
 }
+
 .join-content {
     width: 66%;
     padding: 0 17% 2rem;
@@ -78,9 +77,9 @@ const handleGoBack = (val) => {
     margin: 4rem 0px 2rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid #F7B334;
-    
+
     @media screen and (max-width: 767px) {
-       margin-top:1rem; 
+        margin-top: 1rem;
     }
 }
 
@@ -91,6 +90,5 @@ const handleGoBack = (val) => {
     margin-bottom: 1rem;
     color: #555;
     font-size: 1.2rem;
-    cursor: pointer;
 }
 </style>
