@@ -21,7 +21,7 @@ const goBack = () => {
         <div class="joinDetailTitle">{{ $t("message.joinTitle") }}</div>
         <div class="date">
             <div>{{ $t("message.joinType") }}</div>
-            <div>2025-06-07 08:30:00</div>
+            <!-- <div>2025-06-07 08:30:00</div> -->
         </div>
         <div class="joinContent">
             <div class="joinTitle">{{ $t("message.joinPost")}}</div>

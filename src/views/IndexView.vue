@@ -278,10 +278,10 @@ onBeforeUnmount(() => {
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +852XXXXXXXX
+                                    +852-26206011
                                 </div>
                                 <div>
-                                    xxxx@xxx.com
+                                    marketing@cti-group.com.hk
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx2') }}</div>
@@ -290,10 +290,10 @@ onBeforeUnmount(() => {
                             <div>
                                 <img src="../assets/images/call.png" alt="">
                                 <div>
-                                    +852XXXXXXXX
+                                    +852-26206308
                                 </div>
                                 <div>
-                                    xxxx@xxx.com
+                                    supplychain@cti-group.com.hk
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx1') }}</div>
@@ -305,7 +305,7 @@ onBeforeUnmount(() => {
                                     +852-26206055
                                 </div>
 								<div>
-									{{ yangyEmail }}
+									production@cti-group.com.hk
 								</div>
                                 <div>
                                     <div>{{ $t('message.ywzx3') }}</div>
@@ -315,18 +315,17 @@ onBeforeUnmount(() => {
                     </div>
                 </div>
 		</div>
-		<div class="group-section">
+		<!-- <div class="group-section">
 			<div class="group-title">{{ $t('message.suoshuqiye') }}</div>
 			<div class="group-line"></div>
 			<div class="group-list">
 				<div v-for="(item, index) in companyList" class="group-item" :key="index" @click="handleClick(item)">
 					<div>{{ item.name }}</div>
 					<div></div>
-					<!-- <div>{{ item.nameEnglish }}</div> -->
 					<img src="../assets/images/newIndex/svg.png" alt="">
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</Layout>
 </template>
 

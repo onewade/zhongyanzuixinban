@@ -97,7 +97,7 @@
       "zygjjt": "China Tobacco International Group Co., Ltd.",
       "zygjjt1": "China Tobacco International Co., Ltd.",
       "zygjjtContent": "China Tobacco International Group Co., Ltd. is located in Hong Kong, China, and is the overseas entity of China National Tobacco Corporation. Its main internal departments include Public Affairs Department, Strategic Development Department, Marketing Department, Supply Chain Department, Production and Operation Department, Finance Department, Human Resources Department, Information and Digitalization Department, Compliance and Risk Control Department, and Supervision Department, totaling 10 departments.",
-      "zygjjtContent1": "The group's major participating and holding enterprises include China Tobacco Hong Kong, Tianze Company, China Tobacco Brazil, China Tobacco North America, China Tobacco Argentina, China Tobacco Middle East, China Tobacco British American, China Tobacco Philip Morris, Macao Jinye, Laos Hongta, Cambodia Wellington, Hongta Switzerland, and Hongta Switzerland Romania.",
+      "zygjjtContent1": "The group's invested companies focus on core businesses such as cigarette sales (including new tobacco products), leaf tobacco planting and processing, and cigarette production and manufacturing, and are located in more than ten countries and regions worldwide, including the UAE, the United States, Switzerland, Brazil, Argentina, Laos, Vietnam, and Hong Kong and Macau (China).",
       "zygjjtContent2": "China Tobacco International Co., Ltd. is located in Beijing, China, and serves as the Beijing branch of China Tobacco International Group Co., Ltd. Its internal departments include the General Affairs Department, State Trade Department, and Financial Management Department, totaling 3 departments.",
       "ywjs": "Business Introduction",
       "ywjs1": "China Tobacco International Group Co., Ltd. mainly engages in the international business of cigarettes and new tobacco products, leaf tobacco, tobacco machinery, acetate tow, cigarette paper, and other raw and auxiliary products, as well as cigarette production and processing.",
@@ -263,8 +263,7 @@
       "list": [
         {
           "number": 1,
-          "title": "[Social Recruitment] Recruitment for Group Employee Relations Position at China Tobacco International Group Co., Ltd.",
-          "date": "2025-06-07"
+          "title": "[Social Recruitment] Legal Professional Position"
         },
         {
           "number": 2
@@ -290,35 +289,33 @@
         {
           "number": 9
         }
+      ],
+      "joinTitle": "[Social Recruitment] Legal Professional Position",
+      "joinType": "",
+      "joinPost": "Legal officer",
+      "joinContentlist": [
+        {
+          "title": "Qualifications :",
+          "content": [
+            "1. Bachelor of Laws in China or Master of Laws in Hong Kong;",
+            "2. Familiar with Hong Kong laws and regulations, with excellent Chinese and English legal writing and listening and speaking skills;",
+            "3. Good learning, research and analysis ability, organization and coordination ability and team spirit, and can withstand high-intensity work pressure;",
+            "4. Ability to confidentially handle sensitive information;",
+            "5. Excellent computer skills;",
+            "6. Minimum two years of experience dealing legal affairs;",
+            "7. Experience in the legal affairs of state-owned enterprises in Hong Kong and have passed the National Legal Qualification Examination are preferred."
+          ]
+        },
+        {
+          "title": "Job Responsibilities:",
+          "content": [
+            "1. Contract management: Assist in drafting and review of legal agreements and provide legal opinions;",
+            "2. Legal research: Assist in legal research in key markets, establish database of legal information, and regularly update the content of the database; ",
+            "3. Legal training: Assist in internal legal training, coordinate and liaise with training lawyers, and draft training programs;",
+            "4. Daily legal affairs: Draft or proofread emails, legal opinion letters, and other binding documents; Oversee and maintain company agreements, legal materials, case files, and other documentation;",
+            "5. Provide administrative support as requested by legal director."
+          ]
+        }
       ]
-    ,
-    "joinTitle": "[Social Recruitment] Recruitment for Group Employee Relations Position at China Tobacco International Group Co., Ltd.",
-    "joinType": "Social Recruitment",
-    "joinPost": "Employee Relations Position – Specialist and above",
-    "joinContentlist": [
-      {
-        "title": "Job Responsibilities:",
-        "content": [
-          "1. Assist in establishing, operating, maintaining, and improving the HR sub-management system of the International Group;",
-          "2. Participate in the formulation of the job grade system;",
-          "3. Assist in recruitment activities and handle procedures such as probation, onboarding, regularization, transfers, and resignations;",
-          "4. Assist in establishing and maintaining personnel information archives and manage employment contracts;",
-          "5. Receive and handle labor disputes and employee complaints, assisting in the resolution of labor-related conflicts;",
-          "6. Analyze and study labor compliance of subsidiary companies and propose risk prevention measures;",
-          "7. Establish and maintain an international business knowledge base and an internal trainer pool;",
-          "8. Responsible for organizing and implementing trainings and daily administration."
-        ]
-      },
-      {
-        "title": "Job Requirements:",
-        "content": [
-          "1. Bachelor’s degree or above; major in Human Resources Management, Administrative Management, or related management disciplines;",
-          "2. At least 3 years of HR-related work experience in Hong Kong companies;",
-          "3. Familiar with Hong Kong Employment Ordinance and relevant labor policies;",
-          "4. Strong communication and analytical skills, with good English listening, speaking, reading and writing ability;",
-          "5. Proficient in Office software; experience in preparing management system documentation is preferred."
-        ]
-      }
-    ]
     }
   }

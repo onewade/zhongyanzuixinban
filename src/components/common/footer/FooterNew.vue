@@ -3,6 +3,14 @@ import { ref, watch, onBeforeUnmount } from 'vue';
 import { complaintsEmail, accessibilityEmail } from '@/config/contact.js';
 const dialogVisible = ref(false);
 const dialogType = ref(1);
+import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
+// 当前语言（可在模板或逻辑中使用）
+const currentLanguage = ref(getCurrentLanguage());
+
+// 直接注册语言变更监听，保存取消监听的函数以便在卸载时移除
+const _unregisterLanguageChange = onLanguageChange((lang) => {
+    currentLanguage.value = lang;
+});
 const openDialog = (type) => {
     dialogType.value = type;
     dialogVisible.value = true;
@@ -10,7 +18,6 @@ const openDialog = (type) => {
 const closeDialog = () => {
     dialogVisible.value = false;
 };
-
 // 防止弹窗打开时背景页面滚动：通过给 body 添加/移除类来控制 overflow
 const toggleBodyNoScroll = (enable) => {
     try {
@@ -29,6 +36,12 @@ watch(dialogVisible, (val) => {
 onBeforeUnmount(() => {
     // 确保组件卸载时移除类
     toggleBodyNoScroll(false);
+    // 取消语言变更监听
+    try {
+        if (typeof _unregisterLanguageChange === 'function') _unregisterLanguageChange();
+    } catch (e) {
+        console.warn('Error unregistering language change listener', e);
+    }
 });
 </script>
 <template>
@@ -57,7 +70,7 @@ onBeforeUnmount(() => {
                     <!-- 这里填写第1个弹窗内容 -->
                     <div>
                         <div>{{ $t("message.mianzeshengming") }}</div>
-                        <div>{{ $t("message.mianzeshengmingE") }}</div>
+                        <div v-if="currentLanguage !== 'en'">{{ $t("message.mianzeshengmingE") }}</div>
                         <p>{{ $t("message.mianzeContent1") }}</p>
                         <p>{{ $t("message.mianzeContent2") }}</p>
                         <p>{{ $t("message.mianzeContent3") }}</p>
@@ -67,12 +80,13 @@ onBeforeUnmount(() => {
                 <template v-else-if="dialogType === 3">
                     <!-- 这里填写第3个弹窗内容 -->
                     <div>{{ $t("message.wzasm") }}</div>
+                    <p v-if="currentLanguage !== 'en'">Accessibility</p>
                     <p>{{ $t('message.wzasmContent1', { email: accessibilityEmail }) }}</p>
                 </template>
                 <template v-else-if="dialogType === 5">
                     <!-- 这里填写第5个弹窗内容 -->
                     <div>{{ $t("message.yinsizhengce") }}</div>
-                    <p>{{ $t("message.yinsizhengceE") }}</p>
+                    <p v-if="currentLanguage !== 'en'">{{ $t("message.yinsizhengceE") }}</p>
                     <p v-for="i in 34" :key="i">{{ $t(`message.yinsizhengceContent${i}`) }}</p>
                 </template>
             </div>
