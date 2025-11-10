@@ -28,16 +28,21 @@ const addcount =()=>{
 <template>
   <div v-if="ageModalVisible" class="age-modal">
     <div class="age-modal-content">
-      <div class="age-modal-title">本人年满18岁声明</div>
+      <div class="age-modal-title">
+        <div>本人年满18岁声明</div>
+        <div><div>Declaration of Being Aged 18 or Above</div>
+      </div>
+      </div>
+      
       <div class="age-modal-desc">
         根据香港法律，不得在业务过程中，向未成年人售卖或供应烟。<br>
         <span style="font-size:0.95rem;color:#666;">
-          Under the law of Hong Kong, tobacco must not be sold or supplied to a minor in the course of business.
+          In accordance with the laws of the HKSAR, the sale and supply of tobacco products to persons under the age of 18 in the course of business is prohibited by law.
         </span>
       </div>
       <div class="age-modal-actions">
-        <button class="age-btn deny" @click="denyEnter">否，未满18岁<br>No, I'm under 18.</button>
-        <button class="age-btn confirm" @click="confirmEnter">确认进入<br>Confirm</button>
+        <button class="age-btn deny" @click="denyEnter">否，未满18岁<br>No, I am not 18 or above.</button>
+        <button class="age-btn confirm" @click="confirmEnter">确认进入<br>Enter</button>
       </div>
     </div>
   </div>

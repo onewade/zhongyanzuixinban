@@ -1,6 +1,20 @@
 <script setup>
-import Layout from '@/components/common/Layout.vue'
-import { onMounted, onUpdated, ref } from 'vue'
+import Layout from '@/components/common/Layout.vue';
+import { onMounted, onUpdated, ref,onBeforeUnmount } from 'vue';
+import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
+const currentLanguage = ref(getCurrentLanguage());
+const offLanguageListener = ref(null);
+	// 订阅全局语言变更事件（使用 utils 封装）
+	offLanguageListener.value = onLanguageChange((lang) => {
+		currentLanguage.value = lang;
+	});
+    onBeforeUnmount(() => {
+	// 取消语言变更监听
+	if (offLanguageListener.value) {
+		offLanguageListener.value();
+		offLanguageListener.value = null;
+	}
+})
 
 const projectTitleref = ref()
 const projectBox = ref()
@@ -30,6 +44,7 @@ onUpdated(() => {
         <div>
           <div class="title">{{ $t('message.zygjjt') }}</div>
           <div>{{ $t('message.zygjjtContent') }}</div>
+          <div v-if="currentLanguage == 'en'">{{  $t('message.zygjjtContent3')}}</div>
           <div>{{ $t('message.zygjjtContent1') }}</div>
         </div>
         <div class="content2">

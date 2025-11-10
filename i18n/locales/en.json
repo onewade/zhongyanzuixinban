@@ -6,12 +6,12 @@
       "title1": "Cigarette Business",
       "title2": "New Tobacco Business",
       "t1": "Home",
-      "t2": "Group Overview",
+      "t2": "About Us",
       "t3": "News",
-      "t4": "Main Business",
-      "t5": "Talent Recruitment",
-      "t6": "Contact Information",
-      "t7": "Recruitment Information",
+      "t4": "Core Business",
+      "t5": "Careers",
+      "t6": "Contact Us",
+      "t7": "Job Vacancies",
       "t8": "Corporate Website",
       "newTitle": "News & Information",
       "more": "More",
@@ -91,23 +91,27 @@
       "yinsizhengceContent34": "For Confidentiality Officer",
       "wzasm": "Accessibility Statement",
       "wzasmContent1": "We are committed to ensuring that this website complies with the Web Content Accessibility Guidelines (WCAG) 2.1 AA level standards of the World Wide Web Consortium (W3C). However, this website contains a large amount of multimedia content, and it is not possible to ensure that all such content fully complies with all AA level standards. Nevertheless, such multimedia content is placed in specific locations to ensure that it does not hinder users from accessing important content on this website. If you have any inquiries, please email {email}, and we will do our best to provide you with the information you need in the required format.",
-      "banquansuoyou": "All Rights Reserved © China Tobacco International Group Co., Ltd.",
-      "tishi": "Smoking is harmful to health. This website contains tobacco-related content and is not intended for minors!",
+      "banquansuoyou": "Copyright © China Tobacco International Group Limited",
+      "tishi": "Smoking is harmful to health. This website contains tobacco-related content and is prohibited to persons under the age of 18.",
       "gengduoxinwen": "More News",
-      "zygjjt": "China Tobacco International Group Co., Ltd.",
-      "zygjjt1": "China Tobacco International Co., Ltd.",
-      "zygjjtContent": "China Tobacco International Group Co., Ltd. is located in Hong Kong, China, and is the overseas entity of China National Tobacco Corporation. Its main internal departments include Public Affairs Department, Strategic Development Department, Marketing Department, Supply Chain Department, Production and Operation Department, Finance Department, Human Resources Department, Information and Digitalization Department, Compliance and Risk Control Department, and Supervision Department, totaling 10 departments.",
-      "zygjjtContent1": "The group's invested companies focus on core businesses such as cigarette sales (including new tobacco products), leaf tobacco planting and processing, and cigarette production and manufacturing, and are located in more than ten countries and regions worldwide, including the UAE, the United States, Switzerland, Brazil, Argentina, Laos, Vietnam, and Hong Kong and Macau (China).",
-      "zygjjtContent2": "China Tobacco International Co., Ltd. is located in Beijing, China, and serves as the Beijing branch of China Tobacco International Group Co., Ltd. Its internal departments include the General Affairs Department, State Trade Department, and Financial Management Department, totaling 3 departments.",
-      "ywjs": "Business Introduction",
+      "zygjjt": "China Tobacco International Group Limited",
+      "zygjjt1": "China Tobacco International Inc.",
+      "zygjjtContent": "China Tobacco International Group Limited is headquartered in Hong Kong, China, and serves as the operational entity of China National Tobacco Corporation outside the Chinese mainland. Its internal structure primarily comprises the following 10 departments: ",
+      "zygjjtContent3": "Public Affairs Department, Strategy Development Department, Marketing Department, Supply Chain Department, Production & Operations Department, Finance Department, Human Resources Department, Information & Digitalization Department, Compliance & Risk Control Department, and Supervision Department. ",
+      "zygjjtContent1": "CTIG's subsidiaries focus on core businesses including tobacco product sales (including cigarettes, cigars, and new tobacco products), tobacco leaf cultivation and processing, and cigarette manufacturing. These subsidiaries operate in more than 10 countries and regions worldwide, such as the United Arab Emirates, the United States, Switzerland, Brazil, Argentina, Laos, Vietnam, China's Hong Kong, and Macau.",
+      "zygjjtContent2": "China Tobacco International Inc.is located in Beijing, China, and serves as the Beijing office for China Tobacco International Group Limited. Its internal structure comprises three departments: General Affairs Department, State Trade Operations Department, and Financial Management Department.",
+      "ywjs": "Business Overview",
       "ywjs1": "China Tobacco International Group Co., Ltd. mainly engages in the international business of cigarettes and new tobacco products, leaf tobacco, tobacco machinery, acetate tow, cigarette paper, and other raw and auxiliary products, as well as cigarette production and processing.",
+      "ywjs2": "China Tobacco International Group Limited drives the global expansion of China Tobacco through two key pillars:",
+      "ywjs3": "• Global Supply Chain: International trade of finished products (cigarettes and novel tobacco products), raw materials (tobacco leaf, acetate tow, cigarette paper), and machinery.",
+      "ywjs4": "• Overseas Manufacturing: End-to-end production and processing of cigarettes in international markets.",
       "ywzx": "Business Consultation",
-      "ywzx1": "Consultation on leaf tobacco, tobacco machinery, acetate tow, cigarette paper, etc.",
-      "ywzx2": "Consultation on cigarettes, new tobacco products, etc.",
-      "ywzx3": "Consultation on cigarette production and processing, etc.",
-      "contactAddress": "China Tobacco International Group Co., Ltd.",
-      "contactAddress1": "Room 1901, 19th Floor, South Tower, Concordia Plaza, No. 1 Science Museum Road, Kowloon, Hong Kong, China",
-      "tousu": "Complaint Channels",
+      "ywzx1": "Regarding Raw Materials (e.g., tobacco leaf, acetate tow, cigarette paper) and Machinery",
+      "ywzx2": "Regarding Cigarettes & Novel Tobacco Products",
+      "ywzx3": "Regarding Cigarette Production & Processing",
+      "contactAddress": "China Tobacco International Group Limited",
+      "contactAddress1": "Address: Room 1901, 19F., Green Field Tower, Concordia Plaza, 1 Science Museum Road, Tsim Sha Tsui East, Kowloon, Hong Kong, China",
+      "tousu": "Complaint and Whistleblowing Channels",
       "suoshuqiye": "Group Participating and Holding Enterprises",
       "jt": "Group",
       "ssqy": "Participating and Holding Enterprises",
@@ -249,24 +253,82 @@
           "nameEnglish": "Hongta Switzerland Romania"
         }
       ],
-      "contactAddress2": "Room 1908, 19th Floor, South Tower, Concordia Plaza, No. 1 Science Museum Road, Tsim Sha Tsui East, Kowloon, Hong Kong, Supervision Department",
+      "contactAddress2": "Supervision Department, Room 1908, 19F., Green Field Tower, Concordia Plaza, 1 Science Museum Road, Tsim Sha Tsui East, Kowloon, Hong Kong, China",
       "contactPhone": "852-26207376",
       "complaintsPhone": "852-26207376",
       "complaintsEmail": "",
-      "complaintsTime": "Working days 9:00—18:00 (Beijing Time)",
-      "laixinlaifangdizhi": "Mailing and Visiting Address",
+      "complaintsTime": "Weekdays 9:00 - 18:00 (Beijing Time)",
+      "laixinlaifangdizhi": "Address for Letters and Visits:",
       "lianxidianhua": "Contact Phone",
-      "tousudianhua": "Complaint Phone",
-      "tousuyouxiang": "Complaint Email",
-      "laifangjitousudianhuashoulishijian": "Reception Time for Visits and Complaint Calls",
+      "tousudianhua": "Complaint and Whistleblowing by Phone",
+      "tousuyouxiang": "Complaint and Whistleblowing by E-mail",
+      "laifangjitousudianhuashoulishijian": "Operating Hours for In-Person Visits and Complaint Hotline:",
       "shiyongzhinan": "User Guide",
       "list": [
         {
           "number": 1,
-          "title": "[Social Recruitment] Legal Professional Position"
+          "title": "【Open Positions】Employee Relations Position",
+          "date": "2025-06-07",
+          "joinTitle": "【Open Positions】Employee Relations Position",
+          "joinType": "Social Recruitment",
+          "joinPost": "Employee Relations Position: Specialist and above (Please apply via Jobsdb)",
+          "joinContentlist": [
+            {
+              "title": "Job Responsibilities:",
+              "content": [
+                "1. Assist in establishing, operating, maintaining, and improving the human resources management subsystem for the CTIG.",
+                "2. Participate in developing the job grade and classification system.",
+                "3. Support the recruitment process and manage employee lifecycle procedures, including those for probation, onboarding, regularization, transfer, resignation, and termination.",
+                "4. Assist in establishing and maintaining personnel records and managing employment contracts.",
+                "5. Receive and manage labor disputes and employee complaints, and support their resolution.",
+                "6. Analyze and research the labor compliance of subsidiary companies, proposing risk prevention and control measures.",
+                "7. Establish and maintain a knowledge base for international operations and an internal trainer pool.",
+                "8. Organize and execute training programs and daily management activities."
+              ]
+            },
+            {
+              "title": "Job Requirements:",
+              "content": [
+                "1. Bachelor's degree or higher in Human Resources Management, Administrative Management, or related fields.",
+                "2. Minimum of 3 years of relevant HR experience in Hong Kong-based enterprises.",
+                "3. Proficient knowledge of the Hong Kong Employment Ordinance and understanding of relevant labor policies in Hong Kong.",
+                "4. Strong communication and logical analysis skills; proficient in English across all four areas: listening, speaking, reading, and writing.",
+                "5. Proficient in MS Office applications; prior experience in developing management system documentation is preferred."
+              ]
+            }
+          ]
         },
         {
-          "number": 2
+          "number": 2,
+          "title": "【Open Positions】Legal Specialist Position",
+          "date": "2025-11-03",
+          "joinTitle": "【Open Positions】Legal Specialist Position",
+          "joinType": "",
+          "joinPost": "Legal officer（Please submit through Jobsdb）",
+          "joinContentlist": [
+            {
+              "title": "Qualifications :",
+              "content": [
+                "1. Bachelor of Laws in China or Master of Laws in Hong Kong;",
+                "2. Familiar with Hong Kong laws and regulations, with excellent Chinese and English legal writing and listening and speaking skills;",
+                "3. Good learning, research and analysis ability, organization and coordination ability and team spirit, and can withstand high-intensity work pressure;",
+                "4. Ability to confidentially handle sensitive information;",
+                "5. Excellent computer skills;",
+                "6. Minimum two years of experience dealing legal affairs;",
+                "7. Experience in the legal affairs of state-owned enterprises in Hong Kong and have passed the National Legal Qualification Examination are preferred."
+              ]
+            },
+            {
+              "title": "Job Responsibilities:",
+              "content": [
+                "1. Contract management: Assist in drafting and review of legal agreements and provide legal opinions;",
+                "2. Legal research: Assist in legal research in key markets, establish database of legal information, and regularly update the content of the database; ",
+                "3. Legal training: Assist in internal legal training, coordinate and liaise with training lawyers, and draft training programs;",
+                "4. Daily legal affairs: Draft or proofread emails, legal opinion letters, and other binding documents; Oversee and maintain company agreements, legal materials, case files, and other documentation;",
+                "5. Provide administrative support as requested by legal director."
+              ]
+            }
+          ]
         },
         {
           "number": 3
@@ -288,33 +350,6 @@
         },
         {
           "number": 9
-        }
-      ],
-      "joinTitle": "[Social Recruitment] Legal Professional Position",
-      "joinType": "",
-      "joinPost": "Legal officer",
-      "joinContentlist": [
-        {
-          "title": "Qualifications :",
-          "content": [
-            "1. Bachelor of Laws in China or Master of Laws in Hong Kong;",
-            "2. Familiar with Hong Kong laws and regulations, with excellent Chinese and English legal writing and listening and speaking skills;",
-            "3. Good learning, research and analysis ability, organization and coordination ability and team spirit, and can withstand high-intensity work pressure;",
-            "4. Ability to confidentially handle sensitive information;",
-            "5. Excellent computer skills;",
-            "6. Minimum two years of experience dealing legal affairs;",
-            "7. Experience in the legal affairs of state-owned enterprises in Hong Kong and have passed the National Legal Qualification Examination are preferred."
-          ]
-        },
-        {
-          "title": "Job Responsibilities:",
-          "content": [
-            "1. Contract management: Assist in drafting and review of legal agreements and provide legal opinions;",
-            "2. Legal research: Assist in legal research in key markets, establish database of legal information, and regularly update the content of the database; ",
-            "3. Legal training: Assist in internal legal training, coordinate and liaise with training lawyers, and draft training programs;",
-            "4. Daily legal affairs: Draft or proofread emails, legal opinion letters, and other binding documents; Oversee and maintain company agreements, legal materials, case files, and other documentation;",
-            "5. Provide administrative support as requested by legal director."
-          ]
         }
       ]
     }

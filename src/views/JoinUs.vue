@@ -6,11 +6,15 @@ import { useI18n } from 'vue-i18n'
 const { t, locale, messages } = useI18n();
 const list = computed(() => messages.value[locale.value].message.list)
 const isShowDetail = ref(false); // 控制招聘详情的显示
+// 展示第几条招聘详情
+const index = ref(0);
 const handleClick = (n) => {
     // 处理点击事件，显示招聘详情
     console.log('招聘信息被点击');
-    if (n == 1) {
+    if (n == 1 || n == 2) {
+        index.value = n;
         isShowDetail.value = true;
+
     } else {
         return
     }
@@ -34,13 +38,13 @@ const handleGoBack = (val) => {
                 </div>
                 <div class="join-content" v-if="!isShowDetail">
                     <div class="joinTitle">{{ $t("message.t7") }}</div>
-                    <div v-for="(item, index) in list" :key="item.number" class="joinContentItem" :style="{ cursor: item.number == 1 ? 'pointer' : 'default' }"
-                        @click="handleClick(item.number)">
+                    <div v-for="(item, index) in list" :key="item.number" class="joinContentItem"
+                        :style="{ cursor: item.number == 1 ||item.number == 2 ? 'pointer' : 'default' }" @click="handleClick(item.number)">
                         <div>{{ item.title }}</div>
                         <div>{{ item.date }}</div>
                     </div>
                 </div>
-                <JoinDetail @goBack="handleGoBack" v-else />
+                <JoinDetail @goBack="handleGoBack" :number="index" v-else />
 
             </div>
         </Layout>

@@ -197,8 +197,8 @@ body.no-scroll {
 }
 
 .footerFooter {
-    width: 95%;
-    font-size: 0.9rem;
+    width: 100%;
+    font-size: 0.8rem;
     margin-top: 1rem;
 }
 

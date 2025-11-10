@@ -1,7 +1,23 @@
 <script setup>
-import { nextTick, onMounted, ref } from 'vue';
+import { nextTick, onMounted, ref, onBeforeUnmount } from 'vue';
 import Layout from '../components/common/Layout.vue';
 import { yangyEmail } from '@/config/contact.js';
+import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
+import { useI18n } from 'vue-i18n';
+const { t, locale, messages } = useI18n();
+const currentLanguage = ref(getCurrentLanguage());
+const offLanguageListener = ref(null);
+// 订阅全局语言变更事件（使用 utils 封装）
+offLanguageListener.value = onLanguageChange((lang) => {
+    currentLanguage.value = lang;
+});
+onBeforeUnmount(() => {
+    // 取消语言变更监听
+    if (offLanguageListener.value) {
+        offLanguageListener.value();
+        offLanguageListener.value = null;
+    }
+})
 </script>
 <template>
     <div>
@@ -16,7 +32,11 @@ import { yangyEmail } from '@/config/contact.js';
                 <div class="contactContainer1">
                     <div class="contactContent">
                         <div>{{ $t("message.ywjs") }}</div>
-                        <div class="fw">{{ $t('message.ywjs1') }}</div>
+                        <div class="fw" style="	text-indent: 2em;" v-if="currentLanguage == 'zhTW' || currentLanguage == 'zhCN'">{{
+                            $t('message.ywjs1') }}</div>
+                        <div class="fw" v-if="currentLanguage == 'en'" >{{ $t('message.ywjs2') }}</div>
+                        <div class="fw" v-if="currentLanguage == 'en'">{{ $t('message.ywjs3') }}</div>
+                        <div class="fw" v-if="currentLanguage == 'en'">{{ $t('message.ywjs4') }}</div>
                     </div>
                     <div class="contactContent">
                         <div>{{ $t('message.ywzx') }}</div>
@@ -53,7 +73,7 @@ import { yangyEmail } from '@/config/contact.js';
                                 </div>
                                 <div>
                                     <!-- {{ yangyEmail }} -->
-                                      production@cti-group.com.hk
+                                    production@cti-group.com.hk
                                 </div>
                                 <div>
                                     <div>{{ $t('message.ywzx3') }}</div>

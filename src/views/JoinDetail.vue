@@ -3,9 +3,71 @@ import { onMounted, ref ,computed} from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n'
 const { t, locale, messages } = useI18n();
-const joinContentList = computed(()=> messages.value[locale.value].message.joinContentlist)
+// const joinContentList = computed(()=> messages.value[locale.value].message.joinContentlist)
+const props = defineProps({
+    number: {
+        type: Number,
+        required: true
+    }
+});
+// 取出当前列表项的標題（兼容不同 locale 中 list 項的字段名）
+const joinTitle = computed(() => {
+    const idx = props.number-1;
+    const list = messages.value?.[locale.value]?.message?.list;
+    if (!list || !Number.isInteger(idx)) return '';
+    const item = list[idx];
+    console.log(list);
+    
+    console.log(list[idx]);
+    
+    if (!item) return '';
+    console.log(item);
+    
+    // 支持不同命名：优先使用 joinTitle，再回退到 title
+    return item.joinTitle ?? item.title ?? '';
+});
+const joinType = computed(() => {
+    const idx = props.number-1;
+    const list = messages.value?.[locale.value]?.message?.list;
+    if (!list || !Number.isInteger(idx)) return '';
+    const item = list[idx];
+    if (!item) return '';
+    // 支持不同命名：优先使用 joinType，再回退到 date
+    return item.joinType ?? item.date ?? '';
+});
+const date = computed(() => {
+    const idx = props.number-1;
+    const list = messages.value?.[locale.value]?.message?.list;
+    if (!list || !Number.isInteger(idx)) return '';
+    const item = list[idx];
+    if (!item) return '';
+    // 支持不同命名：优先使用 date，再回退到 date
+    return item.date ?? item.date ?? '';
+});
+const joinPost = computed(() => {
+    const idx = props.number-1;
+    const list = messages.value?.[locale.value]?.message?.list;
+    if (!list || !Number.isInteger(idx)) return '';
+    const item = list[idx];
+    if (!item) return '';
+    // 支持不同命名：优先使用 joinPost，再回退到 joinPost
+    return item.joinPost ?? item.joinPost ?? '';
+});
+const joinContentList = computed(() => {
+    const idx = props.number-1;
+    const list = messages.value?.[locale.value]?.message?.list;
+    if (!list || !Number.isInteger(idx)) return [];
+    const item = list[idx];
+    if (!item) return [];
+    // 支持不同命名：优先使用 joinContentList，再回退到 joinContentlist
+    return item.joinContentList ?? item.joinContentlist ?? [];
+});
+
+
+
 const router = useRouter();
 const emit = defineEmits(['goBack']);
+
 const goBack = () => {
     console.log('返回招聘列表');
     emit('goBack',false);
@@ -18,13 +80,13 @@ const goBack = () => {
         <div class="back" @click="goBack"> 
            <img src="../assets/images/back.png" alt="">
         </div>
-        <div class="joinDetailTitle">{{ $t("message.joinTitle") }}</div>
+        <div class="joinDetailTitle">{{ joinTitle }}</div>
         <div class="date">
-            <div>{{ $t("message.joinType") }}</div>
-            <!-- <div>2025-06-07 08:30:00</div> -->
+            <div>{{ joinType }}</div>
+            <div>{{ date }}</div>
         </div>
         <div class="joinContent">
-            <div class="joinTitle">{{ $t("message.joinPost")}}</div>
+            <div class="joinTitle">{{ joinPost}}</div>
             <div v-for="(item, index) in joinContentList" :key="index" class="joinContentItem">
                 <div class="joinContentTitle">{{ item.title }}</div>
                 <div>

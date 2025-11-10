@@ -1,6 +1,6 @@
 <script setup>
 import Layout from '../components/common/Layout.vue';
-import { onBeforeUnmount, onMounted, ref ,computed} from "vue";
+import { onBeforeUnmount, onMounted, ref, computed } from "vue";
 import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
 import { getstudentAPI } from '@/apis/studentlistAPI.js';
 import { getSlidephotoAPI, getAdvantageAPI, getServiceAPI } from '@/apis/indexAPI.js';
@@ -75,7 +75,7 @@ const serviceList = ref([
 	{ id: 2, icon: 'am-icon-user', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
 	{ id: 3, icon: 'am-icon-umbrella', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
 	{ id: 4, icon: 'am-icon-briefcase', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
-]);const changeTab = (ind) => {
+]); const changeTab = (ind) => {
 	tabIndex.value = ind
 	// indexPhoto.value.style.opcity = '1'
 }
@@ -154,7 +154,7 @@ const newsList = ref([
 	},
 ])
 // 获取新闻列表
-const newsListIndex = computed(()=>messages.value[locale.value].message.newsListIndex)
+const newsListIndex = computed(() => messages.value[locale.value].message.newsListIndex)
 // 引用zh-CN里面的companyList数组
 const companyList = computed(() => messages.value[locale.value].message.companyList)
 const route = useRouter();
@@ -267,53 +267,55 @@ onBeforeUnmount(() => {
 		</div>
 		<div v-else>
 			<div class="contactContainer1">
-                    <div class="contactContent">
-                        <div>{{ $t("message.ywjs") }}</div>
-                        <div class="fw">{{ $t('message.ywjs1') }}</div>
-                    </div>
-                    <div class="contactContent">
-                        <div>{{ $t('message.ywzx') }}</div>
+				<div class="contactContent">
+					<div>{{ $t("message.ywjs") }}</div>
+					<div class="fw" style="	text-indent: 2em;">{{ $t('message.ywjs2') }}</div>
+					<div class="fw">{{ $t('message.ywjs3') }}</div>
+					<div class="fw">{{ $t('message.ywjs4') }}</div>
+				</div>
+				<div class="contactContent">
+					<div>{{ $t('message.ywzx') }}</div>
 
-                        <div class="cardContent">
-                            <div>
-                                <img src="../assets/images/call.png" alt="">
-                                <div>
-                                    +852-26206011
-                                </div>
-                                <div>
-                                    marketing@cti-group.com.hk
-                                </div>
-                                <div>
-                                    <div>{{ $t('message.ywzx2') }}</div>
-                                </div>
-                            </div>
-                            <div>
-                                <img src="../assets/images/call.png" alt="">
-                                <div>
-                                    +852-26206308
-                                </div>
-                                <div>
-                                    supplychain@cti-group.com.hk
-                                </div>
-                                <div>
-                                    <div>{{ $t('message.ywzx1') }}</div>
-                                </div>
-                            </div>
-                            <div>
-                                <img src="../assets/images/call.png" alt="">
-                                <div>
-                                    +852-26206055
-                                </div>
-								<div>
-									production@cti-group.com.hk
-								</div>
-                                <div>
-                                    <div>{{ $t('message.ywzx3') }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+					<div class="cardContent">
+						<div>
+							<img src="../assets/images/call.png" alt="">
+							<div>
+								+852-26206011
+							</div>
+							<div>
+								marketing@cti-group.com.hk
+							</div>
+							<div>
+								<div>{{ $t('message.ywzx2') }}</div>
+							</div>
+						</div>
+						<div>
+							<img src="../assets/images/call.png" alt="">
+							<div>
+								+852-26206308
+							</div>
+							<div>
+								supplychain@cti-group.com.hk
+							</div>
+							<div>
+								<div>{{ $t('message.ywzx1') }}</div>
+							</div>
+						</div>
+						<div>
+							<img src="../assets/images/call.png" alt="">
+							<div>
+								+852-26206055
+							</div>
+							<div>
+								production@cti-group.com.hk
+							</div>
+							<div>
+								<div>{{ $t('message.ywzx3') }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- <div class="group-section">
 			<div class="group-title">{{ $t('message.suoshuqiye') }}</div>
@@ -1112,147 +1114,161 @@ onBeforeUnmount(() => {
 	background-color: #fafafa;
 	width: 100%;
 }
+
 .age-modal {
-  position: fixed;
-  z-index: 99999;
-  left: 0; top: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: fixed;
+	z-index: 99999;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
+
 .age-modal-content {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
-  padding: 2.5rem 2rem 2rem;
-  max-width: 350px;
-  width: 90%;
-  text-align: center;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+	padding: 2.5rem 2rem 2rem;
+	max-width: 350px;
+	width: 90%;
+	text-align: center;
 }
+
 .age-modal-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 1.2rem;
-  color: #c9082c;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 1.2rem;
+	color: #c9082c;
 }
+
 .age-modal-desc {
-  font-size: 1.05rem;
-  margin-bottom: 2rem;
-  color: #333;
+	font-size: 1.05rem;
+	margin-bottom: 2rem;
+	color: #333;
 }
+
 .age-modal-actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.2rem;
+	display: flex;
+	justify-content: space-between;
+	gap: 1.2rem;
 }
+
 .age-btn {
-  flex: 1;
-  padding: 0.7rem 0.2rem;
-  border-radius: 6px;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s;
+	flex: 1;
+	padding: 0.7rem 0.2rem;
+	border-radius: 6px;
+	border: none;
+	font-size: 1rem;
+	cursor: pointer;
+	font-weight: bold;
+	transition: background 0.2s;
 }
+
 .age-btn.deny {
-  background: #eee;
-  color: #c9082c;
+	background: #eee;
+	color: #c9082c;
 }
+
 .age-btn.confirm {
-  background: #F7B334;
-  color: #fff;
+	background: #F7B334;
+	color: #fff;
 }
+
 .age-btn:hover {
-  opacity: 0.85;
+	opacity: 0.85;
 }
+
 .contactContainer1 {
-    width: 100%;
-    height: 100%;
-    background-color: #f7f7f7;
-    padding-bottom: 5rem;
+	width: 100%;
+	height: 100%;
+	background-color: #f7f7f7;
+	padding-bottom: 5rem;
 }
 
 .contact {
-    width: 100%;
+	width: 100%;
 
 }
 
 .fw {
-    // font-weight: 550;
-    color: #444;
+	// font-weight: 550;
+	color: #444;
+	margin-top: 2rem;
 }
 
 .bgImg {
-    width: 100%;
+	width: 100%;
 
-    >img {
-        width: 100%;
-        height: 100%;
-    }
+	>img {
+		width: 100%;
+		height: 100%;
+	}
 }
 
 .contactContent {
-    width: 65%;
-    margin: 0px auto 20px;
-    font-size: 1.3rem;
-    padding-top: 3rem;
+	width: 65%;
+	margin: 0px auto 20px;
+	font-size: 1.3rem;
+	padding-top: 3rem;
 
-    >div:nth-child(1) {
-        font-size: 1.5rem;
-        color: #F7B334;
-        font-weight: bold;
-        margin-bottom: 1.7rem;
-    }
+	>div:nth-child(1) {
+		font-size: 1.5rem;
+		color: #F7B334;
+		font-weight: bold;
+		margin-bottom: 1.7rem;
+	}
 
 }
 
 .cardContent {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-    >div {
-        width: 30%;
-        // height: 15rem;
-        background: #fff;
-        padding: 1rem;
-        text-align: center;
-        font-size: 1.6rem;
-        font-weight: 550;
-        color: #444;
+	>div {
+		width: 30%;
+		// height: 15rem;
+		background: #fff;
+		padding: 1rem;
+		text-align: center;
+		font-size: 1.6rem;
+		font-weight: 550;
+		color: #444;
 
-        >img {
-            width: 3rem;
-            height: 3rem;
-            margin: 2rem 0rem 0rem 0rem
-        }
+		>img {
+			width: 3rem;
+			height: 3rem;
+			margin: 2rem 0rem 0rem 0rem
+		}
 
-        >div:nth-child(2) {
-            font-size: 2.2rem;
-            color: #F7B334;
-        }
+		>div:nth-child(2) {
+			font-size: 2.2rem;
+			color: #F7B334;
+		}
 
-        >div:nth-child(3),
-        >div:nth-child(4) {
-            font-size: 0.9rem;
-            color: #333;
-            margin-top: 0.5rem;
-        }
-    }
+		>div:nth-child(3),
+		>div:nth-child(4) {
+			font-size: 0.9rem;
+			color: #333;
+			margin-top: 0.5rem;
+		}
+	}
 
-    @media screen and (max-width: 767px) {
-        width: 100%;
-        display: block;
+	@media screen and (max-width: 767px) {
+		width: 100%;
+		display: block;
 
-        >div {
-            padding: 0rem;
-            width: 100%;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            padding-top: 1rem;
-        }
+		>div {
+			padding: 0rem;
+			width: 100%;
+			margin-bottom: 2rem;
+			padding-bottom: 2rem;
+			padding-top: 1rem;
+		}
 
-    }
+	}
 }
 </style>

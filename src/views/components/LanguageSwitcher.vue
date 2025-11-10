@@ -50,13 +50,9 @@ const changeLanguage = (lang) => {
   localStorage.setItem('language', lang);
   // 触发自定义事件，通知其他组件语言已更改
   window.dispatchEvent(new CustomEvent('languageChanged', { detail: lang }));
-
-  console.log(`语言已切换为: ${lang}`);
   // 如果当前的语言是英语，把.nav字体改成Helvetica, Arial, sans-serif
   if (lang === 'en') {
     const path = router.currentRoute.value.path; // 或 fullPath
-    console.log('当前路径:', path);
-
     if (path.startsWith('/newsDetail') || path.startsWith('/news')) {
       router.replace({ path: '/index', query: {} });
     } else {
@@ -86,7 +82,7 @@ const handleResize = () => {
   screenWidth.value = window.innerWidth;
 
   // 当页面宽度小于768时，隐藏类名是changeItem的div
-  if (screenWidth.value < 768) {
+  if (screenWidth.value < 769) {
     // 获取类名是changeItem的全部div
     document.querySelectorAll('.changeItem').forEach(item => {
       item.style.display = 'none'
@@ -132,8 +128,6 @@ onMounted(() => {
       navElement.style.fontFamily = "'Source Han Sans CN', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', 'Heiti SC', 'PingFang SC', 'WenQuanYi Micro Hei', 'Helvetica Neue', Helvetica, Arial, sans-serif";
     }
   }
-  console.log(`初始化语言: ${savedLanguage}`);
-
   // 延迟执行响应式处理，避免与dropdown初始化冲突
   // setTimeout(() => {
   // 添加resize监听器
