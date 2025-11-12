@@ -2,11 +2,11 @@
 // createWebHistory：创建history模式的路由
 import { createRouter, createWebHistory } from 'vue-router'
 import IndexView from '@/views/IndexView.vue'
-import AboutView from '@/views/Aboutview.vue'
+import AboutView from '@/views/AboutView.vue'
 import ProductView from '@/views/ProductView.vue'
 import ProductDetailsView from '@/views/ProductDetailsView.vue'
 import ExampleView from '@/views/ExampleView.vue'
-import NewsView from '@/views/NewView.vue'
+// import NewsView from '@/views/NewView.vue'
 import NewsDetailsView from '@/views/NewsDetailsView.vue'
 import Solution from '@/views/Solution.vue'
 import MainBusiness from '@/views/MainBusiness.vue'

@@ -2,17 +2,17 @@
 import Layout from '../components/common/Layout.vue';
 import { onBeforeUnmount, onMounted, ref, computed } from "vue";
 import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
-import { getstudentAPI } from '@/apis/studentlistAPI.js';
-import { getSlidephotoAPI, getAdvantageAPI, getServiceAPI } from '@/apis/indexAPI.js';
-import index1 from '../assets/images/newindex/lunbo1.png';
-import index2 from '../assets/images/newindex/lunbo2.png';
-import index3 from '../assets/images/newindex/lunbo3.png';
+// import { getstudentAPI } from '@/apis/studentlistAPI.js';
+// import { getSlidephotoAPI, getAdvantageAPI, getServiceAPI } from '@/apis/indexAPI.js';
+// import index1 from '../assets/images/newindex/lunbo1.png';
+// import index2 from '../assets/images/newindex/lunbo2.png';
+// import index3 from '../assets/images/newindex/lunbo3.png';
 import c1 from '../assets/images/newIndex/c1.png';
 import c2 from '../assets/images/newindex/c2.png';
 import c3 from '../assets/images/newindex/c3.png';
-import news from '../assets/images/newindex/news.png';
-import news1 from '../assets/images/newindex/news1.png';
-import news2 from '../assets/images/newindex/news2.png';
+// import news from '../assets/images/newindex/news.png';
+// import news1 from '../assets/images/newindex/news1.png';
+// import news2 from '../assets/images/newindex/news2.png';
 import bannner from '../assets/images/banner.png';
 import { useRouter } from 'vue-router';
 import zhounian from '../assets/images/newIndex/80zhounian.jpg';
@@ -20,7 +20,7 @@ import guanaishequ from '../assets/images/newsPic/guanaishequ.png';
 import lifa from '../assets/images/newsPic/lifa.png';
 import { useI18n } from 'vue-i18n'
 const { t, locale, messages } = useI18n()
-import { yangyEmail } from '@/config/contact.js';
+// import { yangyEmail } from '@/config/contact.js';
 
 // 当前语言（可在模板或逻辑中使用）
 const currentLanguage = ref(getCurrentLanguage());
