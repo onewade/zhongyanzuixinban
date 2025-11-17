@@ -117,7 +117,7 @@ onBeforeUnmount(() => {
 			<img src="../../../assets/images/menu.png" alt="" srcset="" @click="showMenu">
 			<div class="header-mobile-title">
 				<!-- <div> -->
-					<img src="../../../assets/images/logo.png" alt="">
+				<img src="../../../assets/images/logo.png" alt="">
 				<!-- </div> -->
 
 			</div>
@@ -133,9 +133,16 @@ onBeforeUnmount(() => {
 					<!-- <div class="mainTitle">中烟国际集团有限公司</div> -->
 					<img src="../../../assets/images/logo.png" alt="" class="logoImg">
 				</div>
-			</div>
 
-			<LanguageSwitcher class="lang-switcher" />
+			</div>
+			<div class="header-right">
+				<div class="award">
+					<img src="../../../assets/images/newIndex/award.jpg" alt="" srcset="" />
+					<img src="../../../assets/images/newIndex/award1.png" alt="" srcset="" />
+				</div>
+
+				<LanguageSwitcher class="lang-switcher" />
+			</div>
 			<!-- <myNavigation></myNavigation> -->
 		</div>
 
@@ -143,19 +150,19 @@ onBeforeUnmount(() => {
 		<div class="nav desktop-nav" v-if="!isMobile">
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
-				}}</router-link></div>
+						}}</router-link></div>
 				<div><router-link class="router" to="/overview" @click="closeMobileMenu">{{ $t('message.t2')
-				}}</router-link></div>
-				<div v-if="isNews"><router-link class="router" to="/news"  @click="closeMobileMenu">{{ $t('message.t3')
-				}}</router-link></div>
+						}}</router-link></div>
+				<div v-if="isNews"><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
+						}}</router-link></div>
 				<!-- <div><router-link class="router" to="/example">客户案例</router-link></div> -->
 				<div><router-link class="router" to="/MainBusiness" @click="closeMobileMenu">{{ $t('message.t4')
-						}}</router-link>
+				}}</router-link>
 				</div>
 				<div><router-link class="router" to="/JoinUs" @click="closeMobileMenu">{{ $t('message.t5')
-				}}</router-link></div>
+						}}</router-link></div>
 				<div><router-link class="router" to="/ContactInformation" @click="closeMobileMenu">{{ $t('message.t6')
-				}}</router-link></div>
+						}}</router-link></div>
 			</div>
 		</div>
 
@@ -176,19 +183,19 @@ onBeforeUnmount(() => {
 		<el-drawer v-model="drawer" :direction="direction" :before-close="handleClose">
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
-				}}</router-link></div>
+						}}</router-link></div>
 				<div><router-link class="router" to="/overview" @click="closeMobileMenu">{{ $t('message.t2')
-				}}</router-link></div>
+						}}</router-link></div>
 				<div v-if="isNews"><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
-				}}</router-link></div>
+						}}</router-link></div>
 				<!-- <div><router-link class="router" to="/example">客户案例</router-link></div> -->
 				<div><router-link class="router" to="/MainBusiness" @click="closeMobileMenu">{{ $t('message.t4')
-						}}</router-link>
+				}}</router-link>
 				</div>
 				<div><router-link class="router" to="/JoinUs" @click="closeMobileMenu">{{ $t('message.t5')
-				}}</router-link></div>
+						}}</router-link></div>
 				<div><router-link class="router" to="/ContactInformation" @click="closeMobileMenu">{{ $t('message.t6')
-				}}</router-link></div>
+						}}</router-link></div>
 			</div>
 		</el-drawer>
 	</div>
@@ -197,6 +204,27 @@ onBeforeUnmount(() => {
 
 
 <style lang="scss" scoped>
+.header-right {
+	display: flex;
+	width: 70%;
+	justify-content: flex-end;
+}
+
+.award {
+	height: 4.5rem;
+	display: none;
+	/* >=1025 调整为桌面布局 */
+	@media screen and (min-width: 1024px) {
+		
+			justify-content: flex-end;
+			display: flex;
+			>img:nth-child(2) {
+				margin-left: 1rem;
+			}	
+	
+	}
+}
+
 .logoImg {
 	width: 25rem;
 	height: auto;
@@ -258,10 +286,11 @@ onBeforeUnmount(() => {
 
 	.header-mobile-title {
 		width: 20rem;
-		img{
+
+		img {
 			width: 100%;
 			height: auto;
-			margin-top:1rem;
+			margin-top: 1rem;
 		}
 
 	}
@@ -489,7 +518,8 @@ onBeforeUnmount(() => {
 	}
 
 	@media screen and (min-width: 1024px) {
-		width: 40%;
+		width: 25rem;
+		height: 4.5rem;
 		// margin-right:29.6rem;
 	}
 }

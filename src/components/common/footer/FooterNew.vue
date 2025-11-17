@@ -58,6 +58,10 @@ onBeforeUnmount(() => {
                 <div>{{ $t('message.banquansuoyou') }}</div>
             </div>
             <div class="footerFooter">{{ $t('message.tishi') }}</div>
+            <div class="awardContainer">
+                <img src="../../../assets/images/newIndex/award.jpg" alt="">
+                <img src="../../../assets/images/newIndex/award1.png" alt="">
+            </div>
         </div>
     </div>
 
@@ -98,6 +102,18 @@ onBeforeUnmount(() => {
 body.no-scroll {
     overflow: hidden !important;
     touch-action: none;
+}
+.awardContainer{
+    margin-top:2rem;
+    display: flex;
+    justify-content: center;
+    >img{
+        width: 25%;
+        margin-right: 1.5rem;
+    }
+    @media screen and (min-width: 767px) {      
+        display: none;
+    }
 }
 
 .footerBox {
