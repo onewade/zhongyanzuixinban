@@ -443,9 +443,9 @@
     .section .section--header .section--description-index{
         font-size: 16px;
     }
-    .nav{
+    /* .nav{
         width: 55%!important;
-    }
+    } */
     .moremore{
         width: 45%;
         margin-top:10px!important;

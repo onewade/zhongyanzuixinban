@@ -31,7 +31,6 @@ const router = createRouter({
     { path: '/MainBusiness', component: MainBusiness },
     { path: '/ContactInformation', component: ContactInformation },
     {path:'/JoinUs', component: JoinUs},
-    // {path:'/news',component: News},
     {path:'/newsDetail/:id?',component: newsDetail},
     {path:'/subGroup/:id?',component: subGroup}
   ]

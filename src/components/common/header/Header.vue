@@ -84,6 +84,12 @@ const handleClose = (done) => {
 const isNews = computed(() => {
 	return currentLanguage.value !== 'en'
 })
+// 返回到首页
+const goHome = () => {
+	console.log('返回首页');
+	
+	router.push('/index');
+}
 
 onMounted(() => {
 	// 初始化检查移动端
@@ -117,7 +123,7 @@ onBeforeUnmount(() => {
 			<img src="../../../assets/images/menu.png" alt="" srcset="" @click="showMenu">
 			<div class="header-mobile-title">
 				<!-- <div> -->
-				<img src="../../../assets/images/logo.png" alt="">
+				<img src="../../../assets/images/logo.png" alt="" @click="goHome" >
 				<!-- </div> -->
 
 			</div>
@@ -131,7 +137,7 @@ onBeforeUnmount(() => {
 				<!-- <img src="../../../assets/images/inlogo.png" alt=""> -->
 				<div>
 					<!-- <div class="mainTitle">中烟国际集团有限公司</div> -->
-					<img src="../../../assets/images/logo.png" alt="" class="logoImg">
+					<img src="../../../assets/images/logo.png" alt="" class="logoImg" @click="goHome">
 				</div>
 
 			</div>
@@ -518,7 +524,7 @@ onBeforeUnmount(() => {
 	}
 
 	@media screen and (min-width: 1024px) {
-		width: 25rem;
+		width: 27rem;
 		height: 4.5rem;
 		// margin-right:29.6rem;
 	}

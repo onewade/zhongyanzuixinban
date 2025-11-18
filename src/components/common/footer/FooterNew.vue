@@ -150,7 +150,7 @@ body.no-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 1rem;
 
     >div:nth-child(1),
     >div:nth-child(5),
@@ -214,7 +214,7 @@ body.no-scroll {
 
 .footerFooter {
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-top: 1rem;
 }
 
