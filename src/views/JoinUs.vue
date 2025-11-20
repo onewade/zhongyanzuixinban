@@ -21,7 +21,6 @@ const handleClick = (n) => {
 
 };
 const handleGoBack = (val) => {
-    console.log('返回招聘列表');
     isShowDetail.value = val;
 };
 </script>
