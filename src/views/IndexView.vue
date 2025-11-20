@@ -234,7 +234,6 @@ v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :styl
 						backgroundPosition: 'center'
 					}">
 						<div class="index-banner">
-							测试测试
 							<!-- 可以在这里添加轮播图上的内容 -->
 						</div>
 					</SwiperSlide>
@@ -242,7 +241,7 @@ v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :styl
 			</div>
 		</div>
 		<div v-if="showNews" class="news-section">
-			<div v-if="isMobile" class="newsTitle">{{ $t('message.t3') }} 测试测试</div>
+			<div v-if="isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
 			<div>
 				<Swiper
 :modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
