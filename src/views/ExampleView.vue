@@ -1,6 +1,6 @@
 <script setup>
 import Layout from '@/components/common/Layout.vue'
-import { computed, nextTick, onMounted, onUpdated, ref } from 'vue'
+import { nextTick, onMounted, onUpdated, ref } from 'vue'
 import {findExampleAPI,getExempleTablistAPI} from '@/apis/exempleAPI.js'
   const tabIndex = ref(0);
   const tabList = ref([
@@ -95,17 +95,18 @@ onUpdated(()=>{
 				<div class="example-container">
 					<div class="am-tabs">
 						<ul class="am-tabs-nav am-nav am-nav-tabs am-g">
-							<li class="am-u-md-2" style="float: left;"
-								v-for="(tab,index) in tabList"
-								:key="index"
-								@click.prevent="changeTab(index,tab.Id)"
-								:class="tabIndex === index ? 'am-active':''">
+							<li
+v-for="(tab,index) in tabList" :key="index"
+								class="am-u-md-2"
+								style="float: left;"
+								:class="tabIndex === index ? 'am-active':''"
+								@click.prevent="changeTab(index,tab.Id)">
 								<a href="#"><i :class="tab.Icon"></i>{{tab.ListName}}</a>
 							</li>
 						</ul>
 						
 						<div class="tabs">
-							<div class="tab" v-for="(image,index) in list" :key="index">
+							<div v-for="(image,index) in list" :key="index" class="tab">
 								<img :src="image"  alt="">
 							</div>
 						</div>

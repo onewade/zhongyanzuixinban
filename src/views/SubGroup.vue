@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
                             <div class="title">{{ title }}</div>
                             <div class="content">{{ content }}</div>
                             <div class="phone">{{$t('message.t6') }} : {{ phone }}</div>
-                            <div class="website" v-if="companyId == 1">{{$t("message.t8")}}：{{ website }}</div>
+                            <div v-if="companyId == 1" class="website">{{$t("message.t8")}}：{{ website }}</div>
                         </div>
                     </div>
                 </div>

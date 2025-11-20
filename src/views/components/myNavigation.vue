@@ -26,11 +26,7 @@ const toggleNav = () => {
   }
 };
 
-const handleNav = (path) => {
-  router.push(path);
-  showNav.value = false;
-  document.removeEventListener('click', handleClickOutside);
-};
+// removed unused wrapper handleNav; use navigateTo directly from template
 // 导航到指定页面
 const navigateTo = (path) => {
   router.push(path);
@@ -63,7 +59,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="quick-nav-btn" ref="navBtnRef">
+  <div ref="navBtnRef" class="quick-nav-btn">
     <div class="quickBtn" size="" @click="toggleNav">
       <div class="guide-btn" @click="showGuide">
           {{ $t("message.shiyongzhinan") }}
@@ -71,7 +67,7 @@ onBeforeUnmount(() => {
     </div>
     <transition name="fade">
         <teleport to="body">
-          <div v-if="showNav" class="quick-nav-popup" ref="navPopupRef" style="position:fixed;left:80vw;top:6rem;transform:translateX(-50%);z-index:20000;min-width:25rem;background:#fff;box-shadow:0 0.3rem 1rem rgba(0,0,0,0.12);border-radius:0.6rem;display:flex;flex-direction:column;">
+          <div v-if="showNav" ref="navPopupRef" class="quick-nav-popup" style="position:fixed;left:80vw;top:6rem;transform:translateX(-50%);z-index:20000;min-width:25rem;background:#fff;box-shadow:0 0.3rem 1rem rgba(0,0,0,0.12);border-radius:0.6rem;display:flex;flex-direction:column;">
             <div class="guide-body">
               <div class="guide-section">
                 <div class="guide-links">

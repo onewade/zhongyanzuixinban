@@ -1,12 +1,10 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Layout from '../components/common/Layout.vue';
 import { getArticleAPI } from '@/apis/newAPI.js'
-import { useRouter } from 'vue-router'
 
 const first = ref(0);
 const articles = ref({})
-const pageIndex = ref(1);
 const pageSize = ref(6);
 const total = ref(13)
 //获取公司动态文章
@@ -18,38 +16,10 @@ const getArticle = async (pageIndex, pageSize) => {
 	console.log(total.value);
 
 };
-const pages = computed(() => {
-	return Math.ceil(total.value / pageSize.value)
-})
+// pagination computation removed because pagination UI isn't used in simplified view
 // 切换页码
-const changeIndex = (p) => {
-	if (p === 0) {
-		pageIndex.value = 1
-		console.log('00000000');
-		console.log('第多少页' + pageIndex.value);
-		console.log(pages.value);
-	} else if (p === pages.value + 1) {
-		pageIndex.value = pages.value
-		console.log('1111111');
-		console.log('第多少页' + pageIndex.value);
-		console.log(pages.value);
-	} else {
-		pageIndex.value = p;
-		console.log('2222222');
-		console.log('第多少页' + pageIndex.value);
-		console.log(pages.value);
-		// 根据页码获取公司动态文章
-		getArticle(p, pageSize.value)
-	}
-};
-const router = useRouter()
 
-// 点击跳转路由文章详情页
-const handleDetails = (ArticleId) => {
-	window.localStorage.setItem('ArticleId', ArticleId);
-	router.push({ path: '/news/newsId' })
-
-};
+// Pagination and detail navigation currently unused in simplified view; keep code commented for future use
 const newList = ref([
 	{
 		title: '【挥洒汗水 奋勇争先】中烟香港参加第九届中企协运动会',
@@ -98,14 +68,14 @@ onMounted(() => getArticle(1, pageSize.value))
 			<div class="container">
 				<div class="section--header">
 					<h2 class="newTitle">最近新闻</h2>
-					<p class="section--description" v-if="articles.Records">
+					<p v-if="articles.Records" class="section--description">
 						<!-- 云适配与中建材信息技术股份有限公司（以下简称“中建信息”）联合举办的“战略
 						<br>合作签约仪式暨全国跨屏行动启动大会”在北京成功举办。 -->
 						{{ articles.Records[first].Introduction }}
 					</p>
 				</div>
 				<div>
-					<div v-for="(item, index) in newList" class="newsContainer">
+					<div v-for="(item, index) in newList" :key="index" class="newsContainer">
 						<div>{{ item.title }}</div>
 						<div>{{ item.time }}</div>
 					</div>

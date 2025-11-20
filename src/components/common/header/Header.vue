@@ -1,6 +1,6 @@
 <script setup>
 import AppFunctions from "@/utils/AppFunctions";
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
 import { getCompanyInfoAPI } from '@/apis/aboutourAPi.js';
 import { h } from 'vue';
@@ -11,7 +11,6 @@ import LanguageSwitcher from '../../../views/components/LanguageSwitcher.vue';
 
 const router = useRouter()
 const CompanyInfo = ref({})//后台数据获取
-const CompanyInfo1 = ref(JSON.parse(window.sessionStorage.getItem('companyinfo')) ? JSON.parse(window.sessionStorage.getItem('companyinfo')) : '0')//从会话储存获取
 
 // 移动端菜单状态
 const isMobileMenuOpen = ref(false)
@@ -42,6 +41,7 @@ const toggleStickyHeader = () => {
 		AppFunctions.removeClass('.header-wrapper', 'sticky');
 	}
 }
+// eslint-disable-next-line no-unused-vars
 const callPhone = () => {
 	ElMessage({
 		message: h('p', null, [
@@ -54,6 +54,7 @@ const callPhone = () => {
 }
 
 // 切换移动端菜单
+// eslint-disable-next-line no-unused-vars
 const toggleMobileMenu = () => {
 	if (isMobile.value) {
 		isMobileMenuOpen.value = !isMobileMenuOpen.value
@@ -103,12 +104,16 @@ onMounted(() => {
 		console.log('Header detected language change:', lang);
 	});
 
+	// 获取公司信息并监听滚动以切换固定 header
+	getCompanyInfo()
+	window.addEventListener('scroll', toggleStickyHeader)
 })
 
 onBeforeUnmount(() => {
 	// window.removeEventdivstener('scroll', toggleStickyHeader);
 	// 移除监听器
 	window.removeEventListener('resize', checkMobile)
+	window.removeEventListener('scroll', toggleStickyHeader)
 
 	// 取消语言监听
 	if (offLangListener.value) {
@@ -153,7 +158,7 @@ onBeforeUnmount(() => {
 		</div>
 
 		<!-- 桌面端导航 -->
-		<div class="nav desktop-nav" v-if="!isMobile">
+		<div v-if="!isMobile" class="nav desktop-nav">
 			<div class="am-navss am-navss-pills">
 				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
 						}}</router-link></div>

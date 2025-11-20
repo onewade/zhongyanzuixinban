@@ -11,7 +11,7 @@ import zhounian from '../assets/images/newIndex/80zhounian.jpg';
 import guanaishequ from '../assets/images/newsPic/guanaishequ.png';
 import lifa from '../assets/images/newsPic/lifa.png';
 import { useI18n } from 'vue-i18n'
-const { t, locale, messages } = useI18n()
+const { locale, messages } = useI18n()
 // 当前语言（可在模板或逻辑中使用）
 const currentLanguage = ref(getCurrentLanguage());
 // 存储取消订阅函数
@@ -33,6 +33,7 @@ const onSwiper = (swiper) => {
 	homeSwiper.value = swiper;
 };
 // swiper切换时触发
+// eslint-disable-next-line no-unused-vars
 const onSlideChange = (swiper) => {
 
 };
@@ -55,11 +56,13 @@ const newImg = ref([
 		ImageUrl: lifa,
 	}
 ])
+// eslint-disable-next-line no-unused-vars
 const advantageList = ref([
 	{ id: 1, Cover: c3, title: '烟叶业务', desc: '我们的烟叶业务是从全球主要烟叶产区采购各类型烟叶类产品，并销售至全球市场。。' },
 	{ id: 2, Cover: c2, title: '卷烟业务', desc: '我们的卷烟业务是从中国烟草旗下的卷烟生产企业采购卷烟产品，并销售至全球市场（中国内地除外）以及中国内地境内关外免税店。。' },
 	{ id: 3, Cover: c1, title: '新型烟草业务', desc: '我们的新型烟草业务是从中国烟草旗下的卷烟生产企业采购新型烟草制品，并独家销售至全球市场（中国内地除外）。' },
 ])
+// eslint-disable-next-line no-unused-vars
 const serviceList = ref([
 	{ id: 1, icon: 'am-icon-diamond', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
 	{ id: 2, icon: 'am-icon-user', title: '多页面工作', desc: '标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理' },
@@ -71,10 +74,12 @@ const serviceList = ref([
 }
 
 const timer = ref(null)
+// eslint-disable-next-line no-unused-vars
 const swiper = () => {
 	if (timer.value) {
 		return
 	}
+	// eslint-disable-next-line no-unused-vars
 	let looper = (a) => {
 		if (tabIndex.value >= slideshow.value.length - 1) {
 			tabIndex.value = -1
@@ -99,30 +104,36 @@ if (window.innerWidth < 640) {
 // 数字翻牌器
 import { useTransition } from '@vueuse/core'
 const source = ref(0)
+// eslint-disable-next-line no-unused-vars
 const outputValue = useTransition(source, {
 	duration: 1500,
 })
 source.value = 24900;
 const source1 = ref(0)
+// eslint-disable-next-line no-unused-vars
 const outputValue1 = useTransition(source1, {
 	duration: 1500,
 })
 source1.value = 87;
 const source2 = ref(0)
+// eslint-disable-next-line no-unused-vars
 const outputValue2 = useTransition(source2, {
 	duration: 1500,
 })
 source2.value = 31;
+// eslint-disable-next-line no-unused-vars
 const formatter = (value) => {
 	// 使用toFixed保留小数点后两位
 	return `${value.toFixed(2)}`;
 }
 const source3 = ref(0)
+// eslint-disable-next-line no-unused-vars
 const outputValue3 = useTransition(source3, {
 	duration: 1500,
 })
 source3.value = 0.97;
 // const videoPlayer = ref(null);
+// eslint-disable-next-line no-unused-vars
 const newsList = ref([
 	{
 		id: 2,
@@ -146,8 +157,10 @@ const newsList = ref([
 // 获取新闻列表
 const newsListIndex = computed(() => messages.value[locale.value].message.newsListIndex)
 // 引用zh-CN里面的companyList数组
+// eslint-disable-next-line no-unused-vars
 const companyList = computed(() => messages.value[locale.value].message.companyList)
 const route = useRouter();
+// eslint-disable-next-line no-unused-vars
 const handleClick = (item) => {
 	console.log('item', item);
 
@@ -209,10 +222,12 @@ onBeforeUnmount(() => {
 		<div style="width: 100%">
 			<div class="index-page">
 				<!-- 使用Swiper替换原有的轮播 -->
-				<Swiper :modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
-					:mousewheel="false" :allowTouchMove="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
-					:loop="true" @swiper="onSwiper" @slideChange="onSlideChange" class="home-swiper">
-					<SwiperSlide v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :style="{
+				<Swiper
+:modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
+					:mousewheel="false" :allow-touch-move="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
+					:loop="true" class="home-swiper" @swiper="onSwiper" @slide-change="onSlideChange">
+					<SwiperSlide
+v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :style="{
 						backgroundImage: `url(${slide.ImageUrl})`,
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: 'cover',
@@ -225,13 +240,15 @@ onBeforeUnmount(() => {
 				</Swiper>
 			</div>
 		</div>
-		<div class="news-section" v-if="showNews">
-			<div class="newsTitle" v-if="isMobile">{{ $t('message.t3') }}</div>
+		<div v-if="showNews" class="news-section">
+			<div v-if="isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
 			<div>
-				<Swiper :modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
-					:mousewheel="false" :allowTouchMove="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
-					:loop="true" @swiper="onSwiper" @slideChange="onSlideChange" class="home-swiper">
-					<SwiperSlide v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="{
+				<Swiper
+:modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
+					:mousewheel="false" :allow-touch-move="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
+					:loop="true" class="home-swiper" @swiper="onSwiper" @slide-change="onSlideChange">
+					<SwiperSlide
+v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="{
 						backgroundImage: `url(${slide.ImageUrl})`,
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: '100% auto',
@@ -244,7 +261,7 @@ onBeforeUnmount(() => {
 				</Swiper>
 			</div>
 			<div class="news-content">
-				<div class="newsTitle" v-if="!isMobile">{{ $t('message.t3') }}</div>
+				<div v-if="!isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
 				<div class="news-boxes">
 					<div v-for="item in newsListIndex" :key="item.title" class="news-item" @click="goDetail(item.id)">
 						<div class="news-item-title">{{ item.title }}</div>

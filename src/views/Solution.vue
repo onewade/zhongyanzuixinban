@@ -1,6 +1,6 @@
 <script setup>
 import Layout from '@/components/common/Layout.vue';
-import { onMounted, onUpdated, ref,onBeforeUnmount } from 'vue';
+import { ref, onBeforeUnmount } from 'vue';
 import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
 const currentLanguage = ref(getCurrentLanguage());
 const offLanguageListener = ref(null);
@@ -16,16 +16,7 @@ const offLanguageListener = ref(null);
 	}
 })
 
-const projectTitleref = ref()
-const projectBox = ref()
-const lineRef = ref()
-const paneList = ref([])//获取的解决方案列表
-const paneData = ref([])//获取的解决方案内容
-const activeName = ref(0)//选中的tab
-onMounted(() => {
-})
-onUpdated(() => {
-})
+// removed unused refs to satisfy linter; keep the component minimal
 
 </script>
 <template>

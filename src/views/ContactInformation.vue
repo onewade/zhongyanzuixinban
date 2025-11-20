@@ -2,7 +2,7 @@
 import Layout from '../components/common/Layout.vue';
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { complaintsEmail, accessibilityEmail } from '@/config/contact.js';
+import { complaintsEmail } from '@/config/contact.js';
 
 const { t } = useI18n();
 

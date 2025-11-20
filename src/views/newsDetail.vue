@@ -65,11 +65,14 @@ function openLowRes(src, maxWidth = 1200) {
                     <div class="font-size-control">
                         <span class="font-size-label">字体大小：</span>
                         <div class="font-size-switch">
-                            <button class="font-a-btn" :class="{ active: fontSizeLevel === 0 }"
+                            <button
+class="font-a-btn" :class="{ active: fontSizeLevel === 0 }"
                                 @click="setFontSize(0)">A</button>
-                            <button class="font-a-btn font-a-middle" :class="{ active: fontSizeLevel === 1 }"
+                            <button
+class="font-a-btn font-a-middle" :class="{ active: fontSizeLevel === 1 }"
                                 @click="setFontSize(1)">A</button>
-                            <button class="font-a-btn font-a-large" :class="{ active: fontSizeLevel === 2 }"
+                            <button
+class="font-a-btn font-a-large" :class="{ active: fontSizeLevel === 2 }"
                                 @click="setFontSize(2)">A</button>
                         </div>
                     </div>
@@ -136,10 +139,12 @@ function openLowRes(src, maxWidth = 1200) {
                     </div>
                     <div v-if="id == 1">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/jnt.png" alt=""
-                                @dblclick="openLowRes($event.target.src, 900)" oncontextmenu="return false">
+                            <img
+src="../assets/images/newsPic/jnt.png" alt=""
+                                oncontextmenu="return false" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent') }}
@@ -149,10 +154,12 @@ function openLowRes(src, maxWidth = 1200) {
                     </div>
                     <div v-if="id == 2">
                         <div class="newspic">
-                            <img src="../assets/images/newIndex/80zhounian.jpg" oncontextmenu="return false" alt=""
+                            <img
+src="../assets/images/newIndex/80zhounian.jpg" oncontextmenu="return false" alt=""
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent1') }}
@@ -174,12 +181,15 @@ function openLowRes(src, maxWidth = 1200) {
                     </div>
                     <div v-if="id == 3">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/ball1.png" alt="" oncontextmenu="return false"
+                            <img
+src="../assets/images/newsPic/ball1.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
-                            <img src="../assets/images/newsPic/ball2.png" alt="" oncontextmenu="return false"
+                            <img
+src="../assets/images/newsPic/ball2.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent5') }}
@@ -209,10 +219,12 @@ function openLowRes(src, maxWidth = 1200) {
                     </div> -->
                     <div v-if="id == 5">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/kaigong.png" alt="" oncontextmenu="return false"
+                            <img
+src="../assets/images/newsPic/kaigong.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent6') }}
@@ -230,10 +242,12 @@ function openLowRes(src, maxWidth = 1200) {
                     </div>
                     <div v-if="id == 6">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/yigong.png" alt="" oncontextmenu="return false"
+                            <img
+src="../assets/images/newsPic/yigong.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent9') }}
@@ -241,10 +255,12 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                         </div>
                         <div class="newspic1">
-                            <img src="../assets/images/newsPic/yigong1.png" alt="" oncontextmenu="return false"
+                            <img
+src="../assets/images/newsPic/yigong1.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent10') }}
@@ -254,10 +270,12 @@ function openLowRes(src, maxWidth = 1200) {
                     </div>
                     <div v-if="id == 7">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/jingshen.png" alt="" oncontextmenu="return false"
+                            <img
+src="../assets/images/newsPic/jingshen.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent11') }}
@@ -290,17 +308,20 @@ function openLowRes(src, maxWidth = 1200) {
                         </div>
                     </div>
                     <div v-if="id == 9">
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent18') }}
 
                             </div>
                             <div class="newspic">
-                                <img src="../assets/images/newsPic/guanaishequ.png" alt="" oncontextmenu="return false"
+                                <img
+src="../assets/images/newsPic/guanaishequ.png" alt="" oncontextmenu="return false"
                                     style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                             </div>
-                            <div class="detailContent"
+                            <div
+class="detailContent"
                                 :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                                 <div>
                                     {{ $t('message.newsContent19') }}
@@ -308,10 +329,12 @@ function openLowRes(src, maxWidth = 1200) {
                                 </div>
                             </div>
                             <div class="newspic1">
-                                <img src="../assets/images/newsPic/guanaishequ1.png" alt="" oncontextmenu="return false"
+                                <img
+src="../assets/images/newsPic/guanaishequ1.png" alt="" oncontextmenu="return false"
                                     style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                             </div>
-                            <div class="detailContent"
+                            <div
+class="detailContent"
                                 :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                                 <div>
                                     {{ $t('message.newsContent20') }}
@@ -322,10 +345,12 @@ function openLowRes(src, maxWidth = 1200) {
                     </div>
                     <div v-if="id == 10">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/lifa.png" alt="" oncontextmenu="return false"
+                            <img
+src="../assets/images/newsPic/lifa.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div class="detailContent"
+                        <div
+class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent21') }}
@@ -339,7 +364,8 @@ function openLowRes(src, maxWidth = 1200) {
                     </div>
                      <div v-if="id == 11">
                     <div class="newspic" style="margin-bottom: 0.5rem;">
-                        <img src="../assets/images/newsPic/jiang.png" alt="" oncontextmenu="return false"
+                        <img
+src="../assets/images/newsPic/jiang.png" alt="" oncontextmenu="return false"
                             style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                     </div>
                     <div style="font-size: 0.9rem; text-align: center; ">
@@ -347,10 +373,12 @@ function openLowRes(src, maxWidth = 1200) {
 
                     </div>
                     <div class="newspic">
-                        <img src="../assets/images/newsPic/jiang1.png" alt="" oncontextmenu="return false"
+                        <img
+src="../assets/images/newsPic/jiang1.png" alt="" oncontextmenu="return false"
                             style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                     </div>
-                    <div class="detailContent"
+                    <div
+class="detailContent"
                         :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                         <div>
                             {{ $t('message.newsContent24') }}
@@ -364,10 +392,12 @@ function openLowRes(src, maxWidth = 1200) {
                 </div>
                 <div v-if="id == 12">
                     <div class="newspic">
-                        <img src="../assets/images/newsPic/fadian.png" alt="" oncontextmenu="return false"
+                        <img
+src="../assets/images/newsPic/fadian.png" alt="" oncontextmenu="return false"
                             style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                     </div>
-                    <div class="detailContent"
+                    <div
+class="detailContent"
                         :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                         <div>
                             {{ $t('message.newsContent26') }}
@@ -385,7 +415,8 @@ function openLowRes(src, maxWidth = 1200) {
                 </div>
                 <div v-if="id == 13">
 
-                    <div class="detailContent"
+                    <div
+class="detailContent"
                         :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                         <div>
                             {{ $t('message.newsContent29') }}
@@ -397,7 +428,8 @@ function openLowRes(src, maxWidth = 1200) {
                         </div>
                     </div>
                     <div class="newspic">
-                        <img src="../assets/images/newsPic/yundonghui.png" alt="" oncontextmenu="return false"
+                        <img
+src="../assets/images/newsPic/yundonghui.png" alt="" oncontextmenu="return false"
                             style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                     </div>
                 </div>

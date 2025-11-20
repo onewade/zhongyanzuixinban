@@ -1,8 +1,7 @@
 <script setup>
-import { onMounted, ref ,computed} from 'vue';
-import { useRouter } from 'vue-router';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n'
-const { t, locale, messages } = useI18n();
+const { locale, messages } = useI18n();
 // const joinContentList = computed(()=> messages.value[locale.value].message.joinContentlist)
 const props = defineProps({
     number: {
@@ -65,7 +64,6 @@ const joinContentList = computed(() => {
 
 
 
-const router = useRouter();
 const emit = defineEmits(['goBack']);
 
 const goBack = () => {

@@ -1,10 +1,8 @@
 <script setup>
-import { nextTick, onMounted, ref, onBeforeUnmount } from 'vue';
+import { ref, onBeforeUnmount } from 'vue';
 import Layout from '../components/common/Layout.vue';
-import { yangyEmail } from '@/config/contact.js';
+// yangyEmail intentionally not used here; keep contact config centralized
 import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
-import { useI18n } from 'vue-i18n';
-const { t, locale, messages } = useI18n();
 const currentLanguage = ref(getCurrentLanguage());
 const offLanguageListener = ref(null);
 // 订阅全局语言变更事件（使用 utils 封装）
@@ -32,11 +30,11 @@ onBeforeUnmount(() => {
                 <div class="contactContainer1">
                     <div class="contactContent">
                         <div>{{ $t("message.ywjs") }}</div>
-                        <div class="fw" style="	text-indent: 2em;" v-if="currentLanguage == 'zhTW' || currentLanguage == 'zhCN'">{{
+                        <div v-if="currentLanguage == 'zhTW' || currentLanguage == 'zhCN'" class="fw" style="	text-indent: 2em;">{{
                             $t('message.ywjs1') }}</div>
-                        <div class="fw" v-if="currentLanguage == 'en'" >{{ $t('message.ywjs2') }}</div>
-                        <div class="fw" v-if="currentLanguage == 'en'">{{ $t('message.ywjs3') }}</div>
-                        <div class="fw" v-if="currentLanguage == 'en'">{{ $t('message.ywjs4') }}</div>
+                        <div v-if="currentLanguage == 'en'" class="fw" >{{ $t('message.ywjs2') }}</div>
+                        <div v-if="currentLanguage == 'en'" class="fw">{{ $t('message.ywjs3') }}</div>
+                        <div v-if="currentLanguage == 'en'" class="fw">{{ $t('message.ywjs4') }}</div>
                     </div>
                     <div class="contactContent">
                         <div>{{ $t('message.ywzx') }}</div>

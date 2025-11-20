@@ -1,27 +1,13 @@
 
 <script setup>
-import {reactive, onMounted, ref} from 'vue'
-const ageModalVisible = ref(true);
+import { ref } from 'vue'
+const ageModalVisible = ref(true)
 const confirmEnter = () => {
-  ageModalVisible.value = false;
-};
+  ageModalVisible.value = false
+}
 const denyEnter = () => {
   // window.location.href = 'https://www.gov.hk/tc/theme/psi/';
-  alert('您未满18岁，无法进入本网站');
-};
-// 接受 对象类型 数据的参数传入并返回一个响应式的对象
-const state = reactive({
-    count:0
-})
-// 简单类型
-const count =ref(0)
-const setCount = ()=>{
-  state.count++
-  console.log(state);
-}
-const addcount =()=>{
-  count.value++
-  console.log(count);
+  alert('您未满18岁，无法进入本网站')
 }
 </script>
 
@@ -48,11 +34,7 @@ const addcount =()=>{
   </div>
   <RouterView/>
 </template>
-<style lang="scss" scoped>
-.test{
-  // color: $priceColor;
-}
-</style>
+
 <style scoped>
 .age-modal {
   position: fixed;

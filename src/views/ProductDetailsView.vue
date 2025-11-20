@@ -1,5 +1,5 @@
 <script setup>
-  import { onMounted, reactive, ref,computed } from 'vue';
+	import { onMounted, ref } from 'vue';
 import Layout from '../components/common/Layout.vue';
 import {getProductByIdAPI} from '@/apis/productAPI.js'
 
@@ -106,13 +106,15 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
 				<!-- <img src="http://192.168.21.33:6088/UpLoad/BackupData/45880d5f79004f0caeb30183d223d23e.jpg"/> -->
 				<!-- <p>{{ photos.photo[0] }}</p> -->
 				<div class="active-photo" :style="'background-image: url('+photos[activePhoto]+');'" @click="showImagePreview(photos[activePhoto])">
-					<button type="button"
+					<button
+type="button"
 						aria-label="Previous Photo"
 						class="previous"
 						@click="previousPhoto()" > 
 						<!-- ◀ -->
 					</button>
-					<button type="button"
+					<button
+type="button"
 						aria-label="Next Photo"
 						class="next"
 						@click="nextPhoto()">
@@ -120,12 +122,13 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
 					</button>
 				</div>
 				<div class="thumbnails">
-					<div v-for="(photo, index) in photos"
+					<div
+v-for="(photo, index) in photos"
 						:key="index"
 						:src="photo"
-						@click="activePhoto = index"
 						:class="{'active': activePhoto === index}"
-						:style="'background-image: url('+photo+')'">
+						:style="'background-image: url('+photo+')'"
+						@click="activePhoto = index">
 					</div>
 				</div>
 			</div>
@@ -137,6 +140,7 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
           <span>产品特点</span>
         </span>
       </template>
+			<!-- eslint-disable-next-line vue/no-v-html -->
 			<div v-html="detailData.Spec"></div>
 			<!-- •  支持云服务器平台部署管理，支持局域网平台部署管理。<br/>
 
@@ -153,6 +157,7 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
           <span>产品参数</span>
         </span>
       </template>
+			<!-- eslint-disable-next-line vue/no-v-html -->
 			<div v-html="detailData.Param"></div>
 			<!-- 识读码制： 
 
@@ -259,22 +264,7 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
 .gallery-box .gallery .active-photo:hover {
 	opacity: 1;
 }
-.gallery-box .gallery .active-photo .previous {
-	/* padding: 0 1em 0 0.7em;
-	left: 0;
-	background: -moz-linear-gradient(left,  rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
-	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
-	background: linear-gradient(to right,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#00000000',GradientType=1 ); */
-}
-.gallery-box .gallery .active-photo .next {
-	/* padding: 0 0.7em 0 1em;
-	right: 0;
-	background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
-	background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-	background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=1 ); */
-}
+
 
 .gallery-box .gallery .thumbnails {
 	display: grid;
@@ -291,9 +281,7 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
 	background-repeat: no-repeat;
 	opacity: 1;
 }
-.thumbnails:hover {
-	/*opacity: 0.6;*/
- }
+    
 .thumbnails .active {
 	outline-color: #59bcdb;
 	opacity: 0.6;
@@ -335,9 +323,7 @@ color: #fcfafa;
 /* background: #03aadd; */
 color: #fcfafa;
 }
- :deep(.el-tabs__item){
-
-}
+    
  .el-tabs__item:hover {
   color: red;
 }

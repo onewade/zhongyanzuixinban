@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onBeforeUnmount } from 'vue';
-import { complaintsEmail, accessibilityEmail } from '@/config/contact.js';
+import { accessibilityEmail } from '@/config/contact.js';
 const dialogVisible = ref(false);
 const dialogType = ref(1);
 import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';

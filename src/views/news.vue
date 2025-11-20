@@ -1,11 +1,11 @@
 <script setup>
-import { ref, onMounted,computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import Layout from '@/components/common/Layout.vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 // 模拟新闻数据（后期可替换为接口调用）
-const { t, locale, messages } = useI18n()
+const { locale, messages } = useI18n()
 
 // 从 i18n messages 中按当前 locale 读取 newsList（可能不存在时返回空数组）
 const list = computed(() => (messages.value[locale.value] && messages.value[locale.value].message && messages.value[locale.value].message.newsList) ? messages.value[locale.value].message.newsList : [])

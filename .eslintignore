@@ -1,0 +1,9 @@
+node_modules/
+dist/
+public/
+.tobacco
+tobacco/
+src/assets/fontawesome-free-6.4.0-web/
+src/assets/fonts/
+src/assets/*.min.js
+src/assets/*.js

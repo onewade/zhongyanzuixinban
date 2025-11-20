@@ -24,7 +24,7 @@ export const getProductByIdAPI = function(TypeDetailsId){
 // 向外按需导入一个API函数
 export const getstudentAPI = function (userid) {
   // console.log('调用了getArticleAPI函数')
-  return request.get('/GetStudentList',{
+  return httpInstance.get('/GetStudentList',{
     params:{
       UserId:userid
     }

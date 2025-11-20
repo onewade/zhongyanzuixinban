@@ -12,9 +12,9 @@ import Solution from '@/views/Solution.vue'
 import MainBusiness from '@/views/MainBusiness.vue'
 import ContactInformation from '@/views/ContactInformation.vue'
 import JoinUs from '@/views/JoinUs.vue'
-import News from '@/views/News.vue'
+import News from '@/views/news.vue'
 import newsDetail from '@/views/newsDetail.vue'
-import subGroup from '@/views/subGroup.vue'
+import subGroup from '@/views/SubGroup.vue'
 
 const router = createRouter({
   history: createWebHistory(),

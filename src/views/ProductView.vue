@@ -3,7 +3,6 @@ import { nextTick, onMounted, ref } from 'vue';
 import Layout from '../components/common/Layout.vue';
 import { getTabListAPI, getGoodsListAPI } from '@/apis/productAPI.js'
 import { getSlidephotoAPI } from '@/apis/indexAPI.js'
-import { useRouter } from 'vue-router';
 import p1 from "@/assets/images/person/p1.jpg";
 import p2 from "@/assets/images/person/p2.jpg";
 import p3 from "@/assets/images/person/p3.jpg";
@@ -27,10 +26,8 @@ const personLIst = ref([
 	}
 ])
 const tabList = ref([]);
-const list = ref([]);
-const tabIndex = ref(0);
 const goodsList = ref([]);
-const slideshowPhoto = ref([])
+const slideshowPhoto = ref([]);
 const defaultId = ref()
 const getSlideshow = async () => {
 	const { data: res } = await getSlidephotoAPI();
@@ -66,28 +63,15 @@ const getTabList = async () => {
 	window.sessionStorage.setItem('defaultId', res.Data[0].Id);
 };
 // 点击选项切换选项
-const changeTab = (index, typeId) => {
-	//点击选项后高亮索引
-	tabIndex.value = index
-	console.log(typeId)
-	// 得到切换选项的id 传给获取产品列表的方法getGoodsList()
-	getGoodsList(typeId)
-};
 //从for循环得到的选项id发起请求获取该选项的产品列表
 const getGoodsList = async (typeId) => {
 	const { data: res } = await getGoodsListAPI(typeId)
 	console.log(res.Data);
 	goodsList.value = res.Data
 };
-const router = useRouter()
-// 点击跳转路由产品详情页
-const handleDetails = (productId) => {
-	window.localStorage.setItem('productId', productId);
-	router.push({ path: '/product/productId' })
-
-};
+// router and detail navigation removed because the detail template is currently disabled
 onMounted(() => {
-	// getSlideshow();
+	getSlideshow();
 	getTabList().then(() => {
 		console.log(defaultId.value, '这里88888');
 		getGoodsList(defaultId.value)
@@ -142,8 +126,8 @@ onMounted(() => {
 				<img :src="one.img" alt="" class="imgs">
 			</div>
 		</div>
-		<div class="personContainer animate__animated animate__backInLeft">
-			<div v-for="(item, index) in personLIst" class="personContent personContent1 ">
+			<div class="personContainer animate__animated animate__backInLeft">
+			<div v-for="(item, index) in personLIst" :key="index" class="personContent personContent1 ">
 				<div class="per">
 					<h1>{{ item.name }}</h1>
 					<div>{{ item.position }}</div>

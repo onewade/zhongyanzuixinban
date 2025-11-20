@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*.{js,vue}\" --ignore-pattern 'src/assets/**' --ignore-pattern 'portalSite/assets/**' --ignore-pattern 'tobacco/**'",
+    "lint:fix": "eslint \"src/**/*.{js,vue}\" --fix --ignore-pattern 'src/assets/**' --ignore-pattern 'portalSite/assets/**' --ignore-pattern 'tobacco/**'",
+    "format": "prettier --write \"src/**/*.{js,vue,css,scss,json,md}\""
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.6",
@@ -26,10 +29,17 @@
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/eslint-parser": "^7.28.5",
     "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vue": "^10.5.1",
+    "prettier": "^3.6.2",
     "sass": "^1.63.6",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vue-eslint-parser": "^10.2.0"
   }
 }

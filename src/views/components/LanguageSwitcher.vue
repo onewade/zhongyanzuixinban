@@ -2,22 +2,23 @@
   <div>
     <div class="changeLL">
       <div class="changeItem" :class="{ active: currentLang === 'zhCN' }" @click="changeLanguage('zhCN')">
-        <span class="triangle" v-if="currentLang === 'zhCN'">▶</span>
+        <span v-if="currentLang === 'zhCN'" class="triangle">▶</span>
         <span class="text">简体版</span>
       </div>
       <div class="changeItem" :class="{ active: currentLang === 'zhTW' }" @click="changeLanguage('zhTW')">
-        <span class="triangle" v-if="currentLang === 'zhTW'">▶</span>
+        <span v-if="currentLang === 'zhTW'" class="triangle">▶</span>
         <span class="text">繁體版</span>
       </div>
       <div class="changeItem" :class="{ active: currentLang === 'en' }" @click="changeLanguage('en')">
-        <span class="triangle" v-if="currentLang === 'en'">▶</span>
+        <span v-if="currentLang === 'en'" class="triangle">▶</span>
         <span class="text">English</span>
       </div>
       <myNavigation></myNavigation>
     </div>
-    <div class="changeL" ref="changeL">
-      <el-dropdown @command="handleCommand" trigger="click" placement="bottom-end" :hide-on-click="true"
-        :max-height="200" popper-class="lang-dropdown-popper">
+    <div ref="changeL" class="changeL">
+      <el-dropdown
+trigger="click" placement="bottom-end" :hide-on-click="true" :max-height="200"
+        popper-class="lang-dropdown-popper" @command="handleCommand">
         <img src="../../assets/images/net.png" alt="" style="width: 100%;height: 100%; cursor: pointer;">
         <template #dropdown>
           <el-dropdown-menu>
@@ -36,8 +37,7 @@ import { useI18n } from 'vue-i18n';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import myNavigation from "./myNavigation.vue";
 const { locale } = useI18n();
-import { useRoute, useRouter } from 'vue-router';
-const route = useRoute();
+import { useRouter } from 'vue-router';
 const router = useRouter();
 
 // 当前选中的语言 

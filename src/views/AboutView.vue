@@ -87,7 +87,8 @@ onMounted(() => {
 
 		</div>
 		<div class="contactContainer ">
-			<div v-for="(item, index) in contactList" :style="{ backgroundImage: 'url(' + item.img + ')' }"
+			<div
+v-for="(item, index) in contactList" :key="index" :style="{ backgroundImage: 'url(' + item.img + ')' }"
 				class="contact">
 				<div>
 					<div>{{ item.title }}</div>

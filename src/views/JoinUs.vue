@@ -1,18 +1,18 @@
 <script setup>
 import Layout from '@/components/common/Layout.vue';
 import JoinDetail from './JoinDetail.vue';
-import { onMounted, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n'
-const { t, locale, messages } = useI18n();
+const { locale, messages } = useI18n();
 const list = computed(() => messages.value[locale.value].message.list)
 const isShowDetail = ref(false); // 控制招聘详情的显示
 // 展示第几条招聘详情
-const index = ref(0);
+const selectedIndex = ref(0);
 const handleClick = (n) => {
     // 处理点击事件，显示招聘详情
     console.log('招聘信息被点击');
     if (n == 1 || n == 2) {
-        index.value = n;
+        selectedIndex.value = n;
         isShowDetail.value = true;
 
     } else {
@@ -36,15 +36,16 @@ const handleGoBack = (val) => {
                         <img src="../assets/images/banner.png" alt="" srcset="">
                     </div>
                 </div>
-                <div class="join-content" v-if="!isShowDetail">
+                <div v-if="!isShowDetail" class="join-content">
                     <div class="joinTitle">{{ $t("message.t7") }}</div>
-                    <div v-for="(item, index) in list" :key="item.number" class="joinContentItem"
+                    <div
+v-for="(item) in list" :key="item.number" class="joinContentItem"
                         :style="{ cursor: item.number == 1 ||item.number == 2 ? 'pointer' : 'default' }" @click="handleClick(item.number)">
                         <div>{{ item.title }}</div>
                         <div>{{ item.date }}</div>
                     </div>
                 </div>
-                <JoinDetail @goBack="handleGoBack" :number="index" v-else />
+                <JoinDetail v-else :number="selectedIndex" @go-back="handleGoBack" />
 
             </div>
         </Layout>

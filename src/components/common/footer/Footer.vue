@@ -35,7 +35,6 @@ const getExempleTablist = async () => {
 }
 // 数字翻牌器
 import { useTransition } from '@vueuse/core'
-import { ChatLineRound, Male } from '@element-plus/icons-vue'
 const source = ref(0)
 const outputValue = useTransition(source, {
 	duration: 1500,
