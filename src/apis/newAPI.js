@@ -35,3 +35,7 @@ export const getstudentAPI = function (userid) {
     }
   })
 }
+// 获取新闻详情
+export const getNewsDetailAPI = function (newsId) {
+  return httpInstance.get('/portal/banner/'+newsId)
+}

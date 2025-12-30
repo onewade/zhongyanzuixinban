@@ -8,8 +8,8 @@ import c3 from '../assets/images/newIndex/c3.png';
 import bannner from '../assets/images/banner.png';
 import { useRouter } from 'vue-router';
 import zhounian from '../assets/images/newIndex/80zhounian.jpg';
-import guanaishequ from '../assets/images/newsPic/guanaishequ.png';
-import lifa from '../assets/images/newsPic/lifa.png';
+import p1 from '../assets/images/newsPic/20251117.png';
+import p2 from '../assets/images/newsPic/20250904.png';
 import { useI18n } from 'vue-i18n'
 const { locale, messages } = useI18n()
 // 当前语言（可在模板或逻辑中使用）
@@ -45,16 +45,16 @@ const slideshow = ref([
 	}
 
 ])
-const newImg = ref([
+const newImg = ref([	
+	{
+		ImageUrl: p2,
+	},
+	{
+		ImageUrl: p1,
+	},
 	{
 		ImageUrl: zhounian,
 	},
-	{
-		ImageUrl: guanaishequ,
-	},
-	{
-		ImageUrl: lifa,
-	}
 ])
 // eslint-disable-next-line no-unused-vars
 const advantageList = ref([
@@ -134,26 +134,6 @@ const outputValue3 = useTransition(source3, {
 source3.value = 0.97;
 // const videoPlayer = ref(null);
 // eslint-disable-next-line no-unused-vars
-const newsList = ref([
-	{
-		id: 2,
-		title: '国际集团组织参观纪念抗战胜利80周年展览',
-		content: '2025年8月26日下午，中烟国际集团有限公司组织全体员工前往香港会展中心，参观由香港大公文汇传媒集团主办的“为了中华民族伟大复兴——纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大型巡回展览”',
-		date: '2025-08-27'
-	},
-	{
-		id: 9,
-		title: '国际集团开展“中企关爱进社区”义工活动',
-		content: '近日，国际集团与香港荃湾各界协会联合开展“中企关爱进社区”义工活动，向荃湾地区困难基层家庭进行探访慰问并送上冷暖风扇和空气净化一体机。 ',
-		date: '2025-08-18'
-	},
-	{
-		id: 10,
-		title: '国际集团组织员工参观香港立法会活动',
-		content: '2025年7月15日，国际集团组织员工赴香港立法会综合大楼参观，开展“爱国爱港主题教育”活动。本次活动得到了全国人大代表、香港立法会议员陈勇先生及工作人员的大力支持。',
-		date: '2025-07-18'
-	},
-])
 // 获取新闻列表
 const newsListIndex = computed(() => messages.value[locale.value].message.newsListIndex)
 // 引用zh-CN里面的companyList数组
@@ -251,7 +231,7 @@ v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :styl
 v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="{
 						backgroundImage: `url(${slide.ImageUrl})`,
 						backgroundRepeat: 'no-repeat',
-						backgroundSize: '100% auto',
+						backgroundSize: 'cover',
 						backgroundPosition: 'center'
 					}">
 						<div class="index-banner">

@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import Layout from '../components/common/Layout.vue';
 import { useRouter, useRoute } from 'vue-router';
+import { getNewsDetailAPI } from '../apis/newAPI.js';
 const router = useRouter();
 const route = useRoute();
 const goBack = () => {
@@ -21,11 +22,27 @@ const lineHeightMap = ['2.1rem', '2.7rem', '3.5rem'];
 const setFontSize = (level) => {
     fontSizeLevel.value = level;
 };
+const getDetailcontent = async (id) => {
+    try {
+        const response = await getNewsDetailAPI(20);
+        console.log('新闻详情:', response.data.noticeContent);
+        // 如果response.data.noticeContent里有p标签，且p标签里没有别的标签
+        if (response.data.noticeContent.includes('<p>') && !response.data.noticeContent.includes('<p')) {
+            
+        }
+        
+
+
+
+        // 在这里处理返回的数据，例如赋值给某个变量以在模板中显示
+    } catch (error) {
+        console.error('获取新闻详情失败:', error);
+    }
+};
 onMounted(() => {
     // 从路由参数获取公司ID
-    console.log('当前路由参数:', route.params);
     id.value = route.params.id || route.query.id;
-    console.log('接收到的路由参数 ID:', id.value);
+    getDetailcontent();
 })
 function openLowRes(src, maxWidth = 1200) {
     if (!src) return;
@@ -65,14 +82,11 @@ function openLowRes(src, maxWidth = 1200) {
                     <div class="font-size-control">
                         <span class="font-size-label">字体大小：</span>
                         <div class="font-size-switch">
-                            <button
-class="font-a-btn" :class="{ active: fontSizeLevel === 0 }"
+                            <button class="font-a-btn" :class="{ active: fontSizeLevel === 0 }"
                                 @click="setFontSize(0)">A</button>
-                            <button
-class="font-a-btn font-a-middle" :class="{ active: fontSizeLevel === 1 }"
+                            <button class="font-a-btn font-a-middle" :class="{ active: fontSizeLevel === 1 }"
                                 @click="setFontSize(1)">A</button>
-                            <button
-class="font-a-btn font-a-large" :class="{ active: fontSizeLevel === 2 }"
+                            <button class="font-a-btn font-a-large" :class="{ active: fontSizeLevel === 2 }"
                                 @click="setFontSize(2)">A</button>
                         </div>
                     </div>
@@ -119,6 +133,15 @@ class="font-a-btn font-a-large" :class="{ active: fontSizeLevel === 2 }"
                                 <template v-else-if="id == 13">
                                     {{ $t('message.newsTitle12') }}
                                 </template>
+                                <template v-else-if="id == 14">
+                                    {{ $t('message.newsTitle13') }}
+                                </template>
+                                <template v-else-if="id == 15">
+                                    {{ $t('message.newsTitle14') }}
+                                </template>
+                                <template v-else-if="id == 16">
+                                    {{ $t('message.newsTitle15') }}
+                                </template>
 
                             </span>
                         </slot>
@@ -136,15 +159,16 @@ class="font-a-btn font-a-large" :class="{ active: fontSizeLevel === 2 }"
                         <template v-else-if="id == 11">2025-07-10</template>
                         <template v-else-if="id == 12">2025-06-05</template>
                         <template v-else-if="id == 13">2025-01-07</template>
+                        <template v-else-if="id == 14">2025-09-04</template>
+                        <template v-else-if="id == 15">2025-09-15</template>
+                        <template v-else-if="id == 16">2025-11-17</template>
                     </div>
                     <div v-if="id == 1">
                         <div class="newspic">
-                            <img
-src="../assets/images/newsPic/jnt.png" alt=""
-                                oncontextmenu="return false" @dblclick="openLowRes($event.target.src, 900)">
+                            <img src="../assets/images/newsPic/jnt.png" alt="" oncontextmenu="return false"
+                                @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent') }}
@@ -154,12 +178,10 @@ class="detailContent"
                     </div>
                     <div v-if="id == 2">
                         <div class="newspic">
-                            <img
-src="../assets/images/newIndex/80zhounian.jpg" oncontextmenu="return false" alt=""
+                            <img src="../assets/images/newIndex/80zhounian.jpg" oncontextmenu="return false" alt=""
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent1') }}
@@ -181,15 +203,12 @@ class="detailContent"
                     </div>
                     <div v-if="id == 3">
                         <div class="newspic">
-                            <img
-src="../assets/images/newsPic/ball1.png" alt="" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/ball1.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
-                            <img
-src="../assets/images/newsPic/ball2.png" alt="" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/ball2.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent5') }}
@@ -219,12 +238,10 @@ class="detailContent"
                     </div> -->
                     <div v-if="id == 5">
                         <div class="newspic">
-                            <img
-src="../assets/images/newsPic/kaigong.png" alt="" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/kaigong.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent6') }}
@@ -242,12 +259,10 @@ class="detailContent"
                     </div>
                     <div v-if="id == 6">
                         <div class="newspic">
-                            <img
-src="../assets/images/newsPic/yigong.png" alt="" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/yigong.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent9') }}
@@ -255,12 +270,10 @@ class="detailContent"
                             </div>
                         </div>
                         <div class="newspic1">
-                            <img
-src="../assets/images/newsPic/yigong1.png" alt="" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/yigong1.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent10') }}
@@ -270,12 +283,10 @@ class="detailContent"
                     </div>
                     <div v-if="id == 7">
                         <div class="newspic">
-                            <img
-src="../assets/images/newsPic/jingshen.png" alt="" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/jingshen.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent11') }}
@@ -308,20 +319,17 @@ class="detailContent"
                         </div>
                     </div>
                     <div v-if="id == 9">
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent18') }}
 
                             </div>
                             <div class="newspic">
-                                <img
-src="../assets/images/newsPic/guanaishequ.png" alt="" oncontextmenu="return false"
+                                <img src="../assets/images/newsPic/guanaishequ.png" alt="" oncontextmenu="return false"
                                     style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                             </div>
-                            <div
-class="detailContent"
+                            <div class="detailContent"
                                 :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                                 <div>
                                     {{ $t('message.newsContent19') }}
@@ -329,12 +337,10 @@ class="detailContent"
                                 </div>
                             </div>
                             <div class="newspic1">
-                                <img
-src="../assets/images/newsPic/guanaishequ1.png" alt="" oncontextmenu="return false"
+                                <img src="../assets/images/newsPic/guanaishequ1.png" alt="" oncontextmenu="return false"
                                     style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                             </div>
-                            <div
-class="detailContent"
+                            <div class="detailContent"
                                 :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                                 <div>
                                     {{ $t('message.newsContent20') }}
@@ -345,12 +351,10 @@ class="detailContent"
                     </div>
                     <div v-if="id == 10">
                         <div class="newspic">
-                            <img
-src="../assets/images/newsPic/lifa.png" alt="" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/lifa.png" alt="" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
-                        <div
-class="detailContent"
+                        <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent21') }}
@@ -362,86 +366,200 @@ class="detailContent"
                             </div>
                         </div>
                     </div>
-                     <div v-if="id == 11">
-                    <div class="newspic" style="margin-bottom: 0.5rem;">
-                        <img
-src="../assets/images/newsPic/jiang.png" alt="" oncontextmenu="return false"
-                            style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
-                    </div>
-                    <div style="font-size: 0.9rem; text-align: center; ">
-                        {{ $t('message.newsContent23') }}
-
-                    </div>
-                    <div class="newspic">
-                        <img
-src="../assets/images/newsPic/jiang1.png" alt="" oncontextmenu="return false"
-                            style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
-                    </div>
-                    <div
-class="detailContent"
-                        :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
-                        <div>
-                            {{ $t('message.newsContent24') }}
+                    <div v-if="id == 11">
+                        <div class="newspic" style="margin-bottom: 0.5rem;">
+                            <img src="../assets/images/newsPic/jiang.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div style="font-size: 0.9rem; text-align: center; ">
+                            {{ $t('message.newsContent23') }}
 
                         </div>
-                        <div>
-                            {{ $t('message.newsContent25') }}
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/jiang1.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent24') }}
 
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent25') }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 12">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/fadian.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent26') }}
+
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent27') }}
+
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent28') }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 13">
+
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent29') }}
+
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent30') }}
+
+                            </div>
+                        </div>
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/yundonghui.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                    </div>
+                    <div v-if="id == 14">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20250904.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent31') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent32') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent33') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 15">
+                        <div class="detailPic">
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091501.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle') }}</div>
+                            </div>
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091502.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle1') }}</div>
+                            </div>
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091503.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle2') }}</div>
+                            </div>
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091504.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle3') }}</div>
+                            </div>
+
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent34') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent35') }}
+                            </div>
+                        </div>
+                        <div class="detailPic">
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091505.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle4') }}</div>
+                            </div>
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091506.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle5') }}</div>
+                            </div>
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091507.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle6') }}</div>
+                            </div>
+                            <div class="pic">
+                                <img src="../assets/images/newsPic/2025091508.png" alt="" oncontextmenu="return false"
+                                    style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                                <div>{{ $t('message.newsPicTitle7') }}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div v-if="id == 16">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20251117.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent36') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent37') }}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div v-if="id == 12">
-                    <div class="newspic">
-                        <img
-src="../assets/images/newsPic/fadian.png" alt="" oncontextmenu="return false"
-                            style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
-                    </div>
-                    <div
-class="detailContent"
-                        :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
-                        <div>
-                            {{ $t('message.newsContent26') }}
 
-                        </div>
-                        <div>
-                            {{ $t('message.newsContent27') }}
 
-                        </div>
-                        <div>
-                            {{ $t('message.newsContent28') }}
-
-                        </div>
-                    </div>
-                </div>
-                <div v-if="id == 13">
-
-                    <div
-class="detailContent"
-                        :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
-                        <div>
-                            {{ $t('message.newsContent29') }}
-
-                        </div>
-                        <div>
-                            {{ $t('message.newsContent30') }}
-
-                        </div>
-                    </div>
-                    <div class="newspic">
-                        <img
-src="../assets/images/newsPic/yundonghui.png" alt="" oncontextmenu="return false"
-                            style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
-                    </div>
-                </div>
-                </div>
-
-               
             </div>
         </Layout>
     </div>
 </template>
 
 <style scoped>
+.detailPic {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    >div {
+        width: 40%;
+        height: 20rem;
+        margin-bottom: 4rem;
+
+        @media screen and (max-width: 767px) {
+            width: 80%;
+        }
+
+        >img {
+            width: 100%;
+            height: 100%;
+        }
+
+        >div {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    }
+
+
+}
+
 .detailBox {
     width: 100%;
     /* border-top: 2px solid #E5E5E5; */

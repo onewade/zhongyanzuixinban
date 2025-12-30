@@ -28,8 +28,19 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  server:{
-    host:'localhost',
+ server:{
+    port: 10087,
+    proxy: {
+      '/api': {
+        target: 'http://laoyanghome.cn:10087/api',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        // 打印实际的地址
+         onProxyReq: (proxyReq, req, res, options) => {
+          console.log('proxyReq:', proxyReq.path);
+        },
+      }
+    }
   },
   build: {
     sourcemap: false, // 生产环境不输出sourcemap

@@ -45,8 +45,8 @@ const formatter = (value) => {
 	return `${value.toFixed(3)}`;
 }
 onMounted(() => {
-	getCompanyInfo1();
-	getExempleTablist();
+	// getCompanyInfo1();
+	// getExempleTablist();
 })
 </script>
 <template>

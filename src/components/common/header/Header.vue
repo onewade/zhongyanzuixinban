@@ -105,7 +105,7 @@ onMounted(() => {
 	});
 
 	// 获取公司信息并监听滚动以切换固定 header
-	getCompanyInfo()
+	// getCompanyInfo()
 	window.addEventListener('scroll', toggleStickyHeader)
 })
 

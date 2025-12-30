@@ -61,9 +61,9 @@ const getDesigners = async () => {
 }
 
 onMounted(() => {
-	getCompanyInfo();
-	getDesigners();
-	getourfaith()
+	// getCompanyInfo();
+	// getDesigners();
+	// getourfaith()
 })
 </script>
 

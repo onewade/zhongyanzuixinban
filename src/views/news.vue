@@ -24,14 +24,13 @@ const parseDate = (d) => {
     return { year, month, day }
 }
 const handleClick = (item) => {
-    console.log('点击新闻项:', item)
     // 这里可以添加跳转到新闻详情页的逻辑
     router.push(`/newsDetail/${item.id}`);
 }
 
 // 仅用于调试输出，实际列表和格式化由 computed 管理
 onMounted(() => {
-    console.log('新闻列表:', list.value);
+
 })
 
 // 根据当前语言返回字体类，绑定到根元素以改变整页字体样式
