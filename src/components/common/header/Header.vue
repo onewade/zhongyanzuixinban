@@ -226,7 +226,7 @@ onBeforeUnmount(() => {
 	display: none;
 	/* >=1025 调整为桌面布局 */
 	@media screen and (min-width: 1024px) {
-		
+		    width: 30%;
 			justify-content: flex-end;
 			display: flex;
 			>img:nth-child(2) {

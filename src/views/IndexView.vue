@@ -240,6 +240,19 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 					</SwiperSlide>
 				</Swiper>
 			</div>
+			<!-- ,
+      {
+        "id": 15,
+        "title": "国际集团所属企业组织观看纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大会",
+        "content": "身在海外，心系祖国，国际集团各所属企业组织员工在企业驻地观看纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大会，共同感受这一庄严而激动人心的时刻。 ",
+        "date": "2025-09-15"
+      },
+      {
+        "id": 14,
+        "title": "国际集团组织观看纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大会",
+        "content": "为铭记历史、缅怀先烈、珍爱和平、开创未来，弘扬爱国主义精神和伟大抗战精神，9月3日上午国际集团组织全体员工观看纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大会，共同感受这一庄严而激动人心的时刻。",
+        "date": "2025-09-04"
+      } -->
 			<div class="news-content">
 				<div v-if="!isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
 				<div class="news-boxes">

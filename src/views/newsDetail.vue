@@ -1,8 +1,9 @@
 <script setup>
-import { onMounted, ref } from 'vue';
 import Layout from '../components/common/Layout.vue';
+import { onMounted, ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { getNewsDetailAPI } from '../apis/newAPI.js';
+
 const router = useRouter();
 const route = useRoute();
 const goBack = () => {
@@ -22,28 +23,55 @@ const lineHeightMap = ['2.1rem', '2.7rem', '3.5rem'];
 const setFontSize = (level) => {
     fontSizeLevel.value = level;
 };
+
+const html = ref('');
+let rawContent = '';
+function processHtml() {
+    if (!rawContent) return;
+    let content = rawContent;
+    if (content.includes('<p>')) {
+        const pTags = content.match(/<p>(.*?)<\/p>/g);
+        pTags && pTags.forEach(tag => {
+            const inner = tag.replace(/<\/?p>/g, '');
+            if (/<[^>]+>/.test(inner)) {
+                const imgTags = inner.match(/<img[^>]+>/g);
+                imgTags && imgTags.forEach(imgTag => {
+                    const newImgTag = imgTag.replace('<img', '<img style="max-width:90%;height:auto;margin: auto;display: flex" oncontextmenu="return false;"');
+                    content = content.replace(imgTag, newImgTag);
+                });
+            } else {
+                const fontSize = fontSizeMap[fontSizeLevel.value];
+                const lineHeight = lineHeightMap[fontSizeLevel.value];
+                const newTag = tag.replace(
+                    '<p>',
+                    `<p class="detailParagraph" style="text-indent:2em;font-size:${fontSize};line-height:${lineHeight};">`
+                );
+                content = content.replace(tag, newTag);
+            }
+        });
+    }
+    html.value = content;
+}
+
 const getDetailcontent = async (id) => {
     try {
         const response = await getNewsDetailAPI(20);
-        console.log('新闻详情:', response.data.noticeContent);
-        // 如果response.data.noticeContent里有p标签，且p标签里没有别的标签
-        if (response.data.noticeContent.includes('<p>') && !response.data.noticeContent.includes('<p')) {
-            
-        }
-        
-
-
-
-        // 在这里处理返回的数据，例如赋值给某个变量以在模板中显示
+        rawContent = response.data.noticeContent;
+        processHtml();
     } catch (error) {
         console.error('获取新闻详情失败:', error);
     }
 };
+
+watch(fontSizeLevel, () => {
+    processHtml();
+});
+
 onMounted(() => {
     // 从路由参数获取公司ID
     id.value = route.params.id || route.query.id;
     getDetailcontent();
-})
+});
 function openLowRes(src, maxWidth = 1200) {
     if (!src) return;
     const img = new Image();
@@ -142,6 +170,12 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 16">
                                     {{ $t('message.newsTitle15') }}
                                 </template>
+                                  <template v-else-if="id == 17">
+                                    {{ $t('message.newsTitle16') }}
+                                </template>
+                                <template v-else-if="id == 18">
+                                    {{ $t('message.newsTitle17') }} 
+                                </template>
 
                             </span>
                         </slot>
@@ -162,7 +196,10 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 14">2025-09-04</template>
                         <template v-else-if="id == 15">2025-09-15</template>
                         <template v-else-if="id == 16">2025-11-17</template>
+                        <template v-else-if="id == 17">2025-09-16</template>
+                        <template v-else-if="id == 18">2026-01-12</template>
                     </div>
+                    <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
                         <div class="newspic">
                             <img src="../assets/images/newsPic/jnt.png" alt="" oncontextmenu="return false"
@@ -520,6 +557,42 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                         </div>
                     </div>
+                     <div v-if="id == 17">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/huaxiafeiyu.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent38') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent39') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent40') }}
+                            </div>
+                        </div>
+                    </div>
+                     <div v-if="id == 18">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/zzpb.png" alt="" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent41') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent42') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent43') }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -529,6 +602,10 @@ function openLowRes(src, maxWidth = 1200) {
 </template>
 
 <style scoped>
+:deep(.detailParagraph) {
+  /* color: red; */
+}
+
 .detailPic {
     display: flex;
     justify-content: space-around;

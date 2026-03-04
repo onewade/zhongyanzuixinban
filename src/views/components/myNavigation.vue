@@ -15,7 +15,6 @@ const isNews = computed(() => {
   return currentLanguage.value !== 'en';
 })  
 const toggleNav = () => {
-  console.log('toggleNav11111');
   showNav.value = !showNav.value;
   if (showNav.value) {
     nextTick(() => {
