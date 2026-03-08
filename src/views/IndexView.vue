@@ -328,7 +328,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 				<div v-for="(item, index) in companyList" class="group-item" :key="index" @click="handleClick(item)">
 					<div>{{ item.name }}</div>
 					<div></div>
-					<img src="../assets/images/newIndex/svg.png" alt="">
+					<img src="../assets/images/newIndex/svg.png" alt="企业列表箭头图标">
 				</div>
 			</div>
 		</div> -->

@@ -163,7 +163,7 @@ onMounted(() => {
 									v-for="(goods,index) in goodsList"
 									:key="index"
 									@click="handleDetails(goods.Id)">
-									<img :src="goods.ImageUrl1" alt="">
+									<img :src="goods.ImageUrl1" alt="产品图片">
 									<p>{{goods.Title}}</p>
 								</div>
 							</div>

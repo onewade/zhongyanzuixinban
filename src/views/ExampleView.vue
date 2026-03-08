@@ -107,7 +107,7 @@ v-for="(tab,index) in tabList" :key="index"
 						
 						<div class="tabs">
 							<div v-for="(image,index) in list" :key="index" class="tab">
-								<img :src="image"  alt="">
+								<img :src="image"  alt="案例展示图片">
 							</div>
 						</div>
 					</div>
