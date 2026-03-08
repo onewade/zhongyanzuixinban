@@ -1,14 +1,89 @@
 
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 const ageModalVisible = ref(true)
+const confirmBtnRef = ref(null)
+const denyBtnRef = ref(null)
+const currentFocus = ref('confirm') // 记录当前焦点
+
 const confirmEnter = () => {
   ageModalVisible.value = false
 }
 const denyEnter = () => {
-  // window.location.href = 'https://www.gov.hk/tc/theme/psi/';
   alert('您未满18岁，无法进入本网站')
 }
+
+// 设置焦点
+const setFocusToConfirm = () => {
+  currentFocus.value = 'confirm'
+  confirmBtnRef.value?.focus()
+}
+
+const setFocusToDeny = () => {
+  currentFocus.value = 'deny'
+  denyBtnRef.value?.focus()
+}
+
+// 处理弹窗内的键盘事件
+const handleKeydown = (e) => {
+  if (!ageModalVisible.value) return
+  
+  // Tab 键只在两个按钮之间切换
+  if (e.key === 'Tab') {
+    e.preventDefault()
+    if (currentFocus.value === 'confirm') {
+      setFocusToDeny()
+    } else {
+      setFocusToConfirm()
+    }
+    return
+  }
+  
+  // 左右方向键切换
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    e.preventDefault()
+    if (currentFocus.value === 'confirm') {
+      setFocusToDeny()
+    } else {
+      setFocusToConfirm()
+    }
+    return
+  }
+  
+  // 上下方向键切换
+  if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    e.preventDefault()
+    if (currentFocus.value === 'confirm') {
+      setFocusToDeny()
+    } else {
+      setFocusToConfirm()
+    }
+    return
+  }
+  
+  // Enter 键触发当前按钮
+  if (e.key === 'Enter') {
+    e.preventDefault()
+    if (currentFocus.value === 'confirm') {
+      confirmEnter()
+    } else {
+      denyEnter()
+    }
+    return
+  }
+}
+
+onMounted(() => {
+  // 弹窗打开时，聚焦到确认按钮
+  nextTick(() => {
+    setFocusToConfirm()
+  })
+  document.addEventListener('keydown', handleKeydown)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <template>
@@ -27,8 +102,8 @@ const denyEnter = () => {
         </span>
       </div>
       <div class="age-modal-actions">
-        <button class="age-btn deny" @click="denyEnter">否，未满18岁<br>No, I am not 18 or above.</button>
-        <button class="age-btn confirm" @click="confirmEnter">确认进入<br>Enter</button>
+        <button ref="denyBtnRef" class="age-btn deny" @click="denyEnter" tabindex="0">否，未满18岁<br>No, I am not 18 or above.</button>
+        <button ref="confirmBtnRef" class="age-btn confirm" @click="confirmEnter" tabindex="0">确认进入<br>Enter</button>
       </div>
     </div>
   </div>
@@ -78,7 +153,7 @@ const denyEnter = () => {
   font-size: 1rem;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 .age-btn.deny {
   background: #eee;
@@ -90,5 +165,10 @@ const denyEnter = () => {
 }
 .age-btn:hover {
   opacity: 0.85;
+}
+.age-btn:focus {
+  outline: 3px solid #F7B334;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(247, 179, 52, 0.3);
 }
 </style>

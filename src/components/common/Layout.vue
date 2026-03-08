@@ -9,6 +9,10 @@
 </template>
 
 <script setup>
+import { useGlobalKeyboardNavigation } from '@/composables/useGlobalKeyboardNavigation.js';
+
+// 启用全局键盘导航
+useGlobalKeyboardNavigation();
 </script>
 
 <style scoped>

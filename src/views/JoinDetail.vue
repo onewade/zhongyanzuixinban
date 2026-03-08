@@ -75,8 +75,8 @@ const goBack = () => {
 </script>
 <template>
     <div class="joinDetailContainer">
-        <div class="back" @click="goBack"> 
-           <img src="../assets/images/back.png" alt="">
+        <div class="back" @click="goBack" tabindex="0" role="button" aria-label="返回列表" @keydown.enter="goBack"> 
+           <img src="../assets/images/back.png" alt="返回按钮">
         </div>
         <div class="joinDetailTitle">{{ joinTitle }}</div>
         <div class="date">

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { getCurrentLanguage, onLanguageChange } from '@/utils/language.js';
@@ -10,7 +10,9 @@ const { locale, messages } = useI18n();
 const searchVisible = ref(false);
 const searchQuery = ref('');
 const searchInputRef = ref(null);
+const searchModalRef = ref(null);
 const currentLanguage = ref(getCurrentLanguage());
+const currentFocusIndex = ref(-1); // 当前焦点索引
 
 const searchModules = computed(() => {
   const modules = [
@@ -71,16 +73,41 @@ const searchResults = computed(() => {
   });
 });
 
+// 获取所有可聚焦的导航项
+const getFocusableItems = () => {
+  if (!searchModalRef.value) return [];
+  return Array.from(searchModalRef.value.querySelectorAll('.search-result-item, .suggestion-item'));
+};
+
+// 设置焦点
+const setFocus = (index) => {
+  const items = getFocusableItems();
+  if (items.length === 0) return;
+  
+  // 移除所有焦点样式
+  items.forEach(item => item.classList.remove('keyboard-focus'));
+  
+  if (index >= 0 && index < items.length) {
+    currentFocusIndex.value = index;
+    items[index].classList.add('keyboard-focus');
+    items[index].focus();
+  }
+};
+
 const openSearch = () => {
   searchVisible.value = true;
-  setTimeout(() => {
+  currentFocusIndex.value = -1;
+  nextTick(() => {
     searchInputRef.value?.focus();
-  }, 100);
+    document.addEventListener('keydown', handleSearchKeydown);
+  });
 };
 
 const closeSearch = () => {
   searchVisible.value = false;
   searchQuery.value = '';
+  currentFocusIndex.value = -1;
+  document.removeEventListener('keydown', handleSearchKeydown);
 };
 
 const navigateTo = (path) => {
@@ -88,26 +115,58 @@ const navigateTo = (path) => {
   closeSearch();
 };
 
-const handleKeydown = (e) => {
+// 搜索弹窗键盘事件处理
+const handleSearchKeydown = (e) => {
+  if (!searchVisible.value) return;
+  
+  // ESC 关闭
   if (e.key === 'Escape') {
     closeSearch();
+    return;
+  }
+  
+  const items = getFocusableItems();
+  if (items.length === 0) return;
+  
+  // Tab 和方向键导航
+  if (e.key === 'Tab' || e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    
+    let nextIndex;
+    if (e.key === 'Tab' || e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      nextIndex = currentFocusIndex.value === -1 ? 0 : (currentFocusIndex.value + 1) % items.length;
+    } else {
+      nextIndex = currentFocusIndex.value <= 0 ? items.length - 1 : currentFocusIndex.value - 1;
+    }
+    
+    setFocus(nextIndex);
+    return;
+  }
+  
+  // Enter 键触发点击
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const items = getFocusableItems();
+    if (currentFocusIndex.value >= 0 && currentFocusIndex.value < items.length) {
+      items[currentFocusIndex.value].click();
+    }
+    return;
   }
 };
 
 let offLanguageListener = null;
 
 onMounted(() => {
-  window.addEventListener('keydown', handleKeydown);
   offLanguageListener = onLanguageChange((lang) => {
     currentLanguage.value = lang;
   });
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('keydown', handleKeydown);
   if (offLanguageListener) {
     offLanguageListener();
   }
+  document.removeEventListener('keydown', handleSearchKeydown);
 });
 
 defineExpose({
@@ -119,7 +178,7 @@ defineExpose({
   <Teleport to="body">
     <Transition name="search-fade">
       <div v-if="searchVisible" class="search-overlay" @click.self="closeSearch">
-        <div class="search-modal">
+        <div ref="searchModalRef" class="search-modal">
           <div class="search-header">
             <div class="search-input-wrapper">
               <i class="fa fa-search search-icon"></i>
@@ -131,7 +190,7 @@ defineExpose({
                 :placeholder="currentLanguage === 'en' ? 'Search site...' : '搜索站点...'"
                 @click.stop
               />
-              <button class="search-close" @click="closeSearch">
+              <button class="search-close" @click="closeSearch" tabindex="0">
                 <i class="fa fa-times"></i>
               </button>
             </div>
@@ -143,6 +202,7 @@ defineExpose({
                 v-for="result in searchResults" 
                 :key="result.id"
                 class="search-result-item"
+                tabindex="0"
                 @click="navigateTo(result.path)"
               >
                 <i class="fa fa-link result-icon"></i>
@@ -165,6 +225,7 @@ defineExpose({
                   v-for="module in searchModules" 
                   :key="module.id"
                   class="suggestion-item"
+                  tabindex="0"
                   @click="navigateTo(module.path)"
                 >
                   <i class="fa fa-link"></i>
@@ -266,8 +327,14 @@ defineExpose({
   transition: all 0.2s;
 }
 
-.search-result-item:hover {
+.search-result-item:hover,
+.search-result-item.keyboard-focus {
   background: #f9f9f9;
+}
+
+.search-result-item.keyboard-focus {
+  outline: 2px solid #F7B334;
+  outline-offset: -2px;
 }
 
 .result-icon {
@@ -329,9 +396,15 @@ defineExpose({
   color: #333;
 }
 
-.suggestion-item:hover {
+.suggestion-item:hover,
+.suggestion-item.keyboard-focus {
   background: #F7B334;
   color: white;
+}
+
+.suggestion-item.keyboard-focus {
+  outline: 2px solid #d99a2a;
+  outline-offset: -2px;
 }
 
 .suggestion-item i {
@@ -339,7 +412,8 @@ defineExpose({
   color: #F7B334;
 }
 
-.suggestion-item:hover i {
+.suggestion-item:hover i,
+.suggestion-item.keyboard-focus i {
   color: white;
 }
 

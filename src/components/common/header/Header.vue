@@ -162,19 +162,19 @@ onBeforeUnmount(() => {
 		<!-- 桌面端导航 -->
 		<div v-if="!isMobile" class="nav desktop-nav">
 			<div class="am-navss am-navss-pills">
-				<div><router-link class="router" to="/index" @click="closeMobileMenu">{{ $t('message.t1')
+				<div><router-link class="router" to="/index" @click="closeMobileMenu" tabindex="0" role="link" aria-label="首页">{{ $t('message.t1')
 						}}</router-link></div>
-				<div><router-link class="router" to="/overview" @click="closeMobileMenu">{{ $t('message.t2')
+				<div><router-link class="router" to="/overview" @click="closeMobileMenu" tabindex="0" role="link" aria-label="公司概况">{{ $t('message.t2')
 						}}</router-link></div>
-				<div v-if="isNews"><router-link class="router" to="/news" @click="closeMobileMenu">{{ $t('message.t3')
+				<div v-if="isNews"><router-link class="router" to="/news" @click="closeMobileMenu" tabindex="0" role="link" aria-label="新闻资讯">{{ $t('message.t3')
 						}}</router-link></div>
 				<!-- <div><router-link class="router" to="/example">客户案例</router-link></div> -->
-				<div><router-link class="router" to="/MainBusiness" @click="closeMobileMenu">{{ $t('message.t4')
+				<div><router-link class="router" to="/MainBusiness" @click="closeMobileMenu" tabindex="0" role="link" aria-label="主营业务">{{ $t('message.t4')
 				}}</router-link>
 				</div>
-				<div><router-link class="router" to="/JoinUs" @click="closeMobileMenu">{{ $t('message.t5')
+				<div><router-link class="router" to="/JoinUs" @click="closeMobileMenu" tabindex="0" role="link" aria-label="人才招聘">{{ $t('message.t5')
 						}}</router-link></div>
-				<div><router-link class="router" to="/ContactInformation" @click="closeMobileMenu">{{ $t('message.t6')
+				<div><router-link class="router" to="/ContactInformation" @click="closeMobileMenu" tabindex="0" role="link" aria-label="联系我们">{{ $t('message.t6')
 						}}</router-link></div>
 			</div>
 		</div>

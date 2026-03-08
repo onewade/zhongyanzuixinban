@@ -6,6 +6,7 @@ import { getNewsDetailAPI } from '../apis/newAPI.js';
 
 const router = useRouter();
 const route = useRoute();
+
 const goBack = () => {
     // 返回到上一页
     if (window.history.length > 1) {
@@ -106,16 +107,16 @@ function openLowRes(src, maxWidth = 1200) {
         <Layout>
             <div class="detailBox">
                 <div class="back">
-                    <img src="../assets/images/back.png" alt="返回按钮" @click="goBack">
+                    <img src="../assets/images/back.png" alt="返回按钮" @click="goBack" :data-nav-item="true" :data-nav-type="'back'">
                     <div class="font-size-control">
                         <span class="font-size-label">字体大小：</span>
                         <div class="font-size-switch">
                             <button class="font-a-btn" :class="{ active: fontSizeLevel === 0 }"
-                                @click="setFontSize(0)">A</button>
+                                @click="setFontSize(0)" :data-nav-item="true" :data-nav-type="'font-size'" :data-level="0">A</button>
                             <button class="font-a-btn font-a-middle" :class="{ active: fontSizeLevel === 1 }"
-                                @click="setFontSize(1)">A</button>
+                                @click="setFontSize(1)" :data-nav-item="true" :data-nav-type="'font-size'" :data-level="1">A</button>
                             <button class="font-a-btn font-a-large" :class="{ active: fontSizeLevel === 2 }"
-                                @click="setFontSize(2)">A</button>
+                                @click="setFontSize(2)" :data-nav-item="true" :data-nav-type="'font-size'" :data-level="2">A</button>
                         </div>
                     </div>
                 </div>

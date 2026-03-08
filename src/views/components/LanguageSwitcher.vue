@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="changeLL">
-      <div class="changeItem" :class="{ active: currentLang === 'zhCN' }" @click="changeLanguage('zhCN')">
+      <div class="changeItem" :class="{ active: currentLang === 'zhCN' }" @click="changeLanguage('zhCN')" tabindex="0" role="button" aria-label="切换到简体中文">
         <span v-if="currentLang === 'zhCN'" class="triangle">▶</span>
         <span class="text">简体版</span>
       </div>
-      <div class="changeItem" :class="{ active: currentLang === 'zhTW' }" @click="changeLanguage('zhTW')">
+      <div class="changeItem" :class="{ active: currentLang === 'zhTW' }" @click="changeLanguage('zhTW')" tabindex="0" role="button" aria-label="切换到繁体中文">
         <span v-if="currentLang === 'zhTW'" class="triangle">▶</span>
         <span class="text">繁體版</span>
       </div>
-      <div class="changeItem" :class="{ active: currentLang === 'en' }" @click="changeLanguage('en')">
+      <div class="changeItem" :class="{ active: currentLang === 'en' }" @click="changeLanguage('en')" tabindex="0" role="button" aria-label="切换到英文">
         <span v-if="currentLang === 'en'" class="triangle">▶</span>
         <span class="text">English</span>
       </div>
@@ -19,7 +19,7 @@
       <el-dropdown
 trigger="click" placement="bottom-end" :hide-on-click="true" :max-height="200"
         popper-class="lang-dropdown-popper" @command="handleCommand">
-        <img src="../../assets/images/net.png" alt="语言切换按钮" style="width: 100%;height: 100%; cursor: pointer;">
+        <img src="../../assets/images/net.png" alt="语言切换按钮" style="width: 100%;height: 100%; cursor: pointer;" tabindex="0">
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item command="en" :class="{ active: currentLang === 'en' }">EN</el-dropdown-item>

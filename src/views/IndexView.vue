@@ -140,6 +140,7 @@ const newsListIndex = computed(() => messages.value[locale.value].message.newsLi
 // eslint-disable-next-line no-unused-vars
 const companyList = computed(() => messages.value[locale.value].message.companyList)
 const route = useRouter();
+
 // eslint-disable-next-line no-unused-vars
 const handleClick = (item) => {
 	console.log('item', item);
@@ -256,13 +257,16 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 			<div class="news-content">
 				<div v-if="!isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
 				<div class="news-boxes">
-					<div v-for="item in newsListIndex" :key="item.title" class="news-item" @click="goDetail(item.id)">
+					<div v-for="item in newsListIndex" :key="item.title" class="news-item" @click="goDetail(item.id)"
+						:data-nav-item="true" :data-nav-type="'news'" :data-nav-id="item.id">
 						<div class="news-item-title">{{ item.title }}</div>
 						<div class="news-item-content">{{ item.content }}</div>
 						<span class="news-item-date">{{ item.date }}</span>
 					</div>
 				</div>
-				<div class="newsBtn" @click="handleGoNew">{{ $t('message.gengduoxinwen') }}</div>
+				<div class="newsBtn" @click="handleGoNew" :data-nav-item="true" :data-nav-type="'more-news'">
+					{{ $t('message.gengduoxinwen') }}
+				</div>
 			</div>
 		</div>
 		<div v-else>

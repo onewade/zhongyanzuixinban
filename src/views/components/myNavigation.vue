@@ -14,20 +14,83 @@ const offLangListener = ref(null);
 const isNews = computed(() => {
   return currentLanguage.value !== 'en';
 })  
+
 const toggleNav = () => {
   showNav.value = !showNav.value;
   if (showNav.value) {
     nextTick(() => {
       document.addEventListener('click', handleClickOutside);
+      document.addEventListener('keydown', handlePopupKeydown);
+      // 弹窗打开后，聚焦到第一个链接
+      const firstLink = navPopupRef.value?.querySelector('.guide-link');
+      if (firstLink) {
+        firstLink.classList.add('keyboard-focus');
+        firstLink.focus();
+      }
     });
   } else {
     document.removeEventListener('click', handleClickOutside);
+    document.removeEventListener('keydown', handlePopupKeydown);
   }
 };
 
-// removed unused wrapper handleNav; use navigateTo directly from template
+// 弹窗内键盘事件处理
+const handlePopupKeydown = (e) => {
+  if (!showNav.value) return;
+  
+  const links = navPopupRef.value?.querySelectorAll('.guide-link');
+  if (!links || links.length === 0) return;
+  
+  // ESC 关闭弹窗
+  if (e.key === 'Escape') {
+    showNav.value = false;
+    document.removeEventListener('click', handleClickOutside);
+    document.removeEventListener('keydown', handlePopupKeydown);
+    return;
+  }
+  
+  // Tab 和方向键导航
+  if (e.key === 'Tab' || e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    
+    // 找到当前焦点
+    let currentIndex = -1;
+    links.forEach((link, index) => {
+      if (link.classList.contains('keyboard-focus') || document.activeElement === link) {
+        currentIndex = index;
+      }
+    });
+    
+    let nextIndex;
+    if (e.key === 'Tab' || e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % links.length;
+    } else {
+      nextIndex = currentIndex <= 0 ? links.length - 1 : currentIndex - 1;
+    }
+    
+    // 移除所有焦点样式
+    links.forEach(link => link.classList.remove('keyboard-focus'));
+    // 设置新焦点
+    links[nextIndex].classList.add('keyboard-focus');
+    links[nextIndex].focus();
+    return;
+  }
+  
+  // Enter 键触发点击
+  if (e.key === 'Enter') {
+    const focusedLink = navPopupRef.value?.querySelector('.guide-link.keyboard-focus') || document.activeElement;
+    if (focusedLink && focusedLink.classList.contains('guide-link')) {
+      focusedLink.click();
+    }
+    return;
+  }
+};
+
 // 导航到指定页面
 const navigateTo = (path) => {
+  showNav.value = false;
+  document.removeEventListener('click', handleClickOutside);
+  document.removeEventListener('keydown', handlePopupKeydown);
   router.push(path);
 };
 
@@ -40,6 +103,7 @@ const handleClickOutside = (e) => {
   }
   showNav.value = false;
   document.removeEventListener('click', handleClickOutside);
+  document.removeEventListener('keydown', handlePopupKeydown);
 };
 
 onMounted(() => {
@@ -54,13 +118,14 @@ onBeforeUnmount(() => {
     offLangListener.value();
     offLangListener.value = null;
   }
+  document.removeEventListener('keydown', handlePopupKeydown);
 });
 </script>
 
 <template>
   <div ref="navBtnRef" class="quick-nav-btn">
-    <div class="quickBtn" size="" @click="toggleNav">
-      <div class="guide-btn" @click="showGuide">
+    <div class="quickBtn" size="" @click="toggleNav" tabindex="0" role="button" aria-label="用户指南" @keydown.enter="toggleNav">
+      <div class="guide-btn">
           {{ $t("message.shiyongzhinan") }}
         </div>
     </div>
@@ -70,15 +135,15 @@ onBeforeUnmount(() => {
             <div class="guide-body">
               <div class="guide-section">
                 <div class="guide-links">
-                  <div class="guide-link" @click="navigateTo('/overview')">{{ $t("message.t2") }}</div>
-                  <div v-if="isNews" class="guide-link" @click="navigateTo('/news')">{{ $t("message.t3") }}</div>
-                  <div class="guide-link" @click="navigateTo('/MainBusiness')">{{ $t("message.t4")}}</div>
+                  <div class="guide-link" @click="navigateTo('/overview')" tabindex="0" role="link">{{ $t("message.t2") }}</div>
+                  <div v-if="isNews" class="guide-link" @click="navigateTo('/news')" tabindex="0" role="link">{{ $t("message.t3") }}</div>
+                  <div class="guide-link" @click="navigateTo('/MainBusiness')" tabindex="0" role="link">{{ $t("message.t4")}}</div>
                 </div>
               </div>
               <div class="guide-section">
                 <div class="guide-links">
-                  <div class="guide-link" @click="navigateTo('/JoinUs')">{{ $t("message.t5")}}</div>
-                  <div class="guide-link" @click="navigateTo('/ContactInformation')">{{ $t("message.t6")}}</div> 
+                  <div class="guide-link" @click="navigateTo('/JoinUs')" tabindex="0" role="link">{{ $t("message.t5")}}</div>
+                  <div class="guide-link" @click="navigateTo('/ContactInformation')" tabindex="0" role="link">{{ $t("message.t6")}}</div> 
                 </div>
               </div>
             </div>

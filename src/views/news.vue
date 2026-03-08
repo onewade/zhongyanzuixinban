@@ -1,17 +1,16 @@
 <script setup>
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 import Layout from '@/components/common/Layout.vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 // 模拟新闻数据（后期可替换为接口调用）
 const { locale, messages } = useI18n()
+const containerRef = ref(null);
+const router = useRouter()
 
 // 从 i18n messages 中按当前 locale 读取 newsList（可能不存在时返回空数组）
 const list = computed(() => (messages.value[locale.value] && messages.value[locale.value].message && messages.value[locale.value].message.newsList) ? messages.value[locale.value].message.newsList : [])
-
-
-const router = useRouter()
 
 // 解析日期，便于模板使用
 // formatList 随 list（即 locale）变化自动更新
@@ -63,7 +62,8 @@ const fontClass = computed(() => {
 
                 <!-- 右侧新闻列表 -->
                 <section class="news-list">
-                    <article v-for="item in formatList" :key="item.id" class="news-item" @click=handleClick(item)>
+                    <article v-for="item in formatList" :key="item.id" class="news-item" @click=handleClick(item)
+                        :data-nav-item="true" :data-nav-id="item.id">
                         <div class="news-date">
                             <div>
                                 <span class="news-month"><span>{{ item.month }}</span><span>月</span></span>

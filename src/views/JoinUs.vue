@@ -234,7 +234,11 @@ const handleGoBack = (val) => {
                     <div class="joinTitle">{{ $t("message.t7") }}</div>
                     <div v-for="(item) in list" :key="item.number" class="joinContentItem"
                         :style="{ cursor: item.number == 1 || item.number == 2 ? 'pointer' : 'default' }"
-                        @click="handleClick(item.number)">
+                        @click="handleClick(item.number)"
+                        tabindex="0"
+                        role="button"
+                        :aria-label="item.title"
+                        @keydown.enter="handleClick(item.number)">
                         <div>{{ item.title }}</div>
                         <div>{{ item.date }}</div>
                     </div>

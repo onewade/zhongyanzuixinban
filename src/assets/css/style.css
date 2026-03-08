@@ -19,4 +19,33 @@
 /* About */
 /* @import "about.min.css"; */
 
+/* 键盘导航焦点样式 */
+.keyboard-focus {
+  outline: 3px solid #F7B334 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(247, 179, 52, 0.3) !important;
+  position: relative;
+  z-index: 100;
+}
+
+/* 确保焦点元素可见 */
+[data-nav-item] {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+[data-nav-item]:hover {
+  opacity: 0.9;
+}
+
+/* 隐藏默认焦点样式，使用自定义样式 */
+[data-nav-item]:focus {
+  outline: none;
+}
+
+[data-nav-item].keyboard-focus:focus {
+  outline: 3px solid #F7B334 !important;
+  outline-offset: 2px !important;
+}
+
 

@@ -14,9 +14,27 @@ const _unregisterLanguageChange = onLanguageChange((lang) => {
 const openDialog = (type) => {
     dialogType.value = type;
     dialogVisible.value = true;
+    // 弹窗打开后，添加键盘事件监听
+    setTimeout(() => {
+        document.addEventListener('keydown', handleDialogKeydown);
+        // 聚焦到关闭按钮
+        const closeBtn = document.querySelector('.footer-dialog-close');
+        if (closeBtn) {
+            closeBtn.focus();
+            closeBtn.setAttribute('tabindex', '0');
+        }
+    }, 100);
 };
 const closeDialog = () => {
     dialogVisible.value = false;
+    document.removeEventListener('keydown', handleDialogKeydown);
+};
+
+// 弹窗键盘事件处理
+const handleDialogKeydown = (e) => {
+    if (e.key === 'Escape') {
+        closeDialog();
+    }
 };
 
 const openSearch = () => {
@@ -49,15 +67,15 @@ onBeforeUnmount(() => {
         <div></div>
         <div>
             <div class="footerContainer">
-                <div @click="openDialog(1)">{{ $t('message.mianze') }}</div>
+                <div @click="openDialog(1)" tabindex="0" role="button" aria-label="免责声明">{{ $t('message.mianze') }}</div>
                 <div>|</div>
-                <div @click="openDialog(3)">{{ $t('message.wzasm') }}</div>
+                <div @click="openDialog(3)" tabindex="0" role="button" aria-label="无障碍声明">{{ $t('message.wzasm') }}</div>
                 <div>|</div>
-                <div @click="openDialog(5)">{{ $t('message.siyin') }}</div>
+                <div @click="openDialog(5)" tabindex="0" role="button" aria-label="隐私政策">{{ $t('message.siyin') }}</div>
                 <div>|</div>
                 <div class="copyright-wrapper">
                     <span>{{ $t('message.banquansuoyou') }}</span>
-                    <i class="fa fa-search search-icon-btn" @click="openSearch" :title="currentLanguage === 'en' ? 'Search' : '站内搜索'"></i>
+                    <i class="fa fa-search search-icon-btn" @click="openSearch" :title="currentLanguage === 'en' ? 'Search' : '站内搜索'" tabindex="0" role="button" aria-label="站内搜索"></i>
                 </div>
             </div>
             <div class="footerFooter">{{ $t('message.tishi') }}</div>
@@ -73,7 +91,7 @@ onBeforeUnmount(() => {
     <!-- 弹窗 -->
     <div v-if="dialogVisible" class="footer-dialog-mask">
         <div class="footer-dialog">
-            <span class="footer-dialog-close" @click="closeDialog">×</span>
+            <span class="footer-dialog-close" @click="closeDialog" tabindex="0" role="button" aria-label="关闭弹窗" @keydown.enter="closeDialog">×</span>
             <div class="footer-dialog-content">
                 <template v-if="dialogType === 1">
                     <!-- 这里填写第1个弹窗内容 -->
