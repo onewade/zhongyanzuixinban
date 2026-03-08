@@ -103,10 +103,10 @@ onBeforeUnmount(() => {
             <div class="subGroupBox">
                 <div class="subGroupContainer">
                     <div class="page-header-sub">
-                        <img src="../assets/images/banner.png" alt="">
+                        <img src="../assets/images/banner.png" alt="集团参控股企业页面横幅图片">
                     </div>
                     <div class="back" @click="goBack">
-                        <img src="../assets/images/back.png" alt="">
+                        <img src="../assets/images/back.png" alt="返回按钮">
                     </div>
                     <div class="groupContent">
                         <!-- 根据语言切换字体大小；注意这里要设置 fontSize，而不是把 fontSize 字符串赋给 display -->

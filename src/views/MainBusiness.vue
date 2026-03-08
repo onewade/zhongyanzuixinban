@@ -24,7 +24,7 @@ onBeforeUnmount(() => {
                 <div class="index-page" style="width: 100%">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/business.png" alt=""> -->
-                        <img src="../assets/images/banner.png" alt="">
+                        <img src="../assets/images/banner.png" alt="主营业务页面横幅图片">
                     </div>
                 </div>
                 <div class="contactContainer1">
@@ -41,7 +41,7 @@ onBeforeUnmount(() => {
 
                         <div class="cardContent">
                             <div>
-                                <img src="../assets/images/call.png" alt="">
+                                <img src="../assets/images/call.png" alt="联系电话图标">
                                 <div>
                                     +852-26206011
                                 </div>
@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
                                 </div>
                             </div>
                             <div>
-                                <img src="../assets/images/call.png" alt="">
+                                <img src="../assets/images/call.png" alt="联系电话图标">
                                 <div>
                                     +852-26206308
                                 </div>
@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
                                 </div>
                             </div>
                             <div>
-                                <img src="../assets/images/call.png" alt="">
+                                <img src="../assets/images/call.png" alt="联系电话图标">
                                 <div>
                                     +852-26206055
                                 </div>

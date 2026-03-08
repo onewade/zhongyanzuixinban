@@ -48,7 +48,7 @@ const fontClass = computed(() => {
             <div class="index-page">
                 <div class="page-header-sub">
                     <!-- <img src="../assets/images/news.png" alt="news banner" class="responsive-img" /> -->
-                     <img src="../assets/images/banner.png" alt="" srcset="">
+                     <img src="../assets/images/banner.png" alt="新闻动态页面横幅图片" srcset="">
                 </div>
             </div>
 

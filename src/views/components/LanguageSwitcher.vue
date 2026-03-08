@@ -19,7 +19,7 @@
       <el-dropdown
 trigger="click" placement="bottom-end" :hide-on-click="true" :max-height="200"
         popper-class="lang-dropdown-popper" @command="handleCommand">
-        <img src="../../assets/images/net.png" alt="" style="width: 100%;height: 100%; cursor: pointer;">
+        <img src="../../assets/images/net.png" alt="语言切换按钮" style="width: 100%;height: 100%; cursor: pointer;">
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item command="en" :class="{ active: currentLang === 'en' }">EN</el-dropdown-item>

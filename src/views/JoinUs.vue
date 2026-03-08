@@ -227,7 +227,7 @@ const handleGoBack = (val) => {
                 <div class="index-page">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/zp.png" alt=""> -->
-                        <img src="../assets/images/banner.png" alt="" srcset="">
+                        <img src="../assets/images/banner.png" alt="人才招聘页面横幅图片" srcset="">
                     </div>
                 </div>
                 <div v-if="!isShowDetail" class="join-content">

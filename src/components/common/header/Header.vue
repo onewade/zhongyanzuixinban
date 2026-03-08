@@ -7,6 +7,7 @@ import { h } from 'vue';
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router';
 import LanguageSwitcher from '../../../views/components/LanguageSwitcher.vue';
+import SiteSearch from '../../../views/components/SiteSearch.vue';
 // import myNavigation from "../../../views/components/myNavigation.vue";
 
 const router = useRouter()
@@ -125,13 +126,14 @@ onBeforeUnmount(() => {
 <template>
 	<div class="header-wrapper">
 		<div v-if="isMobile" class="header-mobile">
-			<img src="../../../assets/images/menu.png" alt="" srcset="" @click="showMenu">
+			<img src="../../../assets/images/menu.png" alt="菜单按钮" srcset="" @click="showMenu">
 			<div class="header-mobile-title">
 				<!-- <div> -->
-				<img src="../../../assets/images/logo.png" alt="" @click="goHome" >
+				<img src="../../../assets/images/logo.png" alt="中烟国际集团有限公司标志" @click="goHome" >
 				<!-- </div> -->
 
 			</div>
+			<SiteSearch class="mobile-search" />
 			<LanguageSwitcher class="lang-switcher" />
 		</div>
 
@@ -142,14 +144,14 @@ onBeforeUnmount(() => {
 				<!-- <img src="../../../assets/images/inlogo.png" alt=""> -->
 				<div>
 					<!-- <div class="mainTitle">中烟国际集团有限公司</div> -->
-					<img src="../../../assets/images/logo.png" alt="" class="logoImg" @click="goHome">
+					<img src="../../../assets/images/logo.png" alt="中烟国际集团有限公司标志" class="logoImg" @click="goHome">
 				</div>
 
 			</div>
 			<div class="header-right">
 				<div class="award">
-					<img src="../../../assets/images/newIndex/award.jpg" alt="" srcset="" />
-					<img src="../../../assets/images/newIndex/award1.png" alt="" srcset="" />
+					<img src="../../../assets/images/newIndex/award.jpg" alt="企业荣誉奖项" srcset="" />
+					<img src="../../../assets/images/newIndex/award1.png" alt="企业认证标志" srcset="" />
 				</div>
 
 				<LanguageSwitcher class="lang-switcher" />
@@ -304,6 +306,12 @@ onBeforeUnmount(() => {
 			margin-top: 1rem;
 		}
 
+	}
+
+	.header-mobile-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	>div:nth-child(3) {

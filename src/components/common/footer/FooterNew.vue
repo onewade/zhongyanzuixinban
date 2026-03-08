@@ -1,13 +1,13 @@
 <script setup>
 import { ref, watch, onBeforeUnmount } from 'vue';
 import { accessibilityEmail } from '@/config/contact.js';
+import SiteSearch from '@/views/components/SiteSearch.vue';
 const dialogVisible = ref(false);
 const dialogType = ref(1);
+const siteSearchRef = ref(null);
 import { onLanguageChange, getCurrentLanguage } from '@/utils/language.js';
-// 当前语言（可在模板或逻辑中使用）
 const currentLanguage = ref(getCurrentLanguage());
 
-// 直接注册语言变更监听，保存取消监听的函数以便在卸载时移除
 const _unregisterLanguageChange = onLanguageChange((lang) => {
     currentLanguage.value = lang;
 });
@@ -18,14 +18,16 @@ const openDialog = (type) => {
 const closeDialog = () => {
     dialogVisible.value = false;
 };
-// 防止弹窗打开时背景页面滚动：通过给 body 添加/移除类来控制 overflow
+
+const openSearch = () => {
+    siteSearchRef.value?.openSearch();
+};
+
 const toggleBodyNoScroll = (enable) => {
     try {
         if (enable) document.body.classList.add('no-scroll');
         else document.body.classList.remove('no-scroll');
     } catch (e) {
-        // 在某些 SSR 环境或测试环境中 document 可能未定义，忽略错误
-        // console.warn('toggleBodyNoScroll error', e);
     }
 };
 
@@ -34,9 +36,7 @@ watch(dialogVisible, (val) => {
 });
 
 onBeforeUnmount(() => {
-    // 确保组件卸载时移除类
     toggleBodyNoScroll(false);
-    // 取消语言变更监听
     try {
         if (typeof _unregisterLanguageChange === 'function') _unregisterLanguageChange();
     } catch (e) {
@@ -55,15 +55,20 @@ onBeforeUnmount(() => {
                 <div>|</div>
                 <div @click="openDialog(5)">{{ $t('message.siyin') }}</div>
                 <div>|</div>
-                <div>{{ $t('message.banquansuoyou') }}</div>
+                <div class="copyright-wrapper">
+                    <span>{{ $t('message.banquansuoyou') }}</span>
+                    <i class="fa fa-search search-icon-btn" @click="openSearch" :title="currentLanguage === 'en' ? 'Search' : '站内搜索'"></i>
+                </div>
             </div>
             <div class="footerFooter">{{ $t('message.tishi') }}</div>
             <div class="awardContainer">
-                <img src="../../../assets/images/newIndex/award.jpg" alt="">
-                <img src="../../../assets/images/newIndex/award1.png" alt="">
+                <img src="../../../assets/images/newIndex/award.jpg" alt="企业荣誉奖项">
+                <img src="../../../assets/images/newIndex/award1.png" alt="企业认证标志">
             </div>
         </div>
     </div>
+
+    <SiteSearch ref="siteSearchRef" />
 
     <!-- 弹窗 -->
     <div v-if="dialogVisible" class="footer-dialog-mask">
@@ -171,6 +176,23 @@ body.no-scroll {
         margin: 0px 1rem;
     }
 
+    .copyright-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .search-icon-btn {
+        font-size: 1.1rem;
+        color: #F7B334;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .search-icon-btn:hover {
+        color: #d99a2a;
+    }
+
     @media screen and (min-width: 1024px) {
         >div:nth-child(2) {
             margin: 0px 1rem;
@@ -194,7 +216,6 @@ body.no-scroll {
             display: none;
         }
 
-        /* 每行前面都加一个小竖线 */
         >div:nth-child(odd)::before {
             content: '';
             display: inline-block;
@@ -207,6 +228,14 @@ body.no-scroll {
 
         >div {
             margin-top: 1rem;
+        }
+
+        .copyright-wrapper {
+            display: inline-flex;
+        }
+
+        .search-icon-btn {
+            display: none;
         }
 
     }

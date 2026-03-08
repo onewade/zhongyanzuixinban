@@ -23,20 +23,20 @@ const moreVisible = ref(false);
                 <div class="index-page">
                     <div class="page-header-sub">
                         <!-- <img src="../assets/images/contact.png" alt=""> -->
-                        <img src="../assets/images/banner.png" alt="" srcset="">
+                        <img src="../assets/images/banner.png" alt="联系方式页面横幅图片" srcset="">
                     </div>
                 </div>
                 <div class="contact-content">
                     <div>{{ $t('message.lianxi') }}</div>
                     <div>
-                        <img src="../assets/images/address.png" alt="" srcset="">
+                        <img src="../assets/images/address.png" alt="地址图标" srcset="">
                     </div>
                     <div>{{ $t('message.contactAddress') }}</div>
                     <div>{{ $t('message.contactAddress1') }}</div>
                     <div class="contactAddress">
                         <template v-for="(item, key) in contactAddress" :key="key">
                             <div :style="key === 3 ? 'position:relative;' : ''">
-                                <img src="../assets/images/call.png" alt="" srcset="">
+                                <img src="../assets/images/call.png" alt="联系电话图标" srcset="">
                                 <div>{{ item.number }}</div>
                                 <div>{{ item.email }}</div>
                                 <div>{{ item.address }}</div>

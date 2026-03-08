@@ -123,7 +123,7 @@ onMounted(() => {
 				<div>{{ one.time }}</div>
 			</div>
 			<div>
-				<img :src="one.img" alt="" class="imgs">
+				<img :src="one.img" alt="邵岩先生照片" class="imgs">
 			</div>
 		</div>
 			<div class="personContainer animate__animated animate__backInLeft">
@@ -133,7 +133,7 @@ onMounted(() => {
 					<div>{{ item.position }}</div>
 				</div>
 				<div>
-					<img :src="item.img" alt="" class="imgs">
+					<img :src="item.img" alt="管治团队成员照片" class="imgs">
 				</div>
 			</div>
 		</div>

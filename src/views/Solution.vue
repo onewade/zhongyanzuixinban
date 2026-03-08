@@ -24,7 +24,7 @@ const offLanguageListener = ref(null);
     <div class="index-page" style="width: 100%">
       <div class="page-header-sub">
         <!-- <img src="../assets/images/gaikuang.png" alt=""> -->
-         <img src="../assets/images/banner.png" alt="" srcset="">
+         <img src="../assets/images/banner.png" alt="集团概况页面横幅图片" srcset="">
       </div>
     </div>
 
