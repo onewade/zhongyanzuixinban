@@ -45,15 +45,18 @@ const slideshow = ref([
 	}
 
 ])
-const newImg = ref([	
+const newImg = ref([
 	{
 		ImageUrl: p2,
+		title: '纪念抗战胜利80周年阅兵观看活动',
 	},
 	{
 		ImageUrl: p1,
+		title: '共建员工防火墙嘉许白金奖颁奖',
 	},
 	{
 		ImageUrl: zhounian,
+		title: '纪念抗战胜利80周年展览',
 	},
 ])
 // eslint-disable-next-line no-unused-vars
@@ -213,9 +216,9 @@ v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :styl
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: 'cover',
 						backgroundPosition: 'center'
-					}">
+					}" :aria-label="`轮播图 ${index + 1}`" role="img">
 						<div class="index-banner">
-							<!-- 可以在这里添加轮播图上的内容 -->
+							<span class="sr-only">{{ `网站轮播展示图 ${index + 1}` }}</span>
 						</div>
 					</SwiperSlide>
 				</Swiper>
@@ -234,9 +237,9 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: 'cover',
 						backgroundPosition: 'center'
-					}">
+					}" :aria-label="slide.title" role="img">
 						<div class="index-banner">
-							<!-- 可以在这里添加轮播图上的内容 -->
+							<span class="sr-only">{{ slide.title }}</span>
 						</div>
 					</SwiperSlide>
 				</Swiper>

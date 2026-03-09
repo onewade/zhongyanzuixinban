@@ -63,7 +63,7 @@ import {getArticleByArticleIdAPI,getRecentArticleAPI} from '@/apis/newAPI.js'
 																<div class="careers_articles">
 																	<div v-for="(recent,index) in recentArticles" :key="index" class="careers_article">
 										<div class="image">
-											<img style="height: 160px;width: 240px;" :src="article.Cover" alt="文章封面图片">
+											<img style="height: 160px;width: 240px;" :src="article.Cover" :alt="article.Title + '文章封面图片'">
 										</div>
 										<h3 class="careers_article--title">{{ article.Title }}</h3>
 										<div class="careers_article--text">{{article.Introduction}}</div>

@@ -122,7 +122,7 @@ v-for="(item, index) in contactList" :key="index" :style="{ backgroundImage: 'ur
 								<div class="am-g">
 									<div class="am-u-md-6">
 										<div class="our-company-img">
-											<img :src="companyInfo.Image2" alt="" />
+											<img :src="companyInfo.Image2" :alt="companyInfo.Title + '图片'" />
 										</div>
 									</div>
 
@@ -158,7 +158,7 @@ v-for="(item, index) in contactList" :key="index" :style="{ backgroundImage: 'ur
 						<div class="am-g" style="display: flex; flex-direction:row; flex-wrap: wrap;">
 							<div class="am-u-md-3" v-for="item in CompanyflagList" :key="item.Id">
 								<div class="our_mission--item">
-									<div class="figure our_mission--item_media"><img :src="item.Cover" alt=""></div>
+									<div class="figure our_mission--item_media"><img :src="item.Cover" :alt="item.Title + '图片'"></div>
 									<h3 class="our_mission--item_title" style="text-align:center;">{{ item.Title }}</h3>
 									<div class="our_mission--item_body">
 										
@@ -192,7 +192,7 @@ v-for="(item, index) in contactList" :key="index" :style="{ backgroundImage: 'ur
 							<div class="am-u-md-3 am-u-end" v-for="(designer, index) in designers" :key="index">
 								<div class="team-box">
 									<div class="our-team-img" style="height: 304px;overflow: hidden">
-										<img :src="designer.Avatar" style="height: auto" alt="" />
+										<img :src="designer.Avatar" style="height: auto" :alt="designer.Name + '照片'" />
 									</div>
 									<div class="team_member--body">
 										<h3 class="team_member--name">{{ designer.Name }}</h3>

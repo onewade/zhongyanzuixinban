@@ -123,7 +123,7 @@ onMounted(() => {
 				<div>{{ one.time }}</div>
 			</div>
 			<div>
-				<img :src="one.img" alt="邵岩先生照片" class="imgs">
+					<img :src="one.img" :alt="one.name + ' ' + one.position + '照片'" class="imgs">
 			</div>
 		</div>
 			<div class="personContainer animate__animated animate__backInLeft">
@@ -133,7 +133,7 @@ onMounted(() => {
 					<div>{{ item.position }}</div>
 				</div>
 				<div>
-					<img :src="item.img" alt="管治团队成员照片" class="imgs">
+					<img :src="item.img" :alt="item.name + ' ' + item.position + '照片'" class="imgs">
 				</div>
 			</div>
 		</div>
@@ -163,7 +163,7 @@ onMounted(() => {
 									v-for="(goods,index) in goodsList"
 									:key="index"
 									@click="handleDetails(goods.Id)">
-									<img :src="goods.ImageUrl1" alt="产品图片">
+															<img :src="goods.ImageUrl1" :alt="goods.Title + '产品图片'">
 									<p>{{goods.Title}}</p>
 								</div>
 							</div>

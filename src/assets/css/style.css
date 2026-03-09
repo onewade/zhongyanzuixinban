@@ -28,6 +28,19 @@
   z-index: 100;
 }
 
+/* 屏幕阅读器专用样式 - 视觉隐藏但屏幕阅读器可读 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* 确保焦点元素可见 */
 [data-nav-item] {
   cursor: pointer;
@@ -46,6 +59,20 @@
 [data-nav-item].keyboard-focus:focus {
   outline: 3px solid #F7B334 !important;
   outline-offset: 2px !important;
+}
+
+/* 图片焦点样式 */
+img.keyboard-focus {
+  outline: 3px solid #F7B334 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(247, 179, 52, 0.3) !important;
+}
+
+/* 轮播图焦点样式 */
+.swiper-slide-item.keyboard-focus {
+  outline: 3px solid #F7B334 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(247, 179, 52, 0.3) !important;
 }
 
 

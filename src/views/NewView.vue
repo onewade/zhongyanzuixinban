@@ -87,7 +87,7 @@ onMounted(() => getArticle(1, pageSize.value))
 							<div class="am-u-lg-4 am-u-md-6 am-u-end" v-for="(article,index) in articles.Records" :key="index">
 								<div class="article">
 									<div class="article-img">
-										<img :src="article.Cover" alt="" />
+										<img :src="article.Cover" :alt="article.Title + '封面图片'" />
 									</div> -->
 				<!-- 命名的路由 -->
 				<!-- <div class="article-header">
