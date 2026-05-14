@@ -24,6 +24,7 @@
       "zuixin": "Latest Stock Price",
       "gupiao": "Stock Code",
       "daimanumber": "6055.HK",
+      "nothing": "Not available",
       "jiezhi": "As of",
       "date": "2024/10/21 13:52:12",
       "xianggangshijian": "Hong Kong Time",
@@ -266,55 +267,7 @@
       "shiyongzhinan": "User Guide",
       "list": [
         {
-          "number": 1,
-          "title": "【Social Recruitment】 Equipment Safety Management Position",
-          "date": "2026-01-07",
-          "joinTitle": "【Social Recruitment】 Equipment Safety Management Position",
-          "joinType": "Social Recruitment",
-          "joinPost": "Equipment Safety Management Position - Assistant Level and Above (Please Apply via Jobsdb)",
-          "joinContentlist": [
-            {
-              "title": "Job Responsibilities:",
-              "content": [
-                "1. Responsible for compiling management system documents for cigarette equipment, safety and environment;",
-                "2. Responsible for guiding and supervising the work related to cigarette equipment, safety and environmental protection in cigarette production;",
-                "3. Responsible for the overall planning and research of cigarette production equipment transformation;",
-                "4. Responsible for participating in cigarette equipment transformation projects."
-              ]
-            },
-            {
-              "title": "Job Requirements:",
-              "content": [
-                "1. Bachelor's degree or above;",
-                "2. Majoring in relevant science and engineering fields such as electromechanical engineering, automation, industrial control, safety engineering, environmental engineering, etc.;",
-                "3. More than 5 years of working experience in the tobacco industry; those with over 3 years of tobacco equipment safety management experience are preferred;",
-                "4. Proficiency in knowledge related to tobacco production equipment, environmental protection and safety;",
-                "5. Fluent in English and Mandarin, with good communication and expression skills; possessing strong verbal and written communication abilities."
-              ]
-            }
-          ]
-        },
-       
-        {
           "number": 3
-        },
-        {
-          "number": 4
-        },
-        {
-          "number": 5
-        },
-        {
-          "number": 6
-        },
-        {
-          "number": 7
-        },
-        {
-          "number": 8
-        },
-        {
-          "number": 9
         }
       ]
     }

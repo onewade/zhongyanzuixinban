@@ -7,6 +7,40 @@ const { locale, messages } = useI18n();
 const list = computed(() => messages.value[locale.value].message.list)
 const isShowDetail = ref(false); // 控制招聘详情的显示
 // 展示第几条招聘详情
+    //   {
+    //     "number": 1,
+    //     "title": "【社会招聘】财务管理岗",
+    //     "date": "",
+    //     "joinTitle": "【社会招聘】财务管理岗",
+    //     "joinType": "社会招聘",
+    //     "joinPost": "财务管理岗 经理及以上（请通过Jobsdb投递）",
+    //     "joinContentlist": [
+    //       {
+    //         "title": "岗位职责:",
+    //         "content": [
+    //           "1.协助分管副总监开展工作;",
+    //           "2.开展对相关投资企业的财务管理;",
+    //           "3.负责集团合并预算编制、执行、分析、调整、总结;",
+    //           "4.负责合并预算的滚动分析预测，提出合理化建议;",
+    //           "5.开展对财税中介机构的采购和选聘审核工作;",
+    //           "6.协助开展财务分析工作;",
+    //           "7.协助开展财会监督工作;",
+    //           "8.完成上级交办的其他工作。"
+    //         ]
+    //       },
+    //       {
+    //         "title": "岗位要求:",
+    //         "content": [
+    //           "1.财会类相关专业，本科或以上学历;",
+    //           "2.具有8年以上财务工作经验，具有对投资企业管理经验;",
+    //           "3.具有HKICPA/CPA/ACCA资格优先;",
+    //           "4.具有在大型企业信息化管理、下属企业财务管理等经验优先;",
+    //           "5.熟悉合并报表编制、预算管理等工作;",
+    //           "6.具有较强的文字写作能力和沟通表达能力;熟练掌握会计核算软件、office办公软件;熟练阅读英文材料;具备较强的岗位责任意识和团队精神。"
+    //         ]
+    //       }
+    //     ]
+    //   },
   // {
       //   "number": 1,
       //   "title": "【社会招聘】员工关系岗招聘",
@@ -205,7 +239,7 @@ const isShowDetail = ref(false); // 控制招聘详情的显示
 const selectedIndex = ref(0);
 const handleClick = (n) => {
     // 处理点击事件，显示招聘详情
-    console.log('招聘信息被点击');
+    console.log('招聘信息被点击',n);
     if (n == 1 || n == 2) {
         selectedIndex.value = n;
         isShowDetail.value = true;
@@ -239,8 +273,9 @@ const handleGoBack = (val) => {
                         role="button"
                         :aria-label="item.title"
                         @keydown.enter="handleClick(item.number)">
-                        <div>{{ item.title }}</div>
-                        <div>{{ item.date }}</div>
+                        <div v-if="item.title">{{ item.title }}</div>
+                        <div v-if="item.date">{{ item.date }}</div>
+                        <div v-else>{{ $t("message.nothing") }}</div>
                     </div>
                 </div>
                 <JoinDetail v-else :number="selectedIndex" @go-back="handleGoBack" />

@@ -161,7 +161,7 @@ const goBack = () => {
 .back{
     position: absolute;
     left: 17.5%;
-    top: 0.3rem;
+    top: 1.3rem;
     cursor: pointer;
     font-size: 1.5rem;
     width: 1.4rem;
