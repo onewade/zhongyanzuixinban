@@ -325,7 +325,7 @@ const handleGoBack = (val) => {
     height: 3rem;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 20rem;
     color: #555;
     font-size: 1.2rem;
 }
