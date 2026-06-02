@@ -8,8 +8,8 @@ import c3 from '../assets/images/newIndex/c3.png';
 import bannner from '../assets/images/banner.png';
 import { useRouter } from 'vue-router';
 import zhounian from '../assets/images/newIndex/80zhounian.jpg';
-import p1 from '../assets/images/newsPic/20251117.png';
 import p2 from '../assets/images/newsPic/20250904.png';
+import p3 from '../assets/images/newsPic/20260504.png';
 import { useI18n } from 'vue-i18n'
 const { locale, messages } = useI18n()
 // 当前语言（可在模板或逻辑中使用）
@@ -47,12 +47,12 @@ const slideshow = ref([
 ])
 const newImg = ref([
 	{
-		ImageUrl: p2,
-		title: '纪念抗战胜利80周年阅兵观看活动',
+		ImageUrl: p3,
+		title: '国际集团组织参观国家安全展览',
 	},
 	{
-		ImageUrl: p1,
-		title: '共建员工防火墙嘉许白金奖颁奖',
+		ImageUrl: p2,
+		title: '纪念抗战胜利80周年阅兵观看活动',
 	},
 	{
 		ImageUrl: zhounian,

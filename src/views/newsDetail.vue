@@ -183,6 +183,9 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 19">
                                     {{ $t('message.newsTitle18') }}
                                 </template>
+                                <template v-else-if="id == 20">
+                                    {{ $t('message.newsTitle19') }}
+                                </template>
 
                             </span>
                         </slot>
@@ -206,6 +209,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 17">2025-09-16</template>
                         <template v-else-if="id == 18">2026-01-12</template>
                         <template v-else-if="id == 19">2025-02-26</template>
+                        <template v-else-if="id == 20">2026-05-04</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
@@ -635,6 +639,21 @@ function openLowRes(src, maxWidth = 1200) {
                         </div>
                     </div>
                 </div>
+                    <div v-if="id == 20">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20260504.png" alt="国际集团参观国家安全展览合影照片" oncontextmenu="return false"
+                                style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent47') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent48') }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Layout>
