@@ -47,12 +47,12 @@ const slideshow = ref([
 ])
 const newImg = ref([
 	{
-		ImageUrl: p3,
-		title: '国际集团组织参观国家安全展览',
-	},
-	{
 		ImageUrl: p2,
 		title: '纪念抗战胜利80周年阅兵观看活动',
+	},
+	{
+		ImageUrl: p3,
+		title: '国际集团组织参观国家安全展览',
 	},
 	{
 		ImageUrl: zhounian,
