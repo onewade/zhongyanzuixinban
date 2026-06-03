@@ -56,7 +56,8 @@ function processHtml() {
 
 const getDetailcontent = async (id) => {
     try {
-        const response = await getNewsDetailAPI(20);
+        const newsId = id || id.value;
+        const response = await getNewsDetailAPI(newsId);
         rawContent = response.data.noticeContent;
         processHtml();
     } catch (error) {
@@ -71,7 +72,7 @@ watch(fontSizeLevel, () => {
 onMounted(() => {
     // 从路由参数获取公司ID
     id.value = route.params.id || route.query.id;
-    getDetailcontent();
+    getDetailcontent(id.value);
 });
 function openLowRes(src, maxWidth = 1200) {
     if (!src) return;
@@ -186,6 +187,9 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 20">
                                     {{ $t('message.newsTitle19') }}
                                 </template>
+                                <template v-else-if="id == 21">
+                                    {{ $t('message.newsTitle20') }}
+                                </template>
 
                             </span>
                         </slot>
@@ -210,6 +214,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 18">2026-01-12</template>
                         <template v-else-if="id == 19">2025-02-26</template>
                         <template v-else-if="id == 20">2026-05-04</template>
+                        <template v-else-if="id == 21">2026-06-03</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
@@ -651,6 +656,25 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                             <div>
                                 {{ $t('message.newsContent48') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 21">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20260603.jpeg" alt="国际集团开展共促全员阅读、共建书香中烟主题活动照片"
+                                oncontextmenu="return false" style="cursor:pointer;"
+                                @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent49') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent50') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent51') }}
                             </div>
                         </div>
                     </div>
