@@ -29,26 +29,22 @@ const tabList = ref([]);
 const goodsList = ref([]);
 const slideshowPhoto = ref([]);
 const defaultId = ref()
-const getSlideshow = async () => {
-	const { data: res } = await getSlidephotoAPI();
-	console.log(res.Data);
-	if (res.Data) {
+	const getSlideshow = async () => {
+		const { data: res } = await getSlidephotoAPI();
+		if (res.Data) {
 		// console.log(res.Data[0].ImageUrl);
-		const temp = res.Data
-		console.log(temp.length);
-		//命名别重复
+			const temp = res.Data
+			//命名别重复
 		const photoslist = [];
 		photoslist.length = 0
-		for (let i = 0; i < res.Data.length; i++) {
-			// 判断是否为空
-			console.log(temp[i].ImageUrl);
-			// if (temp[i].ImageUrl != null && temp[i].ImageUrl != ""){
+			for (let i = 0; i < res.Data.length; i++) {
+				// 判断是否为空
+				// if (temp[i].ImageUrl != null && temp[i].ImageUrl != ""){
 			photoslist.push(temp[i].ImageUrl);
 			// }
-		}
-		slideshowPhoto.value = photoslist
-		console.log(slideshowPhoto.value);
-	} else {
+			}
+			slideshowPhoto.value = photoslist
+		} else {
 		slideshowPhoto.value = []
 
 	}
@@ -56,25 +52,22 @@ const getSlideshow = async () => {
 }
 //获取选项列表
 const getTabList = async () => {
-	const { data: res } = await getTabListAPI()
-	tabList.value = res.Data
-	defaultId.value = res.Data[0].Id
-	console.log(defaultId.value, '这里');
-	window.sessionStorage.setItem('defaultId', res.Data[0].Id);
+		const { data: res } = await getTabListAPI()
+		tabList.value = res.Data
+		defaultId.value = res.Data[0].Id
+		window.sessionStorage.setItem('defaultId', res.Data[0].Id);
 };
 // 点击选项切换选项
 //从for循环得到的选项id发起请求获取该选项的产品列表
-const getGoodsList = async (typeId) => {
-	const { data: res } = await getGoodsListAPI(typeId)
-	console.log(res.Data);
-	goodsList.value = res.Data
+	const getGoodsList = async (typeId) => {
+		const { data: res } = await getGoodsListAPI(typeId)
+		goodsList.value = res.Data
 };
 // router and detail navigation removed because the detail template is currently disabled
 onMounted(() => {
-	getSlideshow();
-	getTabList().then(() => {
-		console.log(defaultId.value, '这里88888');
-		getGoodsList(defaultId.value)
+		getSlideshow();
+		getTabList().then(() => {
+			getGoodsList(defaultId.value)
 	})
 
 	nextTick(() => {
@@ -177,7 +170,7 @@ onMounted(() => {
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
 .solution-page {
 	background: url('@/assets/images/product/bg.jpg');
 	color: #fff;

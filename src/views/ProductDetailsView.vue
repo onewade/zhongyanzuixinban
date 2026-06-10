@@ -1,7 +1,8 @@
 <script setup>
-	import { onMounted, ref } from 'vue';
-import Layout from '../components/common/Layout.vue';
-import {getProductByIdAPI} from '@/apis/productAPI.js'
+		import { computed, onMounted, ref } from 'vue';
+	import Layout from '../components/common/Layout.vue';
+	import {getProductByIdAPI} from '@/apis/productAPI.js'
+	import { sanitizeHtml } from '@/utils/sanitizeHtml.js';
 
   const title = ref();
   const introduction = ref();
@@ -9,21 +10,20 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
   // const photos = reactive({
 	// 	data:[]
 	// })
-	const photos = ref([])
-	const detailData = ref([])
+		const photos = ref([])
+		const detailData = ref([])
+		const safeSpec = computed(() => sanitizeHtml(detailData.value.Spec));
+		const safeParam = computed(() => sanitizeHtml(detailData.value.Param));
 
   
 		// 通过id获取产品详细信息
     const getProductById = async(typeDetailsId)=>{
-			console.log(typeDetailsId);
-    // 调用接口获取产品详情信息
-			const {data:res} = await getProductByIdAPI(typeDetailsId)
-			console.log(res.Data);
-			const temp = res.Data
-			detailData.value = res.Data
-			console.log(temp);
-			title.value = temp.Title
-			introduction.value = temp.Introduction
+	    // 调用接口获取产品详情信息
+				const {data:res} = await getProductByIdAPI(typeDetailsId)
+				const temp = res.Data
+				detailData.value = res.Data
+				title.value = temp.Title
+				introduction.value = temp.Introduction
     // 将获取到的照片数据以数组形式存放 photos.value = res.Data.照片数组
       const photoslist = [];
 			photoslist.length = 0
@@ -36,11 +36,9 @@ import {getProductByIdAPI} from '@/apis/productAPI.js'
 							}
 						}
 					}
-					console.log(activePhoto.value);
-					// console.log(title !== ' ' && photos.length > 0);
-					photos.value = photoslist//这里把整理好的数组存到photos里
-					console.log(photos.value);//这个能打印出来
-					// return photos
+						// console.log(title !== ' ' && photos.length > 0);
+						photos.value = photoslist//这里把整理好的数组存到photos里
+						// return photos
     };
 		
 		// 右切换图片
@@ -141,7 +139,7 @@ v-for="(photo, index) in photos"
         </span>
       </template>
 			<!-- eslint-disable-next-line vue/no-v-html -->
-			<div v-html="detailData.Spec"></div>
+				<div v-html="safeSpec"></div>
 			<!-- •  支持云服务器平台部署管理，支持局域网平台部署管理。<br/>
 
 •  支持私有化部署。<br/>
@@ -158,7 +156,7 @@ v-for="(photo, index) in photos"
         </span>
       </template>
 			<!-- eslint-disable-next-line vue/no-v-html -->
-			<div v-html="detailData.Param"></div>
+				<div v-html="safeParam"></div>
 			<!-- 识读码制： 
 
 1D: EAN,UPC,Code 39,Code 93,Code 128,UCC/EAN 128, Code 11,Codabar, Interleaved 2 of 5, Standard 25，MSI-Plessey，GS1 Databar, Industrial 25, Matrix 2 of 5 2D: QR Code, Data Matrix, PDF417,maxicode,Aztec,hanxin <br/>
@@ -205,7 +203,7 @@ v-for="(photo, index) in photos"
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
 .solution-page {
      background: url('@/assets/images/product/bg.jpg'); 
       color: #fff;

@@ -46,6 +46,7 @@ const toggleBodyNoScroll = (enable) => {
         if (enable) document.body.classList.add('no-scroll');
         else document.body.classList.remove('no-scroll');
     } catch (e) {
+        console.warn('Failed to toggle page scroll lock', e);
     }
 };
 
@@ -120,7 +121,7 @@ onBeforeUnmount(() => {
         </div>
     </div>
 </template>
-<style>
+<style lang="scss">
 /* 当弹窗打开时禁止背景滚动 */
 body.no-scroll {
     overflow: hidden !important;

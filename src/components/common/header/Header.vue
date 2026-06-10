@@ -26,9 +26,8 @@ const checkMobile = () => {
 
 const getCompanyInfo = async () => {
 	const { data: res } = await getCompanyInfoAPI()
-	CompanyInfo.value = res.Data
-	window.sessionStorage.setItem('companyinfo', JSON.stringify(res.Data))
-	console.log('获取成功');
+		CompanyInfo.value = res.Data
+		window.sessionStorage.setItem('companyinfo', JSON.stringify(res.Data))
 
 }
 
@@ -88,8 +87,6 @@ const isNews = computed(() => {
 })
 // 返回到首页
 const goHome = () => {
-	console.log('返回首页');
-	
 	router.push('/index');
 }
 
@@ -100,10 +97,9 @@ onMounted(() => {
 	window.addEventListener('resize', checkMobile)
 
 	// 订阅语言变更
-	offLangListener.value = onLanguageChange((lang) => {
-		currentLanguage.value = lang;
-		console.log('Header detected language change:', lang);
-	});
+		offLangListener.value = onLanguageChange((lang) => {
+			currentLanguage.value = lang;
+		});
 
 	// 获取公司信息并监听滚动以切换固定 header
 	// getCompanyInfo()

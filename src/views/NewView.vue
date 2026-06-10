@@ -9,13 +9,11 @@ const pageSize = ref(6);
 const total = ref(13)
 //获取公司动态文章
 const getArticle = async (pageIndex, pageSize) => {
-	const { data: res } = await getArticleAPI(pageIndex, pageSize)
-	articles.value = res.Data
-	total.value = res.Data.Total
-	console.log(articles.value);
-	console.log(total.value);
+		const { data: res } = await getArticleAPI(pageIndex, pageSize)
+		articles.value = res.Data
+		total.value = res.Data.Total
 
-};
+	};
 // pagination computation removed because pagination UI isn't used in simplified view
 // 切换页码
 
@@ -133,7 +131,7 @@ onMounted(() => getArticle(1, pageSize.value))
 	</Layout>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .newTitle {
 	font-size: 24px;
 	text-align: center;

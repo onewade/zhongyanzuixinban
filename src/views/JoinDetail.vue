@@ -13,15 +13,9 @@ const props = defineProps({
 const joinTitle = computed(() => {
     const idx = props.number-1;
     const list = messages.value?.[locale.value]?.message?.list;
-    if (!list || !Number.isInteger(idx)) return '';
-    const item = list[idx];
-    console.log(list);
-    
-    console.log(list[idx]);
-    
-    if (!item) return '';
-    console.log(item);
-    
+	    if (!list || !Number.isInteger(idx)) return '';
+	    const item = list[idx];
+	    if (!item) return '';
     // 支持不同命名：优先使用 joinTitle，再回退到 title
     return item.joinTitle ?? item.title ?? '';
 });
@@ -67,8 +61,7 @@ const joinContentList = computed(() => {
 const emit = defineEmits(['goBack']);
 
 const goBack = () => {
-    console.log('返回招聘列表');
-    emit('goBack',false);
+	    emit('goBack',false);
     // router.push({ path: '/JoinUs' });
     
 };
@@ -95,7 +88,7 @@ const goBack = () => {
     </div>
 
 </template>
-<style scoped>
+<style scoped lang="scss">
 .joinDetailContainer {
     position: relative;
      font-size: 1.4rem;

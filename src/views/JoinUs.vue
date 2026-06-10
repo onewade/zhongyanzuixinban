@@ -239,7 +239,6 @@ const isShowDetail = ref(false); // 控制招聘详情的显示
 const selectedIndex = ref(0);
 const handleClick = (n) => {
     // 处理点击事件，显示招聘详情
-    console.log('招聘信息被点击',n);
     if (n == 1 || n == 2) {
         selectedIndex.value = n;
         isShowDetail.value = true;
@@ -285,7 +284,7 @@ const handleGoBack = (val) => {
     </div>
 
 </template>
-<style scoped>
+<style scoped lang="scss">
 .joinContainer {
     width: 100%;
     height: 100%;

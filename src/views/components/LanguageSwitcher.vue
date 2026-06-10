@@ -144,7 +144,7 @@ onBeforeUnmount(() => {
 });
 
 </script>
-<style scoped>
+<style scoped lang="scss">
 .changeL {
   width: 4rem;
   height: 4rem;
@@ -221,7 +221,7 @@ onBeforeUnmount(() => {
 </style>
 
 <!-- Global style for popper (must be non-scoped so it affects elements appended to <body>) -->
-<style>
+<style lang="scss">
 .lang-dropdown-popper {
   z-index: 99999 !important;
 }

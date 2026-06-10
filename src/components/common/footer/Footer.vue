@@ -24,8 +24,7 @@ const getExempleTablist = async () => {
 			}
 		}
 	}
-	console.log(res.Data[0].TypeName);
-	const tablist = []
+		const tablist = []
 	for (let i = 0; i < res.Data.length; i++) {
 		tablist.push(res.Data[i].TypeName)
 		tabList.value = tablist

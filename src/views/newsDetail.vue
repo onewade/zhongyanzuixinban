@@ -684,7 +684,7 @@ function openLowRes(src, maxWidth = 1200) {
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 :deep(.detailParagraph) {
     /* color: red; */
 }

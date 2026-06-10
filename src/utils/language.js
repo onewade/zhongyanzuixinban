@@ -14,14 +14,12 @@ export const setLanguage = (lang) => {
   // 触发自定义事件通知语言变更
   window.dispatchEvent(new CustomEvent('languageChanged', { detail: lang }));
   
-  console.log(`语言已设置为: ${lang}`);
 };
 
 // 初始化语言（在应用启动时调用）
 export const initLanguage = () => {
   const savedLanguage = getCurrentLanguage();
   i18n.global.locale.value = savedLanguage;
-  console.log(`语言已初始化为: ${savedLanguage}`);
   return savedLanguage;
 };
 

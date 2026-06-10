@@ -45,13 +45,11 @@ const getCompanyInfo = async () => {
 }
 const getourfaith = async () => {
 	const { data: res } = await getourfaithAPI()
-	console.log(res.Data);
 	CompanyflagList.value = res.Data
 }
 // 获取企业人员信息
 const getDesigners = async () => {
 	const { data: res } = await getDesignersAPI()
-	console.log(res.Data);
 	designers.value = res.Data
 	// this.getRequest("/findDesigners").then(resp =>{
 	// 			if (resp){
@@ -211,7 +209,7 @@ v-for="(item, index) in contactList" :key="index" :style="{ backgroundImage: 'ur
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
 .contactContainer {
 	display: flex;
 	align-items: baseline;

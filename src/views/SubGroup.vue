@@ -80,13 +80,10 @@ const content = computed(() => t(`message.${dataKey.value}.content`));
 const phone = computed(() => t(`message.${dataKey.value}.phone`));
 const website = computed(() => t(`message.${dataKey.value}.website`));
 const isEnglish = computed(() => currentLanguage.value === 'en');
-console.log('isEnglish:', isEnglish.value);
 
 onMounted(() => {
     // 从路由参数获取公司ID
-    console.log('当前路由参数:', route.params);
     companyId.value = route.params.id || route.query.id;
-    console.log('接收到的路由参数 ID:', companyId.value);
     // 订阅语言变化以便 currentLanguage 实时更新
     offLanguage = onLanguageChange((lang) => {
         currentLanguage.value = lang;
@@ -126,7 +123,7 @@ onBeforeUnmount(() => {
         </Layout>
     </div>
 </template>
-<style scoped>
+<style scoped lang="scss">
 .subGroupBox {
     width: 100%;
 

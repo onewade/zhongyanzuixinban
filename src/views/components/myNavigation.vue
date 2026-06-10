@@ -107,10 +107,9 @@ const handleClickOutside = (e) => {
 };
 
 onMounted(() => {
-  offLangListener.value = onLanguageChange((lang) => {
-    currentLanguage.value = lang;
-    console.log('myNavigation detected language change:', lang);
-  });
+	  offLangListener.value = onLanguageChange((lang) => {
+	    currentLanguage.value = lang;
+	  });
 });
 
 onBeforeUnmount(() => {
@@ -153,7 +152,7 @@ onBeforeUnmount(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .quick-nav-btn {
   position: relative;
   display: inline-block;

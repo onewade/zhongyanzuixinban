@@ -240,7 +240,7 @@ defineExpose({
   </Teleport>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .search-overlay {
   position: fixed;
   top: 0;

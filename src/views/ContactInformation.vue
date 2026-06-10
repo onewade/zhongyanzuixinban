@@ -63,7 +63,7 @@ const moreVisible = ref(false);
         </Layout>
     </div>
 </template>
-<style scoped>
+<style scoped lang="scss">
 .contactBox {
     >img {
         width: 100%;

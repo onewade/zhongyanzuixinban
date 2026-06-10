@@ -144,14 +144,11 @@ const newsListIndex = computed(() => messages.value[locale.value].message.newsLi
 const companyList = computed(() => messages.value[locale.value].message.companyList)
 const route = useRouter();
 
-// eslint-disable-next-line no-unused-vars
-const handleClick = (item) => {
-	console.log('item', item);
-
-	// 跳转到子公司详情页，使用路径参数传递
-	route.push(`/subGroup/${item.id}`);
-	console.log('点击了公司项:', item);
-}
+	// eslint-disable-next-line no-unused-vars
+	const handleClick = (item) => {
+		// 跳转到子公司详情页，使用路径参数传递
+		route.push(`/subGroup/${item.id}`);
+	}
 const handleGoNew = () => {
 	// 跳转到新闻页面
 	route.push('/news');
@@ -182,10 +179,9 @@ onMounted(() => {
 	currentLanguage.value = locale.value || getCurrentLanguage();
 
 	// 订阅全局语言变更事件（使用 utils 封装）
-	offLanguageListener.value = onLanguageChange((lang) => {
-		currentLanguage.value = lang;
-		console.log('IndexView detected language change:', lang);
-		// 在这里可以执行语言切换后需要的额外逻辑（比如重新请求某些接口）
+		offLanguageListener.value = onLanguageChange((lang) => {
+			currentLanguage.value = lang;
+			// 在这里可以执行语言切换后需要的额外逻辑（比如重新请求某些接口）
 	});
 	// 监听窗口大小变化
 	window.addEventListener('resize', checkMobile)

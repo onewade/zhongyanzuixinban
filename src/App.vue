@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
   <RouterView/>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .age-modal {
   position: fixed;
   z-index: 99999;

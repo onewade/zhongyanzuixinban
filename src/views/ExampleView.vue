@@ -19,22 +19,18 @@ import {findExampleAPI,getExempleTablistAPI} from '@/apis/exempleAPI.js'
 		// findExample(index+1)
 		findExample(Id)
 	}
-	const getExempleTablist = async ()=>{
-	const {data:res} = await getExempleTablistAPI()
-	console.log(res.Data);
-	firstproId.value = res.Data[0].Id
-	// window.sessionStorage.setItem('firstproId',res.Data[0].Id)
-	tabList.value = res.Data
-	console.log(tabList.value);
-	}
+		const getExempleTablist = async ()=>{
+		const {data:res} = await getExempleTablistAPI()
+		firstproId.value = res.Data[0].Id
+		// window.sessionStorage.setItem('firstproId',res.Data[0].Id)
+		tabList.value = res.Data
+		}
 
-	const findExample = async(ExampleType)=>{
-		console.log('触发切换案例');
-		const {data:res} = await findExampleAPI(ExampleType)
-		if (res.Data){
-					const temp = res.Data
-					console.log(temp)
-					//命名别重复
+		const findExample = async(ExampleType)=>{
+			const {data:res} = await findExampleAPI(ExampleType)
+			if (res.Data){
+						const temp = res.Data
+						//命名别重复
 					const photoslist = [];
 					photoslist.length = 0
 					for (let i = 1; i < 17; i++) {
@@ -42,11 +38,9 @@ import {findExampleAPI,getExempleTablistAPI} from '@/apis/exempleAPI.js'
 						if (temp['Image'+ i] != null && temp['Image'+ i] != ""){
 							photoslist.push(temp['Image'+ i])
 						}
-					}
-					list.value = photoslist
-					console.log('789');
-					console.log(list.value)
-				}else{
+						}
+						list.value = photoslist
+					}else{
 					list.value = []
 				}
 	}
@@ -118,6 +112,6 @@ v-for="(tab,index) in tabList" :key="index"
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

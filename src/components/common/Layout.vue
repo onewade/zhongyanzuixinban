@@ -15,7 +15,7 @@ import { useGlobalKeyboardNavigation } from '@/composables/useGlobalKeyboardNavi
 useGlobalKeyboardNavigation();
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page-wrapper {
 	position: relative;
 }

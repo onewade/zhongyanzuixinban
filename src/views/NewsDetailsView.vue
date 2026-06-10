@@ -1,31 +1,30 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import Layout from '../components/common/Layout.vue';
 import {getArticleByArticleIdAPI,getRecentArticleAPI} from '@/apis/newAPI.js'
+import { sanitizeHtml } from '@/utils/sanitizeHtml.js';
 
 
-	const article = ref({});
-	const recentArticles = ref([])
+		const article = ref({});
+		const recentArticles = ref([])
+		const safeArticleContent = computed(() => sanitizeHtml(article.value.ContentHtml));
 		// 获取文章数据
   const getArticleByArticleId = async(articleId)=>{
-    const {data:res} = await getArticleByArticleIdAPI(articleId)
-		if(res.Data){
-			article.value = res.Data
-			console.log(res);
-			getRecentArticle(articleId)}
-  };
+	    const {data:res} = await getArticleByArticleIdAPI(articleId)
+			if(res.Data){
+				article.value = res.Data
+				getRecentArticle(articleId)}
+	  };
 		// 获取附近其他文章
 	const getRecentArticle = async(articleId)=>{
-    const {data:res} = await getRecentArticleAPI(articleId)
-		console.log(res.Data);
-		recentArticles.value = res.Data
-  };
+	    const {data:res} = await getRecentArticleAPI(articleId)
+			recentArticles.value = res.Data
+	  };
 	// router not used here; navigation is handled by handleDetails/getArticleByArticleId
 
 		// 点击跳转路由文章详情页
-    const handleDetails = (ArticleId)=>{
-			console.log('触发跳转路由');
-			window.localStorage.setItem('ArticleId',ArticleId);
+	    const handleDetails = (ArticleId)=>{
+				window.localStorage.setItem('ArticleId',ArticleId);
 			// router.push({path:'/news/newsId'})
       getArticleByArticleId(ArticleId)
     };
@@ -93,7 +92,7 @@ import {getArticleByArticleIdAPI,getRecentArticleAPI} from '@/apis/newAPI.js'
 												<!-- eslint-disable-next-line vue/no-v-html -->
 												<div
 class="vacancies--item_content js-accordion--pane_content"
-													v-html="article.ContentHtml">
+														v-html="safeArticleContent">
 												</div>
 											</div>
 										</div>
@@ -110,6 +109,6 @@ class="vacancies--item_content js-accordion--pane_content"
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

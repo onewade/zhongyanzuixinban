@@ -45,10 +45,9 @@ router.beforeEach((to, from, next) => {
     // 确保 i18n 的语言设置与 localStorage 一致
     import('../../i18n/index.js').then((i18nModule) => {
       const i18n = i18nModule.default;
-      if (i18n.global.locale.value !== currentLang) {
-        i18n.global.locale.value = currentLang;
-        console.log(`路由跳转时同步语言: ${currentLang}`);
-      }
+	      if (i18n.global.locale.value !== currentLang) {
+	        i18n.global.locale.value = currentLang;
+	      }
     });
   });
   
