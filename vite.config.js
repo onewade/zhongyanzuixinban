@@ -10,7 +10,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 const Timestamp = new Date().getTime();
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './', // 使用相对路径，适用于大多数部署场景
+  base: '/',
   plugins: [
     vue(),
     // ...
