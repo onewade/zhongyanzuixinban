@@ -190,7 +190,6 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 21">
                                     {{ $t('message.newsTitle20') }}
                                 </template>
-
                             </span>
                         </slot>
                     </div>
@@ -215,6 +214,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 19">2025-02-26</template>
                         <template v-else-if="id == 20">2026-05-04</template>
                         <template v-else-if="id == 21">2026-06-03</template>
+                        <template v-else-if="id == 22">2026-06-14</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
@@ -678,6 +678,44 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                         </div>
                     </div>
+                    <div v-if="id == 22">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20260614.png" alt="国际集团参加中企协行山健步活动照片"
+                                oncontextmenu="return false" style="cursor:pointer;"
+                                @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent10') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent11') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent12') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent13') }}
+                            </div>
+                        </div>
+                    </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent10') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent11') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent12') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent13') }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Layout>
@@ -716,7 +754,6 @@ function openLowRes(src, maxWidth = 1200) {
             color: #666;
         }
     }
-
 
 }
 
@@ -812,7 +849,6 @@ function openLowRes(src, maxWidth = 1200) {
     margin: 2rem auto;
     display: flex;
     justify-content: center;
-
 
     >img {
         height: 100%;
