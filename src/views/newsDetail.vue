@@ -190,6 +190,9 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 21">
                                     {{ $t('message.newsTitle20') }}
                                 </template>
+                                <template v-else-if="id == 22">
+                                    {{ $t('message.newsTitle21') }}
+                                </template>
                             </span>
                         </slot>
                     </div>

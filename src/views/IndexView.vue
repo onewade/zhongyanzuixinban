@@ -845,11 +845,14 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 		color: #555;
 		font-size: 1.1rem;
 		line-height: 1.3;
-		height: 3.3rem;
+		height: 1.5rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 
 		@media screen and (max-width: 767px) {
 			font-size: 1.6rem;
-			height: 4.8rem;
+			height: 2.1rem;
 
 		}
 	}

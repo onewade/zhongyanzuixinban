@@ -205,6 +205,9 @@ const fontClass = computed(() => {
                 // margin-bottom: 0.5rem;
                 margin: 0rem;
                 color: #333;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .news-desc {
