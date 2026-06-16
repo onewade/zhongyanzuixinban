@@ -849,6 +849,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		margin-bottom: 1rem;
 
 		@media screen and (max-width: 767px) {
 			font-size: 1.6rem;
@@ -859,7 +860,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 
 	.news-item-content {
 		font-size: 0.9rem;
-		// margin: 10px 0px 5px 0px;
+		margin-bottom: 1rem;
 		// 只显示3行剩下用...代替
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
