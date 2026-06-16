@@ -698,9 +698,6 @@ function openLowRes(src, maxWidth = 1200) {
                             <div>
                                 {{ $t('message.newsContent12') }}
                             </div>
-                            <div>
-                                {{ $t('message.newsContent13') }}
-                            </div>
                         </div>
                     </div>
                 </div>
