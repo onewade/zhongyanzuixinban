@@ -703,22 +703,6 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                         </div>
                     </div>
-                        <div class="detailContent"
-                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
-                            <div>
-                                {{ $t('message.newsContent10') }}
-                            </div>
-                            <div>
-                                {{ $t('message.newsContent11') }}
-                            </div>
-                            <div>
-                                {{ $t('message.newsContent12') }}
-                            </div>
-                            <div>
-                                {{ $t('message.newsContent13') }}
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </Layout>
