@@ -7,8 +7,8 @@ import c2 from '../assets/images/newIndex/c2.png';
 import c3 from '../assets/images/newIndex/c3.png';
 import bannner from '../assets/images/banner.png';
 import { useRouter } from 'vue-router';
-import zhounian from '../assets/images/newIndex/80zhounian.jpg';
-import p2 from '../assets/images/newsPic/20250904.png';
+import p1 from '../assets/images/newsPic/20260703.jpeg';
+import p2 from '../assets/images/newsPic/20260625.jpeg';
 import p3 from '../assets/images/newsPic/20260504.png';
 import { useI18n } from 'vue-i18n'
 const { locale, messages } = useI18n()
@@ -47,16 +47,16 @@ const slideshow = ref([
 ])
 const newImg = ref([
 	{
+		ImageUrl: p1,
+		title: '国际集团参加香港中企协七人足球邀请赛',
+	},
+	{
 		ImageUrl: p2,
-		title: '纪念抗战胜利80周年阅兵观看活动',
+		title: '国际集团与建行亚洲开展足球友谊热身赛',
 	},
 	{
 		ImageUrl: p3,
 		title: '国际集团组织参观国家安全展览',
-	},
-	{
-		ImageUrl: zhounian,
-		title: '纪念抗战胜利80周年展览',
 	},
 ])
 // eslint-disable-next-line no-unused-vars
