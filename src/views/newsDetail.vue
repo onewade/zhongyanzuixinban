@@ -221,7 +221,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 20">2026-05-04</template>
                         <template v-else-if="id == 21">2026-06-03</template>
                         <template v-else-if="id == 22">2026-06-14</template>
-                        <template v-else-if="id == 23">2026-07-03</template>
+                        <template v-else-if="id == 23">2026-07-06</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
