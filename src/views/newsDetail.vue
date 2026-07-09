@@ -657,7 +657,7 @@ function openLowRes(src, maxWidth = 1200) {
                 </div>
                     <div v-if="id == 20">
                         <div class="newspic">
-                            <img src="../assets/images/newsPic/20260504.png" alt="国际集团参观国家安全展览合影照片" oncontextmenu="return false"
+                            <img src="../assets/images/newsPic/20260504.jpg" alt="国际集团参观国家安全展览合影照片" oncontextmenu="return false"
                                 style="cursor:pointer;" @dblclick="openLowRes($event.target.src, 900)">
                         </div>
                         <div class="detailContent"

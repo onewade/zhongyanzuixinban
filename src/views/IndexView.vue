@@ -9,7 +9,7 @@ import bannner from '../assets/images/banner.png';
 import { useRouter } from 'vue-router';
 import p1 from '../assets/images/newsPic/20260703.jpeg';
 import p2 from '../assets/images/newsPic/20260625.jpeg';
-import p3 from '../assets/images/newsPic/20260504.png';
+import p3 from '../assets/images/newsPic/20260504.jpg';
 import { useI18n } from 'vue-i18n'
 const { locale, messages } = useI18n()
 // 当前语言（可在模板或逻辑中使用）
