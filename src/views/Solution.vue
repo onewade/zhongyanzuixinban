@@ -220,8 +220,10 @@ onBeforeUnmount(() => {
 <template>
   <Layout>
     <div class="overview-page">
-      <div class="page-header-sub">
-        <img src="../assets/images/banner.png" :alt="currentContent.title" />
+      <div class="index-page">
+        <div class="page-header-sub">
+          <img src="../assets/images/banner.png" alt="集团概况页面横幅图片" srcset="" />
+        </div>
       </div>
 
       <main class="overview-wrap">
@@ -283,16 +285,6 @@ onBeforeUnmount(() => {
   width: 100%;
   color: #333;
   background: #fff;
-}
-
-.page-header-sub {
-  width: 100%;
-  overflow: hidden;
-
-  img {
-    display: block;
-    width: 100%;
-  }
 }
 
 .overview-wrap {
