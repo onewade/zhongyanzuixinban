@@ -8,11 +8,11 @@ const router = useRouter();
 const route = useRoute();
 
 const goBack = () => {
-    // 返回到上一页
-    if (window.history.length > 1) {
-        router.go(-1); // 使用浏览器历史记录返回上一页
+    const previousPath = window.history.state?.back;
+    if (previousPath && previousPath.startsWith('/')) {
+        router.go(-1);
     } else {
-        router.push({ path: '/news' }); // 如果没有历史记录，跳转到新闻列表页
+        router.push({ path: '/index' });
     }
 };
 const id = ref('');
