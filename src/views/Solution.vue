@@ -8,67 +8,75 @@ const offLanguageListener = ref(null);
 
 const overviewContent = {
   zhCN: {
-    title: '中烟国际集团有限公司',
-    paragraphs: [
-      '中烟国际集团有限公司位于中国香港，是中国烟草总公司在境外的实体化公司。其内设机构包括公共事务部、战略发展部、市场营销部、供应链部、生产运营部、财务部、人力资源部、信息数字化部、合规风控部、监察部等10个部门。负责管理中国烟草国际有限公司、中烟（深圳）进出口有限公司等2家境内企业，以及中烟国际（香港）有限公司、天泽烟草有限公司等10多家境外企业。',
-      '集团投资企业聚焦卷烟（含新型烟草制品）销售、烟叶种植加工、卷烟生产制造等核心业务，主要分布在中国香港、中国澳门、美国、巴西、阿根廷、津巴布韦、瑞士、罗马尼亚、阿联酋、老挝、柬埔寨等全球10多个国家（地区）。'
-    ],
-    structureTitle: '组织架构',
-    institutionTitle: '内设机构',
-    domesticTitle: '境内企业',
-    overseasTitle: '境外企业',
-    departments: [
-      '公共事务部',
-      '战略发展部',
-      '市场营销部',
-      '供应链部',
-      '生产运营部',
-      '财务部',
-      '人力资源部',
-      '信息数字化部',
-      '合规风控部',
-      '监察部'
-    ],
-    domesticCompanies: ['中国烟草国际有限公司', '中烟（深圳）进出口有限公司'],
-    overseasGroups: [
-      { title: '上市企业', companies: ['中烟国际（香港）有限公司'] },
-      {
-        title: '烟叶企业',
-        companies: [
-          '天泽烟草有限责任公司',
-          '中烟国际阿根廷有限公司',
-          '中烟国际（北美）股份有限公司',
-          '中烟国际巴西有限公司'
-        ]
-      },
-      {
-        title: '生产企业',
-        companies: [
-          '金叶卷烟厂（澳门）有限公司',
-          '中烟国际老挝制造有限公司',
-          '中烟国际欧洲有限公司',
-          '威尼顿集团有限公司'
-        ]
-      },
-      {
-        title: '商业企业',
-        companies: [
-          '中烟国际（中东）有限公司',
-          '中烟国际（亚太）有限公司',
-          '中烟国际（瑞士）有限公司',
-          '中烟国际（欧洲）有限公司'
-        ]
-      },
-      {
-        title: '其他企业',
-        companies: [
-          '中烟菲莫国际有限公司',
-          '中烟英美烟草国际有限公司',
-          '地平线国际合资有限公司',
-          'TULLEY国际有限公司'
-        ]
-      }
-    ]
+      title: "中烟国际集团有限公司",
+      paragraphs: [
+          "中烟国际集团有限公司位于中国香港，是中国烟草总公司在境外的实体化公司。其内设机构包括公共事务部、战略发展部、市场营销部、供应链部、生产运营部、财务部、人力资源部、信息数字化部、合规风控部、监察部等10个部门。负责管理中国烟草国际有限公司、中烟（深圳）进出口有限公司等2家境内企业，以及中烟国际（香港）有限公司、天泽烟草有限公司等10多家境外企业。",
+          "集团投资企业聚焦卷烟（含新型烟草制品）销售、烟叶种植加工、卷烟生产制造等核心业务，主要分布在中国香港、中国澳门、美国、巴西、阿根廷、津巴布韦、瑞士、罗马尼亚、阿联酋、老挝、柬埔寨等全球10多个国家（地区）。"
+      ],
+      structureTitle: "组织架构",
+      institutionTitle: "内设机构",
+      domesticTitle: "境内企业",
+      overseasTitle: "境外企业",
+      departments: [
+          "公共事务部",
+          "战略发展部",
+          "市场营销部",
+          "供应链部",
+          "生产运营部",
+          "财务部",
+          "人力资源部",
+          "信息数字化部",
+          "合规风控部",
+          "监察部"
+      ],
+      domesticCompanies: [
+          "中国烟草国际有限公司",
+          "中烟（深圳）进出口有限公司"
+      ],
+      overseasGroups: [
+          {
+              title: "上市企业",
+              companies: [
+                  "中烟国际（香港）有限公司"
+              ]
+          },
+          {
+              title: "烟叶企业",
+              companies: [
+                  "天泽烟草有限责任公司",
+                  "中烟国际（北美）股份有限公司",
+                  "中烟国际阿根廷有限公司",
+                  "中烟国际巴西有限公司"
+              ]
+          },
+          {
+              title: "生产企业",
+              companies: [
+                  "金叶卷烟厂（澳门）有限公司",
+                  "中烟国际老挝制造有限公司",
+                  "威尼顿集团有限公司",
+                  "中烟国际欧洲有限公司"
+              ]
+          },
+          {
+              title: "商业企业",
+              companies: [
+                  "中烟国际（中东）有限公司",
+                  "中烟国际（亚太）有限公司",
+                  "中烟国际（欧洲）有限公司",
+                  "中烟国际（瑞士）有限公司"
+              ]
+          },
+          {
+              title: "其他企业",
+              companies: [
+                  "中烟菲莫国际有限公司",
+                  "中烟英美烟草国际有限公司",
+                  "地平线国际合资有限公司",
+                  "TULLEY国际有限公司"
+              ]
+          }
+      ]
   },
   zhTW: {
     title: '中煙國際集團有限公司',
@@ -134,70 +142,75 @@ const overviewContent = {
     ]
   },
   en: {
-    title: 'China Tobacco International Group Limited',
-    paragraphs: [
-      'China Tobacco International Group Limited is located in Hong Kong, China, and is the overseas operating entity of China National Tobacco Corporation. Its internal structure includes 10 departments: Public Affairs Department, Strategic Development Department, Marketing Department, Supply Chain Department, Production Operations Department, Finance Department, Human Resources Department, Information Digitalization Department, Compliance and Risk Control Department, and Supervision Department. It manages two domestic enterprises, including China Tobacco International Inc. and China Tobacco (Shenzhen) Import & Export Co., Ltd., as well as more than 10 overseas enterprises, including China Tobacco International (HK) Co., Ltd. and Tianze Tobacco Co., Ltd.',
-      "The Group's invested enterprises focus on core businesses including cigarette sales (including new tobacco products), tobacco leaf planting and processing, and cigarette production and manufacturing. They are mainly distributed across more than 10 countries and regions worldwide, including Hong Kong, China; Macao, China; the United States; Brazil; Argentina; Zimbabwe; Switzerland; Romania; the United Arab Emirates; Laos; and Cambodia."
-    ],
-    structureTitle: 'Organization Structure',
-    institutionTitle: 'Internal Departments',
-    domesticTitle: 'Domestic Enterprises',
-    overseasTitle: 'Overseas Enterprises',
-    departments: [
-      'Public Affairs Department',
-      'Strategic Development Department',
-      'Marketing Department',
-      'Supply Chain Department',
-      'Production Operations Department',
-      'Finance Department',
-      'Human Resources Department',
-      'Information Digitalization Department',
-      'Compliance and Risk Control Department',
-      'Supervision Department'
-    ],
-    domesticCompanies: [
-      'China Tobacco International Inc.',
-      'China Tobacco (Shenzhen) Import & Export Co., Ltd.'
-    ],
-    overseasGroups: [
-      { title: 'Listed Enterprise', companies: ['China Tobacco International (HK) Co., Ltd.'] },
-      {
-        title: 'Tobacco Leaf Enterprises',
-        companies: [
-          'Tianze Tobacco Co., Ltd.',
-          'China Tobacco International Argentina Co., Ltd.',
-          'China Tobacco International (North America) Inc.',
-          'China Tobacco International Brazil Co., Ltd.'
-        ]
-      },
-      {
-        title: 'Production Enterprises',
-        companies: [
-          'Macao Jinye Cigarette Factory Co., Ltd.',
-          'China Tobacco International Laos Manufacturing Co., Ltd.',
-          'China Tobacco International Europe Co., Ltd.',
-          'Viniton Group Co., Ltd.'
-        ]
-      },
-      {
-        title: 'Commercial Enterprises',
-        companies: [
-          'China Tobacco International (Middle East) Co., Ltd.',
-          'China Tobacco International (Asia Pacific) Co., Ltd.',
-          'China Tobacco International (Switzerland) Co., Ltd.',
-          'China Tobacco International (Europe) Co., Ltd.'
-        ]
-      },
-      {
-        title: 'Other Enterprises',
-        companies: [
-          'China Tobacco Philip Morris International Co., Ltd.',
-          'China Tobacco British American Tobacco International Co., Ltd.',
-          'Horizon International Joint Venture Co., Ltd.',
-          'TULLEY International Co., Ltd.'
-        ]
-      }
-    ]
+      title: "China Tobacco International Group Limited",
+      paragraphs: [
+          "China Tobacco International Group Limited (CTIG) is headquartered in Hong Kong, China, and serves as the operational entity of China National Tobacco Corporation (CNTC) outside . Its internal structure comprises the Public Affairs Department, Strategy & Development Department, Marketing Department, Supply Chain Department, Production & Operations Department, Finance Department, Human Resources Department, Information & Digitalization Department, Compliance & Risk Control Department, and Supervision Department. CTIG is responsible for the administration of two domestic enterprises, namely China Tobacco International Inc. and China Tobacco (Shenzhen) Import & Export Co., Ltd., as well as more than 10 overseas enterprises, represented by China Tobacco International (HK) Company Limited and Tian Ze Tobacco Company (Private) Limited.",
+          "CTIG's subsidiaries focus on core businesses such as the sale of tobacco products (including cigarettes, cigars, and new tobacco products), tobacco leaf cultivation and processing, and cigarette manufacturing. These subsidiaries are located in over 10 countries and regions worldwide, such as Hong Kong SAR (China), Macau SAR (China), the United States, Brazil, Argentina, Zimbabwe, Switzerland, Romania, the United Arab Emirates, Laos, and Cambodia."
+      ],
+      structureTitle: "Corporate Structure",
+      institutionTitle: "Internal Functional Institutions",
+      domesticTitle: "Domestic Enterprises",
+      overseasTitle: "Overseas Enterprises",
+      departments: [
+          "Public Affairs Dept.",
+          "Strategy & Development Dept.",
+          "Marketing Dept.",
+          "Supply Chain Dept.",
+          "Production & Operations Dept.",
+          "Finance Dept.",
+          "Human Resources Dept.",
+          "Information & Digitalization Dept.",
+          "Compliance & Risk Control Dept.",
+          "Supervision Dept."
+      ],
+      domesticCompanies: [
+          "China Tobacco International Inc.",
+          "China Tobacco (Shenzhen) Import & Export Co., Ltd."
+      ],
+      overseasGroups: [
+          {
+              title: "Listed Enterprises",
+              companies: [
+                  "China Tobacco International (HK) Company Limited"
+              ]
+          },
+          {
+              title: "Tobacco Leaf Enterprises",
+              companies: [
+                  "Tian Ze Tobacco Company (Private) Limited",
+                  "China Tobacco International (North America) Inc.",
+                  "China Tabaco Internacional Argentina S.A.",
+                  "China Tabaco Internacional Do Brasil Ltda."
+              ]
+          },
+          {
+              title: "Manufacturing Enterprises",
+              companies: [
+                  "Golden Leaf (Macau) Tobacco's Manufacturing Limited",
+                  "China Tobacco International Lao Manufacturing Co., Ltd.",
+                  "Viniton Group Co., Ltd",
+                  "China Tobacco International Europe Company S.R.L."
+              ]
+          },
+          {
+              title: "Commercial Enterprises",
+              companies: [
+                  "China Tobacco International Middle East General Trading FZE",
+                  "China Tobacco International Asia Pacific Co., Limited",
+                  "CTI EUROPE S. R. L.",
+                  "CTI (SCHWEIZ) A.G."
+              ]
+          },
+          {
+              title: "Other Enterprises",
+              companies: [
+                  "CTPM International S.A.",
+                  "CTBAT International Co. Limited",
+                  "Global Horizon Ventures Limited",
+                  "Tulley International Limited"
+              ]
+          }
+      ]
   }
 };
 
@@ -219,7 +232,7 @@ onBeforeUnmount(() => {
 
 <template>
   <Layout>
-    <div class="overview-page">
+    <div class="overview-page" :class="`overview-page-${currentLanguage}`">
       <div class="index-page">
         <div class="page-header-sub">
           <img src="../assets/images/banner.png" alt="集团概况页面横幅图片" srcset="" />
@@ -434,6 +447,23 @@ onBeforeUnmount(() => {
   font-weight: 700;
   line-height: 1.45;
   border-right: 3px solid #F7B334;
+}
+
+.overview-page-en {
+  .enterprise-group {
+    grid-template-columns: 180px 1fr;
+    gap: 18px;
+  }
+
+  .enterprise-title {
+    font-size: 15px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .enterprise-list li {
+    overflow-wrap: anywhere;
+  }
 }
 
 .enterprise-list {
