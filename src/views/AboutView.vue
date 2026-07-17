@@ -70,7 +70,7 @@ onMounted(() => {
 		<div class="layout-container" style="width: 100%">
 			<div class="page-header">
 				<div class="am-container">
-					<h1 class="page-header-title">联系我们</h1>
+					<div class="page-header-title">联系我们</div>
 				</div>
 			</div>
 

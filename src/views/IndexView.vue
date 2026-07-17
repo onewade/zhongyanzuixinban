@@ -28,14 +28,30 @@ const modules = [Mousewheel, Pagination, Autoplay];
 
 // swiper实例
 const homeSwiper = ref(null);
+const newsSwiper = ref(null);
+const isNewsCarouselPaused = ref(false);
 // 初始化
 const onSwiper = (swiper) => {
 	homeSwiper.value = swiper;
+};
+const onNewsSwiper = (swiper) => {
+	newsSwiper.value = swiper;
 };
 // swiper切换时触发
 // eslint-disable-next-line no-unused-vars
 const onSlideChange = (swiper) => {
 
+};
+const toggleNewsCarousel = () => {
+	if (!newsSwiper.value?.autoplay) return;
+
+	if (isNewsCarouselPaused.value) {
+		newsSwiper.value.autoplay.start();
+		isNewsCarouselPaused.value = false;
+	} else {
+		newsSwiper.value.autoplay.stop();
+		isNewsCarouselPaused.value = true;
+	}
 };
 
 const tabIndex = ref(0)
@@ -222,11 +238,11 @@ v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :styl
 		</div>
 		<div v-if="showNews" class="news-section">
 			<div v-if="isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
-			<div>
+			<div class="news-carousel">
 				<Swiper
 :modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
 					:mousewheel="false" :allow-touch-move="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
-					:loop="true" class="home-swiper" @swiper="onSwiper" @slide-change="onSlideChange">
+					:loop="true" class="home-swiper" @swiper="onNewsSwiper" @slide-change="onSlideChange">
 					<SwiperSlide
 v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="{
 						backgroundImage: `url(${slide.ImageUrl})`,
@@ -239,6 +255,15 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 						</div>
 					</SwiperSlide>
 				</Swiper>
+				<button
+					type="button"
+					class="carousel-toggle"
+					:aria-label="isNewsCarouselPaused ? '播放新闻轮播图片' : '暂停新闻轮播图片'"
+					:aria-pressed="isNewsCarouselPaused"
+					@click="toggleNewsCarousel"
+				>
+					<span aria-hidden="true">{{ isNewsCarouselPaused ? '▶' : 'Ⅱ' }}</span>
+				</button>
 			</div>
 			<!-- ,
       {
@@ -253,7 +278,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
         "content": "为铭记历史、缅怀先烈、珍爱和平、开创未来，弘扬爱国主义精神和伟大抗战精神，9月3日上午国际集团组织全体员工观看纪念中国人民抗日战争暨世界反法西斯战争胜利80周年大会，共同感受这一庄严而激动人心的时刻。",
         "date": "2025-09-04"
       } -->
-			<div class="news-content">
+			<div class="news-content" tabindex="-1">
 				<div v-if="!isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
 				<div class="news-boxes">
 					<div v-for="item in newsListIndex" :key="item.title" class="news-item" @click="goDetail(item.id)"
@@ -381,6 +406,75 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 				border-radius: 3px;
 			}
 		}
+	}
+}
+
+.news-carousel {
+	position: relative;
+
+	:deep(.swiper-pagination) {
+		left: 2rem !important;
+		right: auto !important;
+		bottom: 2rem !important;
+		display: inline-flex;
+		align-items: center;
+		width: auto !important;
+		padding: 0.75rem 4.3rem 0.75rem 1rem;
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.86);
+		backdrop-filter: blur(4px);
+	}
+}
+
+.carousel-toggle {
+	position: absolute;
+	left: 10rem;
+	bottom: 5.2rem;
+	z-index: 12;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: #333;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.carousel-toggle:hover,
+.carousel-toggle:focus {
+	color: #F7B334;
+	outline: 2px solid #F7B334;
+	outline-offset: 2px;
+}
+
+@media screen and (max-width: 767px) {
+	.skip-content-button {
+		top: 0.7rem;
+		right: 1rem;
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
+	}
+
+	.news-carousel {
+		:deep(.swiper-pagination) {
+			left: 1rem !important;
+			bottom: 1rem !important;
+			padding: 0.6rem 3.2rem 0.6rem 0.8rem;
+		}
+	}
+
+	.carousel-toggle {
+		left: 6.8rem;
+		bottom: 3.6rem;
+		width: 1.7rem;
+		height: 1.7rem;
+		font-size: 0.9rem;
 	}
 }
 

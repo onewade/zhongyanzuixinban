@@ -1,17 +1,26 @@
 <template>
   <div>
     <div class="changeLL">
+      <button
+        type="button"
+        :class="['skip-content-link', { 'skip-content-link--en': currentLang === 'en' }]"
+        :title="skipContentTitle"
+        :aria-label="skipContentTitle"
+        @click="skipToMainContent"
+      >
+        {{ skipContentText }}
+      </button>
       <div class="changeItem" :class="{ active: currentLang === 'zhCN' }" @click="changeLanguage('zhCN')" tabindex="0" role="button" aria-label="切换到简体中文">
         <span v-if="currentLang === 'zhCN'" class="triangle">▶</span>
-        <span class="text">简体版</span>
+        <span class="text">简</span>
       </div>
       <div class="changeItem" :class="{ active: currentLang === 'zhTW' }" @click="changeLanguage('zhTW')" tabindex="0" role="button" aria-label="切换到繁体中文">
         <span v-if="currentLang === 'zhTW'" class="triangle">▶</span>
-        <span class="text">繁體版</span>
+        <span class="text">繁</span>
       </div>
       <div class="changeItem" :class="{ active: currentLang === 'en' }" @click="changeLanguage('en')" tabindex="0" role="button" aria-label="切换到英文">
         <span v-if="currentLang === 'en'" class="triangle">▶</span>
-        <span class="text">English</span>
+        <span class="text">EN</span>
       </div>
       <myNavigation></myNavigation>
     </div>
@@ -34,7 +43,7 @@ trigger="click" placement="bottom-end" :hide-on-click="true" :max-height="200"
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue';
 import myNavigation from "./myNavigation.vue";
 const { locale } = useI18n();
 import { useRouter } from 'vue-router';
@@ -42,6 +51,22 @@ const router = useRouter();
 
 // 当前选中的语言 
 const currentLang = ref('zhCN');
+const skipContentText = computed(() => {
+  const textMap = {
+    zhCN: '跳至内容',
+    zhTW: '跳至內容',
+    en: 'Skip'
+  };
+  return textMap[currentLang.value] || textMap.zhCN;
+});
+const skipContentTitle = computed(() => {
+  const titleMap = {
+    zhCN: '跳至内容',
+    zhTW: '跳至內容',
+    en: 'Skip to Content'
+  };
+  return titleMap[currentLang.value] || titleMap.zhCN;
+});
 
 const changeLanguage = (lang) => {
   currentLang.value = lang;
@@ -73,6 +98,31 @@ const changeLanguage = (lang) => {
   }
 };
 const changeL = ref(null);
+
+const skipToMainContent = () => {
+  const targetSelectors = [
+    '.news-content',
+    '.overview-wrap',
+    '.news-wrapper',
+    '.contact-content',
+    '.contactContainer',
+    '.contactContainer1',
+    '.join-content',
+    '.groupContent',
+    '.detailContainer',
+    '.main-content > *:not(.index-page):not(.page-header-sub)'
+  ];
+  const target = targetSelectors
+    .map(selector => document.querySelector(selector))
+    .find(Boolean);
+  if (!target) return;
+  target.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+  target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+};
 
 // 监听页面宽度
 const screenWidth = ref(window.innerWidth);  // 初始化屏幕宽度
@@ -173,15 +223,38 @@ onBeforeUnmount(() => {
   z-index: 99999 !important;
 }
 
-.changeItem {
+.changeItem,
+.skip-content-link {
   cursor: pointer;
   color: #999;
   font-size: 1.2rem;
   line-height: 2.8rem;
+  white-space: nowrap;
 }
 
-.changeItem.active {
+.skip-content-link {
+  width: 4.8rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+}
+
+.skip-content-link--en {
+  text-align: right;
+}
+
+.changeItem.active,
+.skip-content-link {
   color: #F7B334;
+}
+
+.skip-content-link:hover,
+.skip-content-link:focus {
+  color: #E6A429;
+  outline: 0.12rem solid rgba(247, 179, 52, 0.35);
+  outline-offset: 0.12rem;
 }
 
 /* 橘色三角形样式 */
@@ -215,8 +288,10 @@ onBeforeUnmount(() => {
 .changeLL {
   width: 100%;
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 0.9rem;
   justify-content: flex-end;
+  white-space: nowrap;
 }
 </style>
 

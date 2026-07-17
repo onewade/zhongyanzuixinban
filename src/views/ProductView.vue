@@ -110,7 +110,7 @@ onMounted(() => {
 		<div class="investor">管治团队</div>
 		<div class="personContent animate__animated animate__backInRight" >
 			<div class="per">
-				<h1>{{ one.name }}</h1>
+				<div class="person-name">{{ one.name }}</div>
 				<div>{{ one.position }}</div>
 				<div>{{ one.date }}</div>
 				<div>{{ one.time }}</div>
@@ -122,7 +122,7 @@ onMounted(() => {
 			<div class="personContainer animate__animated animate__backInLeft">
 			<div v-for="(item, index) in personLIst" :key="index" class="personContent personContent1 ">
 				<div class="per">
-					<h1>{{ item.name }}</h1>
+					<div class="person-name">{{ item.name }}</div>
 					<div>{{ item.position }}</div>
 				</div>
 				<div>
@@ -204,6 +204,14 @@ onMounted(() => {
 
 .per {
 	padding: 20px;
+}
+
+.person-name {
+	display: block;
+	margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	font-size: 2em;
+	font-weight: bold;
 }
 
 .personContainer {
