@@ -208,7 +208,7 @@ onBeforeUnmount(() => {
     padding: 8px 16px;
 
     &.active {
-      color: #F7B334;
+      color: #333;
       background-color: #fff7e6;
     }
 
@@ -226,7 +226,7 @@ onBeforeUnmount(() => {
 .changeItem,
 .skip-content-link {
   cursor: pointer;
-  color: #999;
+  color: #555;
   font-size: 1.2rem;
   line-height: 2.8rem;
   white-space: nowrap;
@@ -247,21 +247,28 @@ onBeforeUnmount(() => {
 
 .changeItem.active,
 .skip-content-link {
-  color: #F7B334;
+  color: #333;
+  font-weight: 600;
 }
 
 .skip-content-link:hover,
 .skip-content-link:focus {
-  color: #E6A429;
+  color: #333;
   outline: 0.12rem solid rgba(247, 179, 52, 0.35);
   outline-offset: 0.12rem;
 }
 
 /* 橘色三角形样式 */
 .triangle {
-  color: #F7B334;
-  font-size: 0.9rem;
+  color: #333;
+  font-size: 0;
   display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 0.42rem solid transparent;
+  border-bottom: 0.42rem solid transparent;
+  border-left: 0.68rem solid #F7B334;
+  vertical-align: middle;
   /* animation: slideIn 0.3s ease-in-out; */
   margin-right: 5px
 }

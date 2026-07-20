@@ -448,7 +448,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 
 .carousel-toggle:hover,
 .carousel-toggle:focus {
-	color: #F7B334;
+	color: #333;
 	outline: 2px solid #F7B334;
 	outline-offset: 2px;
 }
@@ -974,16 +974,16 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 
 	.news-item-date {
 		font-size: 1rem;
-		color: #999;
+		color: #555;
 
 		@media screen and (min-width: 1024px) {
 			font-size: 1rem;
-			color: #999;
+			color: #555;
 		}
 
 		@media screen and (max-width: 767px) {
 			font-size: 1.2rem;
-			color: #999;
+			color: #555;
 			margin-top: 0.5rem;
 		}
 	}
@@ -991,7 +991,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 	.newsBtn {
 		padding: 0.6rem 0rem;
 		background-color: #F7B334;
-		color: white;
+		color: #1f1f1f;
 		font-size: 1.1rem;
 		text-align: center;
 		width: 10rem;
@@ -1000,7 +1000,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 		@media screen and (min-width: 1024px) {
 			padding: 0.6rem 0rem;
 			background-color: #F7B334;
-			color: white;
+			color: #1f1f1f;
 			font-size: 1.1rem;
 			text-align: center;
 			width: 10rem;
@@ -1010,7 +1010,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 		@media screen and (max-width: 767px) {
 			padding: 0.6rem 0rem;
 			background-color: #F7B334;
-			color: white;
+			color: #1f1f1f;
 			font-size: 1.2rem;
 			text-align: center;
 			width: 10rem;
@@ -1114,7 +1114,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 	border-radius: 8px;
 	background-color: white;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	color: #F7B334;
+	color: #333;
 	font-size: 1.1rem;
 	cursor: pointer;
 	transition: transform 0.2s ease;
@@ -1131,7 +1131,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 		border-radius: 8px;
 		background-color: white;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		color: #F7B334;
+		color: #333;
 		font-size: 1.2rem;
 		margin: 0.5rem;
 		width: 45%;
@@ -1276,7 +1276,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 
 .age-btn.confirm {
 	background: #F7B334;
-	color: #fff;
+	color: #1f1f1f;
 }
 
 .age-btn:hover {
@@ -1318,8 +1318,10 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 
 	>div:nth-child(1) {
 		font-size: 1.5rem;
-		color: #F7B334;
+		color: #333;
 		font-weight: bold;
+		display: inline-block;
+		border-bottom: 0.2rem solid #F7B334;
 		margin-bottom: 1.7rem;
 	}
 
@@ -1347,7 +1349,9 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 
 		>div:nth-child(2) {
 			font-size: 2.2rem;
-			color: #F7B334;
+			color: #333;
+			display: inline-block;
+			border-bottom: 0.2rem solid #F7B334;
 		}
 
 		>div:nth-child(3),

@@ -190,7 +190,7 @@ const fontClass = computed(() => {
 
                     >span:nth-child(2) {
                         font-size: 0.7rem !important;
-                        color: #777;
+                        color: #555;
                     }
                 }
             }
@@ -228,7 +228,7 @@ const fontClass = computed(() => {
     .news-year {
         margin-top: 0.5rem;
         font-size: 1rem !important;
-        color: #777;
+        color: #555;
     }
 
     .load-more {
@@ -239,7 +239,7 @@ const fontClass = computed(() => {
         margin-bottom: 2rem;
         padding: 1rem 2rem;
         background-color: #F7B334;
-        color: #fff;
+        color: #1f1f1f;
     }
 }
 

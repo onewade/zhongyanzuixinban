@@ -306,7 +306,7 @@ defineExpose({
 }
 
 .search-close:hover {
-  color: #F7B334;
+  color: #333;
 }
 
 .search-content {
@@ -399,7 +399,7 @@ defineExpose({
 .suggestion-item:hover,
 .suggestion-item.keyboard-focus {
   background: #F7B334;
-  color: white;
+  color: #1f1f1f;
 }
 
 .suggestion-item.keyboard-focus {
@@ -409,12 +409,12 @@ defineExpose({
 
 .suggestion-item i {
   font-size: 0.85rem;
-  color: #F7B334;
+  color: #333;
 }
 
 .suggestion-item:hover i,
 .suggestion-item.keyboard-focus i {
-  color: white;
+  color: #1f1f1f;
 }
 
 @media screen and (max-width: 767px) {

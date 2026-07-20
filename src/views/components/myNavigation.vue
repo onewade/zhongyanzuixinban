@@ -208,7 +208,9 @@ onBeforeUnmount(() => {
 .quick-nav-group-title {
   font-weight: bold;
   font-size: 1.08rem;
-  color: #F7B334;
+  color: #333;
+  border-left: 0.22rem solid #F7B334;
+  padding-left: 0.55rem;
   margin: 1.5rem 0 0.7rem 0;
   letter-spacing: 1px;
 }
@@ -222,7 +224,7 @@ onBeforeUnmount(() => {
 
 .quick-nav-item {
   font-size: 1.02rem;
-  color: #888;
+  color: #555;
   cursor: pointer;
   padding: 0.3rem 0;
   transition: color 0.2s, background 0.2s;
@@ -230,7 +232,8 @@ onBeforeUnmount(() => {
 }
 
 .quick-nav-item:hover {
-  color: #F7B334;
+  color: #333;
+  background: rgba(247, 179, 52, 0.12);
   border-radius: 4px;
 }
 
@@ -265,7 +268,7 @@ onBeforeUnmount(() => {
 /* 使用指南按钮样式 */
 .guide-btn {
   cursor: pointer;
-  color: white;
+  color: #1f1f1f;
   font-size: 1.1rem;
   font-weight: 500;
   padding: 0.5rem 1.6rem;
@@ -370,7 +373,7 @@ onBeforeUnmount(() => {
 
 .guide-link:hover {
   background: linear-gradient(135deg, #F7B334 0%, #E6A429 100%);
-  color: white;
+  color: #1f1f1f;
   border-color: #F7B334;
   transform: translateY(-2px);
   box-shadow: 0 0.3rem 0.8rem rgba(247, 179, 52, 0.3);

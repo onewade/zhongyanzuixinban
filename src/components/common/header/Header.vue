@@ -270,7 +270,7 @@ onBeforeUnmount(() => {
 					font-size: 1.2rem;
 
 					&:hover {
-						color: #F7B334;
+						color: #333;
 					}
 				}
 			}
@@ -322,7 +322,7 @@ onBeforeUnmount(() => {
 .router.router-link-active {
 	cursor: default;
 	font-weight: 600 !important;
-	color: #F7B334 !important;
+	color: #333 !important;
 	border-bottom: 0.2rem solid #F7B334;
 }
 
