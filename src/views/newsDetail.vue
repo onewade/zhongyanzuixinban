@@ -748,7 +748,6 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                         </div>
                     </div>
-                </div>
                     <div v-if="id == 25" class="textOnlyNewsDetail">
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
@@ -757,6 +756,7 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </Layout>
     </div>
