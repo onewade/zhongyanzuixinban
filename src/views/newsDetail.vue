@@ -199,6 +199,9 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 24">
                                     {{ $t('message.newsTitle23') }}
                                 </template>
+                                <template v-else-if="id == 25">
+                                    {{ $t('message.newsTitle24') }}
+                                </template>
                             </span>
                         </slot>
                     </div>
@@ -226,6 +229,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 22">2026-06-14</template>
                         <template v-else-if="id == 23">2026-07-06</template>
                         <template v-else-if="id == 24">2026-06-26</template>
+                        <template v-else-if="id == 25">2026-07-24</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
@@ -745,6 +749,14 @@ function openLowRes(src, maxWidth = 1200) {
                         </div>
                     </div>
                 </div>
+                    <div v-if="id == 25" class="textOnlyNewsDetail">
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent57') }}
+                            </div>
+                        </div>
+                    </div>
             </div>
         </Layout>
     </div>
@@ -924,6 +936,10 @@ function openLowRes(src, maxWidth = 1200) {
     >div {
         text-indent: 2em;
     }
+}
+
+.textOnlyNewsDetail {
+    padding-bottom: 6rem;
 }
 
 .back {
