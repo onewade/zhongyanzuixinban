@@ -347,7 +347,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <div class="detailContent"
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
-                                {{ $t('message.newsContent10') }}
+                                {{ $t('message.newsContent20250123Second') }}
 
                             </div>
                         </div>
