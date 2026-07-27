@@ -1,0 +1,20 @@
+﻿服务器IP：103.107.88.249
+端口号：22
+服务器账号：sunhuijun
+服务器密码：不提交到 Gitee，请在本地保存
+部署脚本目录：/home/sunhuijun/tobacco/publish_script/full_deploy.sh
+
+Git地址：https://sunhuijun.site:18081/sunhuijun/tobacco.git
+Git账号：onewade
+Git密码：不提交到 Gitee，请在本地保存
+
+月度访问统计规则：
+1. 每月2号生成上一个自然月的网站访问统计报告。
+2. 执行脚本：部署/run_monthly_visit_report.bat
+3. 统计脚本：部署/monthly_visit_report.py
+4. 输出文件命名规则：
+   - raw_logs_YYYYMM.json
+   - stats_YYYYMM.txt
+   - stats_YYYYMM_summary.json
+   - 中烟国际集团网站YYYY年M月访问统计报告.docx
+5. 原始日志和 IP 明细不提交到 Gitee，如需报告请在本地重新生成。
