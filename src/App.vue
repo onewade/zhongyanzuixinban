@@ -161,7 +161,7 @@ onBeforeUnmount(() => {
 }
 .age-btn.confirm {
   background: #F7B334;
-  color: #fff;
+  color: #1f1f1f;
 }
 .age-btn:hover {
   opacity: 0.85;

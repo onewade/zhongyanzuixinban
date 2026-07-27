@@ -859,7 +859,7 @@ function openLowRes(src, maxWidth = 1200) {
 .font-a-btn.active {
     background: #409eff;
     border-color: #409eff;
-    color: white;
+    color: #1f1f1f;
 }
 
 .font-a-btn:hover:not(.active) {
@@ -870,7 +870,7 @@ function openLowRes(src, maxWidth = 1200) {
 .detailDate {
     position: relative;
     font-size: 1.2rem;
-    color: #888;
+    color: #555;
     text-align: center;
     margin: 1rem auto 0;
     padding-bottom: 1rem;

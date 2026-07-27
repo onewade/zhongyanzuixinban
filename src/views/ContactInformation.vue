@@ -89,7 +89,7 @@ const moreVisible = ref(false);
     >div:nth-child(1) {
         font-size: 2rem;
         padding: 1.5rem;
-        color: #F7B334;
+        color: #333;
         font-weight: bold;
         border-bottom: 1px solid #F7B334;
     }
@@ -123,14 +123,14 @@ const moreVisible = ref(false);
 
         >div:nth-child(2) {
             font-weight: bold;
-            color: #F7B334;
+            color: #333;
             font-size: 1.6rem;
             margin-left: 1%;
         }
 
         >div:nth-child(3) {
             font-weight: bold;
-            color: #F7B334;
+            color: #333;
             font-size: 1.1rem;
             margin-left: 1%;
         }
@@ -188,7 +188,7 @@ const moreVisible = ref(false);
     top: 0.5rem;
     right: 0.5rem;
     font-size: 1.4rem;
-    color: #888;
+    color: #555;
     cursor: pointer;
     z-index: 20;
     transition: color 0.2s;
@@ -208,7 +208,8 @@ const moreVisible = ref(false);
 }
 
 .more {
-    color: #F7B334;
+    color: #333;
+    border-bottom: 1px solid #F7B334;
     cursor: pointer;
     font-size: 0.8rem;
     margin-top: 1rem;
@@ -222,7 +223,7 @@ const moreVisible = ref(false);
 
 
 .close-btn:hover {
-    color: #F7B334;
+    color: #333;
 }
 
 .detail {

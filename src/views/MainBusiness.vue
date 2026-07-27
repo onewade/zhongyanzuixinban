@@ -129,8 +129,10 @@ onBeforeUnmount(() => {
 
     >div:nth-child(1) {
         font-size: 1.5rem;
-        color: #F7B334;
+        color: #333;
         font-weight: bold;
+        display: inline-block;
+        border-bottom: 0.2rem solid #F7B334;
         margin-bottom: 1.7rem;
     }
 
@@ -158,7 +160,9 @@ onBeforeUnmount(() => {
 
         >div:nth-child(2) {
             font-size: 2.2rem;
-            color: #F7B334;
+            color: #333;
+            display: inline-block;
+            border-bottom: 0.2rem solid #F7B334;
         }
 
         >div:nth-child(3),

@@ -64,7 +64,7 @@ onUpdated(()=>{
 		<div class="layout-container" style="width: 100%">
 			<div class="page-header">
 				<div class="am-container">
-					<h1 class="page-header-title">客户案例</h1>
+					<div class="page-header-title">客户案例</div>
 				</div>
 			</div>
 			<div class="breadcrumb-box">

@@ -241,7 +241,7 @@ onBeforeUnmount(() => {
 
       <main class="overview-wrap">
         <section class="intro-card">
-          <h1>{{ currentContent.title }}</h1>
+          <div class="intro-title">{{ currentContent.title }}</div>
           <p v-for="paragraph in currentContent.paragraphs" :key="paragraph">
             {{ paragraph }}
           </p>
@@ -313,7 +313,7 @@ onBeforeUnmount(() => {
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
 
-  h1 {
+  .intro-title {
     margin: 0 0 20px;
     color: #222;
     font-size: 31px;
@@ -490,7 +490,7 @@ onBeforeUnmount(() => {
     margin-bottom: 34px;
     padding: 28px 22px;
 
-    h1 {
+    .intro-title {
       font-size: 24px;
     }
 
@@ -577,7 +577,7 @@ onBeforeUnmount(() => {
     padding: 22px 18px;
     box-shadow: none;
 
-    h1 {
+    .intro-title {
       font-size: 20px;
     }
   }

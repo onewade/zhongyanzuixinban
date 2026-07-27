@@ -48,7 +48,7 @@ onMounted(() => getArticle(1, pageSize.value))
 		<div class="layout-container" style="width: 100%">
 			<div class="page-header">
 				<div class="am-container">
-					<h1 class="page-header-title">公司动态</h1>
+					<div class="page-header-title">公司动态</div>
 				</div>
 			</div>
 
