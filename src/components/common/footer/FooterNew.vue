@@ -203,13 +203,13 @@ body.no-scroll {
 
     .search-icon-btn {
         font-size: 1.1rem;
-        color: #F7B334;
+        color: #1f1f1f;
         cursor: pointer;
         transition: color 0.2s ease;
     }
 
     .search-icon-btn:hover {
-        color: #d99a2a;
+        color: #1f1f1f;
     }
 
     @media screen and (min-width: 1024px) {
