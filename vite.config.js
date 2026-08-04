@@ -12,7 +12,16 @@ const serveRootIndex = () => ({
   name: 'serve-root-index',
   configureServer(server) {
     server.middlewares.use((req, res, next) => {
-      if (req.url === '/' || req.url === '') {
+      const url = req.url || ''
+      const isPageRoute = req.method === 'GET'
+        && !url.startsWith('/@vite')
+        && !url.startsWith('/@id')
+        && !url.startsWith('/src/')
+        && !url.startsWith('/node_modules/')
+        && !url.startsWith('/api/')
+        && !url.startsWith('/__vite')
+        && !url.includes('.')
+      if (url === '/' || url === '' || isPageRoute) {
         req.url = '/index.html'
       }
       next()
