@@ -202,6 +202,12 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 25">
                                     {{ $t('message.newsTitle24') }}
                                 </template>
+                                <template v-else-if="id == 26">
+                                    {{ $t('message.newsTitle25') }}
+                                </template>
+                                <template v-else-if="id == 27">
+                                    {{ $t('message.newsTitle26') }}
+                                </template>
                             </span>
                         </slot>
                     </div>
@@ -230,6 +236,8 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 23">2026-07-06</template>
                         <template v-else-if="id == 24">2026-06-26</template>
                         <template v-else-if="id == 25">2026-07-24</template>
+                        <template v-else-if="id == 26">2026-07-29</template>
+                        <template v-else-if="id == 27">2026-07-30</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
@@ -753,6 +761,47 @@ function openLowRes(src, maxWidth = 1200) {
                             :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
                             <div>
                                 {{ $t('message.newsContent57') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 26">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20260729.jpeg" alt="国际集团职场心理健康与压力管理专题培训照片"
+                                oncontextmenu="return false" style="cursor:pointer;"
+                                @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent58') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent59') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent60') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent61') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 27">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20260730.jpeg" alt="国际集团中企关爱进社区义工活动照片"
+                                oncontextmenu="return false" style="cursor:pointer;"
+                                @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent62') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent63') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent64') }}
                             </div>
                         </div>
                     </div>
