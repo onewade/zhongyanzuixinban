@@ -8,10 +8,31 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 const Timestamp = new Date().getTime();
+const serveRootIndex = () => ({
+  name: 'serve-root-index',
+  configureServer(server) {
+    server.middlewares.use((req, res, next) => {
+      const url = req.url || ''
+      const isPageRoute = req.method === 'GET'
+        && !url.startsWith('/@vite')
+        && !url.startsWith('/@id')
+        && !url.startsWith('/src/')
+        && !url.startsWith('/node_modules/')
+        && !url.startsWith('/api/')
+        && !url.startsWith('/__vite')
+        && !url.includes('.')
+      if (url === '/' || url === '' || isPageRoute) {
+        req.url = '/index.html'
+      }
+      next()
+    })
+  },
+})
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
   plugins: [
+    serveRootIndex(),
     vue(),
     // ...
     AutoImport({

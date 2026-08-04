@@ -9,8 +9,12 @@ const { locale, messages } = useI18n()
 const containerRef = ref(null);
 const router = useRouter()
 
-// 从 i18n messages 中按当前 locale 读取 newsList（可能不存在时返回空数组）
-const list = computed(() => (messages.value[locale.value] && messages.value[locale.value].message && messages.value[locale.value].message.newsList) ? messages.value[locale.value].message.newsList : [])
+// 从 i18n messages 中按当前 locale 读取 newsList；如果当前语言没有新闻，使用简体新闻兜底
+const list = computed(() => {
+    const currentList = messages.value[locale.value]?.message?.newsList
+    if (Array.isArray(currentList) && currentList.length) return currentList
+    return messages.value.zhCN?.message?.newsList || []
+})
 
 // 解析日期，便于模板使用
 // formatList 随 list（即 locale）变化自动更新
