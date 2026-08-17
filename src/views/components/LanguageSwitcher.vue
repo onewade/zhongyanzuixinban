@@ -110,18 +110,22 @@ const skipToMainContent = () => {
     '.join-content',
     '.groupContent',
     '.detailContainer',
-    '.main-content > *:not(.index-page):not(.page-header-sub)'
+    '.main-content > *:not(.index-page):not(.page-header-sub)',
+    '.main-content'
   ];
   const target = targetSelectors
     .map(selector => document.querySelector(selector))
     .find(Boolean);
   if (!target) return;
-  target.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
   target.setAttribute('tabindex', '-1');
   target.focus({ preventScroll: true });
+  const header = document.querySelector('.headerContainer');
+  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+  const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: 'smooth',
+  });
 };
 
 // 监听页面宽度

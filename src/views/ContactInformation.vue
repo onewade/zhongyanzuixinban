@@ -22,7 +22,6 @@ const moreVisible = ref(false);
             <div style="width: 100%;">
                 <div class="index-page">
                     <div class="page-header-sub">
-                        <!-- <img src="../assets/images/contact.png" alt=""> -->
                         <img src="../assets/images/banner.png" alt="联系方式页面横幅图片" srcset="">
                     </div>
                 </div>

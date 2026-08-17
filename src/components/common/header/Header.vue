@@ -135,9 +135,7 @@ onBeforeUnmount(() => {
 
 		<div v-else class="nav-wrapper header-default headerNew ">
 			<div class="zgyc">
-				<!-- <img src="../../../assets/images/newIndex/titleNew.png" alt="" srcset=""> -->
 				<!-- #0F409E -->
-				<!-- <img src="../../../assets/images/inlogo.png" alt=""> -->
 				<div>
 					<!-- <div class="mainTitle">中烟国际集团有限公司</div> -->
 					<img src="../../../assets/images/logo.png" alt="中烟国际集团有限公司标志" class="logoImg" @click="goHome">
