@@ -27,3 +27,8 @@ tobacco/assets/
 *.njsproj
 *.sln
 *.sw?
+
+# Trae / Codex temp dirs
+.codex-temp/
+.codex-backups/
+.codex/
