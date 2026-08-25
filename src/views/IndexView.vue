@@ -460,7 +460,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 .carousel-controls {
 	position: absolute;
 	left: 2rem;
-	bottom: 2.3rem;
+	bottom: 4.2rem;
 	z-index: 12;
 	display: inline-flex;
 	align-items: center;
@@ -528,7 +528,7 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 
 	.carousel-controls {
 		left: 1rem;
-		bottom: 1.2rem;
+		bottom: 2.6rem;
 		gap: 0.7rem;
 		padding: 0.6rem 0.8rem;
 	}
