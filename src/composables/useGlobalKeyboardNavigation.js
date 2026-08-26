@@ -31,6 +31,7 @@ export function useGlobalKeyboardNavigation() {
     '.footerContainer > div:nth-child(odd)',
     'img[alt]:not([alt=""])',
     '.swiper-slide-item[role="img"]',
+    '[data-skip-target="true"]',
     '.joinContentItem',
     '.news-item',
     '.back',
@@ -49,7 +50,12 @@ export function useGlobalKeyboardNavigation() {
                rect.height > 0;
       });
     
-    return elements;
+    return elements.sort((a, b) => {
+      const aIsSkipLink = a.classList.contains('skip-content-link');
+      const bIsSkipLink = b.classList.contains('skip-content-link');
+      if (aIsSkipLink !== bIsSkipLink) return aIsSkipLink ? -1 : 1;
+      return 0;
+    });
   };
 
   // 设置焦点
@@ -94,6 +100,9 @@ export function useGlobalKeyboardNavigation() {
     
     if (el.classList.contains('changeItem')) {
       return '.changeItem';
+    }
+    if (el.dataset.skipTarget === 'true') {
+      return '[data-skip-target="true"]';
     }
     if (el.classList.contains('guide-link')) {
       return '.guide-link';
@@ -154,6 +163,104 @@ export function useGlobalKeyboardNavigation() {
     }
     
     return -1;
+  };
+
+  // 判断某个元素是否属于 header 区域(即导航/语言/标志/logo)
+  const isHeaderElement = (el) => {
+    if (!el) return false;
+    if (el.classList.contains('skip-content-link')) return true;
+    const inHeader = el.closest('.headerContainer, .header-top, .changeLL, .changeL, .nav, .navigation, .logo-wrap, .site-header, [class*="header"], .myNavigation, .myNav');
+    return Boolean(inHeader);
+  };
+
+  const findNextElementAfterSkipTarget = (elements, skipTarget, shiftKey = false) => {
+    if (!skipTarget) return null;
+
+    // Step 1: 先找 skip target 自己内部的 focusable 子元素(优先)
+    if (!shiftKey) {
+      const innerCandidates = Array.from(skipTarget.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [data-nav-item], [tabindex]:not([tabindex="-1"]), .changeItem, .guide-btn, .guide-link, .font-a-btn, .search-icon-btn, img[alt]:not([alt=""]), .swiper-slide-item[role="img"], .joinContentItem, .news-item, .back, .quickBtn, [data-nav-item]'
+      )).filter(el => {
+        const style = window.getComputedStyle(el);
+        const rect = el.getBoundingClientRect();
+        return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
+      });
+      if (innerCandidates.length > 0) {
+        return innerCandidates[0];
+      }
+    }
+
+    // Step 2: 按文档位置(不在 header 区)来找 skip target **之后/之前**的第一个非 header 元素
+    // 不依赖 elements 数组的顺序，直接走 DOM 比较位置。这样即使 elements 数组里 header 在前也不会被误选。
+    const skipLink = document.querySelector('.skip-content-link');
+    const header = document.querySelector('.headerContainer');
+
+    const directionFlag = shiftKey
+      ? Node.DOCUMENT_POSITION_PRECEDING
+      : Node.DOCUMENT_POSITION_FOLLOWING;
+
+    // 构建候选集：所有文档中可聚焦可见元素（不用 elements 数组，直接重新收集全量，保证位置比较真实）
+    const allFocusable = Array.from(document.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [data-nav-item], [tabindex]:not([tabindex="-1"]), .changeItem, .guide-btn, .guide-link, .font-a-btn, .search-icon-btn, img[alt]:not([alt=""]), .swiper-slide-item[role="img"], .joinContentItem, .news-item, .back, .quickBtn, [data-skip-target="true"]'
+    )).filter(el => {
+      const style = window.getComputedStyle(el);
+      const rect = el.getBoundingClientRect();
+      return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
+    });
+
+    // 排序：按文档流顺序（skip-link 仍排在最前用于全局顺序，但此处不用）
+    allFocusable.sort((a, b) => {
+      const pos = a.compareDocumentPosition(b);
+      if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return -1;
+      if (pos & Node.DOCUMENT_POSITION_PRECEDING) return 1;
+      return 0;
+    });
+
+    // 找 skip target 在全量里的索引
+    const skipIdx = allFocusable.indexOf(skipTarget);
+
+    if (!shiftKey) {
+      // 正向：从 skipIdx+1 开始找第一个不在 header 区 && 不在 skip-link 附近 的元素
+      // 并且必须是在 skipTarget 的 FOLLOWING 方向（文档后）
+      for (let i = skipIdx + 1; i < allFocusable.length; i++) {
+        const candidate = allFocusable[i];
+        if (candidate === skipTarget) continue;
+        if (candidate === skipLink) continue;
+        // 如果 candidate 文档位置还在 header 内（比 header 容器还早），跳过
+        if (header && header.contains(candidate)) continue;
+        if (isHeaderElement(candidate)) continue;
+        // 必须在 skipTarget 文档之后
+        const pos = skipTarget.compareDocumentPosition(candidate);
+        if (!(pos & Node.DOCUMENT_POSITION_FOLLOWING) && !(skipTarget.contains(candidate))) {
+          // candidate 不是后代也不在后面，跳过（可能出现 target 在 DOM 末尾、candidate 是前面 header 元素残留的情况）
+          continue;
+        }
+        return candidate;
+      }
+    } else {
+      // 反向：Shift+Tab 从 skip target 往回走
+      for (let i = skipIdx - 1; i >= 0; i--) {
+        const candidate = allFocusable[i];
+        if (candidate === skipTarget) continue;
+        if (candidate === skipLink) continue;
+        if (header && header.contains(candidate)) continue;
+        if (isHeaderElement(candidate)) continue;
+        const pos = skipTarget.compareDocumentPosition(candidate);
+        if (!(pos & Node.DOCUMENT_POSITION_PRECEDING)) continue;
+        return candidate;
+      }
+    }
+
+    // Step 3: 如果上面按"非header区"的严格规则没找到，退而求其次：按文档位置找 skipTarget 之后的第一个元素（不排除 header，但 skip-link 除外）
+    const ordered = shiftKey ? [...allFocusable].reverse() : allFocusable;
+    const fallback = ordered.find(el => {
+      if (el === skipTarget) return false;
+      if (el.classList.contains('skip-content-link')) return false;
+      const position = skipTarget.compareDocumentPosition(el);
+      return Boolean(position & directionFlag);
+    });
+
+    return fallback || null;
   };
 
   // 根据方向找到下一个元素
@@ -265,6 +372,20 @@ export function useGlobalKeyboardNavigation() {
     // Tab 键导航
     if (key === 'Tab') {
       e.preventDefault();
+      const activeSkipTarget = document.activeElement?.dataset?.skipTarget === 'true'
+        ? document.activeElement
+        : focusedElement.value?.dataset?.skipTarget === 'true'
+          ? focusedElement.value
+          : null;
+
+      if (activeSkipTarget) {
+        const nextElement = findNextElementAfterSkipTarget(elements, activeSkipTarget, e.shiftKey);
+        if (nextElement) {
+          setFocus(nextElement);
+          return;
+        }
+      }
+
       const currentIndex = findCurrentIndex(elements);
       let nextIndex;
       
@@ -318,6 +439,13 @@ export function useGlobalKeyboardNavigation() {
 
     // Enter 键触发点击
     if (key === 'Enter' && focusedElement.value) {
+      // Skip to Content 按钮:由组件内 @keydown.enter.prevent 专门处理，全局不再重复 click，
+      // 避免同步 click 事件把 focusedElement 重新设成按钮，覆盖 skipToMainContent 中的异步焦点转移
+      if (focusedElement.value.classList && focusedElement.value.classList.contains('skip-content-link')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
       e.preventDefault();
       focusedElement.value.click();
       return;
@@ -347,6 +475,20 @@ export function useGlobalKeyboardNavigation() {
     }
   };
 
+  const handleSkipContentFocused = (e) => {
+    const target = e.detail?.target;
+    if (!target) return;
+
+    document.querySelectorAll('.keyboard-focus').forEach(el => {
+      el.classList.remove('keyboard-focus');
+    });
+
+    target.classList.add('keyboard-focus');
+    focusedElement.value = target;
+    lastFocusedElement.value = target;
+    lastFocusedSelector.value = '[data-skip-target="true"]';
+  };
+
   // 监听路由变化，恢复焦点
   watch(() => route.path, (newPath, oldPath) => {
     setTimeout(() => {
@@ -357,11 +499,13 @@ export function useGlobalKeyboardNavigation() {
   onMounted(() => {
     document.addEventListener('keydown', handleKeydown);
     document.addEventListener('click', handleClick);
+    window.addEventListener('skipContentFocused', handleSkipContentFocused);
   });
 
   onBeforeUnmount(() => {
     document.removeEventListener('keydown', handleKeydown);
     document.removeEventListener('click', handleClick);
+    window.removeEventListener('skipContentFocused', handleSkipContentFocused);
   });
 
   return {

@@ -23,7 +23,6 @@ onBeforeUnmount(() => {
             <div class="contact">
                 <div class="index-page" style="width: 100%">
                     <div class="page-header-sub">
-                        <!-- <img src="../assets/images/business.png" alt=""> -->
                         <img src="../assets/images/banner.png" alt="主营业务页面横幅图片">
                     </div>
                 </div>

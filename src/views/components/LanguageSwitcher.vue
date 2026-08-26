@@ -7,6 +7,8 @@
         :title="skipContentTitle"
         :aria-label="skipContentTitle"
         @click="skipToMainContent"
+        @keydown.enter.prevent="skipToMainContent($event)"
+        @keydown.space.prevent="skipToMainContent($event)"
       >
         {{ skipContentText }}
       </button>
@@ -43,7 +45,7 @@ trigger="click" placement="bottom-end" :hide-on-click="true" :max-height="200"
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { computed, ref, onMounted, onBeforeUnmount } from 'vue';
+import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import myNavigation from "./myNavigation.vue";
 const { locale } = useI18n();
 import { useRouter } from 'vue-router';
@@ -99,29 +101,108 @@ const changeLanguage = (lang) => {
 };
 const changeL = ref(null);
 
-const skipToMainContent = () => {
-  const targetSelectors = [
-    '.news-content',
-    '.overview-wrap',
-    '.news-wrapper',
-    '.contact-content',
-    '.contactContainer',
-    '.contactContainer1',
-    '.join-content',
-    '.groupContent',
-    '.detailContainer',
-    '.main-content > *:not(.index-page):not(.page-header-sub)'
+const getSkipTargetSelectors = () => {
+  const path = router.currentRoute.value.path.toLowerCase();
+  if (path.startsWith('/newsdetail')) {
+    return ['.detailContainer', '.main-content'];
+  }
+  if (path.startsWith('/news')) {
+    return ['.news-list .news-item', '.news-list', '.news-wrapper', '.main-content'];
+  }
+  if (path.startsWith('/overview')) {
+    return ['.overview-wrap', '.main-content'];
+  }
+  if (path.startsWith('/mainbusiness')) {
+    return ['.contactContainer1', '.contactContainer', '.main-content'];
+  }
+  if (path.startsWith('/contactinformation')) {
+    return ['.contact-content', '.main-content'];
+  }
+  if (path.startsWith('/joinus')) {
+    return ['.join-content', '.main-content'];
+  }
+  if (path.startsWith('/index') || path === '/') {
+    // 首页：优先落到右侧新闻列表第一条，而不是左侧轮播区
+    return [
+      '.news-content .news-boxes .news-item:first-child',
+      '.news-content .news-item:first-child',
+      '.news-boxes .news-item:first-child',
+      '.news-content .news-item',
+      '.news-content',
+      '.news-carousel',
+      '.carousel-controls',
+      '.contactContainer1',
+      '.main-content'
+    ];
+  }
+  return [
+    '.main-content > *:not(.index-page):not(.page-header-sub)',
+    '.main-content'
   ];
+};
+
+const skipToMainContent = (event) => {
+  // 关键：阻止 keydown 事件冒泡到 document。
+  // 因为全局键盘处理器在 document 层也监听 keydown.Enter，
+  // 而本函数里 dispatch(skipContentFocused) 会同步把
+  // useGlobalKeyboardNavigation 的 focusedElement.value 切换为 target；
+  // 如果此时 Enter 继续冒泡到全局，全局就会对 target 再次执行 .click()，
+  // 对 /news 页来说 target 是第一个 .news-item，.news-item.click() 会直接 router.push 到详情页。
+  if (event && typeof event.stopPropagation === 'function') {
+    event.stopPropagation();
+  }
+  if (event && typeof event.preventDefault === 'function') {
+    event.preventDefault();
+  }
+
+  const targetSelectors = getSkipTargetSelectors();
   const target = targetSelectors
     .map(selector => document.querySelector(selector))
     .find(Boolean);
   if (!target) return;
-  target.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
+
+  document.querySelectorAll('[data-skip-target="true"]').forEach(element => {
+    element.removeAttribute('data-skip-target');
   });
+
+  target.setAttribute('data-skip-target', 'true');
   target.setAttribute('tabindex', '-1');
-  target.focus({ preventScroll: true });
+  window.dispatchEvent(new CustomEvent('skipContentFocused', { detail: { target } }));
+
+  const header = document.querySelector('.headerContainer');
+  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+  const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: 'smooth',
+  });
+
+  // 强制把焦点从 skip 按钮上挪开，避免浏览器/全局键盘处理器把焦点拉回
+  const skipBtn = document.querySelector('.skip-content-link');
+  if (skipBtn) {
+    skipBtn.blur();
+    // 短暂从 tab 序列中移除，确保不会被下一个 Tab 找回
+    skipBtn.setAttribute('tabindex', '-1');
+    skipBtn.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      skipBtn.removeAttribute('tabindex');
+      skipBtn.removeAttribute('aria-hidden');
+    }, 500);
+  }
+
+  // 双层保险：nextTick 立即聚焦，setTimeout 在浏览器回流后再次确保焦点在 target
+  const forceFocusTarget = () => {
+    try {
+      target.focus({ preventScroll: true });
+    } catch (e) { /* noop */ }
+    if (target.classList) target.classList.add('keyboard-focus');
+  };
+
+  nextTick(() => {
+    forceFocusTarget();
+    setTimeout(forceFocusTarget, 0);
+    setTimeout(forceFocusTarget, 20);
+  });
 };
 
 // 监听页面宽度

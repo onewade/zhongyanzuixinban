@@ -30,9 +30,26 @@ const modules = [Mousewheel, Pagination, Autoplay];
 const homeSwiper = ref(null);
 const newsSwiper = ref(null);
 const isNewsCarouselPaused = ref(false);
+const activeNewsSlideIndex = ref(0);
+const renderPaginationBullet = (index, className) => {
+	return `<button type="button" class="${className}" aria-label="切换到第 ${index + 1} 张轮播图"></button>`;
+};
+const paginationOptions = {
+	clickable: true,
+	renderBullet: renderPaginationBullet
+};
+const updatePaginationAttributes = (swiper) => {
+	if (!swiper?.pagination?.bullets) return;
+	swiper.pagination.bullets.forEach((bullet) => {
+		const isActive = bullet.classList.contains('swiper-pagination-bullet-active');
+		bullet.setAttribute('aria-current', isActive ? 'true' : 'false');
+		bullet.tabIndex = 0;
+	});
+};
 // 初始化
 const onSwiper = (swiper) => {
 	homeSwiper.value = swiper;
+	updatePaginationAttributes(swiper);
 };
 const onNewsSwiper = (swiper) => {
 	newsSwiper.value = swiper;
@@ -40,7 +57,10 @@ const onNewsSwiper = (swiper) => {
 // swiper切换时触发
 // eslint-disable-next-line no-unused-vars
 const onSlideChange = (swiper) => {
-
+	updatePaginationAttributes(swiper);
+};
+const onNewsSlideChange = (swiper) => {
+	activeNewsSlideIndex.value = swiper.realIndex ?? 0;
 };
 const toggleNewsCarousel = () => {
 	if (!newsSwiper.value?.autoplay) return;
@@ -52,6 +72,11 @@ const toggleNewsCarousel = () => {
 		newsSwiper.value.autoplay.stop();
 		isNewsCarouselPaused.value = true;
 	}
+};
+const goNewsSlide = (index) => {
+	if (!newsSwiper.value) return;
+	newsSwiper.value.slideToLoop(index);
+	activeNewsSlideIndex.value = index;
 };
 
 const tabIndex = ref(0)
@@ -219,7 +244,7 @@ onBeforeUnmount(() => {
 			<div class="index-page">
 				<!-- 使用Swiper替换原有的轮播 -->
 				<Swiper
-:modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
+:modules="modules" :slides-per-view="1" :space-between="0" :pagination="paginationOptions"
 					:mousewheel="false" :allow-touch-move="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
 					:loop="true" class="home-swiper" @swiper="onSwiper" @slide-change="onSlideChange">
 					<SwiperSlide
@@ -240,9 +265,9 @@ v-for="(slide, index) in slideshow" :key="index" class="swiper-slide-item" :styl
 			<div v-if="isMobile" class="newsTitle">{{ $t('message.t3') }}</div>
 			<div class="news-carousel">
 				<Swiper
-:modules="modules" :slides-per-view="1" :space-between="0" :pagination="{ clickable: true }"
+:modules="modules" :slides-per-view="1" :space-between="0"
 					:mousewheel="false" :allow-touch-move="true" :autoplay="{ delay: 3000, disableOnInteraction: false }"
-					:loop="true" class="home-swiper" @swiper="onNewsSwiper" @slide-change="onSlideChange">
+					:loop="true" class="home-swiper" @swiper="onNewsSwiper" @slide-change="onNewsSlideChange">
 					<SwiperSlide
 v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="{
 						backgroundImage: `url(${slide.ImageUrl})`,
@@ -255,15 +280,26 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 						</div>
 					</SwiperSlide>
 				</Swiper>
-				<button
-					type="button"
-					class="carousel-toggle"
-					:aria-label="isNewsCarouselPaused ? '播放新闻轮播图片' : '暂停新闻轮播图片'"
-					:aria-pressed="isNewsCarouselPaused"
-					@click="toggleNewsCarousel"
-				>
-					<span aria-hidden="true">{{ isNewsCarouselPaused ? '▶' : 'Ⅱ' }}</span>
-				</button>
+				<div class="carousel-controls" aria-label="新闻轮播控制">
+					<button
+						v-for="(slide, index) in newImg"
+						:key="slide.title"
+						type="button"
+						:class="['carousel-dot', { 'carousel-dot--active': activeNewsSlideIndex === index }]"
+						:aria-label="`切换到第 ${index + 1} 张新闻轮播图`"
+						:aria-current="activeNewsSlideIndex === index ? 'true' : 'false'"
+						@click="goNewsSlide(index)"
+					></button>
+					<button
+						type="button"
+						class="carousel-toggle"
+						:aria-label="isNewsCarouselPaused ? '播放新闻轮播图片' : '暂停新闻轮播图片'"
+						:aria-pressed="isNewsCarouselPaused"
+						@click="toggleNewsCarousel"
+					>
+						<span aria-hidden="true">{{ isNewsCarouselPaused ? '▶' : 'Ⅱ' }}</span>
+					</button>
+				</div>
 			</div>
 			<!-- ,
       {
@@ -395,7 +431,10 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 			width: 0.6rem;
 			height: 0.6rem;
 			margin: 0 0.4rem;
+			padding: 0;
+			border: 0;
 			transition: all 0.3s ease;
+			cursor: pointer;
 
 			&.swiper-pagination-bullet-active {
 				background: #F7B334;
@@ -405,37 +444,58 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 				transform: scale(1.1);
 				border-radius: 3px;
 			}
+
+			&:focus {
+				outline: 2px solid #333;
+				outline-offset: 3px;
+			}
 		}
 	}
 }
 
 .news-carousel {
 	position: relative;
-
-	:deep(.swiper-pagination) {
-		left: 2rem !important;
-		right: auto !important;
-		bottom: 2rem !important;
-		display: inline-flex;
-		align-items: center;
-		width: auto !important;
-		padding: 0.75rem 4.3rem 0.75rem 1rem;
-		border-radius: 1rem;
-		background: rgba(255, 255, 255, 0.86);
-		backdrop-filter: blur(4px);
-	}
 }
 
-.carousel-toggle {
+.carousel-controls {
 	position: absolute;
-	left: 10rem;
-	bottom: 5.2rem;
+	left: 2rem;
+	bottom: 4.2rem;
 	z-index: 12;
 	display: inline-flex;
 	align-items: center;
+	gap: 0.9rem;
+	width: auto;
+	padding: 0.75rem 1rem;
+	border-radius: 1rem;
+	background: rgba(255, 255, 255, 0.86);
+	backdrop-filter: blur(4px);
+}
+
+.carousel-dot {
+	width: 0.6rem;
+	height: 0.6rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.9);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.carousel-dot--active {
+	width: 1.5rem;
+	border-radius: 3px;
+	background: #F7B334;
+}
+
+.carousel-toggle {
+	display: inline-flex;
+	align-items: center;
 	justify-content: center;
-	width: 2rem;
-	height: 2rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0;
 	border: 0;
 	border-radius: 50%;
 	background: transparent;
@@ -446,6 +506,8 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 	cursor: pointer;
 }
 
+.carousel-dot:hover,
+.carousel-dot:focus,
 .carousel-toggle:hover,
 .carousel-toggle:focus {
 	color: #333;
@@ -462,18 +524,18 @@ v-for="(slide, index) in newImg" :key="index" class="swiper-slide-item" :style="
 	}
 
 	.news-carousel {
-		:deep(.swiper-pagination) {
-			left: 1rem !important;
-			bottom: 1rem !important;
-			padding: 0.6rem 3.2rem 0.6rem 0.8rem;
-		}
+	}
+
+	.carousel-controls {
+		left: 1rem;
+		bottom: 2.6rem;
+		gap: 0.7rem;
+		padding: 0.6rem 0.8rem;
 	}
 
 	.carousel-toggle {
-		left: 6.8rem;
-		bottom: 3.6rem;
-		width: 1.7rem;
-		height: 1.7rem;
+		width: 1.35rem;
+		height: 1.35rem;
 		font-size: 0.9rem;
 	}
 }

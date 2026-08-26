@@ -30,6 +30,19 @@ let rawContent = '';
 function processHtml() {
     if (!rawContent) return;
     let content = rawContent;
+    const enhanceImageTag = (imgTag) => {
+        let newImgTag = imgTag;
+        if (!/\sstyle\s*=/i.test(newImgTag)) {
+            newImgTag = newImgTag.replace(/<img/i, '<img style="max-width:90%;height:auto;margin: auto;display: flex"');
+        }
+        if (!/\soncontextmenu\s*=/i.test(newImgTag)) {
+            newImgTag = newImgTag.replace(/<img/i, '<img oncontextmenu="return false;"');
+        }
+        if (!/\salt\s*=/i.test(newImgTag)) {
+            newImgTag = newImgTag.replace(/<img/i, '<img alt="新闻内容图片"');
+        }
+        return newImgTag;
+    };
     if (content.includes('<p>')) {
         const pTags = content.match(/<p>(.*?)<\/p>/g);
         pTags && pTags.forEach(tag => {
@@ -37,7 +50,7 @@ function processHtml() {
             if (/<[^>]+>/.test(inner)) {
                 const imgTags = inner.match(/<img[^>]+>/g);
                 imgTags && imgTags.forEach(imgTag => {
-                    const newImgTag = imgTag.replace('<img', '<img style="max-width:90%;height:auto;margin: auto;display: flex" oncontextmenu="return false;"');
+                    const newImgTag = enhanceImageTag(imgTag);
                     content = content.replace(imgTag, newImgTag);
                 });
             } else {
