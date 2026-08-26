@@ -1,0 +1,4 @@
+# 部署脚本与配置文件强制使用 LF 行尾，保证在 Linux 服务器可直接执行
+*.sh text eol=lf
+*.conf text eol=lf
+*.sh.bak_* text eol=lf
