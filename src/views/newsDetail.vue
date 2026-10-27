@@ -221,6 +221,9 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 27">
                                     {{ $t('message.newsTitle26') }}
                                 </template>
+                                <template v-else-if="id == 28">
+                                    {{ $t('message.newsTitle27') }}
+                                </template>
                             </span>
                         </slot>
                     </div>
@@ -251,6 +254,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 25">2026-07-24</template>
                         <template v-else-if="id == 26">2026-07-29</template>
                         <template v-else-if="id == 27">2026-07-30</template>
+                        <template v-else-if="id == 28">2026-10-21</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
@@ -815,6 +819,23 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                             <div>
                                 {{ $t('message.newsContent64') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 28">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20261021.jpg"
+                                alt="国际集团举办中式雪茄发展现状及国际化路径专题研讨学习讲座照片"
+                                oncontextmenu="return false" style="cursor:pointer;"
+                                @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent65') }}
+                            </div>
+                            <div>
+                                {{ $t('message.newsContent66') }}
                             </div>
                         </div>
                     </div>
