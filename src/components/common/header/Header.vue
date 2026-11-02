@@ -144,7 +144,7 @@ onBeforeUnmount(() => {
 			</div>
 			<div class="header-right">
 				<div class="award">
-					<img src="../../../assets/images/newIndex/award.jpg" alt="企业荣誉奖项" srcset="" />
+					<img src="../../../assets/images/newIndex/award-firewall-diamond-2026.png" alt="企业荣誉奖项" srcset="" />
 					<img src="../../../assets/images/newIndex/award1.png" alt="企业认证标志" srcset="" />
 				</div>
 
