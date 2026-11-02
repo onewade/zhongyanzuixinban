@@ -81,7 +81,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="footerFooter">{{ $t('message.tishi') }}</div>
             <div class="awardContainer">
-                <img src="../../../assets/images/newIndex/award.jpg" alt="企业荣誉奖项">
+                <img src="../../../assets/images/newIndex/award-firewall-diamond-2026.png" alt="企业荣誉奖项">
                 <img src="../../../assets/images/newIndex/award1.png" alt="企业认证标志">
             </div>
         </div>
