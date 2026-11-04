@@ -227,6 +227,9 @@ function openLowRes(src, maxWidth = 1200) {
                                 <template v-else-if="id == 29">
                                     {{ $t('message.newsTitle28') }}
                                 </template>
+                                <template v-else-if="id == 30">
+                                    {{ $t('message.newsTitle29') }}
+                                </template>
                             </span>
                         </slot>
                     </div>
@@ -259,6 +262,7 @@ function openLowRes(src, maxWidth = 1200) {
                         <template v-else-if="id == 27">2026-07-30</template>
                         <template v-else-if="id == 28">2026-10-21</template>
                         <template v-else-if="id == 29">2026-10-29</template>
+                        <template v-else-if="id == 30">2026-11-04</template>
                     </div>
                     <!-- <div v-html="html"></div> -->
                     <div v-if="id == 1">
@@ -857,6 +861,20 @@ function openLowRes(src, maxWidth = 1200) {
                             </div>
                             <div>
                                 {{ $t('message.newsContent68') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="id == 30">
+                        <div class="newspic">
+                            <img src="../assets/images/newsPic/20261104.jpeg"
+                                alt="国际集团与联一国际公司会谈照片"
+                                oncontextmenu="return false" style="cursor:pointer;"
+                                @dblclick="openLowRes($event.target.src, 900)">
+                        </div>
+                        <div class="detailContent"
+                            :style="{ fontSize: fontSizeMap[fontSizeLevel], lineHeight: lineHeightMap[fontSizeLevel] }">
+                            <div>
+                                {{ $t('message.newsContent69') }}
                             </div>
                         </div>
                     </div>

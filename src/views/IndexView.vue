@@ -7,7 +7,7 @@ import c2 from '../assets/images/newIndex/c2.png';
 import c3 from '../assets/images/newIndex/c3.png';
 import bannner from '../assets/images/banner.png';
 import { useRouter } from 'vue-router';
-import p1 from '../assets/images/newsPic/20260703.jpeg';
+import p1 from '../assets/images/newsPic/20261104.jpeg';
 import p2 from '../assets/images/newsPic/20260625.jpeg';
 import p3 from '../assets/images/newsPic/20260504.jpg';
 import { useI18n } from 'vue-i18n'
@@ -89,7 +89,7 @@ const slideshow = ref([
 const newImg = ref([
 	{
 		ImageUrl: p1,
-		title: '国际集团参加香港中企协七人足球邀请赛',
+		title: '国际集团与联一国际公司会谈',
 	},
 	{
 		ImageUrl: p2,
